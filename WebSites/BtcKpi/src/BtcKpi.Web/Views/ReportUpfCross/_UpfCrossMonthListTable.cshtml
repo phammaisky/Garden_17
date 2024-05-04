@@ -1,0 +1,88 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossListViewModel
+@using BtcKpi.Service.Common
+<thead>
+<tr class="bg-primary">
+    <td hidden="hidden"></td>
+    <td hidden="hidden"></td>
+    <th style="width: 15%; vertical-align: middle;" class="text-center">Công ty</th>
+    <th style="width: 15%; vertical-align: middle;" class="text-center">Phòng ban/ bộ phận</th>
+    <th style="width: 5%; vertical-align: middle;" class="text-center">Năm</th>
+    <th style="width: 5%; vertical-align: middle;" class="text-center">Tháng</th>
+    <th style="vertical-align: middle;" class="text-center">Điểm tự đánh giá</th>
+    <th style="vertical-align: middle;" class="text-center">Điểm BQ được đánh giá</th>
+    <th style="vertical-align: middle;" class="text-center">Điểm hiệu suất BOD đánh giá</th>
+    <th style="vertical-align: middle;" class="text-center">Điểm BOD đánh giá</th>
+    <th style="vertical-align: middle;" class="text-center">Điểm BQ</th>
+    <th style="vertical-align: middle;" class="text-center">Xếp loại</th>
+    <th style="vertical-align: middle;" class="text-center"></th>
+</tr>
+</thead>
+<tbody>
+@if (Model.UpfCrossInfos != null && Model.UpfCrossInfos.Count > 0)
+{
+    for (int i = 0; i < Model.UpfCrossInfos.Count; i++)
+    {
+        <tr>
+            <td hidden="hidden">
+                @Model.UpfCrossInfos[i].ID
+            </td>
+            <td hidden="hidden">
+                @Model.UpfCrossInfos[i].DependWeight
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].CompanyName
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].ToName
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].Year
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].Month
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].ScoreAssessment.ToString().Replace(",", ".")
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].ScoreAssessed.ToString().Replace(",", ".")
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].PerformancePoint.ToString().Replace(",", ".")
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].ScoreBOD.ToString().Replace(",", ".")
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].ScoreAverage.ToString().Replace(",", ".")
+            </td>
+            <td>
+                @Model.UpfCrossInfos[i].Rated
+            </td>
+            <td>
+                @if (@Model.UpfCrossInfos[i].ScoreBOD != null && @Model.UpfCrossInfos[i].ScoreBOD > 0)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-twitter cross-bod-approved-edit" data-id="@Model.UpfCrossInfos[i].UpfCrossID" title="Sửa Đánh giá"><i class="fa fa-edit"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-sm btn-social-icon btn-info cross-bod-approved-add" data-id="@Model.UpfCrossInfos[i].UpfCrossID" data-toggle="modal" data-target="#add-cross-bod-approved-modal" title="BOD Đánh giá"><i class="fa fa-check-circle-o"></i></a>
+                }
+            </td>
+        </tr>
+    } 
+} else if (Model.UpfCrossInfos != null && Model.UpfCrossInfos.Count == 0) {
+    <tr>
+        <td hidden="hidden"></td>
+        <td hidden="hidden"></td>
+        <td colspan="4">
+            <span class="text-danger">Không có dữ liệu</span>
+        </td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+}
+</tbody>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section style {
+    @Styles.Render("~/Calendar/css")
+}
+
+@*BODY CONTENT*@
+
+@section scripts {
+    @Scripts.Render("~/Calendar/js")
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'bootstrap'],
+                themeSystem: 'bootstrap'
+            });
+            calendar.render();
+        });
+    </script>
+}

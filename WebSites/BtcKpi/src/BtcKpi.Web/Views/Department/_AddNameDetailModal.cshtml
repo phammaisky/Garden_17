@@ -1,0 +1,33 @@
+﻿@model BtcKpi.Web.ViewModels.DepartmentViewModel
+<div class="modal fade" id="add-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-center">Thêm mới nhóm công việc</h3>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <input type="hidden" id="nameDetailEditID" />
+                        <div class="form-group col-12">
+                            <label class="col-md-4" for="nameKPI">Tên nhóm công việc: </label>
+                            <textarea class="col-md-8" type="text" id="nameKPI" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Hủy">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddDetailModal" title="Lưu">Lưu</button>
+                <button type="button" class="btn btn-primary" id="btnEditDetailModal" title="Cập nhật">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

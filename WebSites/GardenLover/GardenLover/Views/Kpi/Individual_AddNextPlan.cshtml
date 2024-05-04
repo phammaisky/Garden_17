@@ -1,0 +1,41 @@
+﻿@using GardenLover.EF
+@model GardenLover.Models.IndividualVM
+
+@for (int i = Model.TotalAddedNextPlan; i < Model.allNextPlanAndDetail.Count; i++)
+{
+    var NextPlanSeq = i + 1;
+
+    <tr id="NextPlan_@i">
+        <td valign="middle" align="center" class="NextPlanSeq">@NextPlanSeq</td>
+        <td valign="middle" align="left">
+            @Html.HiddenFor(x => x.allNextPlanAndDetail[i].NextPlan.Id)
+            @Html.TextAreaFor(x => x.allNextPlanAndDetail[i].NextPlan.NextPlanName, 2, 0, new { @class = "NextPlanName", maxlength = "10240", style = "width: 100%;" })
+        </td>
+        <td valign="middle" align="center">
+            @Html.TextBoxFor(x => x.allNextPlanAndDetail[i].NextPlan.Percent, new { @class = "NextPlanPercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+        </td>
+        <td valign="middle" align="center" style="width: 30px;">
+            <input type="button" value="+" class="AddNextPlanDetail" onclick="AddNextPlanDetail(@i); return false;" style="width: 30px;">
+        </td>
+        <td id="NextPlanDetailHolder_@i" colspan="3" valign="middle" align="center">
+            <table style="width: 100%;">
+
+                @for (int j = 0; j < Model.allNextPlanAndDetail[i].allDetail.Count; j++)
+                {
+                    var NextPlanDetailId = "NextPlanDetail_" + i + "_" + j;
+
+                    <tr id="@NextPlanDetailId">
+                        <td valign="middle" align="center" style="width: 30px;">
+                            <input type="button" value="-" class="RemoveNextPlanDetail" onclick="RemoveNextPlanDetail(@i, @j); return false;" style="width: 30px;">
+                        </td>
+                        <td valign="middle" align="center">
+                            @Html.HiddenFor(x => x.allNextPlanAndDetail[i].allDetail[j].Id)
+                            @Html.TextAreaFor(x => x.allNextPlanAndDetail[i].allDetail[j].NextPlanDetailName, 2, 0, new { @class = "NextPlanDetailName", maxlength = "10240", style = "width: 100%;" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </td>
+    </tr>
+}

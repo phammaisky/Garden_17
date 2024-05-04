@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GoodJobModelStoreContainer" CdmEntityContainer="GoodJobEntities">
+    <FunctionImportMapping FunctionImportName="CheckIsBOD" FunctionName="GoodJobModel.Store.CheckIsBOD" />
+    <FunctionImportMapping FunctionImportName="CheckIsReporter" FunctionName="GoodJobModel.Store.CheckIsReporter" />
+    <FunctionImportMapping FunctionImportName="CheckRoleKpi" FunctionName="GoodJobModel.Store.CheckRoleKpi" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="GoodJobModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="GoodJobModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="GoodJobModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="GoodJobModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoodJobModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="GoodJobModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoodJobModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="GoodJobModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="GoodJobModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="kAverageMarks">
+      <EntityTypeMapping TypeName="GoodJobModel.kAverageMark">
+        <MappingFragment StoreEntitySet="kAverageMark">
+          <ScalarProperty Name="RateId" ColumnName="RateId" />
+          <ScalarProperty Name="AverageValue" ColumnName="AverageValue" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kCompes">
+      <EntityTypeMapping TypeName="GoodJobModel.kCompe">
+        <MappingFragment StoreEntitySet="kCompe">
+          <ScalarProperty Name="ResultMark" ColumnName="ResultMark" />
+          <ScalarProperty Name="ManagerMark" ColumnName="ManagerMark" />
+          <ScalarProperty Name="SelfMark" ColumnName="SelfMark" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CompeForSomeId" ColumnName="CompeForSomeId" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kCompeForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.kCompeForAll">
+        <MappingFragment StoreEntitySet="kCompeForAll">
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="CompeName" ColumnName="CompeName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kCompeForSomes">
+      <EntityTypeMapping TypeName="GoodJobModel.kCompeForSome">
+        <MappingFragment StoreEntitySet="kCompeForSome">
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="CompeForAllId" ColumnName="CompeForAllId" />
+          <ScalarProperty Name="CompeRelationValue" ColumnName="CompeRelationValue" />
+          <ScalarProperty Name="CompeRelationTypeId" ColumnName="CompeRelationTypeId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kJobs">
+      <EntityTypeMapping TypeName="GoodJobModel.kJob">
+        <MappingFragment StoreEntitySet="kJob">
+          <ScalarProperty Name="ResultMark" ColumnName="ResultMark" />
+          <ScalarProperty Name="ManagerMark" ColumnName="ManagerMark" />
+          <ScalarProperty Name="SelfMark" ColumnName="SelfMark" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kJobDetails">
+      <EntityTypeMapping TypeName="GoodJobModel.kJobDetail">
+        <MappingFragment StoreEntitySet="kJobDetail">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="JobDetailName" ColumnName="JobDetailName" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kNextPlans">
+      <EntityTypeMapping TypeName="GoodJobModel.kNextPlan">
+        <MappingFragment StoreEntitySet="kNextPlan">
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="NextPlanName" ColumnName="NextPlanName" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kNextPlanDetails">
+      <EntityTypeMapping TypeName="GoodJobModel.kNextPlanDetail">
+        <MappingFragment StoreEntitySet="kNextPlanDetail">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="NextPlanDetailName" ColumnName="NextPlanDetailName" />
+          <ScalarProperty Name="NextPlanId" ColumnName="NextPlanId" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kRates">
+      <EntityTypeMapping TypeName="GoodJobModel.kRate">
+        <MappingFragment StoreEntitySet="kRate">
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RateForAllId" ColumnName="RateForAllId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kRateForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.kRateForAll">
+        <MappingFragment StoreEntitySet="kRateForAll">
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RateName" ColumnName="RateName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kRelationTypes">
+      <EntityTypeMapping TypeName="GoodJobModel.kRelationType">
+        <MappingFragment StoreEntitySet="kRelationType">
+          <ScalarProperty Name="CompeRelationTypeId" ColumnName="CompeRelationTypeId" />
+          <ScalarProperty Name="StepRelationTypeId" ColumnName="StepRelationTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kRelationTypeForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.kRelationTypeForAll">
+        <MappingFragment StoreEntitySet="kRelationTypeForAll">
+          <ScalarProperty Name="IsDefaultCompeRelationType" ColumnName="IsDefaultCompeRelationType" />
+          <ScalarProperty Name="IsDefaultStepRelationType" ColumnName="IsDefaultStepRelationType" />
+          <ScalarProperty Name="RelationTypeName" ColumnName="RelationTypeName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kReports">
+      <EntityTypeMapping TypeName="GoodJobModel.kReport">
+        <MappingFragment StoreEntitySet="kReport">
+          <ScalarProperty Name="BODcomment" ColumnName="BODcomment" />
+          <ScalarProperty Name="HRcomment" ColumnName="HRcomment" />
+          <ScalarProperty Name="ManagerComment" ColumnName="ManagerComment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FinalMarkKpi" ColumnName="FinalMarkKpi" />
+          <ScalarProperty Name="FinalMarkCompe" ColumnName="FinalMarkCompe" />
+          <ScalarProperty Name="FinalMarkJob" ColumnName="FinalMarkJob" />
+          <ScalarProperty Name="TotalMarkCompe" ColumnName="TotalMarkCompe" />
+          <ScalarProperty Name="TotalMarkJob" ColumnName="TotalMarkJob" />
+          <ScalarProperty Name="SendToRelationValue" ColumnName="SendToRelationValue" />
+          <ScalarProperty Name="SendToRelationTypeId" ColumnName="SendToRelationTypeId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kReport_History">
+      <EntityTypeMapping TypeName="GoodJobModel.kReport_History">
+        <MappingFragment StoreEntitySet="kReport_History">
+          <ScalarProperty Name="SendToRelationValue" ColumnName="SendToRelationValue" />
+          <ScalarProperty Name="SendToRelationTypeId" ColumnName="SendToRelationTypeId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kStates">
+      <EntityTypeMapping TypeName="GoodJobModel.kState">
+        <MappingFragment StoreEntitySet="kState">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kSteps">
+      <EntityTypeMapping TypeName="GoodJobModel.kStep">
+        <MappingFragment StoreEntitySet="kStep">
+          <ScalarProperty Name="SendToRelationValue" ColumnName="SendToRelationValue" />
+          <ScalarProperty Name="SendToRelationTypeId" ColumnName="SendToRelationTypeId" />
+          <ScalarProperty Name="StepForAllId" ColumnName="StepForAllId" />
+          <ScalarProperty Name="StepRelationValue" ColumnName="StepRelationValue" />
+          <ScalarProperty Name="StepRelationTypeId" ColumnName="StepRelationTypeId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kStepForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.kStepForAll">
+        <MappingFragment StoreEntitySet="kStepForAll">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GoodJobModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vApps">
+      <EntityTypeMapping TypeName="GoodJobModel.vApp">
+        <MappingFragment StoreEntitySet="vApp">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAppFunctions">
+      <EntityTypeMapping TypeName="GoodJobModel.vAppFunction">
+        <MappingFragment StoreEntitySet="vAppFunction">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="FunctionName" ColumnName="FunctionName" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vBranches">
+      <EntityTypeMapping TypeName="GoodJobModel.vBranch">
+        <MappingFragment StoreEntitySet="vBranch">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCompanies">
+      <EntityTypeMapping TypeName="GoodJobModel.vCompany">
+        <MappingFragment StoreEntitySet="vCompany">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCorporations">
+      <EntityTypeMapping TypeName="GoodJobModel.vCorporation">
+        <MappingFragment StoreEntitySet="vCorporation">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CorporationName" ColumnName="CorporationName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCountries">
+      <EntityTypeMapping TypeName="GoodJobModel.vCountry">
+        <MappingFragment StoreEntitySet="vCountry">
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCurrencies">
+      <EntityTypeMapping TypeName="GoodJobModel.vCurrency">
+        <MappingFragment StoreEntitySet="vCurrency">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vDepartments">
+      <EntityTypeMapping TypeName="GoodJobModel.vDepartment">
+        <MappingFragment StoreEntitySet="vDepartment">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="DepartmentForAllId" ColumnName="DepartmentForAllId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vDepartmentForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.vDepartmentForAll">
+        <MappingFragment StoreEntitySet="vDepartmentForAll">
+          <ScalarProperty Name="AutoCreate" ColumnName="AutoCreate" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vGrades">
+      <EntityTypeMapping TypeName="GoodJobModel.vGrade">
+        <MappingFragment StoreEntitySet="vGrade">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="GradeForAllId" ColumnName="GradeForAllId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vGradeForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.vGradeForAll">
+        <MappingFragment StoreEntitySet="vGradeForAll">
+          <ScalarProperty Name="AutoCreate" ColumnName="AutoCreate" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vLanguages">
+      <EntityTypeMapping TypeName="GoodJobModel.vLanguage">
+        <MappingFragment StoreEntitySet="vLanguage">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vLoginUsers">
+      <EntityTypeMapping TypeName="GoodJobModel.vLoginUser">
+        <MappingFragment StoreEntitySet="vLoginUser">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRanks">
+      <EntityTypeMapping TypeName="GoodJobModel.vRank">
+        <MappingFragment StoreEntitySet="vRank">
+          <ScalarProperty Name="xKpiCompe" ColumnName="xKpiCompe" />
+          <ScalarProperty Name="xKpiJob" ColumnName="xKpiJob" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RankForAllId" ColumnName="RankForAllId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRankForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.vRankForAll">
+        <MappingFragment StoreEntitySet="vRankForAll">
+          <ScalarProperty Name="AutoCreate" ColumnName="AutoCreate" />
+          <ScalarProperty Name="xKpiCompe" ColumnName="xKpiCompe" />
+          <ScalarProperty Name="xKpiJob" ColumnName="xKpiJob" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RankName" ColumnName="RankName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRelationTypes">
+      <EntityTypeMapping TypeName="GoodJobModel.vRelationType">
+        <MappingFragment StoreEntitySet="vRelationType">
+          <ScalarProperty Name="RoleRelationTypeId" ColumnName="RoleRelationTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRelationTypeForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.vRelationTypeForAll">
+        <MappingFragment StoreEntitySet="vRelationTypeForAll">
+          <ScalarProperty Name="IsDefaultRoleRelationType" ColumnName="IsDefaultRoleRelationType" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RelationTypeName" ColumnName="RelationTypeName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRoles">
+      <EntityTypeMapping TypeName="GoodJobModel.vRole">
+        <MappingFragment StoreEntitySet="vRole">
+          <ScalarProperty Name="AllowRelationValue" ColumnName="AllowRelationValue" />
+          <ScalarProperty Name="AllowRelationTypeId" ColumnName="AllowRelationTypeId" />
+          <ScalarProperty Name="RoleForAllId" ColumnName="RoleForAllId" />
+          <ScalarProperty Name="RoleRelationValue" ColumnName="RoleRelationValue" />
+          <ScalarProperty Name="RoleRelationTypeId" ColumnName="RoleRelationTypeId" />
+          <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vRoleForAlls">
+      <EntityTypeMapping TypeName="GoodJobModel.vRoleForAll">
+        <MappingFragment StoreEntitySet="vRoleForAll">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vUserInfoes">
+      <EntityTypeMapping TypeName="GoodJobModel.vUserInfo">
+        <MappingFragment StoreEntitySet="vUserInfo">
+          <ScalarProperty Name="StartCurrentJobDate" ColumnName="StartCurrentJobDate" />
+          <ScalarProperty Name="StartWorkingDate" ColumnName="StartWorkingDate" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+          <ScalarProperty Name="RankId" ColumnName="RankId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CorporationId" ColumnName="CorporationId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserIdd" ColumnName="UserIdd" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

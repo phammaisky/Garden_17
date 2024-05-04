@@ -1,0 +1,99 @@
+﻿@model List<IQWebApp_Blank.EF.aRoleForSome>
+@using IQWebApp_Blank.EF
+@using IQWebApp_Blank.Models
+
+@{
+    ViewBag.Title = "RoleForSome";
+    GoodJobEntities db = new GoodJobEntities();
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css">
+    #tbl td {
+        padding: 5px;
+    }
+
+        #tbl td input[type=text] {
+            width: 100%;
+            /*border: 1px solid gray;*/
+            border: none;
+        }
+
+        #tbl td select {
+            width: 100%;
+            border: none;
+        }
+
+        #tbl td option[value=''] {
+            color: red;
+        }
+</style>
+
+<script type="text/javascript">
+
+    function RoleForSome_Config(Id) {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/RoleForSome_Config",
+            data: encodeURI("Id=" + Id),
+            success: function (view) {
+                ShowDialog("RoleForSome_Config", view);
+            }
+        });
+    }
+
+    function RoleForSome_User(Id) {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/RoleForSome_User",
+            data: encodeURI("Id=" + Id),
+            success: function (view) {
+                ShowDialog("RoleForSome_User", view);
+            }
+        });
+    }
+</script>
+
+<center>
+    <h3 class="Red">Role.</h3>
+
+    @using (Html.BeginForm("RoleForSome_Submit", "Kpi", FormMethod.Post))
+    {
+        <input type="hidden" name="Id" value="@ViewBag.Id" />
+        @*<input type="submit" value="OK" class="btn btn-success" />
+        <br /><br />*@
+
+        <table id="tbl" border="1" style="width: auto;">
+            <thead>
+                <tr class="BgBlue">
+                    <td align="center" style="min-width: 300px;">Tên nhóm</td>
+                    <td align="center" style="min-width: 150px;">Config</td>
+                    <td align="center" style="min-width: 150px;">Add User</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i1 = 0; i1 < Model.Count; i1++)
+                {
+                    <tr>
+                        <td align="center">
+                            @Html.HiddenFor(x => x[i1].Id)
+                            @Html.DisplayFor(x => x[i1].RoleName)
+                        </td>
+                        <td align="center">
+                            @Html.ActionLink("Config...", "RoleForSome_Config", "Kpi", null, new { onclick = "RoleForSome_Config('" + Model[i1].Id + "'); return false;" })
+                        </td>
+                        <td align="center">
+                            @Html.ActionLink("Add User...", "RoleForSome_User", "Kpi", null, new { onclick = "RoleForSome_User('" + Model[i1].Id + "'); return false;" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    }
+</center>

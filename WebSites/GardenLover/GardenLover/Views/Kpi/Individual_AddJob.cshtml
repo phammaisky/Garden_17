@@ -1,0 +1,57 @@
+﻿@using GardenLover.EF
+@model GardenLover.Models.IndividualVM
+
+@for (int i = Model.TotalAddedJob; i < Model.allJobAndDetail.Count; i++)
+{
+    var JobSeq = i + 1;
+
+    <tr id="Job_@i">
+        <td valign="middle" align="center" class="JobSeq">@JobSeq</td>
+        <td valign="middle" align="left">
+            @Html.HiddenFor(x => x.allJobAndDetail[i].Job.Id)
+            @Html.TextAreaFor(x => x.allJobAndDetail[i].Job.JobName, 2, 0, new { @class = "JobName", maxlength = "10240", style = "width: 100%;" })
+        </td>
+        <td valign="middle" align="center">
+            @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.Percent, new { @class = "JobPercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+        </td>
+        <td valign="middle" align="center" style="width: 30px;">
+            <input type="button" value="+" class="AddJobDetail" onclick="AddJobDetail(@i); return false;" style="width: 30px;">
+        </td>
+        <td id="JobDetailHolder_@i" colspan="3" valign="middle" align="center">
+
+            <table style="width: 100%;">
+
+                @for (int j = 0; j < Model.allJobAndDetail[i].allDetail.Count; j++)
+                {
+                    var JobDetailId = "JobDetail_" + i + "_" + j;
+
+                    <tr id="@JobDetailId">
+                        <td valign="middle" align="center" style="width: 30px;">
+                            <input type="button" value="-" class="RemoveJobDetail" onclick="RemoveJobDetail(@i, @j); return false;" style="width: 30px;">
+                        </td>
+                        <td valign="middle" align="center">
+                            @Html.HiddenFor(x => x.allJobAndDetail[i].allDetail[j].Id)
+                            @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].JobDetailName, 2, 0, new { @class = "JobDetailName", maxlength = "10240", style = "width: 100%;" })
+                        </td>
+                        <td valign="middle" align="center" style="width: 200px;">
+                            @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].Result, 2, 0, new { @class = "JobResult", maxlength = "10240", style = "width: 100%;" })
+                        </td>
+                        <td valign="middle" align="center" style="width: 94px;">
+                            @Html.TextBoxFor(x => x.allJobAndDetail[i].allDetail[j].Status, new { @class = "JobStatus", maxlength = "10240", style = "width: 100%" })
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </td>
+        <td valign="middle" align="center">
+            @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.SelfMark, new { @class = "JobSelfMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+        </td>
+        <td valign="middle" align="center">
+            @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.ManagerMark, new { @class = "JobManagerMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+        </td>
+        <td valign="middle" align="center">
+            @Html.DisplayFor(x => x.allJobAndDetail[i].Job.ResultMark)
+        </td>
+    </tr>
+}

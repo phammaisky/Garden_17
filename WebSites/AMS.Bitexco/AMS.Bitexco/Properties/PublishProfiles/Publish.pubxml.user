@@ -1,0 +1,1786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\WebSites\AMS\../_Publish/AMS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AMS.dll">
+      <publishTime>09/18/2019 10:31:43</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>12/06/2014 00:37:24</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>09/18/2019 10:31:59</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>09/18/2019 10:31:59</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>12/06/2014 00:39:46</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>12/06/2014 00:39:46</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>12/01/2014 13:15:20</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>08/08/2011 00:00:00</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>01/22/2018 18:40:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/23/2012 15:23:58</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/06/2014 00:37:28</publishTime>
+    </File>
+    <File Include="bin/Spire.Barcode.dll">
+      <publishTime>06/07/2013 05:01:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/28/2018 12:59:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>12/06/2014 00:37:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/28/2018 13:00:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>12/06/2014 00:37:26</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/datepicker.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/datepicker3.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.min.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/bordered-pulled.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/core.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/fixed-width.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/font-awesome.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/icons.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/larger.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/list.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/mixins.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/path.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/rotated-flipped.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/spinning.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/stacked.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/variables.less">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/font-awesome.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_core.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_fixed-width.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_icons.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_larger.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_list.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_mixins.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_path.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_spinning.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_stacked.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_variables.scss">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.min.css">
+      <publishTime>08/14/2014 04:57:32</publishTime>
+    </File>
+    <File Include="Content/PrintCSS/bootstrapPrint.css">
+      <publishTime>09/26/2015 06:44:02</publishTime>
+    </File>
+    <File Include="Content/sitePrint.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/accordion.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/all.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/autocomplete.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/base.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/button.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/core.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/datepicker.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/dialog.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/draggable.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/menu.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/progressbar.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/resizable.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectable.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectmenu.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/slider.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/sortable.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/spinner.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/tabs.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/theme.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="Content/themes/base/tooltip.css">
+      <publishTime>04/23/2015 07:56:30</publishTime>
+    </File>
+    <File Include="ExcelTemp/ExportBarcode.xlsx">
+      <publishTime>08/18/2017 17:52:47</publishTime>
+    </File>
+    <File Include="ExcelTemp/History.xlsx">
+      <publishTime>09/07/2015 23:29:02</publishTime>
+    </File>
+    <File Include="ExcelTemp/Using.xlsx">
+      <publishTime>09/08/2015 00:00:30</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/23/2015 08:00:16</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/23/2015 07:59:06</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/23/2015 07:59:06</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/23/2015 07:59:06</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/23/2015 07:59:06</publishTime>
+    </File>
+    <File Include="Image/Aeria_03_0413_1_resize1380297749.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/bgMnufilder.png">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/favicon.ico">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/Img1_to.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/Img4_to.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/Img5_to.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/IMG_3747_16x91380297363.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/Locker.png">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/logo.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/missing_signature.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/Panel.png">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/PanelBar.png">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/pending_signature.png">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/rejected_signature.gif">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="Image/the_garden_bn21360069463.jpg">
+      <publishTime>04/23/2015 08:09:14</publishTime>
+    </File>
+    <File Include="LearnPlugin.html">
+      <publishTime>05/12/2015 06:18:32</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/18/2019 10:15:31</publishTime>
+    </File>
+    <File Include="PluginJS.js">
+      <publishTime>05/12/2015 06:18:14</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>09/18/2019 10:31:50</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datepicker.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/datepicker.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/DocSo.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.af-ZA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.af.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.am-ET.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.am.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-AE.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-BH.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-DZ.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-EG.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-IQ.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-JO.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-KW.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-LB.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-LY.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-MA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-OM.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-QA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-SA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-SY.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-TN.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar-YE.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ar.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.arn-CL.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.arn.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.as-IN.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.as.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.az-Cyrl-AZ.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.az-Cyrl.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.az-Latn-AZ.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.az-Latn.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.az.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ba-RU.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ba.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.be-BY.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.be.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bg-BG.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bg.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bn-BD.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bn-IN.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bn.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bo-CN.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bo.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.br-FR.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.br.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bs-Cyrl-BA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bs-Cyrl.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bs-Latn-BA.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bs-Latn.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.bs.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ca-ES.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ca.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.co-FR.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.co.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.cs-CZ.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.cs.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.cy-GB.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.cy.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.da-DK.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.da.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de-AT.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de-CH.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de-DE.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de-LI.js">
+      <publishTime>04/23/2015 07:57:34</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de-LU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.de.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.dsb-DE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.dsb.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.dv-MV.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.dv.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.el-GR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.el.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-029.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-AU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-BZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-CA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-GB.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-IE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-JM.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-MY.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-NZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-PH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-SG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-TT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-US.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-ZA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.en-ZW.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-AR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-BO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-CL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-CO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-CR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-DO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-EC.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-ES.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-GT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-HN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-MX.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-NI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-PA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-PE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-PR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-PY.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-SV.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-US.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-UY.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es-VE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.es.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.et-EE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.et.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.eu-ES.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.eu.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fa-IR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fa.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fi-FI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fi.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fil-PH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fil.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fo-FO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fo.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-BE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-CA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-CH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-FR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-LU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr-MC.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fy-NL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.fy.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ga-IE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ga.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gd-GB.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gd.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gl-ES.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gsw-FR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gsw.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gu-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.gu.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ha-Latn-NG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ha-Latn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ha.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.he-IL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.he.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hi-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hi.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hr-BA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hr-HR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hsb-DE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hsb.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hu-HU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hu.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hy-AM.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.hy.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.id-ID.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.id.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ig-NG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ig.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ii-CN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ii.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.is-IS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.is.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.it-CH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.it-IT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.it.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.iu-Cans-CA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.iu-Cans.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.iu-Latn-CA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.iu-Latn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.iu.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ja-JP.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ja.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ka-GE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ka.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kk-KZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kk.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kl-GL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.km-KH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.km.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kn-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ko-KR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ko.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kok-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.kok.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ky-KG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ky.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lb-LU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lb.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lo-LA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lo.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lt-LT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lt.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lv-LV.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.lv.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mi-NZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mi.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mk-MK.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mk.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ml-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ml.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mn-Cyrl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mn-MN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mn-Mong-CN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mn-Mong.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.moh-CA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.moh.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mr-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ms-BN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ms-MY.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ms.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mt-MT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.mt.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nb-NO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nb.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ne-NP.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ne.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nl-BE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nl-NL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nn-NO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.no.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nso-ZA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.nso.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.oc-FR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.oc.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.or-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.or.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pa-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pa.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pl-PL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.prs-AF.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.prs.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ps-AF.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ps.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pt-BR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pt-PT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.pt.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.qut-GT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.qut.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.quz-BO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.quz-EC.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.quz-PE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.quz.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.rm-CH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.rm.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ro-RO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ro.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ru-RU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ru.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.rw-RW.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.rw.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sa-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sa.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sah-RU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sah.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.se-FI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.se-NO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.se-SE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.se.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.si-LK.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.si.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sk-SK.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sk.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sl-SI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sma-NO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sma-SE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sma.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.smj-NO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.smj-SE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.smj.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.smn-FI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.smn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sms-FI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sms.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sq-AL.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sq.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Cyrl-BA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Cyrl-CS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Cyrl-ME.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Cyrl-RS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Cyrl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Latn-BA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Latn-CS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Latn-ME.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Latn-RS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr-Latn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sv-FI.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sv-SE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sv.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sw-KE.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.sw.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.syr-SY.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.syr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ta-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ta.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.te-IN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.te.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tg-Cyrl-TJ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tg-Cyrl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tg.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.th-TH.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.th.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tk-TM.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tk.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tn-ZA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tr-TR.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tr.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tt-RU.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tt.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tzm-Latn-DZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tzm-Latn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.tzm.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ug-CN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ug.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uk-UA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uk.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ur-PK.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.ur.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uz-Cyrl-UZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uz-Cyrl.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uz-Latn-UZ.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uz-Latn.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.uz.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.vi-VN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.vi.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.wo-SN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.wo.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.xh-ZA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.xh.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.yo-NG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.yo.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-CHS.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-CHT.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-CN.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-Hans.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-Hant.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-HK.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-MO.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-SG.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh-TW.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zh.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zu-ZA.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.culture.zu.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/cultures/globalize.cultures.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/globalize/globalize.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.11.2.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.11.2.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.cookie.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.date.extensions.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.extensions.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.numeric.extensions.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.phone.extensions.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask/jquery.inputmask.regex.extensions.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.timer.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/locales/bootstrap-datepicker.vi.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/modalform.js">
+      <publishTime>12/17/2015 01:37:34</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>04/23/2015 07:57:36</publishTime>
+    </File>
+    <File Include="Views/Companies/Index.cshtml">
+      <publishTime>06/20/2015 08:36:12</publishTime>
+    </File>
+    <File Include="Views/Companies/_CompanyDeptSearch.cshtml">
+      <publishTime>09/02/2015 07:03:36</publishTime>
+    </File>
+    <File Include="Views/Companies/_CompanyDeptSelector.cshtml">
+      <publishTime>10/13/2015 06:28:36</publishTime>
+    </File>
+    <File Include="Views/Companies/_CompanyList.cshtml">
+      <publishTime>06/24/2015 04:39:18</publishTime>
+    </File>
+    <File Include="Views/Companies/_CompanySelector.cshtml">
+      <publishTime>06/19/2015 23:57:16</publishTime>
+    </File>
+    <File Include="Views/Companies/_Create.cshtml">
+      <publishTime>06/16/2015 23:40:14</publishTime>
+    </File>
+    <File Include="Views/Companies/_DepartementSelector.cshtml">
+      <publishTime>06/19/2015 05:17:30</publishTime>
+    </File>
+    <File Include="Views/Companies/_Edit.cshtml">
+      <publishTime>06/17/2015 01:25:18</publishTime>
+    </File>
+    <File Include="Views/Departments/Index.cshtml">
+      <publishTime>06/15/2015 23:36:52</publishTime>
+    </File>
+    <File Include="Views/Departments/_Create.cshtml">
+      <publishTime>06/20/2015 01:55:16</publishTime>
+    </File>
+    <File Include="Views/Departments/_Delete.cshtml">
+      <publishTime>06/18/2015 00:17:56</publishTime>
+    </File>
+    <File Include="Views/Departments/_Edit.cshtml">
+      <publishTime>06/18/2015 00:28:14</publishTime>
+    </File>
+    <File Include="Views/Departments/_ListDept.cshtml">
+      <publishTime>06/18/2015 01:15:26</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/Index.cshtml">
+      <publishTime>05/02/2019 16:44:27</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_Create.cshtml">
+      <publishTime>10/10/2015 02:06:46</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_CreateToStaff.cshtml">
+      <publishTime>10/06/2015 07:36:58</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_Delete.cshtml">
+      <publishTime>06/10/2015 05:58:34</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_Details.cshtml">
+      <publishTime>10/10/2015 06:31:18</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_Edit.cshtml">
+      <publishTime>08/27/2015 04:36:00</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_ListDeviceAndTool.cshtml">
+      <publishTime>12/27/2016 11:25:47</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_PrintBarcode.cshtml">
+      <publishTime>10/31/2015 00:47:36</publishTime>
+    </File>
+    <File Include="Views/DeviceAndTools/_SearchToSelect.cshtml">
+      <publishTime>09/25/2015 07:06:38</publishTime>
+    </File>
+    <File Include="Views/DeviceCategories/Index.cshtml">
+      <publishTime>05/22/2015 02:10:54</publishTime>
+    </File>
+    <File Include="Views/DeviceCategories/_Create.cshtml">
+      <publishTime>05/16/2015 06:30:54</publishTime>
+    </File>
+    <File Include="Views/DeviceCategories/_Delete.cshtml">
+      <publishTime>04/27/2015 23:48:00</publishTime>
+    </File>
+    <File Include="Views/DeviceCategories/_DeviceCategories.cshtml">
+      <publishTime>05/16/2015 06:32:46</publishTime>
+    </File>
+    <File Include="Views/DeviceCategories/_Edit.cshtml">
+      <publishTime>05/16/2015 06:31:10</publishTime>
+    </File>
+    <File Include="Views/Error/PermitError.cshtml">
+      <publishTime>12/12/2015 03:40:12</publishTime>
+    </File>
+    <File Include="Views/Error/UserLogin.cshtml">
+      <publishTime>11/03/2015 01:37:40</publishTime>
+    </File>
+    <File Include="Views/Error/_PermitErrorPop.cshtml">
+      <publishTime>11/03/2015 01:37:40</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Create.cshtml">
+      <publishTime>04/23/2015 23:50:14</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Delete.cshtml">
+      <publishTime>04/23/2015 23:50:34</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Details.cshtml">
+      <publishTime>04/23/2015 23:51:26</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Edit-Copy.cshtml">
+      <publishTime>04/23/2015 23:51:26</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Edit.cshtml">
+      <publishTime>04/23/2015 23:51:26</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/Index.cshtml">
+      <publishTime>04/27/2015 23:36:58</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/SetPermission.cshtml">
+      <publishTime>04/23/2015 23:52:22</publishTime>
+    </File>
+    <File Include="Views/GroupUsers/_ListGroupUser.cshtml">
+      <publishTime>04/27/2015 23:37:18</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/Index.cshtml">
+      <publishTime>06/07/2015 00:34:20</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/_Create.cshtml">
+      <publishTime>09/02/2015 07:43:06</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/_CreateToStaff.cshtml">
+      <publishTime>10/06/2015 02:12:08</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/_Delete.cshtml">
+      <publishTime>06/10/2015 06:35:26</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/_Edit.cshtml">
+      <publishTime>08/04/2015 07:37:34</publishTime>
+    </File>
+    <File Include="Views/HistoryUses/_HistoryOfAssert.cshtml">
+      <publishTime>10/10/2015 07:48:58</publishTime>
+    </File>
+    <File Include="Views/Locations/Index.cshtml">
+      <publishTime>05/27/2015 07:19:00</publishTime>
+    </File>
+    <File Include="Views/Locations/_Create.cshtml">
+      <publishTime>09/09/2015 01:29:50</publishTime>
+    </File>
+    <File Include="Views/Locations/_Delete.cshtml">
+      <publishTime>05/10/2015 00:47:38</publishTime>
+    </File>
+    <File Include="Views/Locations/_Edit.cshtml">
+      <publishTime>09/09/2015 01:29:50</publishTime>
+    </File>
+    <File Include="Views/Locations/_LocationList.cshtml">
+      <publishTime>06/16/2015 05:30:06</publishTime>
+    </File>
+    <File Include="Views/Locations/_LocationSelector.cshtml">
+      <publishTime>08/04/2015 06:17:56</publishTime>
+    </File>
+    <File Include="Views/Locations/_LocationSelectorToSearch.cshtml">
+      <publishTime>10/23/2015 01:36:12</publishTime>
+    </File>
+    <File Include="Views/Menu/TopMenu.cshtml">
+      <publishTime>05/28/2015 23:34:16</publishTime>
+    </File>
+    <File Include="Views/Report/Index.cshtml">
+      <publishTime>12/18/2015 00:14:50</publishTime>
+    </File>
+    <File Include="Views/Report/_ListDeviceAndTool.cshtml">
+      <publishTime>12/27/2016 11:26:55</publishTime>
+    </File>
+    <File Include="Views/Report/_UpdateCheck.cshtml">
+      <publishTime>12/15/2015 08:31:36</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>04/23/2015 07:53:36</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/28/2015 05:35:58</publishTime>
+    </File>
+    <File Include="Views/Staffs/Index.cshtml">
+      <publishTime>10/28/2015 22:58:06</publishTime>
+    </File>
+    <File Include="Views/Staffs/ListAllUserDomain.cshtml">
+      <publishTime>05/15/2015 06:02:54</publishTime>
+    </File>
+    <File Include="Views/Staffs/_Create.cshtml">
+      <publishTime>10/10/2015 05:30:20</publishTime>
+    </File>
+    <File Include="Views/Staffs/_Delete.cshtml">
+      <publishTime>10/10/2015 05:30:32</publishTime>
+    </File>
+    <File Include="Views/Staffs/_Details.cshtml">
+      <publishTime>12/09/2015 05:01:48</publishTime>
+    </File>
+    <File Include="Views/Staffs/_Edit.cshtml">
+      <publishTime>10/10/2015 05:30:54</publishTime>
+    </File>
+    <File Include="Views/Staffs/_HistoryUse.cshtml">
+      <publishTime>10/10/2015 05:31:06</publishTime>
+    </File>
+    <File Include="Views/Staffs/_ListStaff.cshtml">
+      <publishTime>10/21/2015 01:46:52</publishTime>
+    </File>
+    <File Include="Views/Staffs/_PrintBanGiao.cshtml">
+      <publishTime>10/03/2015 08:27:02</publishTime>
+    </File>
+    <File Include="Views/Staffs/_StaffPartial.cshtml">
+      <publishTime>10/10/2015 02:10:48</publishTime>
+    </File>
+    <File Include="Views/Staffs/_Using.cshtml">
+      <publishTime>10/06/2015 06:49:34</publishTime>
+    </File>
+    <File Include="Views/Test/Index.cshtml">
+      <publishTime>04/26/2015 07:55:56</publishTime>
+    </File>
+    <File Include="Views/ToolCategories/Index.cshtml">
+      <publishTime>05/10/2015 00:27:46</publishTime>
+    </File>
+    <File Include="Views/ToolCategories/_Create.cshtml">
+      <publishTime>05/16/2015 06:31:28</publishTime>
+    </File>
+    <File Include="Views/ToolCategories/_Delete.cshtml">
+      <publishTime>04/27/2015 23:48:08</publishTime>
+    </File>
+    <File Include="Views/ToolCategories/_Edit.cshtml">
+      <publishTime>05/16/2015 06:31:44</publishTime>
+    </File>
+    <File Include="Views/ToolCategories/_ToolCategories.cshtml">
+      <publishTime>05/16/2015 06:32:10</publishTime>
+    </File>
+    <File Include="Views/UploadHopDong/Index.cshtml">
+      <publishTime>12/09/2015 00:20:14</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/Index.cshtml">
+      <publishTime>08/21/2015 05:50:32</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/SetUserToProject.cshtml">
+      <publishTime>04/24/2015 00:36:44</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/_Create.cshtml">
+      <publishTime>08/19/2015 05:48:08</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/_Delete.cshtml">
+      <publishTime>04/24/2015 00:38:10</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/_Edit.cshtml">
+      <publishTime>08/26/2015 00:18:18</publishTime>
+    </File>
+    <File Include="Views/UserInfoes/_UserList.cshtml">
+      <publishTime>08/21/2015 05:50:44</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/23/2015 07:53:12</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/23/2015 07:53:12</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/18/2019 10:15:31</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,93 @@
+﻿@model List<IQWebApp_Blank.EF.kReport>
+@using IQWebApp_Blank.EF
+
+@{
+    ViewBag.Title = "Report";
+
+    GoodJobEntities dbJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+<style type="text/css">
+    #tbl td {
+        padding: 5px;
+    }
+
+        #tbl td input[type=text] {
+            width: 100%;
+            /*border: 1px solid gray;*/
+            border: none;
+        }
+
+        #tbl td select {
+            width: 100%;
+            border: none;
+        }
+
+        #tbl td option[value=''] {
+            color: red;
+        }
+</style>
+
+<script>
+    function Report_ByFilter() {
+
+        var Year = $("select[name=Year]").val();
+        var Branch = $("select[name=Branch]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        if (Branch == "")
+            Branch = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Report_ByFilter",
+
+            data: {
+                Year: Year,
+                Branch: Branch
+            },
+
+            success: function (view) {
+                $('#Report_Body').html(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<center>
+    <h3 class="Red">@ViewBag.Title.</h3>
+
+    @Html.Partial("Report_Year")
+    <div id="Branch"></div>
+
+    <br /><br />
+    <table id="tbl" border="1" style="width: auto;">
+        <thead>
+            <tr class="BgBlue" style="color: white; font-weight: bold;">
+                <td align="center" style="min-width: 50px;">STT</td>
+                <td align="center" style="min-width: 100px;">Công ty</td>
+                <td align="center" style="min-width: 100px;">Bộ phận</td>
+                <td align="center" style="min-width: 100px;">Chức vụ</td>
+                <td align="center" style="min-width: 100px;">Họ tên</td>
+
+                @for (int j = 1; j <= 12; j++)
+                {
+                    <td align="center" style="min-width: 50px;">Tháng @j</td>
+                }
+
+                <td align="center" style="min-width: 50px;">Bình quân</td>
+                <td align="center" style="min-width: 50px;">Xếp loại</td>
+            </tr>
+        </thead>
+        <tbody id="Report_Body">
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</center>

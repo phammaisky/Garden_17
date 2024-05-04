@@ -1,0 +1,105 @@
+﻿@using AMS.Models
+@model AMS.Models.UserInfo
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">Tạo mới tài khoản <small>Người dùng</small></h4>
+        </div>
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { Id = "createUser_Frm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GroupUsers, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("GroupUserId", null, htmlAttributes: new { @class = "form-control input-sm" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DeptId, htmlAttributes: new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-9">
+                        <div class="btn-group" id="GroupDropdownDept">
+                            <button type="button" id="btnDropdownDept" style="width:350px; text-align:left" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                @if (ViewBag.Department != null)
+                                {
+                                @Html.Raw(((Department)ViewBag.Department).Company.NameVn + " | " + ((Department)ViewBag.Department).DeptCode)<i class="fa fa-caret-down pull-right" style="padding-top: 3px;"></i>
+                                }
+                                else
+                                {
+                                <i class="fa fa-caret-down pull-right" style="padding-top: 3px;"></i>
+                                }
+                            </button>
+                            @if (ViewBag.Department != null)
+                            {<input type="hidden" name="DeptId" id="ParentId" value="@(((Department)ViewBag.Department).Id)" /> }
+                            else
+                            { <input type="hidden" name="DeptId" id="ParentId" />}
+
+                            <div class="dropdown-menu" role="menu" style="max-height:250px; overflow:auto; padding-left:5px; padding-right:5px; width:400px">
+                                @{Html.RenderAction("DepartementSelector", "Companies");}
+                            </div>
+                            <script type="text/javascript">
+                                    $('.dropdown-menu input, .dropdown-menu table, .dropdown-menu i').click(function (e) {
+                                        e.stopPropagation();
+                                    });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control  input-sm"} })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control  input-sm" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsLock, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        <div class="checkbox" style="padding-left:20px">
+                            @Html.EditorFor(model => model.IsLock)
+                            @Html.ValidationMessageFor(model => model.IsLock, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-1">
+                        <div class="checkbox" style="padding-left:20px">
+                            @Html.EditorFor(model => model.Active)
+                            @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Companies, htmlAttributes: new { @class = "control-label col-md-12 pull-left" })
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-condensed">
+                            @foreach (Company company in (List<Company>)ViewBag.Companies)
+                            {
+                                <tr>
+                                    <td>
+                                        <label><input type="checkbox" name="companies" value="@company.Id" /> @company.NameVn </label>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Hủy</button>
+
+            </div>
+        }
+    </div>
+</div>

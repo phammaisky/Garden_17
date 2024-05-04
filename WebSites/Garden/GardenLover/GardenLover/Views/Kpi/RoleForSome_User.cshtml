@@ -1,0 +1,120 @@
+﻿@model List<string>
+@using IQWebApp_Blank.EF
+@using IQWebApp_Blank.Models
+@using System.Linq
+
+@{
+    GoodJobEntities db = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+<style type="text/css">
+    td {
+        padding: 5px;
+    }
+</style>
+
+@using (Html.BeginForm("RoleForSome_User_Submit", "Kpi", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@ViewBag.Id" />
+    <div id="InsideDialog" title="Phân quyền chi tiết cho: @ViewData["RoleForSomeName"]" style="display: inline-block; margin-left: 10px; width: 750px; max-width: 750px; min-width: 750px;">
+        <center>
+            <input id="InsideButton" type="submit" onclick="Submit(this); return false;" value="OK" class="btn btn-success" style="position: relative; top: 0px;" />
+        </center>
+        <br />
+
+        <!-- #region Save TreeView -->
+        @*<div id="allUserTreeView">
+                <ul>
+                    <li data-jstree='{ "opened" : true }'>
+                        Root
+                        <ul>
+                            <li data-jstree='{ "selected" : true }'>Child 1</li>
+                            <li>Child 2</li>
+                            <li>
+                                Child 3
+                                <ul>
+                                    <li data-jstree='{ "selected" : true }'>Child 3.1</li>
+                                    <li>Child 3.2</li>
+                                    <li>Child 3.3</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>*@
+        <!-- #endregion -->
+
+        <input type="hidden" id="RoleForSomeId" name="RoleForSomeId" value="@ViewData["RoleForSomeId"]" />
+        <input type="hidden" id="allUserTreeViewChecked" name="allUserTreeViewChecked" />
+
+        @{
+            for (int i = 1; i <= 2; i++)
+            {
+                cBranch branch = dbCompany.cBranches.FirstOrDefault(x => x.Id == i);
+                var allDepartment = dbCompany.cDepartments.Where(x => x.BranchId == branch.Id).OrderBy(x => x.Seq).ThenBy(x => x.cDepartmentForAll.DepartmentName).ToList();
+
+                <div class="allUserTreeView" style="float: left; width: 360px; max-width: 360px;min-width: 360px; overflow: hidden;">
+                    <ul>
+                        <li data-jstree='{ "opened" : true }' data-type="Branch" data-id="@branch.Id">
+                            @branch.cCompany.CompanyName
+                            <ul>
+                                @foreach (cDepartment department in allDepartment)
+                                {
+                                    var allUserInfo = dbCompany.cUserInfoes.Where(x => x.DepartmentId == department.Id).OrderBy(x => x.cRank.Seq).ThenBy(x => x.cRank.cRankForAll.RankName).ThenBy(x => x.FullName).ToList();
+
+                                    <li data-jstree='{ "opened" : true }' data-type="Department" data-id="@department.Id">
+                                        @department.cDepartmentForAll.DepartmentName
+                                        <ul>
+                                            @foreach (cUserInfo userInfo in allUserInfo)
+                                            {
+                                                var CheckedUser = false;
+
+                                                if (Model.Any(x => x == userInfo.UserId.ToString().ToLower()))
+                                                {
+                                                    CheckedUser = true;
+                                                }
+
+                                                <li data-jstree='{ "opened" : true, "selected" : @CheckedUser.ToString().ToLower() }' data-type="User" data-id="@userInfo.UserId">
+                                                    @userInfo.FullName
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            }
+        }
+    </div>
+            }
+
+<script>
+    var allUserTreeView = $(".allUserTreeView").jstree({
+        "checkbox": {
+            "keep_selected_style": false
+        },
+        "plugins": ["checkbox"]
+    });
+
+    function Submit() {
+
+        var allChecked = [];
+
+        $(".allUserTreeView li[aria-selected=true]").each(function () {
+            var checked = {
+                type: $(this).attr("data-type"),
+                id: $(this).attr("data-id")
+            };
+            allChecked.push(checked);
+        });
+
+        var json = JSON.stringify(allChecked);
+        $("#allUserTreeViewChecked").val(json);
+
+        $(this).closest("form")[0].Submit();
+    }
+</script>

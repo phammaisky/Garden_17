@@ -1,0 +1,1139 @@
+﻿@model GardenLover.Models.IndividualVM
+@using GardenLover.EF
+
+@{
+    ViewBag.Title = "Individual";
+}
+
+<style type="text/css">
+    * {
+        font-size: 10pt !important;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    input[type=text], textarea {
+        border: 1px solid gray;
+        max-width: 100% !important;
+    }
+
+    #tblInfo td {
+        padding: 5px;
+    }
+
+    #tblKpi td {
+        padding: 5px;
+    }
+
+    #tblCompe td {
+        padding: 5px;
+    }
+
+    #tblNextPlan td {
+        padding: 5px;
+    }
+
+    #tblResult td {
+        padding: 5px;
+    }
+
+    #tblComment td {
+        padding: 5px;
+    }
+
+    .btnSubmitKpi {
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: white;
+        /*border: 1px dashed red;*/
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .btnRejectKpi {
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: white;
+        /*border: 1px dashed blue;*/
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .Disabled:hover {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        cursor: not-allowed;
+    }
+
+    #imgState {
+        margin-left: 20px;
+        margin-right: 20px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+        #imgState:hover {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            cursor: not-allowed;
+        }
+
+    #tblViewKpi td {
+        padding: 5px;
+    }
+
+    #tblReportKpi td {
+        padding: 5px;
+    }
+</style>
+
+@using (Html.BeginForm("Individual_Submit", "Kpi", FormMethod.Post, new { id = "Form" }))
+{
+    <h3 class="B Red S14">Individual</h3>
+    @Html.HiddenFor(x => x.Report.Id)
+    @Html.TextBoxFor(x => x.Report.Month, new { @class = "Month OnlyNumber", maxlength = "2", style = "width:28px; text-align: center;" })
+    <span>/</span>
+    @Html.TextBoxFor(x => x.Report.Year, new { @class = "Year OnlyNumber", maxlength = "4", style = "width:46px; text-align: center;" })
+    <br>
+    <br>
+    <table id="tblInfo" style="width: 96%; border-collapse: collapse;" border="1">
+        <tbody>
+            <tr>
+                <td valign="middle" align="right">
+                    Tên nhân viên:
+                </td>
+                <td valign="middle" align="left">
+                    <span class="B Red">@Html.DisplayFor(x => x.Reporter.FullName)</span>
+                </td>
+                <td valign="middle" align="right">
+                    Chức danh:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.cRank.cRankForAll.RankName)
+                </td>
+                <td valign="middle" align="right">
+                    Bậc:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.cGrade.cGradeForAll.GradeName)
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="right">
+                    Bộ phận:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.cDepartment.cDepartmentForAll.DepartmentName)
+                </td>
+                <td valign="middle" align="right">
+                    Ngày vào Công ty:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.StartWorkingDate)
+                </td>
+                <td valign="middle" align="right">
+                    Ngày bắt đầu công việc hiện tại:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.StartCurrentJobDate)
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="right">
+                    Người quản lý:
+                </td>
+                <td valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.cUserInfo2.FullName)
+                </td>
+                <td valign="middle" align="right">
+                    Chức danh:
+                </td>
+                <td colspan="3" valign="middle" align="left">
+                    @Html.DisplayFor(x => x.Reporter.cUserInfo2.cRank.cRankForAll.RankName)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <h5 class="Red B">Mục tiêu: Công việc</h5>
+    <br>
+    <table border="1" style="width: 96%; border-collapse: collapse;">
+        <thead>
+            <tr class="BgBlue" style="color: white">
+                <td style="width: 30px;" valign="middle" align="center">
+                    <span class="B White">STT</span>
+                </td>
+                <td style="width: 200px;" valign="middle" align="center">
+                    <span class="B White">Kpi mục tiêu</span>
+                    <input type="button" value="+" class="AddJob" onclick="AddJob(); return false;" style="width: 30px;">
+                </td>
+                <td style="width: 50px;" valign="middle" align="center">
+                    <span class="B White">% Tỷ trọng</span>
+                </td>
+                <td colspan="2" valign="middle" align="center">
+                    <span class="B White">Chi tiết<br>Có thể xuống dòng, bằng cách Enter như soạn văn bản...</span>
+                </td>
+                <td style="width: 200px;" valign="middle" align="center">
+                    <span class="B White">Kết quả</span>
+                </td>
+                <td style="width: 100px;" valign="middle" align="center">
+                    <span class="B White">Tình trạng</span>
+                </td>
+                <td style="width: 80px;" valign="middle" align="center">
+                    <span class="B White">Tự<br>đánh giá</span>
+                </td>
+                <td style="width: 80px;" valign="middle" align="center">
+                    <span class="B White">Quản lý đánh giá</span>
+                </td>
+                <td style="width: 50px;" valign="middle" align="center">
+                    <span class="B White">Tổng điểm</span>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyJob">
+
+            @for (int i = 0; i < Model.allJobAndDetail.Count; i++)
+            {
+                var JobSeq = i + 1;
+
+                <tr id="Job_@i">
+                    <td valign="middle" align="center" class="JobSeq">@JobSeq</td>
+                    <td valign="middle" align="left">
+                        @Html.HiddenFor(x => x.allJobAndDetail[i].Job.Id)
+                        @Html.TextAreaFor(x => x.allJobAndDetail[i].Job.JobName, 2, 0, new { @class = "JobName", maxlength = "10240", style = "width: 100%;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.Percent, new { @class = "JobPercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center" style="width: 30px;">
+                        <input type="button" value="+" class="AddJobDetail" onclick="AddJobDetail(@i); return false;" style="width: 30px;">
+                    </td>
+                    <td id="JobDetailHolder_@i" colspan="3" valign="middle" align="center">
+
+                        <table style="width: 100%;">
+
+                            @for (int j = 0; j < Model.allJobAndDetail[i].allDetail.Count; j++)
+                            {
+                                var JobDetailId = "JobDetail_" + i + "_" + j;
+
+                                <tr id="@JobDetailId">
+                                    <td valign="middle" align="center" style="width: 30px;">
+                                        <input type="button" value="-" class="RemoveJobDetail" onclick="RemoveJobDetail(@i, @j); return false;" style="width: 30px;">
+                                    </td>
+                                    <td valign="middle" align="center">
+                                        @Html.HiddenFor(x => x.allJobAndDetail[i].allDetail[j].Id)
+                                        @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].JobDetailName, 2, 0, new { @class = "JobDetailName", maxlength = "10240", style = "width: 100%;" })
+                                    </td>
+                                    <td valign="middle" align="center" style="width: 200px;">
+                                        @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].Result, 2, 0, new { @class = "JobResult", maxlength = "10240", style = "width: 100%;" })
+                                    </td>
+                                    <td valign="middle" align="center" style="width: 94px;">
+                                        @Html.TextBoxFor(x => x.allJobAndDetail[i].allDetail[j].Status, new { @class = "JobStatus", maxlength = "10240", style = "width: 100%" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.SelfMark, new { @class = "JobSelfMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allJobAndDetail[i].Job.ManagerMark, new { @class = "JobManagerMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.DisplayFor(x => x.allJobAndDetail[i].Job.ResultMark)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" valign="middle" align="center"></td>
+                <td valign="middle" align="center">
+                    <span id="lblTotalJobPercent" class="B Red"></span><span class="B Red">%</span>
+                </td>
+                <td colspan="5" valign="middle" align="right">
+                    <span class="B Red">Tổng điểm Mục tiêu công việc:</span>
+                </td>
+                <td valign="middle" align="center">
+                    @if (Model.Report.TotalMarkJob == null)
+                    {
+                        <span class="B Red">?</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.Report.TotalMarkJob)
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <br>
+    <br>
+    <h5 class="Red B">Mục tiêu: Năng lực</h5>
+    <br>
+    <table border="1" style="width: 96%; border-collapse: collapse;">
+        <thead>
+            <tr class="BgBlue" style="color: white">
+                <td style="width: 30px;" valign="middle" align="center">
+                    <span class="B White">STT</span>
+                </td>
+                <td valign="middle" align="center">
+                    <span class="B White">Năng lực</span>
+                </td>
+                <td style="width: 50px;" valign="middle" align="center">
+                    <span class="B White">% Tỷ trọng</span>
+                </td>
+                <td valign="middle" align="center">
+                    <span class="B White">Kết quả</span>
+                </td>
+                <td style="width: 80px;" valign="middle" align="center">
+                    <span class="B White">Tự đánh giá</span>
+                </td>
+                <td style="width: 80px;" valign="middle" align="center">
+                    <span class="B White">Quản lý đánh giá</span>
+                </td>
+                <td style="width: 50px;" valign="middle" align="center">
+                    <span class="B White">Tổng điểm</span>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyCompe">
+
+            @for (int c = 0; c < Model.allCompe.Count; c++)
+            {
+                var number = c + 1;
+
+                <tr>
+                    <td valign="middle" align="center">@number</td>
+                    <td valign="middle" align="left">
+                        @Html.HiddenFor(x => x.allCompe[c].Id)
+                        @Html.HiddenFor(x => x.allCompe[c].kCompeForSome.Id)
+                        @Html.DisplayFor(x => x.allCompe[c].kCompeForSome.kCompeForAll.CompeName)
+                    </td>
+                    <td valign="middle" align="center">
+                        @if (Model.allCompe[c].Percent == null || Model.allCompe[c].Percent == 0)
+                        {
+                            @Html.TextBoxFor(x => x.allCompe[c].kCompeForSome.Percent, new { @class = "CompePercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(x => x.allCompe[c].Percent, new { @class = "CompePercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+                        }
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextAreaFor(x => x.allCompe[c].Result, 2, 0, new { @class = "CompeResult", maxlength = "10240", style = "border: none; width: 100%;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allCompe[c].SelfMark, new { @class = "CompeSelfMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allCompe[c].ManagerMark, new { @class = "CompeManagerMark OnlyNumberDot", maxlength = "4", style = "width:46px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.DisplayFor(x => x.allCompe[c].ResultMark)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" valign="middle" align="center"></td>
+                <td valign="middle" align="center">
+                    <span id="lblTotalCompePercent" class="B Red">100</span><span class="B Red">%</span>
+                </td>
+                <td colspan="3" valign="middle" align="right">
+                    <span class="B Red">Tổng điểm Mục tiêu năng lực:</span>
+                </td>
+                <td valign="middle" align="center">
+                    @if (Model.Report.TotalMarkCompe == null)
+                    {
+                        <span class="B Red">?</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.Report.TotalMarkCompe)
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <br>
+    <br>
+    <h5 class="Red B">Kế hoạch tháng tiếp theo:</h5>
+    <br>
+    <table id="tblNextPlan" style="width: 96%; border-collapse: collapse;" border="1">
+        <thead>
+            <tr class="BgBlue" style="color: white">
+                <td style="width: 30px;" valign="middle" align="center">
+                    <span class="B White">STT</span>
+                </td>
+                <td style="width: 200px;" valign="middle" align="center">
+                    <span class="B White">Kế hoạch</span>
+                    <input type="button" value="+" class="AddNextPlan" onclick="AddNextPlan(); return false;" style="width: 30px;">
+                </td>
+                <td style="width: 50px;" valign="middle" align="center">
+                    <span class="B White">% Tỷ trọng</span>
+                </td>
+                <td colspan="3" valign="middle" align="center">
+                    <span class="B White">Chi tiết<br>Có thể xuống dòng, bằng cách Enter như soạn văn bản...</span>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyNextPlan">
+
+            @for (int i = 0; i < Model.allNextPlanAndDetail.Count; i++)
+            {
+                var NextPlanSeq = i + 1;
+
+                <tr id="NextPlan_@i">
+                    <td valign="middle" align="center" class="NextPlanSeq">@NextPlanSeq</td>
+                    <td valign="middle" align="left">
+                        @Html.HiddenFor(x => x.allNextPlanAndDetail[i].NextPlan.Id)
+                        @Html.TextAreaFor(x => x.allNextPlanAndDetail[i].NextPlan.NextPlanName, 2, 0, new { @class = "NextPlanName", maxlength = "10240", style = "width: 100%;" })
+                    </td>
+                    <td valign="middle" align="center">
+                        @Html.TextBoxFor(x => x.allNextPlanAndDetail[i].NextPlan.Percent, new { @class = "NextPlanPercent OnlyNumber", maxlength = "3", style = "width:28px; text-align: center;" })
+                    </td>
+                    <td valign="middle" align="center" style="width: 30px;">
+                        <input type="button" value="+" class="AddNextPlanDetail" onclick="AddNextPlanDetail(@i); return false;" style="width: 30px;">
+                    </td>
+                    <td id="NextPlanDetailHolder_@i" colspan="3" valign="middle" align="center">
+                        <table style="width: 100%;">
+
+                            @for (int j = 0; j < Model.allNextPlanAndDetail[i].allDetail.Count; j++)
+                            {
+                                var NextPlanDetailId = "NextPlanDetail_" + i + "_" + j;
+
+                                <tr id="@NextPlanDetailId">
+                                    <td valign="middle" align="center" style="width: 30px;">
+                                        <input type="button" value="-" class="RemoveNextPlanDetail" onclick="RemoveNextPlanDetail(@i, @j); return false;" style="width: 30px;">
+                                    </td>
+                                    <td valign="middle" align="center">
+                                        @Html.HiddenFor(x => x.allNextPlanAndDetail[i].allDetail[j].Id)
+                                        @Html.TextAreaFor(x => x.allNextPlanAndDetail[i].allDetail[j].NextPlanDetailName, 2, 0, new { @class = "NextPlanDetailName", maxlength = "10240", style = "width: 100%;" })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" valign="middle" align="center"></td>
+                <td valign="middle" align="center">
+                    <span id="lblTotalNextPlanPercent" class="B Red"></span><span class="B Red">%</span>
+                </td>
+                <td colspan="3" valign="middle" align="right"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <br>
+    <h5 class="Red B">Kết quả đánh giá tổng hợp:</h5>
+    <br>
+    <table id="tblResult" style="border-collapse: collapse;" border="1">
+        <tbody id="">
+            <tr>
+                <td valign="middle" align="center">
+                    1
+                </td>
+                <td valign="middle" align="right">
+                    Mục tiêu công việc:
+                </td>
+                <td valign="middle" align="left">
+                    @if (Model.Report.FinalMarkJob == null)
+                    {
+                        <span class="B Red">?</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.Report.FinalMarkJob)
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center">
+                    2
+                </td>
+                <td valign="middle" align="right">
+                    Mục tiêu năng lực:
+                </td>
+                <td valign="middle" align="left">
+                    @if (Model.Report.FinalMarkCompe == null)
+                    {
+                        <span class="B Red">?</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.Report.FinalMarkCompe)
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" valign="middle" align="right">
+                    <span class="B Red S16">Tổng điểm Kpi:</span>
+                </td>
+                <td valign="middle" align="left">
+                    @if (Model.Report.FinalMarkKpi == null)
+                    {
+                        <span class="B Red">?</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.Report.FinalMarkKpi)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h5 class="Red B">Nhận xét:</h5>
+    <br>
+    <table border="1" id="tblComment" style="width: 96%; border-collapse: collapse;">
+        <tbody id="">
+            <tr>
+                <td style="width: 30px;" valign="middle" align="center">
+                    1
+                </td>
+                <td style="width: 180px;" valign="middle" align="right">
+                    <span class="B">Nhận xét của Nhân viên:</span>
+                </td>
+                <td valign="middle" align="left">
+                    @Html.TextAreaFor(x => x.Report.Comment, 5, 0, new { @class = "Comment", maxlength = "10240", style = "border: none; width: 100%;" })
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center">
+                    2
+                </td>
+                <td valign="middle" align="right">
+                    <span class="B">Nhận xét của Quản lý:</span>
+                </td>
+                <td valign="middle" align="left">
+                    @Html.TextAreaFor(x => x.Report.ManagerComment, 5, 0, new { @class = "ManagerComment", maxlength = "10240", style = "border: none; width: 100%;" })
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center">
+                    3
+                </td>
+                <td valign="middle" align="right">
+                    <span class="B">Nhận xét của BOD:</span>
+                </td>
+                <td valign="middle" align="left">
+                    @Html.TextAreaFor(x => x.Report.BODcomment, 5, 0, new { @class = "BODcomment", maxlength = "10240", style = "border: none; width: 100%;" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br /><br /><br />
+
+    <table id="tblButton" border="0" style="display: none; position: fixed; bottom: 0px; left: 0px;">
+        <tr>
+            <td>
+                <img id="imgState" style="display: none;" />
+            </td>
+            <td>
+                <img id="btnRejectKpi" class="btnRejectKpi" src="/Index/IMG/DisLike.png" onclick="SubmitKpi(true); return false;" style="display: none;" />
+            </td>
+            <td>
+                <img id="btnSubmitKpi" class="btnSubmitKpi" src="/Index/IMG/Submit.png" onclick="SubmitKpi(false); return false;" />
+            </td>
+        </tr>
+    </table>
+
+    <div id="HDF">
+        @*Job*@
+        @Html.Hidden("TotalAddedJob", @ViewData["TotalAddedJob"]);
+
+        @for (int i = 0; i < Model.allJobAndDetail.Count; i++)
+        {
+            @Html.Hidden("TotalAddedJobDetail_" + i, @ViewData["TotalAddedJobDetail_" + i]);
+        }
+
+        @*NextPlan*@
+        @Html.Hidden("TotalAddedNextPlan", @ViewData["TotalAddedNextPlan"]);
+
+        @for (int i = 0; i < Model.allNextPlanAndDetail.Count; i++)
+        {
+            @Html.Hidden("TotalAddedNextPlanDetail_" + i, @ViewData["TotalAddedNextPlanDetail_" + i]);
+        }
+    </div>
+
+    <input type="hidden" id="CMD" value="@ViewBag.CMD" />
+
+    <input type="hidden" id="StepId" value="@Model.StepId" />
+    <input type="hidden" id="StateId" value="@Model.StateId" />
+
+    <input type="hidden" id="IsReporter" value="@Model.IsReporter.ToString().ToLower()" />
+    <input type="hidden" id="IsRoleMark" value="@Model.IsRoleMark.ToString().ToLower()" />
+    <input type="hidden" id="IsRoleConfirm" value="@Model.IsRoleConfirm.ToString().ToLower()" />
+    <input type="hidden" id="IsBOD" value="@Model.IsBOD.ToString().ToLower()" />
+
+    <input type="hidden" id="IsReject" name="IsReject" value="0" />
+}
+
+<script>
+    function CheckHDF(id) {
+        var value = $("#" + id).val().toLowerCase();
+        return (value == '1' || value == 'true');
+    }
+
+    function Enable(selector) {
+        $(selector).prop('disabled', false);
+    }
+
+    function Disable(selector) {
+        $(selector).prop('disabled', true);
+    }
+</script>
+
+<script type="text/javascript">
+
+    Onload();
+    function Onload() {
+        SetupValidate();
+        ShowControl();
+        CheckCMD();
+    }
+    function SetupValidate() {
+
+        OnlyNumber(".OnlyNumber");
+        OnlyNumberDot(".OnlyNumberDot");
+
+        //Job
+        $(".JobName").watermark('Nhóm công việc chính...');
+        $(".JobPercent").watermark('%');
+        $(".JobDetailName").watermark('Các công việc cụ thể...');
+
+        $(".JobPercent").on('keyup keydown', function (event) {
+            CountJobPercent();
+        });
+
+        CountJobPercent();
+        SortJobSeq();
+
+        //Compe
+        $(".CompeName").watermark('Mục tiêu năng lực...');
+        $(".CompePercent").watermark('%');
+
+        $(".CompePercent").on('keyup keydown', function (event) {
+            CountCompePercent();
+        });
+
+        CountCompePercent();
+
+        //NextPlan
+        $(".NextPlanName").watermark('Nhóm công việc chính...');
+        $(".NextPlanPercent").watermark('%');
+        $(".NextPlanDetailName").watermark('Các công việc cụ thể...');
+
+        $(".NextPlanPercent").on('keyup keydown', function (event) {
+            CountNextPlanPercent();
+        });
+
+        CountNextPlanPercent();
+        SortNextPlanSeq();
+    }
+    function ShowControl() {
+
+        var wWidth = $(window).innerWidth();
+
+        //disabled all
+        Disable('input[type=text]');
+        Disable('textarea');
+        Disable('input[type=button]');
+
+        //hide all
+        $("#btnSubmitKpi").attr("src", "/Index/IMG/Submit.png");
+        $("#btnSubmitKpi").hide();
+        $("#btnRejectKpi").hide();
+
+        //imgState
+        $("#imgState").hide();
+
+        //StepId + StateId
+        var StepId = $("#StepId").val();
+        var StateId = $("#StateId").val();
+
+        if (CheckHDF("IsReporter")) {
+
+            //Neu chua Done - Confirm / Thi co the Re-Submit
+            if (StepId != '2' || StateId != '3') {
+
+                Enable(".Month");
+                Enable(".Year");
+
+                Enable(".AddJob");
+                Enable(".AddJobDetail");
+                Enable(".RemoveJobDetail");
+
+                Enable(".JobName");
+                Enable(".JobPercent");
+                Enable(".JobDetailName");
+                Enable(".JobResult");
+                Enable(".JobStatus");
+                Enable(".JobSelfMark");
+
+                Enable(".CompePercent");
+                Enable(".CompeResult");
+                Enable(".CompeSelfMark");
+
+                Enable(".AddNextPlan");
+                Enable(".AddNextPlanDetail");
+                Enable(".RemoveNextPlanDetail");
+
+                Enable(".NextPlanName");
+                Enable(".NextPlanPercent");
+                Enable(".NextPlanDetailName");
+
+                Enable(".Comment");
+
+                Show_btnSubmitKpi();
+                Enabled_btnSubmitKpi();
+            }
+        }
+        else if (CheckHDF("IsRoleMark")) {
+
+            Enable(".JobManagerMark");
+            Enable(".CompeManagerMark");
+            Enable(".ManagerComment");
+
+            Show_btnSubmitKpi();
+            Show_btnRejectKpi();
+
+            Enabled_btnSubmitKpi();
+            Enabled_btnRejectKpi();
+        }
+
+        if (CheckHDF("IsRoleConfirm")) {
+
+            Show_btnSubmitKpi();
+            Show_btnRejectKpi();
+
+            Enabled_btnSubmitKpi();
+            Enabled_btnRejectKpi();
+        }
+
+        //IsBOD
+        if (CheckHDF("IsBOD")) {
+
+            Enable(".BODcomment");
+
+            Show_btnSubmitKpi();
+            Enabled_btnSubmitKpi();
+
+            $("#btnSubmitKpi").attr("src", "/Index/IMG/Like.png");
+        }
+
+        //imgState
+        if (StateId == '1') {
+            $("#imgState").attr("src", "/Index/IMG/Wait.png");
+            $("#imgState").show();
+        }
+        else
+            if (StateId == '2') {
+                $("#imgState").attr("src", "/Index/IMG/Rejected.png");
+                $("#imgState").show();
+            }
+            else
+                if (StateId == '3') {
+
+                    if (StepId == '1') {
+                        $("#imgState").attr("src", "/Index/IMG/Approved.png");
+                    }
+                    else
+                        if (StepId == '2') {
+                            $("#imgState").attr("src", "/Index/IMG/Done.png");
+                        }
+
+                    $("#imgState").show();
+                }
+
+        //tblButton
+        var tblButtonWidth = $("#tblButton").width();
+        $("#tblButton").css("left", (wWidth - tblButtonWidth) / 2);
+        $("#tblButton").show();
+
+        //tbx
+        $('input[type=text]').each(function () {
+            if ($(this).prop('disabled')) {
+                $(this).css('font-style', 'italic');
+            }
+        });
+
+        //textarea
+        $('textarea').each(function () {
+            if ($(this).prop('disabled')) {
+                $(this).css('font-style', 'italic');
+            }
+        });
+
+        //button
+        $('input[type=button]').each(function () {
+            if ($(this).prop('disabled')) {
+                $(this).hide();
+            }
+        });
+    }
+
+    function Disabled_btnSubmitKpi() {
+        $("#btnSubmitKpi").attr("onclick", "return false;");
+        $("#btnSubmitKpi").addClass("Disabled");
+    }
+    function Enabled_btnSubmitKpi() {
+        $("#btnSubmitKpi").attr("onclick", "SubmitKpi(false); return false;");
+        $("#btnSubmitKpi").removeClass("Disabled");
+    }
+
+    function Disabled_btnRejectKpi() {
+        $("#btnRejectKpi").attr("onclick", "return false;");
+        $("#btnRejectKpi").addClass("Disabled");
+    }
+    function Enabled_btnRejectKpi() {
+        $("#btnRejectKpi").attr("onclick", "SubmitKpi(true); return false;");
+        $("#btnRejectKpi").removeClass("Disabled");
+    }
+
+    function Show_btnSubmitKpi() {
+        $("#btnSubmitKpi").show();
+    }
+    function Show_btnRejectKpi() {
+        $("#btnSubmitKpi").attr("src", "/Index/IMG/Like.png");
+        $("#btnRejectKpi").show();
+    }
+
+    function CheckCMD() {
+
+        var CMD = $("#CMD").val();
+        var messageTitle = "";
+
+        if (CMD == "Done") {
+            messageTitle = "Báo cáo";
+        }
+        else if (CMD == "DoneReject") {
+            messageTitle = "Từ chối";
+        }
+        else if (CMD == "DoneConfirm") {
+            messageTitle = "Xác nhận Hoàn thành";
+        }
+        else if (CMD == "DoneMark") {
+            messageTitle = "Đánh giá";
+        }
+        else if (CMD == "DoneComment") {
+            messageTitle = "Thêm Nhận Xét";
+        }
+
+        if (messageTitle != "") {
+            alert("Đã \"" + messageTitle + "\" xong !");
+        }
+    }
+
+    function AddJob() {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Individual_AddJob",
+            data: encodeURI("TotalAddedJob=" + $("#TotalAddedJob").val()),
+
+            success: function (view) {
+                $("#tbodyJob").append(view);
+                SetupValidate();
+
+                var JobNumber = parseInt($("#TotalAddedJob").val());
+                $("#HDF").append("<input type='hidden' id='TotalAddedJobDetail_" + JobNumber + "' value='2'/>");
+
+                $("#TotalAddedJob").val(parseInt($("#TotalAddedJob").val()) + 1);
+            }
+        });
+    }
+    function SortJobSeq() {
+        $(".JobSeq").each(function (index) {
+            $(this).html("<span>" + (index + 1) + "</span>");
+        });
+    }
+
+    function AddJobDetail(JobNumber) {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Individual_AddJobDetail",
+            data: encodeURI("JobNumber=" + JobNumber + "&TotalAddedJobDetail=" + $("#TotalAddedJobDetail_" + JobNumber).val()),
+
+            success: function (view) {
+                $("#JobDetailHolder_" + JobNumber).append(view);
+                SetupValidate();
+                $("#TotalAddedJobDetail_" + JobNumber).val(parseInt($("#TotalAddedJobDetail_" + JobNumber).val()) + 1);
+            }
+        });
+    }
+    function RemoveJobDetail(JobNumber, JobDetailNumber) {
+
+        var job = $("#allJobAndDetail_" + JobNumber + "__Job_JobName").val();
+        var jobDetail = $("#allJobAndDetail_" + JobNumber + "__allDetail_" + JobDetailNumber + "__JobDetailName").val();
+
+        var valid = false;
+
+        if (JobDetailNumber == 0) {
+
+            var message = "";
+
+            if (jobDetail != "") {
+                message = "Xóa: \"" + jobDetail + "\" ?\r\n"
+            }
+
+            if (job == "") {
+                message += "Chú ý: Nếu xóa Chi tiết công việc Đầu tiên, sẽ xóa cả nhóm Kpi này ?!";
+            }
+            else {
+                message += "Chú ý: Nếu xóa Chi tiết công việc Đầu tiên, sẽ xóa cả nhóm Kpi: \"" + job + "\" ?!";
+            }
+
+            valid = confirm(message);
+        }
+        else {
+
+            if (jobDetail == "")
+                valid = true;
+            else
+                valid = confirm("Xóa: \"" + jobDetail + "\" ?");
+        }
+
+        if (valid) {
+
+            if (JobDetailNumber == 0) {
+                $("#Job_" + JobNumber).hide();
+                $("#allJobAndDetail_" + JobNumber + "__Job_Id").val("-" + $("#allJobAndDetail_" + JobNumber + "__Job_Id").val());
+            }
+            else {
+                $("#JobDetail_" + JobNumber + "_" + JobDetailNumber).hide();
+                $("#allJobAndDetail_" + JobNumber + "__allDetail_" + JobDetailNumber + "__Id").val("-" + $("#allJobAndDetail_" + JobNumber + "__allDetail_" + JobDetailNumber + "__Id").val());
+            }
+
+            SetupValidate();
+        }
+    }
+
+    function AddNextPlan() {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Individual_AddNextPlan",
+            data: encodeURI("TotalAddedNextPlan=" + $("#TotalAddedNextPlan").val()),
+
+            success: function (view) {
+                $("#tbodyNextPlan").append(view);
+                SetupValidate();
+
+                var NextPlanNumber = parseInt($("#TotalAddedNextPlan").val());
+                $("#HDF").append("<input type='hidden' id='TotalAddedNextPlanDetail_" + NextPlanNumber + "' value='2'/>");
+
+                $("#TotalAddedNextPlan").val(parseInt($("#TotalAddedNextPlan").val()) + 1);
+            }
+        });
+    }
+    function SortNextPlanSeq() {
+        $(".NextPlanSeq").each(function (index) {
+            $(this).html("<span>" + (index + 1) + "</span>");
+        });
+    }
+
+    function AddNextPlanDetail(NextPlanNumber) {
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Individual_AddNextPlanDetail",
+            data: encodeURI("NextPlanNumber=" + NextPlanNumber + "&TotalAddedNextPlanDetail=" + $("#TotalAddedNextPlanDetail_" + NextPlanNumber).val()),
+
+            success: function (view) {
+                $("#NextPlanDetailHolder_" + NextPlanNumber).append(view);
+                SetupValidate();
+                $("#TotalAddedNextPlanDetail_" + NextPlanNumber).val(parseInt($("#TotalAddedNextPlanDetail_" + NextPlanNumber).val()) + 1);
+            }
+        });
+    }
+    function RemoveNextPlanDetail(NextPlanNumber, NextPlanDetailNumber) {
+
+        var nextPlan = $("#allNextPlanAndDetail_" + NextPlanNumber + "__NextPlan_NextPlanName").val();
+        var nextPlanDetail = $("#allNextPlanAndDetail_" + NextPlanNumber + "__allDetail_" + NextPlanDetailNumber + "__NextPlanDetailName").val();
+
+        var valid = false;
+
+        if (NextPlanDetailNumber == 0) {
+
+            var message = "";
+
+            if (nextPlanDetail != "") {
+                message = "Xóa: \"" + nextPlanDetail + "\" ?\r\n"
+            }
+
+            if (nextPlan == "") {
+                message += "Chú ý: Nếu xóa Chi tiết công việc Đầu tiên, sẽ xóa cả nhóm Kế hoạch này ?!";
+            }
+            else {
+                message += "Chú ý: Nếu xóa Chi tiết công việc Đầu tiên, sẽ xóa cả nhóm Kế hoạch: \"" + nextPlan + "\" ?!";
+            }
+
+            valid = confirm(message);
+        }
+        else {
+
+            if (nextPlanDetail == "")
+                valid = true;
+            else
+                valid = confirm("Xóa: \"" + nextPlanDetail + "\" ?");
+        }
+
+        if (valid) {
+
+            if (NextPlanDetailNumber == 0) {
+                $("#NextPlan_" + NextPlanNumber).hide();
+                $("#allNextPlanAndDetail_" + NextPlanNumber + "__NextPlan_Id").val("-" + $("#allNextPlanAndDetail_" + NextPlanNumber + "__NextPlan_Id").val());
+            }
+            else {
+                $("#NextPlanDetail_" + NextPlanNumber + "_" + NextPlanDetailNumber).hide();
+                $("#allNextPlanAndDetail_" + NextPlanNumber + "__allDetail_" + NextPlanDetailNumber + "__Id").val("-" + $("#allNextPlanAndDetail_" + NextPlanNumber + "__allDetail_" + NextPlanDetailNumber + "__Id").val());
+            }
+
+            SetupValidate();
+        }
+    }
+
+    function CountJobPercent() {
+
+        var total = 0;
+
+        $(".JobPercent").each(function (index) {
+
+            var percent = parseInt($(this).val());
+
+            if (isNaN(percent))
+                percent = 0;
+
+            total += percent;
+        });
+
+        if (isNaN(total))
+            total = 0;
+
+        $("#lblTotalJobPercent").text(total);
+        return parseInt(total);
+    }
+    function CountCompePercent() {
+
+        var total = 0;
+
+        $(".CompePercent").each(function (index) {
+
+            var percent = parseInt($(this).val());
+
+            if (isNaN(percent))
+                percent = 0;
+
+            total += percent;
+        });
+
+        if (isNaN(total))
+            total = 0;
+
+        $("#lblTotalCompePercent").text(total);
+        return parseInt(total);
+    }
+    function CountNextPlanPercent() {
+
+        var total = 0;
+
+        $(".NextPlanPercent").each(function (index) {
+
+            var percent = parseInt($(this).val());
+
+            if (isNaN(percent))
+                percent = 0;
+
+            total += percent;
+        });
+
+        if (isNaN(total))
+            total = 0;
+
+        $("#lblTotalNextPlanPercent").text(total);
+        return parseInt(total);
+    }
+</script>
+
+<script>
+    function SubmitKpi(Reject) {
+
+        $("#IsReject").val(Reject);
+        var messageTitle = "";
+
+        if (CheckHDF("IsReporter")) {
+            messageTitle = "Báo cáo";
+        }
+        else if (CheckHDF("IsRoleConfirm")) {
+            messageTitle = Reject ? "Từ chối" : "Xác nhận Hoàn thành";
+        }
+        else if (CheckHDF("IsRoleMark")) {
+            messageTitle = Reject ? "Từ chối" : "Đánh giá";
+        }
+        else if (CheckHDF("IsBOD")) {
+            messageTitle = "Thêm Nhận Xét";
+        }
+
+        //valid
+        var valid = true;
+        var message = '';
+
+        var Month = $(".Month").val();
+        var Year = $(".Year").val();
+
+        if (Month == '' || Month == '0') {
+            valid = false;
+            message += 'Phải nhập: Tháng\n';
+        }
+
+        if (Year == '' || Year == '0') {
+            valid = false;
+            message += 'Phải nhập: Năm\n';
+        }
+
+        if (CountJobPercent() != 100) {
+            valid = false;
+            message += 'Tổng tỷ trọng "Mục tiêu Công việc" phải = 100%\n';
+        }
+
+        if (CountCompePercent() != 100) {
+            valid = false;
+            message += 'Tổng tỷ trọng "Mục tiêu Năng lực" phải = 100%\n';
+        }
+
+        if (!valid) {
+            alert('LỖI:\n' + message);
+        }
+        else if (confirm("Bạn có chắc là muốn \"" + messageTitle + "\" ?")) {
+            $("#Form").submit();
+        }
+    }
+</script>

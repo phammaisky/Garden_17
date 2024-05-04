@@ -1,0 +1,169 @@
+﻿@using AMS.Models;
+@model IEnumerable<AMS.Models.Company>
+
+<table width="500" id="DeptTableCDSearch" class="table table-condensed table-tree">
+    <tr id="RowCDSearch0" onclick="returnDepComNull();">
+        <td style="padding: 8px 20px 0px 10px !important;">Không chọn</td>
+    </tr>
+    @SetParent(@Model)
+    @foreach (var item in _listParentCompany)
+    {
+        @BuildMenu(@Model, item.ParentId, 0, "")
+    }
+
+</table>
+@functions{
+    List<Company> _listParentCompany = new List<Company>();
+    public bool ExitsParent(Company _company)
+    {
+        if (_company.CompanyParent != null && @Model.Contains(_company.CompanyParent))
+            return true;
+        else
+            return false;
+    }
+    public void CheckParent(Company _company)
+    {
+        if (ExitsParent(_company))
+        {
+            CheckParent(_company.CompanyParent);
+        }
+        else
+        {
+            if (!_listParentCompany.Contains(_company))
+            {
+                if (_company.ParentId == null)
+                {
+                    if (_listParentCompany.Where(p => p.ParentId == null).FirstOrDefault() == null)
+                        _listParentCompany.Add(_company);
+                }   
+                else
+                    _listParentCompany.Add(_company);
+            }
+        }
+    }
+}
+
+@helper SetParent(IEnumerable<Company> data)
+{
+    foreach (var item in data)
+    {
+        CheckParent(item);
+    }
+}
+
+@helper BuildMenu(IEnumerable<Company> data, int? parentId = null, int? leverl = 0, string classParent = "")
+{
+    string spaceBar = "";
+    for (int i = 0; i <= leverl; i++)
+    {
+        spaceBar += "&nbsp;&nbsp;&nbsp;";
+    }
+    var items = data.Where(d => d.ParentId == parentId);
+    //var items = data;
+    if (items.Any())
+    {
+        foreach (var item in items)
+        {
+            <tr id="@Html.Raw("RowCDSearch" + item.Id.ToString())" @Html.Raw("class='RowCDSearch" + parentId.ToString() + "'") onclick="returnClickCompanyIdSearch(@Html.Raw("'" + item.Id + "','" + item.NameVn.Trim() + "'"))">
+
+                <td style="vertical-align:top; width:60%">
+                    @if (item.CompanyChild.Count() > 0)
+                    {
+                        <a href="#" onclick="hideRowCDSearch(this, @Html.Raw("'RowCDSearch" + item.Id.ToString() + "'"),true); return false;"
+                           @Html.Raw("style='text-decoration: none; padding:8px  20px 8px " + ((leverl + 1) * 10).ToString() + "px'")>
+                            <i class="fa fa-caret-right"></i>&nbsp;@item.NameVn
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" onclick="hideRowCDSearch(this, @Html.Raw("'RowCDSearch" + item.Id.ToString() + "'"),true); return false;" @Html.Raw("style='text-decoration: none; padding:8px  20px 8px " + ((leverl + 1) * 10).ToString() + "px'")>
+                            <i class="fa fa-caret-right"></i>&nbsp;@item.NameVn
+                        </a>
+                    }
+                </td>
+            </tr>
+            if (item.Departments.Count > 0)
+            {
+                foreach (var dept in item.Departments)
+                {
+                    var param = Html.Encode(dept.Company.NameVn.Trim() + " | " + dept.DeptCode.Trim());
+                    <tr id="@Html.Raw("RowCDDeptSelect" + dept.Id.ToString())" style="display:none" onclick="returnClickDeptIdSearch(@Html.Raw("'" + dept.Id + "','" + param + "'"))" @Html.Raw("class='RowCDSearch" + item.Id.ToString() + "'")>
+                        <td>
+                            <p @Html.Raw("style='padding-left:" + ((leverl + 1) * 30).ToString() + "px; margin:0'")>@Html.Raw(dept.DeptName.Trim())</p>
+                        </td>
+                    </tr>
+                }
+            }
+            @BuildMenu(data, item.Id, leverl + 1, classParent + " RowCDSearch" + parentId.ToString())
+        }
+
+    }
+}
+<script type="text/javascript">
+    function hideRowCDSearch(el, hideRow, click) {
+
+        var iEle = $(el).find('i:first')[0];
+
+        var classCss = $(iEle).attr('class');
+        var display = $('#' + hideRow).css('display');
+        if (click) {
+            if (classCss == "fa fa-caret-down") {
+                $(iEle).attr("class", "fa fa-caret-right");
+            }
+            else {
+                $(iEle).attr("class", "fa fa-caret-down");
+            }
+        }
+
+        classCss = $(iEle).attr('class');
+        $('.' + hideRow).each(function () {
+            if (classCss == "fa fa-caret-right" || display == "none") {
+                if ($(this).css('display') != 'none') {
+                    $(this).css('display', 'none');
+                }
+            }
+            else {
+                if ($(this).css('display') != 'block') {
+                    $(this).css('display', '');
+                }
+            }
+            var iClass = $(this).find('a:first');
+            hideRowCDSearch(iClass[0], $(this).attr('id'), false);
+        })
+
+        return false;
+    }
+
+    function returnClickCompanyIdSearch(id, name) {
+        $('#DeptTableCDSearch tr').removeClass('rowHilight')
+        $('#RowCDSearch' + id).addClass('rowHilight');
+        $('#CompanySearchId').val(id);
+        $('#DeptSearchId').val('');
+        var textSelector = name + '   <i class="fa fa-caret-down " style="padding-top: 3px; margin-left: 3px;">';
+        $('#BtnCompanyDeptMaintSearch').html(textSelector);
+        formSubmit();
+    }
+    function returnClickDeptIdSearch(id, name) {
+        $('#DeptTableCDSearch tr').removeClass('rowHilight')
+        $('#RowCDDeptSelect' + id).addClass('rowHilight');
+
+        $('#DeptSearchId').val(id);
+        $('#CompanySearchId').val('');
+        var textSelector = name + '   <i class="fa fa-caret-down " style="padding-top: 3px; margin-left: 3px;">';
+        $('#BtnCompanyDeptMaintSearch').html(textSelector);
+        formSubmit();
+    }
+    function returnDepComNull(id, name) {
+
+        $('#DeptTableCDSearch tr').removeClass('rowHilight')
+        $('#RowCDSearch0').addClass('rowHilight');
+        var textSelector = 'Chọn công ty, phòng ban &nbsp;&nbsp;&nbsp;<span class="caret"></span>';
+        $('#BtnCompanyDeptMaintSearch').html(textSelector);
+        
+
+        $('#DeptSearchId').val("");
+        $('#CompanySearchId').val("");
+
+        formSubmit();
+    }
+</script>

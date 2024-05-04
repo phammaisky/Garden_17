@@ -1,0 +1,154 @@
+﻿@using Event.Models
+@model Models.Pagging<RegisterEvent>
+@{
+    string lang = (Session["lang"] == null) ? "en" : Session["lang"].ToString();
+}
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        
+        <table class="table">
+            <tr>
+                <th>
+                    Họ tên
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Mã vòng
+                </th>
+                <th>
+                    Ngày đăng ký
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in (List<RegisterEvent>)Model.model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoundNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompleteDateString)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WinString)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </table>
+    <div class="pull-left" style="font-weight:bold">
+        @Html.Raw(String.Format("Tìm thấy {0} bản ghi", Model.totalItem))
+    </div>
+    <div class="pull-right">
+        @Html.Raw(lang == "vn" ? Model.GenerateHtmlPaggerAjax() : Model.GenerateHtmlPaggerAjaxEn())
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var modal, loading;
+    function ShowProgress() {
+        modal = document.createElement("DIV");
+        modal.className = "modal";
+        document.body.appendChild(modal);
+        loading = document.getElementsByClassName("loading")[0];
+        loading.style.display = "block";
+        var top = Math.max(window.innerHeight / 2 - loading.offsetHeight / 2, 0);
+        var left = Math.max(window.innerWidth / 2 - loading.offsetWidth / 2, 0);
+        loading.style.top = top + "px";
+        loading.style.left = left + "px";
+    };
+
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(document).ready(function() {
+        @Html.Raw("lang ='"+lang+"';");
+    });
+
+    function formSubmit(pageParam) {
+        var pageN = 1;
+        pageN = $('#PageParam').val();
+        if (pageParam != null) {
+            pageN = pageParam;
+        }
+        var page = { page: pageN, fullName: $("#fullName").val().trim(), phoneNumber: $("#phoneNumber").val().trim() };
+        $('#progresBarLoadingData').show();
+        $.post("@Url.Content("~/RegisterEvents/Index")", page).done(function (d) {
+            $('#grid-list').html(d);
+            $('#progresBarLoadingData').hide();
+        }).fail(function () {
+            $('#progresBarLoadingData').html("<p class='text-danger'>Lỗi truy vấn dữ liệu</p>");
+        });
+    };
+
+    function exportExcel() {
+        var page = { fullName: $("#fullName").val().trim(), phoneNumber: $("#phoneNumber").val().trim() };
+        $.download("@Url.Content("~/RegisterEvents/ExportExcel")", page, "ExportExcel");
+    };
+
+    function generateRandom(pageParam) {
+        $('#notiTT').hide();
+        var pageN = 1;
+        pageN = $('#PageParam').val();
+        if (pageParam != null) {
+            pageN = pageParam;
+        }
+        var page = { page: pageN };
+        $('#progresBarLoadingData').show();
+        ShowProgress();
+        setTimeout(function () {
+            $.post("@Url.Content("~/RegisterEvents/GenerateRandom")", page).done(function (d) {
+                $('#grid-list').html(d);
+                $('#progresBarLoadingData').hide();
+                HideProgress();
+            }).fail(function () {
+                HideProgress();
+                $('#progresBarLoadingData').html("<p class='text-danger'>Số vòng có thể quay đã hết!</p>");
+            });
+        }, 14000);
+    }
+
+    function HideProgress () {
+        setTimeout(function () {
+            document.body.removeChild(modal);
+            loading.style.display = "none";
+        }, 3000);
+    };
+</script>
+@Scripts.Render("~/bundles/modalform")
+
+

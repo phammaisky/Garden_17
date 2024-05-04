@@ -1,0 +1,29 @@
+﻿@using IQWebApp_Blank.EF
+@model IQWebApp_Blank.Models.IndividualVM
+
+@for (int i = Model.JobNumber; i < Model.allJobAndDetail.Count; i++)
+{
+    <table style="width: 100%;">
+
+        @for (int j = Model.TotalAddedJobDetail; j < Model.allJobAndDetail[i].allDetail.Count; j++)
+        {
+            var JobDetailId = "JobDetail_" + i + "_" + j;
+
+            <tr id="@JobDetailId">
+                <td valign="middle" align="center" style="width: 30px;">
+                    <input type="button" value="-" class="RemoveJobDetail" onclick="RemoveJobDetail(@i, @j); return false;" style="width: 30px;">
+                </td>
+                <td valign="middle" align="center">
+                    @Html.HiddenFor(x => x.allJobAndDetail[i].allDetail[j].Id)
+                    @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].JobDetailName, 2, 0, new { @class = "JobDetailName", maxlength = "10240", style = "width: 100%;" })
+                </td>
+                <td valign="middle" align="center" style="width: 200px;">
+                    @Html.TextAreaFor(x => x.allJobAndDetail[i].allDetail[j].Result, 2, 0, new { @class = "JobResult", maxlength = "10240", style = "width: 100%;" })
+                </td>
+                <td valign="middle" align="center" style="width: 94px;">
+                    @Html.TextBoxFor(x => x.allJobAndDetail[i].allDetail[j].Status, new { @class = "JobStatus", maxlength = "10240", style = "width: 100%" })
+                </td>
+            </tr>
+        }
+    </table>
+}

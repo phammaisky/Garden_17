@@ -1,0 +1,118 @@
+﻿@model GardenLover.Models.CrossDepartmentVM
+@using GardenLover.EF
+
+@{
+    ViewBag.Title = "CrossDepartment";
+}
+
+<style type="text/css">
+    * {
+        font-size: 10pt !important;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    input[type=text], textarea {
+        border: none;
+        max-width: 100% !important;
+    }
+</style>
+
+@using (Html.BeginForm("CrossDepartment", "Kpi", FormMethod.Post, new { id = "Form" }))
+{
+    @Html.AntiForgeryToken()
+    <h3 class="B Red S14" style="float: left;">@ViewBag.Title</h3>
+    <div style="clear:both;"></div>
+    <input type="submit" class="btn btn-success" value="OK" style="float: left;" />
+    <br />
+    <br />
+    @Html.HiddenFor(m =>m.Report.Id)
+    <table id="tbl" border="1" style="width: auto;">
+        <thead>
+            <tr class="BgBlue2">
+                <td align="center" colspan="11"><span class="S18 White">1. Đưa yêu cầu</span></td>
+                <td align="center" colspan="6"><span class="S18 White">2. Thực hiện</span></td>
+                <td align="center" colspan="2"><span class="S18 White">3. Đánh giá</span></td>
+            </tr>
+            <tr class="BgBlue2" style="color: white; font-weight: bold;">
+                <td align="center" style="min-width: 50px;">STT</td>
+                <td align="center" style="min-width: 100px;">Bộ phận<br />yêu cầu</td>
+                <td align="center" style="min-width: 100px;">Kpi mục tiêu</td>
+                <td align="center" style="min-width: 100px;">Nội dung yêu cầu</td>
+                <td align="center" style="min-width: 100px;">Thời hạn<br />cần hoàn thành</td>
+                <td align="center" style="min-width: 100px;">Kết quả, lợi ích<br />mong muốn</td>
+                <td align="center" style="min-width: 100px;">Tỷ trọng</td>
+                <td align="center" style="min-width: 100px;">Bộ phận thực hiện</td>
+                <td align="center" style="min-width: 100px;">Thời gian hoàn thành</td>
+                <td align="center" style="min-width: 100px;">Kết quả thực hiện</td>
+                <td align="center" style="min-width: 100px;">Điểm đánh giá</td>
+                <td align="center" style="min-width: 100px;">Kế hoạch thực hiện</td>
+                <td align="center" style="min-width: 100px;">Giải trình cho<br />Kết quả thực hiện</td>
+                <td align="center" style="min-width: 100px;">Giải pháp</td>
+                <td align="center" style="min-width: 100px;">Thời hạn</td>
+                <td align="center" style="min-width: 100px;">Tỷ trọng</td>
+                <td align="center" style="min-width: 100px;">Tự đánh giá</td>
+                <td align="center" style="min-width: 100px;">Đánh giá<br />bởi Hội đồng</td>
+                <td align="center" style="min-width: 100px;">Tổng điểm</td>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+            @{
+                var seq = 0;
+            }
+
+            @for (int i = 0; i < Model.allJobVM.Count; i++)
+            {
+                var rowSpan = Model.allJobVM[i].allJobDetail.Count;
+
+                for (int j = 0; j < Model.allJobVM[i].allJobDetail.Count; j++)
+                {
+                    seq++;
+
+                    <tr>
+                        <td align="center">@seq</td>
+                        <td align="center">Vận hành</td>
+
+                        @if (j == 0)
+                        {
+                            <td rowspan="@rowSpan">
+                                @Html.EditorFor(x => x.allJobVM[i].Job.JobName)
+                            </td>
+                        }
+
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].JobDetailName)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].AWantDoneTime)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].AWantResult)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].APercent)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BDepartmentId)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].ABDoneTime)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].ABResult)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].ABMark)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BPlan)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BResultDetail)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BSolution)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BDoneTime)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BPercent)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].BMark)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].CMark)</td>
+                        <td>@Html.EditorFor(x => x.allJobVM[i].allJobDetail[j].TotalMark)</td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td align="center" colspan="6"></td>
+                <td align="center"><span class="Red B">%</span></td>
+                <td align="center" colspan="8"></td>
+                <td align="center"><span class="Red B">%</span></td>
+                <td align="center" colspan="3"></td>
+            </tr>
+        </tfoot>
+    </table>
+                }

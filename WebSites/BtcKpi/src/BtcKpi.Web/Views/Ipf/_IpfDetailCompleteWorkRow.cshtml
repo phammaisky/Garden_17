@@ -1,0 +1,54 @@
+﻿@model BtcKpi.Model.IpfDetail
+@using BtcKpi.Service.Common
+
+@using(Html.BeginCollectionItem("CompleteWorks"))
+{
+    <tr>
+        @if (Model.IsWorkTitle == true)
+        {
+            <td>@Model.IsWorkTitle</td>
+            <td class="bg-gray disabled color-palette">&nbsp;<b>@BtcHelper.ToRoman(Model.Stt) .&nbsp;@Model.Objective</b></td>
+            <td>@Html.HiddenFor(x => Model.ID) @Html.HiddenFor(x => Model.Seq) </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        }
+        else
+        {
+            <td>
+                @Model.Seq @Html.HiddenFor(x => Model.ID)  @Html.HiddenFor(x => Model.Seq)
+            </td>
+            <td>
+                @*@Html.Raw(Html.Encode(Model.Objective))*@ @Html.TextBoxFor(x => Model.Objective)
+            </td>
+            <td>
+                @Model.Target @Html.HiddenFor(x => Model.Target)
+            </td>
+            <td>
+                @Model.Weight @Html.HiddenFor(x => Model.Weight)
+            </td>
+            <td>
+                @Model.Result @Html.HiddenFor(x => Model.Result)
+            </td>
+            <td>
+                @Model.SelfScore @Html.HiddenFor(x => Model.SelfScore)
+            </td>
+            <td>
+                @Model.ManagerScore @Html.HiddenFor(x => Model.ManagerScore)
+            </td>
+            <td>
+                @Model.TotalScore @Html.HiddenFor(x => Model.TotalScore)
+            </td>
+            <td>
+                <button id="complete-work-edit" type="button" class="btn btn-sm btn-social-icon btn-twitter complete-work-edit" data-id="@Model.WorkCompleteID"><i class="fa fa-edit"></i></button>
+                <button id="complete-work-delete" type="button" class="btn btn-sm btn-social-icon btn-google" data-id="@Model.WorkCompleteID"><i class="fa fa-trash"></i></button>
+            </td>
+        }
+
+    </tr>
+}
+
+

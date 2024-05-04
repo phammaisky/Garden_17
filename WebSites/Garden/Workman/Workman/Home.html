@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Workman : Quản lý công việc tốt hơn !</title>
+
+    <meta charset="utf-8" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        html, body {
+            overflow: hidden !important;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function Onload() {
+
+            var window_Height = $(window).innerHeight();
+            var window_Width = $(window).innerWidth();
+
+            $('#Loading_div').css('top', (window_Height - $('#Loading_div').height()) / 2 + 'px');
+            $('#Loading_div').css('left', (window_Width - $('#Loading_div').width()) / 2 + 'px');
+
+            $('#Page_Content_ifr').css('width', window_Width + 'px');
+            $('#Page_Content_ifr').css('maxWidth', window_Width + 'px');
+            $('#Page_Content_ifr').css('minWidth', window_Width + 'px');
+
+            $('#Page_Content_ifr').css('height', window_Height + 'px');
+            $('#Page_Content_ifr').css('maxHeight', window_Height + 'px');
+            $('#Page_Content_ifr').css('minHeight', window_Height + 'px');
+
+            $('#Page_Content_ifr').attr('src', "http://192.168.68.68:8080/");
+
+            window.setTimeout(function () {
+                $('#Loading_div').hide();
+            }, 1000 * 10);
+        }
+    </script>
+</head>
+<body onload="Onload();">
+    <div id="Loading_div" style="display: block; position: fixed; z-index: 9; text-align: center; top: 200px; left: 400px;">
+        <img src="/Index/IMG/Loading.gif" />
+    </div>
+    <iframe id='Page_Content_ifr' width='100%' frameborder='0' marginwidth='0' marginheight='0'
+            scrolling="auto"></iframe>
+</body>
+</html>

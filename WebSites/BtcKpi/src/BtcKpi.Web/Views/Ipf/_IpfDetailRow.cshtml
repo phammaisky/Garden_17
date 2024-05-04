@@ -1,0 +1,36 @@
+﻿@model BtcKpi.Model.IpfDetail
+@using (Html.BeginCollectionItem("Model.Competencies"))
+{
+    <tr>
+        <td>
+            @Model.Seq @Html.HiddenFor(x => Model.ID)  @Html.HiddenFor(x => Model.Seq)
+        </td>
+        <td>
+            @*@Html.Raw(Html.Encode(Model.Objective))*@ @Html.TextBoxFor(x => Model.Objective)
+        </td>
+        <td>
+            @Model.Target @Html.HiddenFor(x => Model.Target)
+        </td>
+        <td>
+            @Model.Weight @Html.HiddenFor(x => Model.Weight)
+        </td>
+        <td>
+            @Model.Result @Html.HiddenFor(x => Model.Result)
+        </td>
+        <td>
+            @Model.SelfScore @Html.HiddenFor(x => Model.SelfScore)
+        </td>
+        <td>
+            @Model.ManagerScore @Html.HiddenFor(x => Model.ManagerScore)
+        </td>
+        <td>
+            @Model.TotalScore @Html.HiddenFor(x => Model.TotalScore)
+        </td>
+        <td>
+            <button id="competency-edit" type="button" class="btn btn-sm btn-social-icon btn-twitter" data-id="@Model.WorkCompleteID"><i class="fa fa-edit"></i></button>
+            <button id="competency-delete" type="button" class="btn btn-sm btn-social-icon btn-google" data-id="@Model.WorkCompleteID"><i class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+}
+
+

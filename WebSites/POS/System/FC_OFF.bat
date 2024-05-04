@@ -1,0 +1,1 @@
+start /b /w sqlcmd -S 127.0.0.1 -i E:\System\FC_OFF.sql -o E:\System\FC_OFF.txt

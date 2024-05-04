@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/Upload.ashx" hash="ffffffffcb5ecb46" filehash="22dfbfc80ebe" flags="110000" assembly="App_Web_vzxmhiik" type="Upload">
+    <filedeps>
+        <filedep name="/Upload.ashx" />
+    </filedeps>
+</preserve>

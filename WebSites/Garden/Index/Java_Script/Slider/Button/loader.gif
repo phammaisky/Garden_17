@@ -1,0 +1,1054 @@
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="vi-vn">
+
+	<head>
+
+	<title>Shop điện thoại	
+		</title>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta http-equiv="content-language" content="vi">
+		<script language="javascript">
+			var lang_default = "vn";
+			var lang_alert_none_name = "Vui lòng điền họ tên!";
+			var lang_alert_none_email = "Vui lòng điền email!";			
+			var lang_alert_search = "Để tìm kiếm vui lòng nhập vào nội dung";
+			var lang_alert_name = "Bạn chưa nhập họ tên!";
+			var lang_alert_phone = "Vui lòng nhập số điện thoại của bạn!";
+			var lang_alert_phone_error = "Số điện thoại của bạn không hợp lệ!";
+			var lang_alert_email = "Bạn chưa nhập email!";
+			var lang_alert_email_error = "Vui lòng điền đúng email!";
+			var lang_alert_title = "Bạn chưa nhập tiêu đề!";
+			var lang_alert_content = "Bạn chưa nhập nội dung!";
+			var select_rate = "Vui lòng chọn tỷ giá muốn đổi";
+			var box_mess_cart = "Bạn đã thêm sản phẩm vào giỏ hàng";
+			var box_mess_compare = "Bạn đã thêm sản phẩm vào khu vực so sánh";
+			var cus_incomplete_field = "Vui lòng điền vào các chỗ trống bắt buộc";
+			var cus_wrong_repass = "Mật khẩu không khớp";
+			var cus_wrong_security = "Sai mã bảo vệ";
+			var cus_username_exist = "Tên Truy Cập đã tồn tại, vui lòng chọn tên khác !";
+			var cus_email_exist = "Địa chỉ Email đã tồn tại, vui lòng chọn địa chỉ Email khác !";
+			var login_username_fail = "Tài khoản không tồn tại !";
+			var login_pass_fail = "Sai mật khẩu";
+			var login_user_locked = "Tài khoản bị khóa";
+			var login_success = "Bạn vừa đăng nhập thành công !";
+			var logout_success = "Bạn vừa đăng xuất thành công !";
+			var buy_nologin = "Bạn cần phải đăng nhập để sử dụng chức năng này";
+			var buy_now_success = "Bạn vừa mua hàng ngay thành công";
+			var box_mess_love = "Bạn đã thêm sản phẩm vào mục quan tâm";
+			var product_love_ok = "Đã quan tâm";
+			var cus_wrong_current_password = "";
+			var cus_password_edited = "";
+			var cus_limit_password = "";
+			var option_pcategory = "Chọn danh mục";
+			var base_url            = 'http://vnexpress.net';
+			var alert_option_pcategory = "Vui lòng chọn danh mục";
+			var sold_out = "Sản phẩm hiện đang hết hàng !";
+			var alert_quantity_cart_1 = "Số lượng chỉ còn ";
+			var alert_quantity_cart_2 = " , vui lòng nhập lại số lượng!";
+			var alert_quantity_greater_than_0 = "Số lượng phải lớn hơn 0";
+		</script>        <meta content="" name="keywords">
+        <meta content="" name="description">
+		
+
+        <meta content="Global" name="distribution"/>
+		<meta content="1 days" name="revisit-after"/>
+		<meta content="FOLLOW,INDEX" name="robots"/>
+		<link rel="shortcut icon" href="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/favicon.ico">		
+		<META NAME="Author" CONTENT="">
+		<base href="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach" />
+        
+		<!--Facebook-->
+		<meta property="og:title" content=""/>
+		
+        <meta property="og:description" content=""/>
+		<meta property="og:url" content="http://demow128.web4s.vn/"/>
+		
+		<meta property="og:type" content="site"/>
+		<meta property="og:site_name" content="Shop điện thoại"/> 
+
+        		<link  href="http://demow128.web4s.vn/templates/w1-28/css/style.css" type="text/css" rel="stylesheet" />		<link  href="http://demow128.web4s.vn/public/css/function2.css" type="text/css" rel="stylesheet" />      
+						<link  href="http://demow128.web4s.vn/profiles/demow128web4svn/cache/custom.css" type="text/css" rel="stylesheet" />		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/global.js"></script>
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.min.1.8.3.js"></script>
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery-ui-1.10.3.js"></script>                 
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.jplayer.min.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.jcarousel.min.js"></script>   
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/clientscript_v2.js"></script>
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/js_menu.cookie.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/js_menu.tree.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.jqzoom-core.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.fancybox-2.1.5.pack.js"></script>  
+      	<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/query_tooltip.js"></script>    
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/rotator.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.dropdownPlain.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/tinybox.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.md5.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.rating.js"></script>
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.cluetip.js"></script>
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.nestedAccordion.js"></script>     
+		<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.quicksand.js"></script> 
+        <script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/jquery.easing.1.3.js"></script> 
+        
+        <script type="text/javascript">
+		$(document).ready(function() {
+			$('.jqzoom').jqzoom({
+					zoomType: 'standard',
+					lens:true,
+					preloadImages: false,
+					alwaysOn:false
+				});		
+		});	
+		</script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+	
+				$("a#example2").fancybox({
+					'overlayShow'	: false,
+					'transitionIn'	: 'elastic',
+					'transitionOut'	: 'elastic',
+					});
+				
+			});
+		</script>
+
+        <script type="text/javascript">
+		$(function() {
+			$("#category").treeview({
+				collapsed: true,
+				animated: "fast",
+				control:"#sidetreecontrol",
+                unique: true,
+				persist: "location"
+			});
+		})
+	</script>
+	<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/js_ajax.js"></script>
+	<script type="text/javascript" src="http://demow128.web4s.vn/public/javascript/js_cart.js"></script>
+	<script type="text/javascript">
+        var site_root_domain = 'http://demow128.web4s.vn';
+        //var snow_automatical = '0';
+		var site_img_url = "http://demow128.web4s.vn/public/images";
+		var lang_invalid_email = "Sai định dạng Email, ví dụ: <b>yourname@domain.com</b>, vui lòng thử lại !";
+		var lang_invalid_phone = "Sai định dạng số Phone, ví dụ: <b>+84xxxxxxxxx</b> hoặc <b>0xxxxxxxxx</b>, vui lòng thử lại !";
+		var lang_invalid_number = "Sai định dạng Số, ví dụ: <b>123456</b> hoặc <b>19021989</b>, vui lòng thử lại !";
+		var lang_invalid_date = "Sai định dạng ngày, cú pháp: <b>dd/mm/yyyy</b>, ví dụ: <b>19/02/2009</b>, vui lòng thử lại !";
+    </script>
+    
+    <!--[if IE 6]> <style type="text/css" media="all">@import url(http://demow128.web4s.vn/templates/w1-28/css/ie6-fix.css);</style> <![endif]-->
+    <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+	$(document).ready(function() {
+	  $('a.ajax_tooltip').cluetip();
+	});
+	</script>     
+ 
+	</head>
+		<body style="">        
+    <script language="javascript">
+        $(document).ready(function()
+        {
+            $(".choose_tpl").change(function(){
+                var id_code = $(".choose_tpl").val();
+                var element = $(this).find('option:selected'); 
+                var rel = element.attr("rel");
+                window.open(rel+"?id="+id_code);
+            });
+        });
+        function get_templates()
+        {
+            var id = 0;
+    
+            AjaxRequest.get(
+            {
+                'url': site_root_domain+"/cron/cron.php?mod=get_templates&key_web=cc876d6fb346cfaebe5901473c0bb67e&id="+id
+                ,'onSuccess':function(req)
+                {//alert(req.responseText);return;
+                  
+                    //document.getElementById('choose_tpl').innerHTML = req.responseText;
+                   	$(".choose_tpl").html(req.responseText);
+                }
+            }
+            );
+        }
+        get_templates();
+    </script> 
+
+        <div class="demoweb4s">
+        	<div class="demo-ctn">
+                <div class="taskbar">
+                <div class="listthemes">
+                    <h3>Chọn giao diện</h3>                    <select name="choose_tpl" class="choose_tpl" id="choose_tpl"></select>
+                    </div>
+
+                <ul class="demobtn">
+                    <li><a href="http://web.nhanhoa.com/dang-ky-thiet-ke-website/buoc-3/.html" class="buythemes">Đăng ký giao diện này</a></li>
+                    <li><a class="trythemes" style="cursor: pointer; ">Dùng thử</a></li>
+                </ul>					
+                    
+				<div class="login-popup form_trial"  id="login-dt" style="display:none;">
+                    	<a class="close"><img class="btn_close" alt="close" /></a>
+                       <form method="post" id="contact" name="contact" onSubmit="return check_form(this.id);">
+                        
+                        <div class="contact">
+                        <h3><span>Đăng ký dùng thử miễn phí 15 ngày <br /><p>(Phiên bản Enterprise)</p></span></h3>
+                            <div class="contact_field">
+                                <ul>
+                                    <li>
+                                    	<span>Họ tên:</span>
+                                        <input class="input_text" type="text" size="45" name="contact_realname" value="" autocomplete="off" emsg="Vui lòng nhập họ tên!">
+                                    </li>
+                                    
+                                    <li>
+                                    	<span>Email:</span>
+                                        <input class="input_text" type="text" size="30" name="contact_email" etype="email" value="" autocomplete="off" emsg="Vui lòng nhập email!">
+                                   </li>
+                                   
+                                    <li>
+                                    	<span>Địa chỉ:</span>
+                                        <input class="input_text" type="text" size="30" name="contact_address" value="" autocomplete="off" emsg="Vui lòng nhập địa chỉ!">
+                                   </li>
+                                   
+                                   <li>
+                                    	<span>Số điện thoại:</span>
+                                        <input class="input_text" type="text" size="30" name="contact_phone" value="" etype='phone' autocomplete="off" emsg="Vui lòng nhập số điện thoại!">
+                                   </li>
+                                   
+                                   <li>
+                                    	<span>Chọn tên miền</span>
+                                        <input class="input_text domain" type="text" id="domain" size="30" name="domain" value="" autocomplete="off" emsg="Vui lòng nhập domain dùng thử!">
+                                        <b>.vnws.com</b>
+                                   </li>
+                                   
+                                   <li>
+                                    	<span>Chọn khu vực:</span>
+                                        <select name="contact_region" defaultvalue="hcm">
+                                        	<option value="hcm">Hồ Chí Minh</option>
+                                            <option value="hn">Hà Nội</option>
+                                        </select>
+                                   </li>                          <li>
+                                    	<span>Chọn giao diện:</span>
+                                        <select name="contact_template" class="choose_tpl" id="choose_tpl" defaultvalue="158"></select>
+                                        <!--<select name="contact_template" defaultvalue="158" class="contact_template" id="choose_tpl" >    -->               	
+                                         </select>
+                                   </li>
+                                    <li>
+                                    	<span>Ghi chú:</span>
+                                        <textarea class="input_text" cols="40" rows="6" name="contact_content"></textarea>
+                                   </li>      
+                                   <li>
+                                        <span>Mã bảo mật:</span>
+                                        <input class="input_captcha" size="20" name="security_code" id="security_code" etype="number" emsg="Vui lòng nhập mã bảo vệ!"  maxlength="6"  type="text" >&nbsp;
+                                        <img  src="http://demow128.web4s.vn/?site=security&get=captcha&mod=default" align="absmiddle" alt="Security Code">	
+                                  </li>
+                                </ul>
+                            </div>
+                        
+                            <div class="contact_submit" >
+                                <input class="input_submit" type="button" style="cursor: pointer" onclick="javascript:send_info();" name="submit" value="Đăng ký web dùng thử" />
+                                &nbsp; <input type="reset" name="reset" value="Làm lại" />
+                                
+                            </div>
+                            
+                            <span></span>
+                            
+                      </div>
+                      <div class="note_contact">
+                           <h3 class="title">Tham khảo gói giải pháp Web4steps</h3>
+                           <ul class="listico">
+                           		<li class="ico1"><a href='http://web.nhanhoa.com/gioi-thieu/web4steps-la-gi.html' target="_blank">Tìm hiểu Web4steps<span>Về Web4steps, giới thiệu, chính sách...</span></a></li>
+                                <li class="ico2"><a href="http://web.nhanhoa.com/bao-gia-thiet-ke-web.html" target="_blank">Gói giải pháp<span>Bảng báo giá, chi phí đăng ký, dung lượng sử dụng...</span></a></li>
+                                <li class="ico3"><a href="http://web.nhanhoa.com/kho-giao-dien-thiet-ke-website.html" target="_blank">Kho giao diện<span>Nhiều mẫu web chuyên nghiệp, đa dạng nghành nghề....</span></a></li>
+                                <li class="ico4"><a href="http://web.nhanhoa.com/tinh-nang-noi-bat.html" target="_blank">Tính năng nổi bật<span>Các ưu điểm của khi đăng ký Web4steps...</span></a></li>
+                           </ul>
+                       </div>
+                        </form>
+                        <script language="javascript">rebuild_form("contact");</script>
+                    </div>
+			<script language="javascript">
+			
+            	function send_info()
+				{
+					check_form("contact");
+					var contact_realname = document.getElementById("contact_realname").value;
+					var contact_email = document.getElementById("contact_email").value;
+					var contact_address = document.getElementById("contact_address").value;
+					var contact_phone = document.getElementById("contact_phone").value;
+					var contact_region = document.getElementById("contact_region").value;	
+					var contact_template = document.getElementById("contact_template").value;
+					var contact_content = document.getElementById("contact_content").value;
+					var security_code = document.getElementById("security_code").value;
+					var domain = document.getElementById("domain").value;
+					
+			
+					// Check domain trial
+					if (domain)
+					{
+						AjaxRequest.get(
+						{
+							'url': site_root_domain+"/cron/cron.php?mod=check_domain_trial&key_web=610a3a34e2dcec65537a98d0132f9690&text="+domain
+							,'onSuccess':function(req)
+							{
+								if(req.responseText == 1) //OK
+								{
+									alert('Tên miền dùng thử này đã tồn tại, vui lòng chọn tên miền khác'); 
+									document.getElementById('domain').value = '';
+									return false;
+								}else
+								{
+									var info_contact = "contact_realname="+contact_realname+"&contact_email="+contact_email+"&contact_address="+contact_address+"&contact_phone="+contact_phone+"&contact_region="+contact_region+"&contact_template="+contact_template+"&contact_content="+contact_content+"&security_code="+security_code+"&domain="+domain;
+									
+									if(contact_realname != "" && contact_email != "" && contact_address != "" && contact_phone!= "" && security_code!= "")
+									{
+										AjaxRequest.get(
+										{
+											'url': site_root_domain+"/?site=contact&view=trial&"+info_contact
+									
+											,'onLoading':function(req)
+											{
+												document.getElementById("contact").innerHTML = "<div class='content_loading'><img class='loading' align='absmiddle' src='"+site_img_url+"/icons/ajax_loader.gif'/></div>";
+												
+											}
+											,'onSuccess':function(req)
+											{
+												//alert(req.responseText); return false;
+												if(req.responseText == 1)
+												{
+													//document.getElementById("loading_result").innerHTML = "";
+													alert("Bạn đã gửi thành công! Kiểm tra hộp thư Email hoặc Spam để nhận thông tin web dùng thử !");
+													window.location.href= site_root_domain;
+												}
+												else
+												{
+													alert("Không thành công!");
+													window.location.href= site_root_domain;	
+												}
+											}
+										}
+										);
+									}	
+								}
+							}
+						}
+						);
+					}
+					
+					
+					
+					
+				}
+			
+            </script>
+
+             <script language="javascript">
+                    	$(document).ready(function() 
+						{
+							$('a.trythemes').live('click', function(){
+							
+								//Getting the variable's value from a link 
+								var loginBox = '#login-dt';
+					
+								//Fade in the Popup
+								$(loginBox).fadeIn(300);
+								
+								//Set the center alignment padding + border see css style
+								var popMargTop = ($(loginBox).height() - 40) / 2; 
+								var popMargLeft = ($(loginBox).width() - 40) / 2; 
+								
+								$(loginBox).css({ 
+									'margin-top' : -popMargTop,
+									'margin-left' : -popMargLeft
+								});
+								
+								// Add the mask to body
+								$('body').append('<div id="mask"></div>');
+								$('#mask').fadeIn(300);
+								
+								return false;
+							});
+							// When clicking on the button close or the mask layer the popup closed
+							$('a.close, #mask').live('click', function() 
+							{ 
+								$('#mask , .dt-popup').fadeOut(300 , function() 
+								{
+								  $('#mask').remove();  
+								  $('.error').html('');
+								}); 
+								return false;
+							});
+						});
+					</script>
+                </div>
+         	</div>       
+        </div>
+       
+	<div class="container"><!--Begin container-->		<div class="header clr"><!--Begin header-->
+        	<div class="headtop clr container">
+            	<div class="usertop">
+					<div class="carttop">							<div id="load_compare">        <a class="none">
+            So sánh sản phẩm
+            <span>0</span>
+        </a>
+        <ul class="compare_list">				<li>Chưa có sản phẩm</li>        </ul>							</div>							<div id="load_cart">        <a class="pd_cart">
+        	 Giỏ hàng
+        	<span>0</span>
+        </a>
+        <ul class="cart_list">				<li>Chưa có sản phẩm</li>      	</ul>       							</div>    					</div>		<div id="load_nologin">
+            <ul class="nologin">
+                <li class="log"><a class="login-window" style="cursor: pointer;">Đăng nhập</a></li>
+                <li class="reg"><a href="http://demow128.web4s.vn/dang-ky-thanh-vien.html">Đăng ký</a></li>
+            </ul> 
+            <div id="login-box" class="login-popup">
+                <span class="login_title">Đăng nhập</span>
+                    <a href="#" class="close"><img src="close_pop.png" class="btn_close" alt="Close" /></a>
+                <form method="post" class="signin">
+                    <fieldset class="textbox">
+                    <label class="username">
+                    <span>Email đăng nhập</span>
+                    <input id="username" name="username" value="" type="text" autocomplete="on" >
+                    </label>
+                    <label class="password">
+                    <span>Mật khẩu</span>
+                    <input id="password" name="password" value="" type="password" >
+                    </label>
+                    <label class="error"></label>
+                    <span><input type="checkbox" checked="" value="1" id="is_remember" name="is_remember" class="log_check"><b>Lưu thông tin</b></span>
+                    <button class="button" type="submit">Đăng nhập</button>
+                    <!--<p>
+                    <a class="forgot" href="#">Forgot your password?</a>
+                    </p>-->        
+                    </fieldset>
+                </form>
+            </div>  
+      	</div>                      </div><!--End usertop-->
+            </div><!--End headtop-->
+        </div><!--End header-->		<div class="banner clr"><!--Begin banner-->				<div class="logo col-xs-12">
+					<a class="logo box_img" href="http://demow128.web4s.vn">
+                        <img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368870280_logo.png" alt="http://demow128.web4s.vn"/>
+                    </a>
+        		</div><!--End logo-->
+				<div class="bannerright hidden-xs">
+                <a href="http://demow128.web4s.vn">
+                    <img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368870319_banner.png" alt="http://demow128.web4s.vn"/>
+                </a>        		</div>        </div><!--End banner-->
+		<div class="mainnav clr">
+        				<div class="nav">					<ul class="listnav count_8">                <li class='active dropdown' ><a  href="http://demow128.web4s.vn/">Trang chủ</a>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/3_san-pham-apple.html">Sản phẩm Apple</a>			<ul class="submenu"> 								<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/4_iphone.html">Iphone</a>                </li>					<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/5_ipad.html">Ipad</a>                </li>					<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/6_macbook.html">Macbook</a>                </li> 			</ul>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/7_dien-thoai-samsung.html">Samsung</a>			<ul class="submenu"> 								<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/8_dong-galaxy.html">Galaxy</a>                </li>					<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/9_smart-phone-trung-cap.html">Smartphone trung cấp</a>                </li> 			</ul>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/10_dien-thoai-sony.html">Sony</a>			<ul class="submenu"> 								<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/11_dong-xperia.html">Dòng Xperia</a>                </li>					<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/12_smartphone-trung-cap.html">Smartphone trung cấp</a>                </li>					<li ><a  href="http://demow128.web4s.vn/danh-muc-san-pham/13_smartphone-binh-dan.html">Smartphone bình dân</a>                </li> 			</ul>                </li>                <li  ><a  href="http://demow128.web4s.vn/trang-tin-tuc.html">Tin tức</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/hoat-dong.html">Hoạt động</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/thanh-toan.html">Thanh toán</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/lien-he.html">Liên hệ</a>                </li>			</ul>			</div>            <div class="bottomnav">
+            	<p class="topnews hidden-xs"><a href="http://demow128.web4s.vn/chi-tiet-tin/kei-phan-tich-danh-gia-muc-do-kho-cua-tu-khoa.html">KEI - Phân tích đánh giá mức độ khó của từ khóa</a></p>
+                <div class="botnav_right">                        <div class='searchtop'>
+                       			<script type="text/javascript">
+									function LTrim( value ) 
+									{
+										var re = /\s*((\S+\s*)*)/;
+										return value.replace(re, "$1");
+									}
+									// Hàm cắt ký tự trắng ở cuối chuỗi
+									function RTrim( value ) 
+									{
+										var re = /((\s*\S+)*)\s*/;
+										return value.replace(re, "$1");
+									}
+									// Cắt các ký tự trắng ở đầu và cuối chuỗi
+									function trim( value ) 
+									{
+										return LTrim(RTrim(value));
+									}
+								
+                                	function send_url()
+									{
+										var key = document.getElementById("keyword").value;
+										key = trim(key);
+										key = key.replace(/ /g,"+");
+										//alert(key);return;
+										if(key != 'Tìm kiếm ...' && key !="")
+										{
+											document.location.href = site_root_domain+"/search_top/key/"+key+".html";
+										}	
+									}
+									
+									function send_url_2(event)
+									{
+										if(event.keyCode==13)
+										{
+											var key = document.getElementById("keyword").value;
+											key = trim(key);
+											key = key.replace(/ /g,"+");
+											//alert(key);return;
+											if(key != 'Tìm kiếm ...' && key !="")
+											{
+												document.location.href = site_root_domain+"/search_top/key/"+key+".html";
+											}
+										}
+									}
+  
+                                </script>
+                                <input class='searchtxt' autocomplete='on' id="keyword" onkeypress="return send_url_2(event);" type='text' name='keyword' value='Tìm kiếm ...' 
+                                onclick="if ( this.value == 'Tìm kiếm ...' ) { this.value=''; }"
+                                onblur="if ( this.value == '' ) { this.value = 'Tìm kiếm ...'; }">
+                                <input class="searchbtn" onclick="return send_url()" type='button' name='submit'/>
+							</div>
+            	</div>
+                <div class="clr"></div>
+            </div><!--End -->
+        </div><!--End mainnav-->
+        <div class="wraper clr"><!--Begin wraper-->                    
+         <div class="slider"><!--Begin slider--> 
+            <div class="wt-rotator"><!--Begin wt--> 
+                <div class="screen"><!--Begin screen--> 
+                    <div style="margin: 5px 0px; top: 264px; right: 0px; height: 26px; visibility: visible;" class="c-panel">
+                        <div style="float: right;" class="buttons">
+                            <div class="prev-btn"></div>
+                            <div class="play-btn"></div>
+                            <div class="next-btn"></div>
+                        </div>
+                        <div style="height: 26px; float: right;" class="thumbnails">
+                            <ul><li><a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368870906_slice1.png'></a><a href='http://demow128.web4s.vn'></a>
+                                <div class='mod-rotation-des'>
+                                            <a href='http://demow128.web4s.vn'><h3>slice1</h3></a>
+                                        </div>
+                                </li><li><a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368870937_slice2.png'></a><a href='http://demow128.web4s.vn'></a>
+                                <div class='mod-rotation-des'>
+                                            <a href='http://demow128.web4s.vn'><h3>slice2</h3></a>
+                                        </div>
+                                </li><li><a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368870956_slice3.png'></a><a href='http://demow128.web4s.vn'></a>
+                                <div class='mod-rotation-des'>
+                                            <a href='http://demow128.web4s.vn'><h3>slice3</h3></a>
+                                        </div>
+                                </li>
+                            </ul>
+     <script type="text/javascript"> jQuery(function($){var container=jQuery(".slider");
+	 container.wtRotator({width:1000, height:350, button_width:24, button_height:24, button_margin:5, auto_start:true, delay:5000, transition:"random", 
+	 transition_speed:700, block_size:75, vert_size:55, horz_size:50, cpanel_align:"BR", timer_align:"top", display_thumbs:false, display_dbuttons:true, 
+	 display_playbutton:true, tooltip_type:"image", display_numbers:false, display_timer:true, mouseover_pause:false, cpanel_mouseover:false, 
+	 text_mouseover:false, text_effect:"fade", text_sync:true, shuffle:true, block_delay:25, vstripe_delay:73, hstripe_delay:183});
+	 $('#yw1').animate({opacity: 1.0}, 5000).fadeOut('slow');});</script>
+                        </div>
+                    </div>
+                </div><!--End screen--> 
+            </div><!--End wt--> 
+        </div><!--End slider-->			<div class="mainblock right col-xs-12 col-sm-9">                    <div class="main_product"><!--Begin main_product-->                     <div class="tabbox">
+                        <ul class="tablist">                            <li id="tabs_0"><a class="click0 active" val="1" key="default">Sản phẩm mới</a></li>                            <li id="tabs_1"><a class="click0 " val="2" key="default">Sản phẩm tiêu biểu</a></li>                            <li id="tabs_2"><a class="click0 " val="3" key="default">Sản phẩm khuyến mãi</a></li>                        </ul>
+                    </div><!--End tabbox -->                        	<ul class="listitem item_four  clearfix" id="0default">        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369041573_smartphonehuawaynew.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369041573_smartphonehuawaynew.jpg" alt="Smart phone Huaway new" title="Smart phone Huaway new"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/20/smart-phone-huaway-new.html"><h2>Smart phone Huaway new</h2></a>                	<div class="price">                        <span class="price-nosale">5,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('20','Smart phone Huaway new','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('20','Smart phone Huaway new');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <span class="pd-promotion">-10%</span>                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369041209_samsunggalaxys4.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369041209_samsunggalaxys4.jpg" alt="Samsung Galaxy S4" title="Samsung Galaxy S4"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/19/samsung-galaxy-s4.html"><h2>Samsung Galaxy S4</h2></a>                	<div class="price">                 <span class="price-sale">5,000,000 VND</span>                        <span class="price-nosale">4,500,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('19','Samsung Galaxy S4','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('19','Samsung Galaxy S4');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038122_mobiadoplatinumcaocap.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038122_mobiadoplatinumcaocap.jpg" alt="Mobiistar Touch Kem 452" title="Mobiistar Touch Kem 452"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/18/mobiistar-touch-kem-452.html"><h2>Mobiistar Touch Kem 452</h2></a>                	<div class="price">                 <span class="price-sale">18,000,000 VND</span>                        <span class="price-nosale">20,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('18','Mobiistar Touch Kem 452','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('18','Mobiistar Touch Kem 452');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369040744_lgsmartphoneblack.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369040744_lgsmartphoneblack.jpg" alt="Mobiado Platinum cao cấp" title="Mobiado Platinum cao cấp"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/17/mobiado-platinum-cao-cap.html"><h2>Mobiado Platinum cao cấp</h2></a>                	<div class="price">                 <span class="price-sale">39,000,000 VND</span>                        <span class="price-nosale">40,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('17','Mobiado Platinum cao cấp','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('17','Mobiado Platinum cao cấp');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369040787_mobiistartouchkem452.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369040787_mobiistartouchkem452.jpg" alt="LG Smartphone Black" title="LG Smartphone Black"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/16/lg-smartphone-black.html"><h2>LG Smartphone Black</h2></a>                	<div class="price">                 <span class="price-sale">8,000,000 VND</span>                        <span class="price-nosale">9,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('16','LG Smartphone Black','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('16','LG Smartphone Black');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038417_iphonẻgs.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038417_iphonẻgs.jpg" alt="Iphone 3Gs" title="Iphone 3Gs"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/15/iphone-3gs.html"><h2>Iphone 3Gs</h2></a>                	<div class="price">                        <span class="price-nosale">10,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('15','Iphone 3Gs','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('15','Iphone 3Gs');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038375_dienthoaisonylt25iwhitexperiav.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038375_dienthoaisonylt25iwhitexperiav.jpg" alt="Điện thoại Sony LT25i White - Xperia V" title="Điện thoại Sony LT25i White - Xperia V"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/14/dien-thoai-sony-lt25i-white-xperia-v.html"><h2>Điện thoại Sony LT25i White - Xperia V</h2></a>                	<div class="price">                 <span class="price-sale">11,500,000 VND</span>                        <span class="price-nosale">12,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('14','Điện thoại Sony LT25i White - Xperia V','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('14','Điện thoại Sony LT25i White - Xperia V');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038287_dienthoaihtc8s.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038287_dienthoaihtc8s.jpg" alt="Điện thoại HTC 8S" title="Điện thoại HTC 8S"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/13/dien-thoai-htc-8s.html"><h2>Điện thoại HTC 8S</h2></a>                	<div class="price">                        <span class="price-nosale">8,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('13','Điện thoại HTC 8S','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('13','Điện thoại HTC 8S');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>                        </ul>                   </div>
+				<script type="text/javascript">
+				$(document).ready(function() 
+				{
+					$('.click0').click(function()
+					{
+						var val = $(this).attr("val");
+						var key = $(this).attr("key");
+						$('.click0').removeClass('active');
+						$(this).addClass('active');
+						AjaxRequest.get(
+
+						{
+							'url': site_root_domain+'?site=product&view=load_tabbox&value='+val+'&key='+key+'&position=0'
+							,'onLoading':function(req)
+							{
+								$('#0'+key).html("<img src='http://demow128.web4s.vn/public/images/loading_ajax.gif'/>");
+							}
+							,'onSuccess':function(req)
+							{		
+								$('#0'+key).html(req.responseText);
+								return false;
+							}
+						}
+						);
+						
+					});
+				});  //end of document.ready		
+       			 </script>                    <div class="main_product"><!--Begin main_product-->                     <div class="tabbox">
+                        <ul class="tablist">                            <li id="tabs_0"><a class="click1 active" val="3" key="product">Sản phẩm Apple</a></li>                            <li id="tabs_1"><a class="click1 " val="4" key="product">Iphone</a></li>                            <li id="tabs_2"><a class="click1 " val="5" key="product">Ipad</a></li>                            <li id="tabs_3"><a class="click1 " val="6" key="product">Macbook</a></li>                        </ul>
+                    </div><!--End tabbox -->                        	<ul class="listitem item_four  clearfix" id="1product">        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369041573_smartphonehuawaynew.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369041573_smartphonehuawaynew.jpg" alt="Smart phone Huaway new" title="Smart phone Huaway new"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/20/smart-phone-huaway-new.html"><h2>Smart phone Huaway new</h2></a>                	<div class="price">                        <span class="price-nosale">5,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('20','Smart phone Huaway new','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('20','Smart phone Huaway new');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <span class="pd-promotion">-10%</span>                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369041209_samsunggalaxys4.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369041209_samsunggalaxys4.jpg" alt="Samsung Galaxy S4" title="Samsung Galaxy S4"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/19/samsung-galaxy-s4.html"><h2>Samsung Galaxy S4</h2></a>                	<div class="price">                 <span class="price-sale">5,000,000 VND</span>                        <span class="price-nosale">4,500,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('19','Samsung Galaxy S4','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('19','Samsung Galaxy S4');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038122_mobiadoplatinumcaocap.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038122_mobiadoplatinumcaocap.jpg" alt="Mobiistar Touch Kem 452" title="Mobiistar Touch Kem 452"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/18/mobiistar-touch-kem-452.html"><h2>Mobiistar Touch Kem 452</h2></a>                	<div class="price">                 <span class="price-sale">18,000,000 VND</span>                        <span class="price-nosale">20,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('18','Mobiistar Touch Kem 452','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('18','Mobiistar Touch Kem 452');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369040744_lgsmartphoneblack.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369040744_lgsmartphoneblack.jpg" alt="Mobiado Platinum cao cấp" title="Mobiado Platinum cao cấp"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/17/mobiado-platinum-cao-cap.html"><h2>Mobiado Platinum cao cấp</h2></a>                	<div class="price">                 <span class="price-sale">39,000,000 VND</span>                        <span class="price-nosale">40,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('17','Mobiado Platinum cao cấp','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('17','Mobiado Platinum cao cấp');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>                        </ul>                </div>
+				<script type="text/javascript">
+				$(document).ready(function() 
+				{
+					$('.click1').click(function()
+					{
+						var val = $(this).attr("val");
+						var key = $(this).attr("key");
+						$('.click1').removeClass('active');
+						$(this).addClass('active');
+						AjaxRequest.get(
+
+						{
+							'url': site_root_domain+'?site=product&view=load_tabbox&value='+val+'&key='+key+'&position=1'
+							,'onLoading':function(req)
+							{
+								$('#1'+key).html("<img src='http://demow128.web4s.vn/public/images/loading_ajax.gif'/>");
+							}
+							,'onSuccess':function(req)
+							{		
+								$('#1'+key).html(req.responseText);
+								return false;
+							}
+						}
+						);
+						
+					});
+				});  //end of document.ready		
+       			 </script>                    <div class="main_product"><!--Begin main_product-->                     <div class="tabbox">
+                        <ul class="tablist">                            <li id="tabs_0"><a class="click2 active" val="7" key="product">Điện thoại Samsung</a></li>                            <li id="tabs_1"><a class="click2 " val="9" key="product">Smart phone trung cấp</a></li>                            <li id="tabs_2"><a class="click2 " val="8" key="product">Dòng Galaxy</a></li>                        </ul>
+                    </div><!--End tabbox -->                        	<ul class="listitem item_four  clearfix" id="2product">        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369040787_mobiistartouchkem452.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369040787_mobiistartouchkem452.jpg" alt="LG Smartphone Black" title="LG Smartphone Black"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/16/lg-smartphone-black.html"><h2>LG Smartphone Black</h2></a>                	<div class="price">                 <span class="price-sale">8,000,000 VND</span>                        <span class="price-nosale">9,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('16','LG Smartphone Black','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('16','LG Smartphone Black');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038417_iphonẻgs.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038417_iphonẻgs.jpg" alt="Iphone 3Gs" title="Iphone 3Gs"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/15/iphone-3gs.html"><h2>Iphone 3Gs</h2></a>                	<div class="price">                        <span class="price-nosale">10,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('15','Iphone 3Gs','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('15','Iphone 3Gs');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038375_dienthoaisonylt25iwhitexperiav.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038375_dienthoaisonylt25iwhitexperiav.jpg" alt="Điện thoại Sony LT25i White - Xperia V" title="Điện thoại Sony LT25i White - Xperia V"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/14/dien-thoai-sony-lt25i-white-xperia-v.html"><h2>Điện thoại Sony LT25i White - Xperia V</h2></a>                	<div class="price">                 <span class="price-sale">11,500,000 VND</span>                        <span class="price-nosale">12,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('14','Điện thoại Sony LT25i White - Xperia V','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('14','Điện thoại Sony LT25i White - Xperia V');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>        <li>
+        	<div class="pd-home">                <div class="pd-img">				<a href='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/1369038287_dienthoaihtc8s.jpg' rel='group' id="example2"><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1369038287_dienthoaihtc8s.jpg" alt="Điện thoại HTC 8S" title="Điện thoại HTC 8S"/></a>                </div>
+                <a href="http://demow128.web4s.vn/san-pham/13/dien-thoai-htc-8s.html"><h2>Điện thoại HTC 8S</h2></a>                	<div class="price">                        <span class="price-nosale">8,000,000 VND</span>                	</div>						<div class="pd-btn">                        <a class="buy" onclick="Javascript: add_cart_once_v2('13','Điện thoại HTC 8S','0');"  style="cursor: pointer;">
+                        Mua hàng</a>                        <a onclick="Javascript: add_product_compare('13','Điện thoại HTC 8S');" class="check" style="cursor: pointer;">
+                        So sánh</a>                        </div>        	</div>
+        </li>                        </ul>                </div>
+				<script type="text/javascript">
+				$(document).ready(function() 
+				{
+					$('.click2').click(function()
+					{
+						var val = $(this).attr("val");
+						var key = $(this).attr("key");
+						$('.click2').removeClass('active');
+						$(this).addClass('active');
+						AjaxRequest.get(
+
+						{
+							'url': site_root_domain+'?site=product&view=load_tabbox&value='+val+'&key='+key+'&position=2'
+							,'onLoading':function(req)
+							{
+								$('#2'+key).html("<img src='http://demow128.web4s.vn/public/images/loading_ajax.gif'/>");
+							}
+							,'onSuccess':function(req)
+							{		
+								$('#2'+key).html(req.responseText);
+								return false;
+							}
+						}
+						);
+						
+					});
+				});  //end of document.ready		
+       			 </script>                    <div class="main_news "><!--Begin main_new-->                     <div class="tabbox">
+                        <ul class="tablist">                            <li id="tabs_0"><a class="click3 active" val="2" key="news">Tin tức</a></li>                            <li id="tabs_1"><a class="click3 " val="1" key="news">Thể thao</a></li>                        </ul>
+                    </div><!--End tabbox -->                        <ul class="listnews clearfix" id="3news">        <li class="topnews">
+            <a><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1321672957_datsaigon.jpg"/></a>
+            <h2><a href="http://demow128.web4s.vn/chi-tiet-tin/dat-nen-ven-sai-gon-hut-khach.html">Đất nền ven Sài Gòn hút khách</a></h2>
+            <p>Hai tuần đầu tháng 11, giao dịch nhà đất nội thành TP HCM vẫn ảm đạm trừ dự án An Tiến bán được một nửa trong số 500 căn hạ giá. Trong khi đó, đất nền ven Sài Gòn chỉ còn 3-5 triệu đồng một m2 lại hút khách.</p>
+        </li>        <li class="mainnews">
+            <a><img src="http://demow128.web4s.vn/profiles/demow128web4svn/uploads/attach/thumbnail/1321672880_bietthu.jpg"/></a>
+            <h2><a href="http://demow128.web4s.vn/chi-tiet-tin/gia-biet-thu-ha-noi-cao-ngat-nguong.html">Giá biệt thự Hà Nội cao ngất ngưởng</a></h2>
+        </li>                        </ul>                   </div>
+				<script type="text/javascript">
+				$(document).ready(function() 
+				{
+					$('.click3').click(function()
+					{
+						var val = $(this).attr("val");
+						var key = $(this).attr("key");
+						$('.click3').removeClass('active');
+						$(this).addClass('active');
+						AjaxRequest.get(
+
+						{
+							'url': site_root_domain+'?site=product&view=load_tabbox&value='+val+'&key='+key+'&position=3'
+							,'onLoading':function(req)
+							{
+								$('#3'+key).html("<img src='http://demow128.web4s.vn/public/images/loading_ajax.gif'/>");
+							}
+							,'onSuccess':function(req)
+							{		
+								$('#3'+key).html(req.responseText);
+								return false;
+							}
+						}
+						);
+						
+					});
+				});  //end of document.ready		
+       			 </script></div><!--End mainblock-->    	<div class="sideblock left col-xs-12  col-sm-3">        
+                <!-- Danh mục sản phẩm -->
+                <div class="side_category">
+                    <div class="titleside"><span></span>Danh mục</div>
+                    <div class="side_ctn">                        <ul class="category" >							<li  class='open icon1'  class='icon1'><a href="http://demow128.web4s.vn/danh-muc-san-pham/3_san-pham-apple.html">Sản phẩm Apple</a>						<ul class="sub_category">								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/4_iphone.html">Iphone</a></li>								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/5_ipad.html">Ipad</a></li>								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/6_macbook.html">Macbook</a></li>						</ul>		
+					</li>						<li  class='icon2'><a href="http://demow128.web4s.vn/danh-muc-san-pham/7_dien-thoai-samsung.html">Điện thoại Samsung</a>						<ul class="sub_category">								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/8_dong-galaxy.html">Dòng Galaxy</a></li>								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/9_smart-phone-trung-cap.html">Smart phone trung cấp</a></li>						</ul>		
+					</li>						<li  class='icon3'><a href="http://demow128.web4s.vn/danh-muc-san-pham/10_dien-thoai-sony.html">Điện thoại Sony</a>						<ul class="sub_category">								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/11_dong-xperia.html">Dòng Xperia</a></li>								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/12_smartphone-trung-cap.html">Smartphone trung cấp</a></li>								<li><a href="http://demow128.web4s.vn/danh-muc-san-pham/13_smartphone-binh-dan.html">Smartphone bình dân</a></li>						</ul>		
+					</li>                            
+                        </ul>                        
+                    </div>
+                </div>                <!-- Hỗ trợ -->
+                <div class="side_support">
+                    <div class="titleside"><span></span>Hỗ trợ trực tuyến</div>
+                    <div class="side_ctn">
+                    	<ul>               	 	<li>
+                    	<span> Hỗ trợ kỹ thuật</span>
+                    	<a href="ymsgr:sendIM?web4steps"><img src="http://opi.yahoo.com/online?u=web4steps&amp;m=g&amp;t=2"></a>
+                	</li>                	<li class='skype' style="height:35px">
+                    	<span>Hỗ trợ kinh doanh</span>
+                        <a href="skype:web4steps?chat">
+                        	<img src="http://mystatus.skype.com/smallclassic/web4steps" height="22" style="float:left; margin-right:5px;">
+                        </a>
+                    </li>
+                       				</ul>
+         	</div>       
+		</div>            <!-- Liên kết -->
+            <div class="side_link">
+                <div class="titleside"><span></span>Liên kết Website</div>
+                <div class="side_ctn">					<script>
+                    $(document).ready(function(){
+                    	$('#listlink').change(function()
+                        { 
+                            var value = $(this).val();
+ 							if (value != 0)
+                            {
+                            	window.open(value,'_newtab');
+                          	}      
+                        });
+					}); 
+                    </script>
+                    	
+					<!--<select id="listlink">
+                    	<option value="0">Link</option>-->
+                        <!--<option value=""></option>--> 
+                   <ul class="list_link">             			<li><a href="http://zui.vn/" target="_blank">Xem phim HD miễn phí</a></li>
+                                     			<li><a href="http://nhanhoa.com/ten-mien.html" target="_blank">Kiem tra ten mien</a></li>
+                                     			<li><a href="http://nhanhoa.com/ten-mien.html" target="_blank">Dang ky ten mien</a></li>
+                                     			<li><a href="http://nhanhoa.com/ten-mien.html" target="_blank">ten mien</a></li>
+                                     			<li><a href="http://nhanhoa.com/hosting.html" target="_blank">hosting</a></li>
+                                     			<li><a href="http://nhanhoa.com" target="_blank">Nhân Hòa</a></li>
+                                     			<li><a href="http://web.nhanhoa.com" target="_blank">Thiet ke web</a></li>
+                        					</ul>
+					<!--</select>-->        		</div>
+			</div>				<!-- Quảng cáo-->
+				<div class="side_adv">
+					<div class="titleside"><span></span>Quảng cáo</div>
+					<div class="side_ctn">
+						<ul class="module_adv">							<li>
+								<object width='180' height='300'>
+									<embed src='http://demow128.web4s.vn/profiles/demow128web4svn/uploads/logo/1368935771_guciano180x300_131112.swf' type='application/x-shockwave-flash' wmode='transparent' width='180' height='300'></embed>	
+								</object>
+							</li>	  						</ul>
+					</div>
+				</div>			<div class="side_poll">
+            	<div class="titleside"><span></span>Thăm dò ý kiến</div>
+				<div class="side_ctn">
+                
+                <p>Bạn thấy website này thế nào?</p>
+                <ul>
+                	
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='2'>
+							<span> Tuyệt vời</span>
+						</li>
+					
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='3'>
+							<span> Chất lượng</span>
+						</li>
+					
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='4'>
+							<span> Đẹp</span>
+						</li>
+					
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='5'>
+							<span> Chuẩn</span>
+						</li>
+					
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='6'>
+							<span> Bình thường</span>
+						</li>
+					
+						<li>
+							<input type='radio' name='choose_answer' id='choose_answer' value='7'>
+							<span> Khác</span>
+						</li>
+					
+                    <li>
+                        <span>Mã bảo mật: </span>
+                         <input class="input_captcha val_code" size="20" name="security_code" id="security_code"  maxlength="6"  type="text" >&nbsp;
+                         <div id="images_code" style="float: left;"><img  src="http://demow128.web4s.vn/?site=security&get=captcha&mod=default" align="absmiddle" alt="Security Code"></div>	
+                     </li>
+                     <li class="end">
+                     	<input type="button" class="pick_poll" value="Biểu quyết" />
+                        <a class="show_chart" onclick="return show_chart('msg');" style="cursor:pointer;">Xem thống kê</a>
+                     </li>                    
+                </ul>	
+               <input type="hidden" value="" class="choose_val"  />                 
+                </div>
+            </div>
+            
+            <div class="login-popup chart_popup" id="show-chart" style="display:none;">
+            	<a class="close"><img class="btn_close" alt="close" /></a>
+                <div id='message_chart'></div>
+                <div class="result_chart">
+                    <p>Bạn thấy website này thế nào?</p>
+                    <ul>
+                        
+						<li title='3 Phiếu'><span>Tuyệt vời</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='225px' height = '20px'></div><b>75%</b></li>
+					
+						<li title='0 Phiếu'><span>Chất lượng</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='0' height = '20px'></div><b>0%</b></li>
+					
+						<li title='0 Phiếu'><span>Đẹp</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='0' height = '20px'></div><b>0%</b></li>
+					
+						<li title='0 Phiếu'><span>Chuẩn</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='0' height = '20px'></div><b>0%</b></li>
+					
+						<li title='1 Phiếu'><span>Bình thường</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='75px' height = '20px'></div><b>25%</b></li>
+					
+						<li title='0 Phiếu'><span>Khác</span><div class='img'><img src='http://demow128.web4s.vn/public/images/statbar.gif' width='0' height = '20px'></div><b>0%</b></li>
+					
+                    </ul>
+                    <span class="total">Tổng số lượt bình chọn  <b>4</b></span>
+                </div>
+            </div>
+
+            
+            <script language="javascript">
+				$(":input[name=choose_answer]").click(function(){
+						$(":input[name=choose_answer]").removeAttr("checked");
+						$(this).attr("checked","checked");
+						$(".choose_val").val($(this).val());
+					});
+					
+            	$(".pick_poll").click(function(){
+				
+						var val = $(".choose_val").val();
+						var sec_code = $(".val_code").val();
+						var code_md5 = sec_code.toString();
+						
+						if(val)
+						{
+							
+							$.ajax(
+							{
+								type: "post",
+								url: site_root_domain+"/?site=poll&act=vote&sub=code_security",
+								success: function(req)
+								{
+									req = LTrim(RTrim(req));
+									if($.md5(code_md5)!=req)
+									{
+										alert("Bạn nhập mã bảo mật không đúng!");
+										return false;	
+									}else
+									{
+										$.ajax(
+										{
+											type: "post",
+											url: site_root_domain+"/?site=poll&act=vote&id_vote="+val+"&security_code="+sec_code,
+											success: function(req)
+											{ //alert(req.responseText);return;
+												if(req== 2)
+												{
+													alert("Bạn nhập mã bảo mật không đúng!");
+													
+												}else if(req==0)
+												{
+													document.getElementById("message_chart").innerHTML = "Bạn đã bình chọn rồi, không thể bình chọn thêm!";
+													show_chart();
+												}else
+												{
+													alert("Bạn đã bình chọn thành công!");
+													//window.location.href= site_root_domain;
+													document.getElementById("show-chart").innerHTML = req;	
+													show_chart();
+													document.getElementById("security_code").innerHTML ="";
+													//refresh_captcha();
+												}	
+											}	
+										})
+									}
+								}	
+							})
+							
+							
+							
+						}
+					})
+            </script>
+            
+            <script language="javascript">
+                    	
+								
+							 function show_chart(msg)
+							 {
+								 if(msg)
+								 {
+									document.getElementById("message_chart").innerHTML = "";
+								 }
+								//Getting the variable's value from a link 
+								var loginBox = '#show-chart';
+					
+								//Fade in the Popup
+								$(loginBox).fadeIn(300);
+								
+								//Set the center alignment padding + border see css style
+								var popMargTop = ($(loginBox).height() - 40) / 2; 
+								var popMargLeft = ($(loginBox).width() - 40) / 2; 
+								
+								$(loginBox).css({ 
+									'margin-top' : -popMargTop,
+									'margin-left' : -popMargLeft
+								});
+								
+								// Add the mask to body
+								$('body').append('<div id="mask"></div>');
+								$('#mask').fadeIn(300);
+								
+								//return false;
+							}
+				$(document).ready(function() 
+						{							
+							// When clicking on the button close or the mask layer the popup closed
+							$('a.close, #mask').live('click', function() 
+							{ 
+								$('#mask , .dt-popup').fadeOut(300 , function() 
+								{
+								  $('#mask').remove();  
+								  $('.error').html('');
+								}); 
+								return false;
+							});
+						});
+		</script>
+        <script language="javascript">						
+					function refresh_captcha()
+					{
+						AjaxRequest.get(
+						{
+							"url": site_root_domain+"/?site=poll&act=vote&sub=refresh_code",
+							"onSuccess": function(req){
+								alert(req.responseText);return;
+								if(req.responseText == 1)
+								{									
+									document.getElementById("images_code").innerHTML = <img src="http://demow128.web4s.vn/?site=security&get=captcha&mod=default" align="absmiddle" alt="Security Code">+"daadaa";
+								}
+								}	
+						})	
+					}					
+					</script>            <!--Lượt truy cập-->
+            <div class="side_stat">
+                <div class="titleside"><span></span>Lượt truy cập</div>
+                <div class="side_ctn">
+                    <ul class="portal_counter">
+                        <!--<li class="counter_online">Đang xem  <span><span style="position:absolute; z-index: 999; width: 86px; height: 21px;"></span>
+						<script id="_wauma6">var _wau = _wau || []; _wau.push(["small", "tnzavbnqw1wz", "ma6"]);
+						(function() {var s=document.createElement("script"); s.async=true;
+						s.src="http://widgets.amung.us/small.js";
+						document.getElementsByTagName("head")[0].appendChild(s);
+						})();</script></span></li>-->                        
+                        <li class="counter_day">Hôm nay <span> 13</span></li>
+                        <li class="counter_total">Tổng lượt truy cập  <span>32,621</span></li>
+                    </ul>
+              	</div>      
+            </div><!--End mod-right-->			<div class="side_tag">
+            	<div class="titleside">Tag Cloud</div>
+                <div class="side_ctn">
+				Đang cập nhật            	</div>
+            </div>
+	</div><!--End leftcol-->      	</div><!--End wrapper-->      
+                <div class="footer clr">            	<ul class="navfooter">                <li class='active dropdown' ><a  href="http://demow128.web4s.vn/">Trang chủ</a>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/3_san-pham-apple.html">Sản phẩm Apple</a>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/7_dien-thoai-samsung.html">Samsung</a>                </li>                <li  class="dropdown"><a  href="http://demow128.web4s.vn/danh-muc-san-pham/10_dien-thoai-sony.html">Sony</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/trang-tin-tuc.html">Tin tức</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/hoat-dong.html">Hoạt động</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/thanh-toan.html">Thanh toán</a>                </li>                <li  ><a  href="http://demow128.web4s.vn/lien-he.html">Liên hệ</a>                </li>			</ul>                    <div class="footer-content">                	<h2></h2>
+                    <ul>
+	<li>Web4steps Website Demo - <a href="http://web.nhanhoa.com">Thiet ke web</a></li>
+	<li>Địa chỉ: 32 V&otilde; Văn Dũng, Đống Đa, H&agrave; Nội</li>
+	<li>Điện thoại: (04) 3 5626 533</li>
+	<li>Fax:(04) 3 5626 539</li>
+</ul>
+            </div><!--End footer-content-->        <script type="text/javascript">
+            $(document).ready(function() {
+               $(window).scroll(function() {
+                if($(window).scrollTop() != 0) {
+                    $('#back_to_top').fadeIn();
+                } else {
+                    $('#back_to_top').fadeOut();
+                }
+               });
+               $('#back_to_top').click(function() {
+                $('html, body').animate({scrollTop:0},500);
+               });
+            });
+    	</script>
+        <div id="back_to_top"></div>
+        </div><!--End footer-->       		<!--<div class="coppyright">Copyright 2012 <span>demow128.web4s.vn</span>. All Rights Reserved</div>-->		</div><!--End w1-container-->     	
+	
+    <script type="text/javascript">
+    function openJS(){alert('loaded')}
+    function closeJS(){alert('closed')}
+    </script>    </body>
+</html>

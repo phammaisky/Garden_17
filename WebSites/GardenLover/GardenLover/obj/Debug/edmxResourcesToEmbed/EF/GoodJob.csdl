@@ -1,0 +1,1219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoodJobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GoodJobEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CheckIsBOD">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="Valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="CheckIsReporter">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="KpiReportId" Mode="In" Type="String" />
+      <Parameter Name="Valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="CheckRoleKpi">
+      <Parameter Name="ManagerId" Mode="In" Type="String" />
+      <Parameter Name="KpiReportId" Mode="In" Type="Int64" />
+      <Parameter Name="RoleKpi" Mode="In" Type="String" />
+      <Parameter Name="Valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GoodJobModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GoodJobModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="kAverageMarks" EntityType="GoodJobModel.kAverageMark" />
+    <EntitySet Name="kCompes" EntityType="GoodJobModel.kCompe" />
+    <EntitySet Name="kCompeForAlls" EntityType="GoodJobModel.kCompeForAll" />
+    <EntitySet Name="kCompeForSomes" EntityType="GoodJobModel.kCompeForSome" />
+    <EntitySet Name="kJobs" EntityType="GoodJobModel.kJob" />
+    <EntitySet Name="kJobDetails" EntityType="GoodJobModel.kJobDetail" />
+    <EntitySet Name="kNextPlans" EntityType="GoodJobModel.kNextPlan" />
+    <EntitySet Name="kNextPlanDetails" EntityType="GoodJobModel.kNextPlanDetail" />
+    <EntitySet Name="kRates" EntityType="GoodJobModel.kRate" />
+    <EntitySet Name="kRateForAlls" EntityType="GoodJobModel.kRateForAll" />
+    <EntitySet Name="kRelationTypes" EntityType="GoodJobModel.kRelationType" />
+    <EntitySet Name="kRelationTypeForAlls" EntityType="GoodJobModel.kRelationTypeForAll" />
+    <EntitySet Name="kReports" EntityType="GoodJobModel.kReport" />
+    <EntitySet Name="kReport_History" EntityType="GoodJobModel.kReport_History" />
+    <EntitySet Name="kStates" EntityType="GoodJobModel.kState" />
+    <EntitySet Name="kSteps" EntityType="GoodJobModel.kStep" />
+    <EntitySet Name="kStepForAlls" EntityType="GoodJobModel.kStepForAll" />
+    <EntitySet Name="sysdiagrams" EntityType="GoodJobModel.sysdiagram" />
+    <EntitySet Name="vApps" EntityType="GoodJobModel.vApp" />
+    <EntitySet Name="vAppFunctions" EntityType="GoodJobModel.vAppFunction" />
+    <EntitySet Name="vBranches" EntityType="GoodJobModel.vBranch" />
+    <EntitySet Name="vCompanies" EntityType="GoodJobModel.vCompany" />
+    <EntitySet Name="vCorporations" EntityType="GoodJobModel.vCorporation" />
+    <EntitySet Name="vCountries" EntityType="GoodJobModel.vCountry" />
+    <EntitySet Name="vCurrencies" EntityType="GoodJobModel.vCurrency" />
+    <EntitySet Name="vDepartments" EntityType="GoodJobModel.vDepartment" />
+    <EntitySet Name="vDepartmentForAlls" EntityType="GoodJobModel.vDepartmentForAll" />
+    <EntitySet Name="vGrades" EntityType="GoodJobModel.vGrade" />
+    <EntitySet Name="vGradeForAlls" EntityType="GoodJobModel.vGradeForAll" />
+    <EntitySet Name="vLanguages" EntityType="GoodJobModel.vLanguage" />
+    <EntitySet Name="vLoginUsers" EntityType="GoodJobModel.vLoginUser" />
+    <EntitySet Name="vRanks" EntityType="GoodJobModel.vRank" />
+    <EntitySet Name="vRankForAlls" EntityType="GoodJobModel.vRankForAll" />
+    <EntitySet Name="vRelationTypes" EntityType="GoodJobModel.vRelationType" />
+    <EntitySet Name="vRelationTypeForAlls" EntityType="GoodJobModel.vRelationTypeForAll" />
+    <EntitySet Name="vRoles" EntityType="GoodJobModel.vRole" />
+    <EntitySet Name="vRoleForAlls" EntityType="GoodJobModel.vRoleForAll" />
+    <EntitySet Name="vUserInfoes" EntityType="GoodJobModel.vUserInfo" />
+    <AssociationSet Name="FK_kAverageMark_kRate" Association="GoodJobModel.FK_kAverageMark_kRate">
+      <End Role="kRate" EntitySet="kRates" />
+      <End Role="kAverageMark" EntitySet="kAverageMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompe_kCompeForSome" Association="GoodJobModel.FK_kCompe_kCompeForSome">
+      <End Role="kCompeForSome" EntitySet="kCompeForSomes" />
+      <End Role="kCompe" EntitySet="kCompes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompe_kReport" Association="GoodJobModel.FK_kCompe_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kCompe" EntitySet="kCompes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompeForSome_kCompeForAll" Association="GoodJobModel.FK_kCompeForSome_kCompeForAll">
+      <End Role="kCompeForAll" EntitySet="kCompeForAlls" />
+      <End Role="kCompeForSome" EntitySet="kCompeForSomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompeForSome_kRelationTypeForAll" Association="GoodJobModel.FK_kCompeForSome_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kCompeForSome" EntitySet="kCompeForSomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJob_kReport" Association="GoodJobModel.FK_kJob_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kJob" EntitySet="kJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJobDetail_kJob" Association="GoodJobModel.FK_kJobDetail_kJob">
+      <End Role="kJob" EntitySet="kJobs" />
+      <End Role="kJobDetail" EntitySet="kJobDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJobDetail_kReport" Association="GoodJobModel.FK_kJobDetail_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kJobDetail" EntitySet="kJobDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlan_kReport" Association="GoodJobModel.FK_kNextPlan_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kNextPlan" EntitySet="kNextPlans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlanDetail_kNextPlan" Association="GoodJobModel.FK_kNextPlanDetail_kNextPlan">
+      <End Role="kNextPlan" EntitySet="kNextPlans" />
+      <End Role="kNextPlanDetail" EntitySet="kNextPlanDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlanDetail_kReport" Association="GoodJobModel.FK_kNextPlanDetail_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kNextPlanDetail" EntitySet="kNextPlanDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRate_kRateForAll" Association="GoodJobModel.FK_kRate_kRateForAll">
+      <End Role="kRateForAll" EntitySet="kRateForAlls" />
+      <End Role="kRate" EntitySet="kRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRelationType_kRelationTypeForAll_Compe" Association="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Compe">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kRelationType" EntitySet="kRelationTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRelationType_kRelationTypeForAll_Step" Association="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Step">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kRelationType" EntitySet="kRelationTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kRelationTypeForAll" Association="GoodJobModel.FK_kReport_History_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kRelationTypeForAll" Association="GoodJobModel.FK_kReport_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kReport" EntitySet="kReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kRelationTypeForAll" Association="GoodJobModel.FK_kStep_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kStep" EntitySet="kSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kRelationTypeForAll1" Association="GoodJobModel.FK_kStep_kRelationTypeForAll1">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAlls" />
+      <End Role="kStep" EntitySet="kSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kReport" Association="GoodJobModel.FK_kReport_History_kReport">
+      <End Role="kReport" EntitySet="kReports" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kState" Association="GoodJobModel.FK_kReport_kState">
+      <End Role="kState" EntitySet="kStates" />
+      <End Role="kReport" EntitySet="kReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kStep" Association="GoodJobModel.FK_kReport_kStep">
+      <End Role="kStep" EntitySet="kSteps" />
+      <End Role="kReport" EntitySet="kReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kState" Association="GoodJobModel.FK_kReport_History_kState">
+      <End Role="kState" EntitySet="kStates" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kStep" Association="GoodJobModel.FK_kReport_History_kStep">
+      <End Role="kStep" EntitySet="kSteps" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kStepForAll" Association="GoodJobModel.FK_kStep_kStepForAll">
+      <End Role="kStepForAll" EntitySet="kStepForAlls" />
+      <End Role="kStep" EntitySet="kSteps" />
+    </AssociationSet>
+    <EntitySet Name="ckJobs" EntityType="GoodJobModel.ckJob" />
+    <EntitySet Name="ckJobDetails" EntityType="GoodJobModel.ckJobDetail" />
+    <EntitySet Name="ckReports" EntityType="GoodJobModel.ckReport" />
+    <AssociationSet Name="FK_ckJob_ckReport" Association="GoodJobModel.FK_ckJob_ckReport">
+      <End Role="ckReport" EntitySet="ckReports" />
+      <End Role="ckJob" EntitySet="ckJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ckJobDetail_ckJob" Association="GoodJobModel.FK_ckJobDetail_ckJob">
+      <End Role="ckJob" EntitySet="ckJobs" />
+      <End Role="ckJobDetail" EntitySet="ckJobDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ckJobDetail_ckReport" Association="GoodJobModel.FK_ckJobDetail_ckReport">
+      <End Role="ckReport" EntitySet="ckReports" />
+      <End Role="ckJobDetail" EntitySet="ckJobDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="kAverageMark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Year" Type="Int64" Nullable="false" />
+    <Property Name="AverageValue" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="RateId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="kRate" Relationship="GoodJobModel.FK_kAverageMark_kRate" FromRole="kAverageMark" ToRole="kRate" />
+  </EntityType>
+  <EntityType Name="kCompe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="CompeForSomeId" Type="Int64" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Percent" Type="Int64" />
+    <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SelfMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="ManagerMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="ResultMark" Type="Decimal" Precision="4" Scale="2" />
+    <NavigationProperty Name="kCompeForSome" Relationship="GoodJobModel.FK_kCompe_kCompeForSome" FromRole="kCompe" ToRole="kCompeForSome" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kCompe_kReport" FromRole="kCompe" ToRole="kReport" />
+  </EntityType>
+  <EntityType Name="kCompeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="CompeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Percent" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="kCompeForSomes" Relationship="GoodJobModel.FK_kCompeForSome_kCompeForAll" FromRole="kCompeForAll" ToRole="kCompeForSome" />
+  </EntityType>
+  <EntityType Name="kCompeForSome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="CompeRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="CompeRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompeForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Percent" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="kCompes" Relationship="GoodJobModel.FK_kCompe_kCompeForSome" FromRole="kCompeForSome" ToRole="kCompe" />
+    <NavigationProperty Name="kCompeForAll" Relationship="GoodJobModel.FK_kCompeForSome_kCompeForAll" FromRole="kCompeForSome" ToRole="kCompeForAll" />
+    <NavigationProperty Name="kRelationTypeForAll" Relationship="GoodJobModel.FK_kCompeForSome_kRelationTypeForAll" FromRole="kCompeForSome" ToRole="kRelationTypeForAll" />
+  </EntityType>
+  <EntityType Name="kJob">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Percent" Type="Int64" />
+    <Property Name="SelfMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="ManagerMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="ResultMark" Type="Decimal" Precision="4" Scale="2" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kJob_kReport" FromRole="kJob" ToRole="kReport" />
+    <NavigationProperty Name="kJobDetails" Relationship="GoodJobModel.FK_kJobDetail_kJob" FromRole="kJob" ToRole="kJobDetail" />
+  </EntityType>
+  <EntityType Name="kJobDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="JobId" Type="Int64" />
+    <Property Name="JobDetailName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kJob" Relationship="GoodJobModel.FK_kJobDetail_kJob" FromRole="kJobDetail" ToRole="kJob" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kJobDetail_kReport" FromRole="kJobDetail" ToRole="kReport" />
+  </EntityType>
+  <EntityType Name="kNextPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="NextPlanName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Percent" Type="Int64" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kNextPlan_kReport" FromRole="kNextPlan" ToRole="kReport" />
+    <NavigationProperty Name="kNextPlanDetails" Relationship="GoodJobModel.FK_kNextPlanDetail_kNextPlan" FromRole="kNextPlan" ToRole="kNextPlanDetail" />
+  </EntityType>
+  <EntityType Name="kNextPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="NextPlanId" Type="Int64" />
+    <Property Name="NextPlanDetailName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="kNextPlan" Relationship="GoodJobModel.FK_kNextPlanDetail_kNextPlan" FromRole="kNextPlanDetail" ToRole="kNextPlan" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kNextPlanDetail_kReport" FromRole="kNextPlanDetail" ToRole="kReport" />
+  </EntityType>
+  <EntityType Name="kRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="RateForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Min" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="Max" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <NavigationProperty Name="kAverageMarks" Relationship="GoodJobModel.FK_kAverageMark_kRate" FromRole="kRate" ToRole="kAverageMark" />
+    <NavigationProperty Name="kRateForAll" Relationship="GoodJobModel.FK_kRate_kRateForAll" FromRole="kRate" ToRole="kRateForAll" />
+  </EntityType>
+  <EntityType Name="kRateForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="RateName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="Min" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="Max" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <NavigationProperty Name="kRates" Relationship="GoodJobModel.FK_kRate_kRateForAll" FromRole="kRateForAll" ToRole="kRate" />
+  </EntityType>
+  <EntityType Name="kRelationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="StepRelationTypeId" Type="Int64" />
+    <Property Name="CompeRelationTypeId" Type="Int64" />
+    <NavigationProperty Name="kRelationTypeForAll" Relationship="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Compe" FromRole="kRelationType" ToRole="kRelationTypeForAll" />
+    <NavigationProperty Name="kRelationTypeForAll1" Relationship="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Step" FromRole="kRelationType" ToRole="kRelationTypeForAll" />
+  </EntityType>
+  <EntityType Name="kRelationTypeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RelationTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefaultStepRelationType" Type="Boolean" Nullable="false" />
+    <Property Name="IsDefaultCompeRelationType" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="kCompeForSomes" Relationship="GoodJobModel.FK_kCompeForSome_kRelationTypeForAll" FromRole="kRelationTypeForAll" ToRole="kCompeForSome" />
+    <NavigationProperty Name="kRelationTypes" Relationship="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Compe" FromRole="kRelationTypeForAll" ToRole="kRelationType" />
+    <NavigationProperty Name="kRelationTypes1" Relationship="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Step" FromRole="kRelationTypeForAll" ToRole="kRelationType" />
+    <NavigationProperty Name="kReport_History" Relationship="GoodJobModel.FK_kReport_History_kRelationTypeForAll" FromRole="kRelationTypeForAll" ToRole="kReport_History" />
+    <NavigationProperty Name="kReports" Relationship="GoodJobModel.FK_kReport_kRelationTypeForAll" FromRole="kRelationTypeForAll" ToRole="kReport" />
+    <NavigationProperty Name="kSteps" Relationship="GoodJobModel.FK_kStep_kRelationTypeForAll" FromRole="kRelationTypeForAll" ToRole="kStep" />
+    <NavigationProperty Name="kSteps1" Relationship="GoodJobModel.FK_kStep_kRelationTypeForAll1" FromRole="kRelationTypeForAll" ToRole="kStep" />
+  </EntityType>
+  <EntityType Name="kReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Year" Type="Int64" Nullable="false" />
+    <Property Name="Month" Type="Int64" Nullable="false" />
+    <Property Name="StepId" Type="Int64" Nullable="false" />
+    <Property Name="StateId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalMarkJob" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="TotalMarkCompe" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkJob" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkCompe" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkKpi" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ManagerComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HRcomment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BODcomment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kCompes" Relationship="GoodJobModel.FK_kCompe_kReport" FromRole="kReport" ToRole="kCompe" />
+    <NavigationProperty Name="kJobs" Relationship="GoodJobModel.FK_kJob_kReport" FromRole="kReport" ToRole="kJob" />
+    <NavigationProperty Name="kJobDetails" Relationship="GoodJobModel.FK_kJobDetail_kReport" FromRole="kReport" ToRole="kJobDetail" />
+    <NavigationProperty Name="kNextPlans" Relationship="GoodJobModel.FK_kNextPlan_kReport" FromRole="kReport" ToRole="kNextPlan" />
+    <NavigationProperty Name="kNextPlanDetails" Relationship="GoodJobModel.FK_kNextPlanDetail_kReport" FromRole="kReport" ToRole="kNextPlanDetail" />
+    <NavigationProperty Name="kRelationTypeForAll" Relationship="GoodJobModel.FK_kReport_kRelationTypeForAll" FromRole="kReport" ToRole="kRelationTypeForAll" />
+    <NavigationProperty Name="kReport_History" Relationship="GoodJobModel.FK_kReport_History_kReport" FromRole="kReport" ToRole="kReport_History" />
+    <NavigationProperty Name="kState" Relationship="GoodJobModel.FK_kReport_kState" FromRole="kReport" ToRole="kState" />
+    <NavigationProperty Name="kStep" Relationship="GoodJobModel.FK_kReport_kStep" FromRole="kReport" ToRole="kStep" />
+  </EntityType>
+  <EntityType Name="kReport_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="ReportId" Type="Int64" Nullable="false" />
+    <Property Name="StepId" Type="Int64" Nullable="false" />
+    <Property Name="StateId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kRelationTypeForAll" Relationship="GoodJobModel.FK_kReport_History_kRelationTypeForAll" FromRole="kReport_History" ToRole="kRelationTypeForAll" />
+    <NavigationProperty Name="kReport" Relationship="GoodJobModel.FK_kReport_History_kReport" FromRole="kReport_History" ToRole="kReport" />
+    <NavigationProperty Name="kState" Relationship="GoodJobModel.FK_kReport_History_kState" FromRole="kReport_History" ToRole="kState" />
+    <NavigationProperty Name="kStep" Relationship="GoodJobModel.FK_kReport_History_kStep" FromRole="kReport_History" ToRole="kStep" />
+  </EntityType>
+  <EntityType Name="kState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="kReports" Relationship="GoodJobModel.FK_kReport_kState" FromRole="kState" ToRole="kReport" />
+    <NavigationProperty Name="kReport_History" Relationship="GoodJobModel.FK_kReport_History_kState" FromRole="kState" ToRole="kReport_History" />
+  </EntityType>
+  <EntityType Name="kStep">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="StepRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="StepRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StepForAllId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kRelationTypeForAll" Relationship="GoodJobModel.FK_kStep_kRelationTypeForAll" FromRole="kStep" ToRole="kRelationTypeForAll" />
+    <NavigationProperty Name="kRelationTypeForAll1" Relationship="GoodJobModel.FK_kStep_kRelationTypeForAll1" FromRole="kStep" ToRole="kRelationTypeForAll" />
+    <NavigationProperty Name="kReports" Relationship="GoodJobModel.FK_kReport_kStep" FromRole="kStep" ToRole="kReport" />
+    <NavigationProperty Name="kReport_History" Relationship="GoodJobModel.FK_kReport_History_kStep" FromRole="kStep" ToRole="kReport_History" />
+    <NavigationProperty Name="kStepForAll" Relationship="GoodJobModel.FK_kStep_kStepForAll" FromRole="kStep" ToRole="kStepForAll" />
+  </EntityType>
+  <EntityType Name="kStepForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="kSteps" Relationship="GoodJobModel.FK_kStep_kStepForAll" FromRole="kStepForAll" ToRole="kStep" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vApp">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AppName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="AppName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vAppFunction">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AppId" />
+      <PropertyRef Name="FunctionName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="AppId" Type="Int64" Nullable="false" />
+    <Property Name="FunctionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vCorporation">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CountryName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="LanguageId" Type="Int64" />
+    <Property Name="CurrencyId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vCurrency">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CurrencyName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vDepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="DepartmentForAllId" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vDepartmentForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DepartmentName" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vGrade">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="GradeForAllId" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="GradeForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vGradeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="GradeName" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="GradeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vLanguage">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="LanguageName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LanguageName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vLoginUser">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EmailConfirmed" />
+      <PropertyRef Name="PhoneNumberConfirmed" />
+      <PropertyRef Name="TwoFactorEnabled" />
+      <PropertyRef Name="LockoutEnabled" />
+      <PropertyRef Name="AccessFailedCount" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vRank">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="RankForAllId" />
+      <PropertyRef Name="xKpiJob" />
+      <PropertyRef Name="xKpiCompe" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="RankForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="xKpiJob" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="xKpiCompe" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+  </EntityType>
+  <EntityType Name="vRankForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RankName" />
+      <PropertyRef Name="xKpiJob" />
+      <PropertyRef Name="xKpiCompe" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="RankName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="xKpiJob" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="xKpiCompe" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vRelationType">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleRelationTypeId" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="RoleRelationTypeId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vRelationTypeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RelationTypeName" />
+      <PropertyRef Name="IsDefaultRoleRelationType" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RelationTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="IsDefaultRoleRelationType" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vRole">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="RoleRelationTypeId" />
+      <PropertyRef Name="RoleRelationValue" />
+      <PropertyRef Name="RoleForAllId" />
+      <PropertyRef Name="AllowRelationTypeId" />
+      <PropertyRef Name="AllowRelationValue" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="AppId" Type="Int64" />
+    <Property Name="FunctionId" Type="Int64" />
+    <Property Name="RoleRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="RoleRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleForAllId" Type="Int64" Nullable="false" />
+    <Property Name="AllowRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="AllowRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vRoleForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RoleName" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppId" Type="Int64" />
+    <Property Name="FunctionId" Type="Int64" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vUserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UserIdd" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="CountryId" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="RankId" />
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserIdd" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int64" Nullable="false" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="RankId" Type="Int64" Nullable="false" />
+    <Property Name="GradeId" Type="Int64" Nullable="false" />
+    <Property Name="ManagerId" Type="Guid" />
+    <Property Name="StartWorkingDate" Type="DateTime" Precision="0" />
+    <Property Name="StartCurrentJobDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <Association Name="FK_kAverageMark_kRate">
+    <End Type="GoodJobModel.kRate" Role="kRate" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kAverageMark" Role="kAverageMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kAverageMark">
+        <PropertyRef Name="RateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompe_kCompeForSome">
+    <End Type="GoodJobModel.kCompeForSome" Role="kCompeForSome" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kCompe" Role="kCompe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kCompeForSome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompe">
+        <PropertyRef Name="CompeForSomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompe_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kCompe" Role="kCompe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompe">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompeForSome_kCompeForAll">
+    <End Type="GoodJobModel.kCompeForAll" Role="kCompeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kCompeForSome" Role="kCompeForSome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kCompeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompeForSome">
+        <PropertyRef Name="CompeForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompeForSome_kRelationTypeForAll">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kCompeForSome" Role="kCompeForSome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompeForSome">
+        <PropertyRef Name="CompeRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJob_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kJob" Role="kJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJob">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJobDetail_kJob">
+    <End Type="GoodJobModel.kJob" Role="kJob" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kJobDetail" Role="kJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kJob">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJobDetail">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJobDetail_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="0..1" />
+    <End Type="GoodJobModel.kJobDetail" Role="kJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJobDetail">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlan_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kNextPlan" Role="kNextPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlan">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlanDetail_kNextPlan">
+    <End Type="GoodJobModel.kNextPlan" Role="kNextPlan" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kNextPlanDetail" Role="kNextPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kNextPlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlanDetail">
+        <PropertyRef Name="NextPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlanDetail_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="0..1" />
+    <End Type="GoodJobModel.kNextPlanDetail" Role="kNextPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlanDetail">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRate_kRateForAll">
+    <End Type="GoodJobModel.kRateForAll" Role="kRateForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kRate" Role="kRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRateForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRate">
+        <PropertyRef Name="RateForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRelationType_kRelationTypeForAll_Compe">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="0..1" />
+    <End Type="GoodJobModel.kRelationType" Role="kRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRelationType">
+        <PropertyRef Name="CompeRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRelationType_kRelationTypeForAll_Step">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="0..1" />
+    <End Type="GoodJobModel.kRelationType" Role="kRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRelationType">
+        <PropertyRef Name="StepRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kRelationTypeForAll">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="1" />
+    <End Type="GoodJobModel.kReport_History" Role="kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kRelationTypeForAll">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="1" />
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kRelationTypeForAll">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="1" />
+    <End Type="GoodJobModel.kStep" Role="kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="StepRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kRelationTypeForAll1">
+    <End Type="GoodJobModel.kRelationTypeForAll" Role="kRelationTypeForAll" Multiplicity="1" />
+    <End Type="GoodJobModel.kStep" Role="kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kReport">
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kReport_History" Role="kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kState">
+    <End Type="GoodJobModel.kState" Role="kState" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kStep">
+    <End Type="GoodJobModel.kStep" Role="kStep" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kReport" Role="kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStep">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kState">
+    <End Type="GoodJobModel.kState" Role="kState" Multiplicity="1" />
+    <End Type="GoodJobModel.kReport_History" Role="kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kStep">
+    <End Type="GoodJobModel.kStep" Role="kStep" Multiplicity="1" />
+    <End Type="GoodJobModel.kReport_History" Role="kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStep">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kStepForAll">
+    <End Type="GoodJobModel.kStepForAll" Role="kStepForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.kStep" Role="kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStepForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="StepForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ckJob">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="ADepartmentId" Type="Int64" />
+    <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="ckReport" Relationship="GoodJobModel.FK_ckJob_ckReport" FromRole="ckJob" ToRole="ckReport" />
+    <NavigationProperty Name="ckJobDetails" Relationship="GoodJobModel.FK_ckJobDetail_ckJob" FromRole="ckJob" ToRole="ckJobDetail" />
+  </EntityType>
+  <EntityType Name="ckJobDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="ReportId" Type="Int64" />
+    <Property Name="ADepartmentId" Type="Int64" />
+    <Property Name="JobId" Type="Int64" />
+    <Property Name="JobDetailName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="AWantDoneTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AWantResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="APercent" Type="Int64" />
+    <Property Name="BDepartmentId" Type="Int64" />
+    <Property Name="ABDoneTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ABResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ABMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="BPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BResultDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BSolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BDoneTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BPercent" Type="Int64" />
+    <Property Name="BMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="CMark" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="TotalMark" Type="Decimal" Precision="4" Scale="2" />
+    <NavigationProperty Name="ckJob" Relationship="GoodJobModel.FK_ckJobDetail_ckJob" FromRole="ckJobDetail" ToRole="ckJob" />
+    <NavigationProperty Name="ckReport" Relationship="GoodJobModel.FK_ckJobDetail_ckReport" FromRole="ckJobDetail" ToRole="ckReport" />
+  </EntityType>
+  <EntityType Name="ckReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="Year" Type="Int64" />
+    <Property Name="Month" Type="Int64" />
+    <NavigationProperty Name="ckJobs" Relationship="GoodJobModel.FK_ckJob_ckReport" FromRole="ckReport" ToRole="ckJob" />
+    <NavigationProperty Name="ckJobDetails" Relationship="GoodJobModel.FK_ckJobDetail_ckReport" FromRole="ckReport" ToRole="ckJobDetail" />
+  </EntityType>
+  <Association Name="FK_ckJob_ckReport">
+    <End Type="GoodJobModel.ckReport" Role="ckReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.ckJob" Role="ckJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ckReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ckJob">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ckJobDetail_ckJob">
+    <End Type="GoodJobModel.ckJob" Role="ckJob" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GoodJobModel.ckJobDetail" Role="ckJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ckJob">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ckJobDetail">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ckJobDetail_ckReport">
+    <End Type="GoodJobModel.ckReport" Role="ckReport" Multiplicity="0..1" />
+    <End Type="GoodJobModel.ckJobDetail" Role="ckJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ckReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ckJobDetail">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

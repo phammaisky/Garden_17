@@ -1,0 +1,74 @@
+﻿@using AMS.Models;
+@using AMS.Helpers;
+@model AMS.Models.Pagging<DeviceCategory>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+            <th style="text-align:center; vertical-align:middle; width:300px">
+                @Html.DisplayColumnNameFor(Model.model, model => model.DeviceCatName)
+            </th>
+            <th style="text-align:center; vertical-align:middle; width:300px">
+                @Html.DisplayColumnNameFor(Model.model, model => model.Type)
+            </th>
+            <th style="text-align:center; vertical-align:middle;">
+                @Html.DisplayColumnNameFor(Model.model, model => model.Description)
+            </th>
+            <th style="width:50px;"></th>
+        </tr>
+
+        @foreach (var item in (List<DeviceCategory>)Model.model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceCatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a class="create_modal" href='@Url.Action("Edit", "DeviceCategories", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit fa-lg"></i></a>
+                    <a class="create_modal" style="color:red" href='@Url.Action("Delete", "DeviceCategories", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pull-left" style="font-weight:bold">
+        Tìm thấy @Model.totalItem bản ghi!
+    </div>
+    <div class="pull-right">
+        @Html.Raw(Model.GenerateHtmlPaggerAjax())
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">
+    function EnterSubmit(elm) {
+        $(elm).keydown(function (e) {
+            if (e.keyCode == 13) {
+                formSubmit(1);
+                return false;
+            }
+        });
+    }
+    function formSubmit(pageParam) {
+        var pageN = 1;
+        pageN = $('#PageParam').val();
+        if (pageParam != null) {
+            pageN = pageParam;
+        }
+        var page = { page: pageN };
+        $('#progresBarLoadingData').show();
+        $.post("@Url.Content("~/DeviceCategories/Index")", page).done(function (d) {
+            $('#grid-list').html(d);
+        });
+        $('#progresBarLoadingData').hide();
+    }
+</script>

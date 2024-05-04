@@ -1,0 +1,61 @@
+<NewDataSet>
+  <PrintConst>
+    <Type>0</Type>
+    <SoLien>3</SoLien>
+    <InHHTra>True</InHHTra>
+    <InTatCaCKHH>False</InTatCaCKHH>
+    <InCK0>True</InCK0>
+    <PortName>COM1</PortName>
+    <baudRate>9600</baudRate>
+    <parity>0</parity>
+    <dataBits>8</dataBits>
+    <stopBits>1</stopBits>
+    <AutoMode>True</AutoMode>
+    <LocaleOfFile>bill.txt</LocaleOfFile>
+    <DoRongBill>38</DoRongBill>
+    <ChieuDaiTenHH>30</ChieuDaiTenHH>
+    <MoDau>                                                          PHIEU TINH TIEN
+</MoDau>
+    <KetThuc xml:space="preserve">
+ </KetThuc>
+    <SOLE_DONGIA>0</SOLE_DONGIA>
+    <SOLE_SOLUONG>0</SOLE_SOLUONG>
+    <SOLE_THANHTIEN>0</SOLE_THANHTIEN>
+  </PrintConst>
+  <CustomerDisplay>
+    <SuDung>True</SuDung>
+    <SoLuongKiTu>40</SoLuongKiTu>
+    <PortName>com4</PortName>
+    <baudRate>9600</baudRate>
+    <parity>0</parity>
+    <dataBits>8</dataBits>
+    <stopBits>1</stopBits>
+    <AutoMode>True</AutoMode>
+    <DoDaiTenHH>10</DoDaiTenHH>
+    <HienThi>2</HienThi>
+    <SoDong>2</SoDong>
+    <LoaiCD>1</LoaiCD>
+  </CustomerDisplay>
+  <MembershipCardReader>
+    <PortName>com3</PortName>
+    <baudRate>19200</baudRate>
+    <parity>0</parity>
+    <dataBits>8</dataBits>
+    <stopBits>1</stopBits>
+    <AutoMode>True</AutoMode>
+    <DataTrack>0</DataTrack>
+  </MembershipCardReader>
+  <CashDrawer>
+    <LoaiCong>0</LoaiCong>
+    <KiTu>7</KiTu>
+    <PortName>com4</PortName>
+    <baudRate>9600</baudRate>
+    <parity>0</parity>
+    <dataBits>8</dataBits>
+    <stopBits>1</stopBits>
+    <AutoMode>True</AutoMode>
+  </CashDrawer>
+  <CRM>
+    <GuiDuLieuChoCRM>True</GuiDuLieuChoCRM>
+  </CRM>
+</NewDataSet>

@@ -1,0 +1,38 @@
+﻿@using Event.Models
+@using Models
+@model IEnumerable<Event.Models.RegisterEvent>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col-md-9">Danh sách người đăng ký dự thưởng</h2>
+        <div class="col-md-3" id="progresBarLoadingData" style="padding-top:5px; display:none">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                Đang xử lý
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <p class="text-left">
+        <input id="fullName" name="fullName" placeholder="Họ tên" class="form-group"/>
+        <input id="phoneNumber" name="phoneNumber" placeholder="Số điện thoại" class="form-group"/>
+        <a class="btn btn-default btn-info" onclick="formSubmit(1);">&nbsp;&nbsp;&nbsp;&nbsp;Tìm kiếm&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </p>
+    <p class="text-right">
+        <a class="btn btn-default btn-info" href="~/RegisterEvents/Create">Thêm mới</a>
+    </p>
+</div>
+<div id="grid-list" class="table-responsive">
+    @{ Html.RenderPartial("_ListIndexEvent", (Pagging<RegisterEvent>)ViewBag.PagingEvents); }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+</script>

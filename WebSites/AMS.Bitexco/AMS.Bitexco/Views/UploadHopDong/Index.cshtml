@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Upload dữ liệu kiểm kê</h2><br />
+@using (Html.BeginForm("Index", "UploadHopDong", FormMethod.Post
+            , new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <div class="text-center">
+        @if (ViewBag.Message != "")
+        {
+            @ViewBag.Message    <a href="@Url.Action("DownloadUploadedFile", "UploadHopDong")"><i class="fa fa-download"></i> Download file kết quả</a>
+        }
+    </div>
+    <br />
+    <div class="text-center form-inline">
+        <input type="file" id="fileToUpload" class="form-control input-sm" name="file" />
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> Upload file dữ liệu</button>
+        @*<a href="@Url.Action("DownloadHDTemp", "UploadHopDong")" class="btn btn-default btn-sm"><i class="fa fa-download"></i> Download file nhập dữ liệu</a>*@
+    </div>
+
+}

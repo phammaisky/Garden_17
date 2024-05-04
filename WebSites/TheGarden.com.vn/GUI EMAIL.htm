@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Gửi email cho bạn bè về bài viết</title>
+
+    <link href="GUI%20EMAIL_files/tooltip.css" rel="stylesheet" type="text/css" />
+    <link href="GUI%20EMAIL_files/default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="GUI%20EMAIL_files/thegarden-v2.css" type="text/css" />
+    <script src="GUI%20EMAIL_files/522926.js" id="hs-analytics"></script>
+    <script src="GUI%20EMAIL_files/fbds.js" async=""></script>
+    <script src="GUI%20EMAIL_files/ga.js" async="" type="text/javascript"></script>
+
+    <script type="text/javascript" src="GUI%20EMAIL_files/jquery-1.js"></script>
+    <script type="text/javascript" src="GUI%20EMAIL_files/jquery_002.js"></script>
+    <script type="text/javascript" src="GUI%20EMAIL_files/jquery.js"></script>
+
+    <script type="text/javascript" src="GUI%20EMAIL_files/library.js"></script>
+    <script type="text/javascript" src="GUI%20EMAIL_files/jquery_003.js"></script>
+    <script type="text/javascript" src="GUI%20EMAIL_files/mudim.js"></script>
+    <script type="text/javascript" src="GUI%20EMAIL_files/tooltip.js"></script>
+</head>
+<body style="text-align:left">
+    <form name="NewsSendEmailForm" id="NewsSendEmailForm" method="POST">
+        <input name="form_block_id" value="49762" type="hidden" />
+        <div class="popup_join contact-bg" style="margin:0 auto;text-align:left;border:1px solid #C6C4C5;padding:13px">
+            <div class="contact-header-e">
+                <div class="contact-h">
+                    Gửi cho bạn bè bài viết này
+                </div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-input">
+                    <table class="contact-input-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Tên của bạn:
+                                </td>
+                                <td class="t-col2">
+                                    <input name="txtName" size="30" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px;" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Email của bạn:
+                                </td>
+                                <td class="t-col2">
+                                    <input name="txtEmail" size="30" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Tên người nhận:
+                                </td>
+                                <td class="t-col2">
+                                    <input name="txtToName" size="30" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Email gửi đến:
+                                </td>
+                                <td class="t-col2">
+                                    <input name="txtTo" size="30" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Tiêu đề:
+                                </td>
+                                <td class="t-col2">
+                                    <input name="txtSubject" size="30" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t-col1" style="font-size: 14px; font-weight: bold;">
+                                    Thông điệp:
+                                </td>
+                                <td class="t-col2">
+                                    <textarea name="txtMessage" rows="5" style="width:300px; border: 1px solid #ccc;border-radius:5px; padding: 3px"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input onclick="return submit_send_email();" value="Gửi đi" type="button" />
+
+                                    <input value="Nhập lại" type="reset" />
+
+                                    <input onclick="window.close()" value="Hủy" type="button" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c"></div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

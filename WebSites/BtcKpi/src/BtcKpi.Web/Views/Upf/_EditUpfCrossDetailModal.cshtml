@@ -1,0 +1,173 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossViewModel
+<div class="modal fade" id="edit-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modalTitle">Thêm mới đánh giá</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <div class="box-body form-horizontal">
+                        @Html.HiddenFor(model => model.Detail.ID)
+                        @Html.HiddenFor(model => model.Detail.UpfCrossID)
+                        <div id="dRequested">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.FromDepartment, "Phòng yêu cầu/Requested by Dept", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.LabelFor(model => model.Detail.FromName, new {@id = "lDetail_FromName", @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Detail.FromName, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Detail.FromDepartment, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ToDepartment, "Phòng/bộ phận thực hiện/Department in charge", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.Detail.ToDepartment, Model.Departments, "--- Chọn ---")
+                                    @Html.HiddenFor(model => model.Detail.ToName, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.Objective, "Mục tiêu/Objective", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.Objective, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ContentsRequested, "Nội dung yêu cầu/Contents requested", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.ContentsRequested, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ExpectedTimeOfCompletion, "Thời hạn cần hoàn thành/Estimated Time of completion", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.ExpectedTimeOfCompletion, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ExpectedResult, "Kết quả/Lợi ích mong đợi/Expected benefits/result", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.ExpectedResult, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.FromWeight, "Tỷ trọng/Weight", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Detail.FromWeight, new {@class = "form-control", @type = "number", @min = "0", @max = "100", @step = "1"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.TimeOfCompletion, "Thời hạn hoàn thành/Time of completion", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.TimeOfCompletion, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.Result, "Ghi nhận kết quả thực hiện/Results", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.Result, new {@class = "form-control", @style = "width: 100%;"})
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.FromScore, "Điểm đánh giá", htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.Detail.FromScore, new {@class = "form-control", @type = "number", @min = "0", @max = "5", @step = "0.1"})
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="dInCharge" hidden="hidden">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.PlanToDo, "Kế hoạch thực hiện yêu cầu/Plan to do the requests", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.PlanToDo, new { @class = "form-control" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ExplainationForResults, "Phân tích/giải trình cho kết quả thực hiện / Analysis / Explaination for results", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.ExplainationForResults, new { @class = "form-control" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.Solutions, "Giải pháp/Solutions", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.Solutions, new { @class = "form-control" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.Timeline, "Thời hạn/Time line", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.Timeline, new { @class = "form-control", @style = "width: 100%;" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ToWeight, "Tỷ trọng (tự đánh giá)/Weight (self)", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Detail.ToWeight, new { @class = "form-control", @type = "number", @min = "0", @max = "100", @step = "1" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.ToScore, "Tự đánh giá/Self-assessment mark ", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.Detail.ToScore, new { @class = "form-control", @type = "number", @min = "0", @max = "5", @step = "0.1" } )
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="dBOD" hidden="hidden">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.AssessmentByCouncil, "Đánh giá của BOD/Assessment mark by the council", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Detail.AssessmentByCouncil, new { @class = "form-control", @style = "width: 100%;" } )
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Detail.TotalScore, "Tổng điểm/Total mark", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.Detail.TotalScore, new { @class = "form-control", @type = "number", @min = "0", @max = "5", @step = "0.1" } )
+                                </div>
+                            </div></div>
+
+                        @Html.HiddenFor(model => model.Detail.Status, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.Created, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.CreatedBy, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.DeleteFlg, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.Deleted, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.DeletedBy, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.HiddenFor(model => model.Detail.Seq, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddDetailModal">Lưu</button>
+                <button type="button" class="btn btn-default" id="btnCloseDetailModal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnUpdateDetailModal">Lưu</button>
+                <button type="button" class="btn btn-danger" id="btnDeleteDetailModal">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@using IQWebApp_Blank.EF
+
+@{
+    GoodJobEntities dbJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+@Html.DropDownList("State", new SelectList(dbJob.kStates.OrderBy(x => x.Seq).ToList(), "Id", "StateName"), "Tình trạng", new { onchange = "StateOnChange(); return false;" })
+
+<script>
+    function StateOnChange() {
+        Review_ByFilter();
+    }
+</script>

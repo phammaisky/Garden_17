@@ -1,0 +1,65 @@
+﻿@model BtcKpi.Web.ViewModels.DepartmentListViewModel
+@using BtcKpi.Service.Common
+@{
+    ViewBag.Title = "KPIs phòng ban/ bộ phận";
+    ViewBag.SubTitle = "Danh sách KPIs phòng ban/ bộ phận";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+    @Scripts.Render("~/Scripts/Elements/Modals/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item align-middle no-border box-boder-top-1">
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.CompanyID, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => Model.CompanyID, Model.Companies, "--- Chọn ---", new { @onchange = "companySearchChange(this.value)", @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.DepartmentID, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => Model.DepartmentID, Model.Departments, "--- Chọn ---", new { @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.ScheduleType, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => x.ScheduleType, Model.ScheduleTypes, "--- Chọn ---", new {@onchange = "scheduleSearchChange(this.value)", @class = "col-md-7"})
+                        </div>
+                        <br />
+                    </li>
+                    <li class="list-group-item align-middle no-border box-boder-top-1">
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.Year, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => x.Year, Model.Years, "--- Chọn ---", new { @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4"  id="depart_ScheduleID">
+                            @Html.LabelFor(x => x.ScheduleID, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => x.ScheduleID, Model.DepartSchedules, "--- Chọn ---", new { @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.StatusID, new { @class = "col-md-5 control-label" })
+                            @Html.DropDownListFor(x => x.StatusID, Model.Status, "--- Chọn ---", new { @class = "col-md-7" })
+                        </div>
+                        <br />
+                    </li>
+                </ul>
+                <div class="col-12 text-center">
+                    <button id="btnSearch" type="button" class="btn btn-info btn-sm pull-right" title="Tìm kiếm">Tìm kiếm</button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table id="depart-list-table" class="table table-bordered table-hover">
+                    @Html.Partial("_DepartmentListTable")
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/Department/list")
+}

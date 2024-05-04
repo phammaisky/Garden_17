@@ -1,0 +1,86 @@
+﻿    @model BtcKpi.Web.ViewModels.IpfListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th style="width: 20%;">Công ty<br />Phòng/bộ phận</th>
+        <th style="width: 8%;">Loại</th>
+        <th style="width: 8%;">Năm</th>
+        <th style="width: 10%;">Kỳ</th>
+        <th style="width: 12%;">Nhân viên</th>
+        <th style="width: 8%;">Trạng thái</th>
+        <th style="width: 4%;">Điểm</th>
+        <th style="width: 4%;">BOD</th>
+        <th style="width: 10%;">Ngày tạo</th>
+        <th style="width: 25%;">
+            <button type="button" class="btn btn-success btn-circle pull-right" onclick="@("window.location.href='" + @Url.Action("PendingCreate", "Ipf") + "'");"><i class="fa fa-plus-circle"></i></button>
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @for (int i = 0; i < Model.IpfInfos.Count; i++)
+    {
+    <tr>
+        <td>
+            <label class="text-primary">@Model.IpfInfos[i].CompanyName</label>
+            <br />
+            @Model.IpfInfos[i].DepartmentName
+        </td>
+        <td>
+            @BtcHelper.ConvertIpfScheduleType(Model.IpfInfos[i].ScheduleType)
+        </td>
+        <td>
+            @Model.IpfInfos[i].Year
+        </td>
+        <td>
+            @Model.IpfInfos[i].ScheduleName
+        </td>
+        <td>
+            <label class="text-primary">@Model.IpfInfos[i].FullName</label>
+            <br />
+            @Model.IpfInfos[i].AdministratorshipName
+        </td>
+        <td>
+            <label class='@(Model.IpfInfos[i].Status == 2 ? "text-success" : (Model.IpfInfos[i].Status == 0 ? "text-warning" : "text-primary"))'>@BtcHelper.ConvertKpiStatus(Model.IpfInfos[i].Status)</label>
+        </td>
+        <td>
+            @*<label class="text-primary">@Model.IpfInfos[i].WorkScore</label>
+            <br /><label class="text-success">@Model.IpfInfos[i].CompetencyScore</label>
+            <br />*@
+            <label class="text-danger">@Model.IpfInfos[i].TotalScore </label>
+        </td>
+        <td>
+            <label class="text-danger">@Model.IpfInfos[i].BodScore </label>
+        </td>
+        <td>
+            @(((DateTime)Model.IpfInfos[i].Created).ToString("dd/MM/yyyy"))
+        </td>
+        <td>
+
+            <a class="btn btn-sm btn-social-icon btn-facebook" href='~/Ipf/PendingView?id=@Model.IpfInfos[i].ID'><i class="fa fa-eye"></i></a>
+            @if (Model.IpfInfos[i].CreatedBy == Model.UserID)
+            {
+                <a class="btn btn-sm btn-social-icon btn-twitter" href='~/Ipf/PendingEdit?id=@Model.IpfInfos[i].ID'><i class="fa fa-edit"></i></a>
+            }
+            @if (Model.IpfInfos[i].ApproveBy == Model.UserID & Model.IpfInfos[i].Status == 1)
+            {
+                <a class="btn btn-sm btn-social-icon btn-info" href='~/Ipf/PendingApprove?id=@Model.IpfInfos[i].ID'><i class="fa fa-check-circle-o"></i></a>
+            }
+            <a class="btn btn-sm btn-social-icon btn-flickr" href='~/Ipf/DoneComment?id=@Model.IpfInfos[i].ID'><i class="fa fa-comment-o"></i></a>
+            @if (Model.IpfInfos[i].BodId == Model.UserID & Model.IpfInfos[i].Status == 2)
+            {
+                <a class="btn btn-sm btn-social-icon btn-google" href='~/Ipf/PendingBodApprove?id=@Model.IpfInfos[i].ID&isBod=1'><i class="fa fa-check-circle-o"></i></a>
+            }
+            @if (Model.IpfInfos[i].CreatedBy == Model.UserID & Model.IpfInfos[i].Status == 0)
+            {
+                <a class="btn btn-sm btn-social-icon btn-google" href='~/Ipf/PendingDelete?id=@Model.IpfInfos[i].ID'><i class="fa fa-trash"></i></a>
+            }
+            <a class="btn btn-sm btn-social-icon btn-dropbox" href='~/Ipf/IpfKPIsDownload?id=@Model.IpfInfos[i].ID'><i class="fa fa-download"></i></a>
+        </td>
+    </tr>
+    }
+</tbody>
+<tfoot>
+    
+</tfoot>
+
+

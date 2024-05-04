@@ -1,0 +1,107 @@
+﻿@model BtcKpi.Web.ViewModels.ReportListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th style="width: 15%;vertical-align:middle;" class="text-center">Công ty</th>
+        <th style="width: 15%; vertical-align: middle;" class="text-center">Phòng/bộ phận</th>
+        <th style="width: 15%; vertical-align: middle;" class="text-center">Năm</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 1</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 2</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 3</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 4</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 5</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 6</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 7</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 8</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 9</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 10</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 11</th>
+        <th style="vertical-align: middle;" class="text-center">Tháng 12</th>
+        <th style="vertical-align: middle;" class="text-center">Điểm KPI BQ</th>
+        <th style="vertical-align: middle;" class="text-center">Điểm BOD đánh giá</th>
+        <th style="vertical-align: middle;" class="text-center"></th>
+    </tr>
+</thead>
+<tbody>
+@if (Model.DepartmentInfos != null && Model.DepartmentInfos.Count > 0)
+{
+    for (int i = 0; i < Model.DepartmentInfos.Count; i++)
+    {
+        <tr>
+            <td>
+                @Model.DepartmentInfos[i].CompanyName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].DepartmentName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].Year
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].January
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].February
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].March
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].April
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].May
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].June
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].July
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].August
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].September
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].October
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].November
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].December
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].AveragePoint
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].BODSumPoint
+            </td>
+            <td>
+                @if (@Model.DepartmentInfos[i].BODSumPoint != null && @Model.DepartmentInfos[i].BODSumPoint > 0)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-twitter bod-approved-edit" data-id="@Model.DepartmentInfos[i].ID" title="Sửa Đánh giá tổng hợp"><i class="fa fa-edit"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-sm btn-social-icon btn-info bod-approved-add" data-id="@Model.DepartmentInfos[i].ID" data-toggle="modal" data-target="#add-bod-approved-modal" title="BOD Đánh giá tổng hợp"><i class="fa fa-check-circle-o"></i></a>
+                }
+            </td>
+        </tr>
+    } 
+} else if (Model.DepartmentInfos != null && Model.DepartmentInfos.Count == 0) {
+    <tr>
+        <td colspan="4">
+            <span class="text-danger">Không có dữ liệu</span>
+        </td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>
+        </td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+}
+</tbody>

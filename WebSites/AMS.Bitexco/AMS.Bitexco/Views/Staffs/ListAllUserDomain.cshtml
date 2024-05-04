@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AMS.Controllers.UsersDomain>
+
+@{
+    ViewBag.Title = "ListAllUserDomain";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListAllUserDomain</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Thu tu
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isMapped)
+        </th>      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isMapped)
+        </td>       
+    </tr>
+}
+
+</table>

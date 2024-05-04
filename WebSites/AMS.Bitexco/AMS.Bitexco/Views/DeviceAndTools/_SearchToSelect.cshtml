@@ -1,0 +1,184 @@
+﻿@using AMS.Models;
+@using AMS.Helpers;
+@model IEnumerable<AMS.Models.DeviceAndTool>
+
+<table id="DeviceToolsTableResult" class="table table-bordered table-condensed">
+    <tr>
+        <th style="text-align:center; vertical-align:middle; width:100px">
+            @Html.DisplayNameFor(model => model.AssetsCode)
+        </th>
+        <th style="text-align:center; vertical-align:middle; width:200px">
+            @Html.DisplayNameFor(model => model.DeviceName)
+        </th>
+        <th style="text-align:center; vertical-align:middle; width:100px">
+            Loại thiết bị, công cụ
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle">
+            @Html.DisplayNameFor(model => model.BuyDate)
+        </th>       
+        <th style="width:150px; text-align:center; vertical-align:middle">
+            Người, Phòng ban sử dụng
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle">
+            Địa điểm
+        </th>
+        <th style="width:120px; text-align:center; vertical-align:middle">
+            Ngày bàn giao, thanh lý
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle">
+            Tình trạng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @Html.Raw(item.HistoryUses.OrderByDescending(h => h.HandedDate).First().StatusId == 5 ? "style='background-color:#f2dede ; color:#a94442'" : "")
+            @Html.Raw(item.HistoryUses.OrderByDescending(h => h.HandedDate).First().StatusId == 5 ? "onclick=\"alert('Tài sản đã thanh lý! không thể bàn giao')\"" : "ondblclick=\"returnDeviceToolClose(" + item.Id + ", '" + item.DeviceName + "')\" onclick=\"returnDeviceTool(" + item.Id + ",'" + @item.DeviceName + "')\"") id="@Html.Raw("tbrc" + item.Id)">
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetsCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceCategory.DeviceCatName)
+                @Html.DisplayFor(modelItem => item.ToolCategory.ToolCatName)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.BuyDate)
+            </td>
+            @if (item.HistoryUses.Count > 0)
+            {
+                var _historyUses = item.HistoryUses.OrderByDescending(h => h.HandedDate).First();
+                <td style="text-align:center">
+                    @if (_historyUses.Staff != null)
+                    {
+                        @Html.Raw(_historyUses.Staff.FullName)
+                    }
+                    else
+                    {
+                        if (_historyUses.Department != null)
+                        {
+                            @Html.Raw(_historyUses.Department.DeptName)
+                        }
+                    }
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.HistoryUses.OrderByDescending(h => h.HandedDate).First().Location.ShortName)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.HistoryUses.OrderByDescending(h => h.HandedDate).First().HandedDate)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.HistoryUses.OrderByDescending(h => h.HandedDate).First().StatusCategory.Name)
+                </td>
+            }
+            else
+            {
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            }
+        </tr>
+    }
+</table>
+
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        $("#txbStaff").autocomplete({
+            change: function (event, ui) {
+                if ($("#txbStaff").val() == "")
+                { $("#staffId").val(""); }
+                SearchDeviceTool();
+            },
+            autoFocus: true,
+            minLength: 3,
+            source: function (request, response) {
+                $.ajax({
+                    url: "../Staffs/AutoCompleteStaff",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: request.term },
+                    success: function (data) {
+                        response(data);
+                    }
+                })
+            },
+            select: function (event, ui) {
+                $("#txbStaff").val(ui.item.FullName);
+                $("#staffId").val(ui.item.Id);
+                SearchDeviceTool();
+                return false;
+            }
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            ul.css("min-width", 300);
+            ul.css('z-index', 10000);
+            return $("<li>")
+              .append("<a>" + item.FullName + "</a><br />")
+              .append("<font size='1pt'>" + item.DeptCode + "|" + item.NameVn + "</font>")
+              .appendTo(ul);
+        };
+
+        $('#AssetsCode').focus();
+    })
+
+    function log(message) {
+        $("<div>").text(message).prependTo("#log");
+        $("#log").scrollTop(0);
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    function returnDeviceTool(id, name) {
+        $('#DeviceTool').val(name);
+        $('#DeviceToolId').val(id);
+
+        $('#DeviceToolsTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+    }
+    function returnDeviceToolClose(id, name) {
+        $('#DeviceTool').val(name);
+        $('#DeviceToolId').val(id);
+
+
+        $('#StaffTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+
+        $("#deviceToolModal").modal('hide');
+    }
+
+    $("#txbMaTS").on("keydown", function (event) {
+        WaitSearchDeviceTool();
+        if (event.which == 8) {
+            WaitSearchDeviceTool();
+        }
+    });
+
+    $("#btnSearchDeviceTool").click(function () {
+        SearchDeviceTool();
+    });
+    var timerSearch = $.timer(function () { SearchDeviceTool(); timerSearch.stop(); });
+    function WaitSearchDeviceTool() {
+        timerSearch.reset();
+        timerSearch.set({ time: 1000, autostart: true });
+    }
+
+    function SearchDeviceTool() {
+
+        var dvt = { maTS: $('#txbMaTS').val(), staffId: $('#staffId').val(), statusId: $("#StatusSearchId option:selected").val(), companyId: $("#CompanySearchId").val(), deptId: $("#DeptSearchId").val() };
+
+        $.post("@Url.Content("~/DeviceAndTools/SearchToSelect")", dvt).done(function (d) {
+            OnDeviceToolSearchSuccess(d);
+        });
+    }
+
+    function OnDeviceToolSearchSuccess(response) {
+        if (response != null) {
+            $("#resultDeviceToolSearch").html(response);
+        }
+    }
+</script>

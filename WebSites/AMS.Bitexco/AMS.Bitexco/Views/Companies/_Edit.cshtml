@@ -1,0 +1,91 @@
+﻿@model AMS.Models.Company
+
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick="$('#CRUDDialog').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sửa<small> DM thiết bị</small></h4>
+        </div>
+
+        @using (Html.BeginForm("Edit", "Companies", FormMethod.Post, new { id = "EditDialog" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body" style="min-height:250px; max-height:450px; overflow:auto">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ParentId, htmlAttributes: new { @class = "control-label col-sm-3" })
+                        <div class="col-sm-9">
+                            <div class="btn-group" id="GroupDropdownCompany">
+                                <button type="button" id="btnDropdownCompany" style="width:350px; text-align:left" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    @if (Model.CompanyParent != null)
+                                    {
+                                        @Html.Raw(Model.CompanyParent.NameVn)<i class="fa fa-caret-down pull-right" style="padding-top: 3px;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-caret-down pull-right" style="padding-top: 3px;"></i>
+                                    }
+
+                                </button>
+                                <input type="hidden" name="ParentId" id="ParentId" value="@Model.ParentId" />
+                                <div class="dropdown-menu" role="menu" style="max-height:250px; overflow:auto; padding-left:5px; padding-right:5px; width:400px">
+                                    @{Html.RenderAction("CompanySelector", "Companies");}
+                                </div>
+                                <script type="text/javascript">
+                                    $('.dropdown-menu input, .dropdown-menu table, .dropdown-menu i').click(function (e) {
+                                        e.stopPropagation();
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NameVn, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.NameVn, new { htmlAttributes = new { @class = "form-control input-sm", @style = "max-width:350px" } })
+                            @Html.ValidationMessageFor(model => model.NameVn, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NameEn, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.NameEn, new { htmlAttributes = new { @class = "form-control input-sm", @style = "max-width:350px" } })
+                            @Html.ValidationMessageFor(model => model.NameEn, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contents, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Contents, new { htmlAttributes = new { @class = "form-control input-sm", @style = "max-width:350px" } })
+                            @Html.ValidationMessageFor(model => model.Contents, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LogoLocation, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.LogoLocation, new { htmlAttributes = new { @class = "form-control input-sm" , @style="max-width:350px"} })
+                            @Html.ValidationMessageFor(model => model.LogoLocation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
+                </button>
+                <button type="button" onclick="$('#CRUDDialog').modal('hide');" class="btn btn-default" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Hủy</button>
+            </div>
+        }
+    </div>
+</div>
+

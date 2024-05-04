@@ -1,0 +1,262 @@
+﻿@model BtcKpi.Web.ViewModels.DepartmentViewModel
+@using BtcKpi.Model
+@using BtcKpi.Service.Common
+@{
+        ViewBag.Title = "KPIs phòng ban/ bộ phận";
+        ViewBag.SubTitle = "Xem chi tiết KPIs";
+    
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+    @Scripts.Render("~/Scripts/Elements/Modals/menu")
+}
+
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+@Styles.Render("~/Styles/Elements/Modals")
+@Styles.Render("~/BitexcoThemes/plugins/datepicker/css")
+
+@Html.Partial("_AddNameDetailModal")
+@Html.Partial("_AddJobObjectModal")
+@Html.Partial("_AddPersRewPropModal")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Upf.ID)
+    @Html.HiddenFor(model => model.FirstLoad)
+    <div class="box box-primary" id="info-block">
+        <div class="box-body box-profile">
+            <h3 class="profile-username text-center">@Html.DisplayFor(model => model.UserInfo.FullName)</h3>
+            <p class="text-muted text-center">@Html.DisplayFor(model => model.UserInfo.AdministratorshipName)</p>
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <div class="col-md-6 text-center">
+                        <b>Phòng / bộ phận : </b> <a>@Html.DisplayFor(model => model.UserInfo.DepartmentName)</a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <b>Người quản lý/ Thực hiện báo cáo : </b> <a>@Html.DisplayFor(model => model.ManagerInfo.FullName) - @Html.DisplayFor(model => model.ManagerInfo.AdministratorshipName)</a>
+                    </div>
+                    <br />
+                </li>
+
+                <li class="list-group-item no-border box-boder-top-1">
+                    <div class="col-md-3">
+                        <b>Người duyệt : </b>
+                        @Html.DropDownListFor(x => x.Upf.ApproveBy, Model.Approves, "--- Chọn ---", new { @disabled = "true" })
+                    </div>
+                    <div class="col-md-3">
+                        <b>BOD duyệt : </b>
+                        @Html.DropDownListFor(x => x.Upf.BodApproved, Model.BODApproves, "--- Chọn ---", new { @disabled = "true" })
+                    </div>
+                    <div class="col-md-2">
+                        <b>Loại : </b>
+                        @Html.DropDownListFor(x => x.Upf.ScheduleType, Model.ScheduleTypes, "--- Chọn ---", new { @disabled = "true" })
+                    </div>
+                    <div class="col-md-2">
+                        <b>Năm : </b>
+                        @Html.DropDownListFor(x => x.Upf.Year, Model.Years, "--- Chọn ---", new { @disabled = "true" })
+                    </div>
+                    @if (Model.Upf.ScheduleID != null)
+                    {
+                        <div class="col-md-2">
+                            <b>Kỳ : </b>
+                            @Html.DropDownListFor(x => x.Upf.ScheduleID, Model.DepartSchedules, "--- Chọn ---", new { @disabled = "true" })
+                        </div>
+                    }
+                </li>
+            </ul>
+                <div class="box-boder-top-1">
+                    <div class="box-header with-border">
+                        <h4><b>Mục tiêu công việc</b></h4>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table id="depart-job-object-view" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th class="text-center" style="width: 3%;">STT</th>
+                                    <th class="text-center" style="width: 20%;">KPIs/ Mục tiêu</th>
+                                    <th class="text-center" style="width: 10%;">Thời gian dự kiến hoàn thành</th>
+                                    <th class="text-center" style="width: 15%;">Số kế hoạch/ Yêu cầu cụ thể</th>
+                                    <th class="text-center" style="width: 25%;">Kết quả thực hiện</th>
+                                    <th class="text-center" style="width: 7%;">Tỷ trọng (%)</th>
+                                    <th class="text-center" style="width: 6%;">Điểm tự đánh giá</th>
+                                    <th class="text-center" style="width: 7%;">Điểm QL đánh giá</th>
+                                    <th class="text-center" style="width: 7%;">Điểm BOD đánh giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.NameDetails.Count; i++)
+                                {
+                                    <tr style="background-color: aliceblue">
+                                        <td hidden="true">
+                                            @Model.NameDetails[i].Order @Html.HiddenFor(x => Model.NameDetails[i].Order)
+                                        </td>
+                                        <td class="text-center">
+                                            @BtcHelper.ToRoman(Model.NameDetails[i].Order) @Html.HiddenFor(x => Model.NameDetails[i].Order)
+                                        </td>
+                                        <td colspan="5">
+                                            @Model.NameDetails[i].NameKPI @Html.HiddenFor(x => Model.NameDetails[i].NameKPI)
+                                        </td>
+                                        <td>
+                                            @*@Model.CompleteWorks[i].Target @Html.HiddenFor(x => Model.CompleteWorks[i].Target)*@
+                                        </td>
+                                        <td>
+                                            @*@Model.CompleteWorks[i].Weight @Html.HiddenFor(x => Model.CompleteWorks[i].Weight)*@
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    if (Model.NameDetails[i].JobDetails != null)
+                                    {
+                                        foreach (UpfJobDetail jobDetail in Model.NameDetails[i].JobDetails)
+                                        {
+                                            <tr>
+                                                <td hidden="true">
+                                                    @jobDetail.NameDetailID @Html.HiddenFor(x => jobDetail.NameDetailID)
+                                                </td>
+                                                <td hidden="true">
+                                                    @jobDetail.NameKPIEdit @Html.HiddenFor(x => jobDetail.NameKPIEdit)
+                                                </td>
+                                                <td class="text-center">
+                                                    @jobDetail.Order @Html.HiddenFor(x => jobDetail.ID) @Html.HiddenFor(x => jobDetail.Order)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.JobName @Html.HiddenFor(x => jobDetail.JobName)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.ScheduleTimeString @Html.HiddenFor(x => jobDetail.ScheduledTime)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.NumberPlan @Html.HiddenFor(x => jobDetail.NumberPlan)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.PerformResults @Html.HiddenFor(x => jobDetail.PerformResults)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.Weight @Html.HiddenFor(x => jobDetail.Weight)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.Point @Html.HiddenFor(x => jobDetail.Point)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.ManagePoint @Html.HiddenFor(x => jobDetail.ManagePoint)
+                                                </td>
+                                                <td>
+                                                    @jobDetail.ManagePoint @Html.HiddenFor(x => jobDetail.BodPoint)
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="5" class="text-center">Tổng điểm đạt được</th>
+                                    <th>@Html.DisplayFor(model => model.Upf.WeightTotal) @Html.HiddenFor(model => model.Upf.WeightTotal)</th>
+                                    <th>@Html.DisplayFor(model => model.Upf.TotalPoint) @Html.HiddenFor(model => model.Upf.TotalPoint)</th>
+                                    <th>@Html.DisplayFor(model => model.Upf.TotalManagePoint) @Html.HiddenFor(model => model.Upf.TotalManagePoint)</th>
+                                    <th>@Html.DisplayFor(model => model.Upf.TotalBODPoint) @Html.HiddenFor(model => model.Upf.TotalBODPoint)</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            <div class="box-boder-top-1">
+                <div class="box-header with-border">
+                    <h4><b>Đánh giá chung</b></h4>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Upf.OutsAchiev, "Thành tích nổi bật của bộ phận:", new { @class = "col-md-4" })
+                        @Html.TextAreaFor(x => x.Upf.OutsAchiev, new { @disabled = "true", @class = "col-md-8" })
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Upf.SelfRating, "Tự đánh giá xếp loại Bộ phận:", new { @class = "col-md-4" })
+                        @Html.DropDownListFor(x => x.Upf.SelfRating, Model.UpfRates, "--- Chọn ---", new { @disabled = "true", @class = "col-md-4" })
+                    </div>
+                </div>
+                <div class="box-body">
+                    <b class="col-md-4">Đề xuất cá nhân được vinh danh:</b>
+                    <table id="person-reward-proposals" class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="bg-primary">
+                            <th class="text-center" style="width: 5%;">STT</th>
+                            <th class="text-center" style="width: 40%;">Tên nhân viên</th>
+                            <th class="text-center" style="width: 55%;">Thành tích nổi bật</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for (int i = 0; i < Model.PersRewProposals.Count; i++)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @Model.PersRewProposals[i].Order @Html.HiddenFor(x => Model.PersRewProposals[i].ID)  @Html.HiddenFor(x => Model.PersRewProposals[i].Order)
+                                </td>
+                                <td>
+                                    @Model.PersRewProposals[i].EmployeeName @Html.HiddenFor(x => Model.PersRewProposals[i].EmployeeName)
+                                </td>
+                                <td>
+                                    @Model.PersRewProposals[i].PersOutsAchiev @Html.HiddenFor(x => Model.PersRewProposals[i].PersOutsAchiev)
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @if(@Model.UpfComments != null) {
+                <div id="manageComment" class="box box-boder-top-1">
+                    <div class="box-header with-border">
+                        <h4><b>Nhận xét của cấp quản lý</b></h4>
+                    </div>
+                    <div class="box-body">
+                        <table id="person-reward-proposals" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th class="text-center" style="width: 5%;">STT</th>
+                                    <th class="text-center" style="width: 20%;">Người thực hiện</th>
+                                    <th class="text-center" style="width: 20%;">Chức vụ - Phòng ban</th>
+                                    <th class="text-center" style="width: 40%;">Nhận xét</th>
+                                    <th class="text-center" style="width: 15%;">Ngày thực hiện</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.UpfComments.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @Model.UpfComments[i].Order @Html.HiddenFor(x => Model.UpfComments[i].ID)
+                                        </td>
+                                        <td>
+                                            @Model.UpfComments[i].UserName @Html.HiddenFor(x => Model.UpfComments[i].UserName)
+                                        </td>
+                                        <td>
+                                            @Model.UpfComments[i].AdminDepartName @Html.HiddenFor(x => Model.UpfComments[i].AdminDepartName)
+                                        </td>
+                                        <td>
+                                            @Model.UpfComments[i].Comment @Html.HiddenFor(x => Model.UpfComments[i].Comment)
+                                        </td>
+                                        <td>
+                                            @Model.UpfComments[i].CreatedDateString @Html.HiddenFor(x => Model.UpfComments[i].CreatedDate)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                    </div>
+                </div>
+            }
+            <div class="box-footer">
+                <button type="button" class="btn btn-danger pull-right" onclick="location.href = '@Url.Action("UpfList", "Department")'">Quay lại</button>
+            </div>
+        </div>
+    </div>
+    
+}
+@section Scripts {
+    @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/BitexcoThemes/plugins/datepicker/js")
+    @Scripts.Render("~/Scripts/Department/list")
+}

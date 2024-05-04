@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d92fb401fed34fb282900a00a0597b4c" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="GoodJobModel.kAverageMark" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="GoodJobModel.kCompe" Width="1.5" PointX="11.25" PointY="12.375" />
+        <EntityTypeShape EntityType="GoodJobModel.kCompeForAll" Width="1.5" PointX="0.75" PointY="17" />
+        <EntityTypeShape EntityType="GoodJobModel.kCompeForSome" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="GoodJobModel.kJob" Width="1.5" PointX="8.25" PointY="17.25" />
+        <EntityTypeShape EntityType="GoodJobModel.kJobDetail" Width="1.5" PointX="10.5" PointY="17.125" />
+        <EntityTypeShape EntityType="GoodJobModel.kNextPlan" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="GoodJobModel.kNextPlanDetail" Width="1.5" PointX="10.5" PointY="8.125" />
+        <EntityTypeShape EntityType="GoodJobModel.kRate" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="GoodJobModel.kRateForAll" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="GoodJobModel.kRelationType" Width="1.5" PointX="3" PointY="33.75" />
+        <EntityTypeShape EntityType="GoodJobModel.kRelationTypeForAll" Width="1.5" PointX="0.75" PointY="12.625" />
+        <EntityTypeShape EntityType="GoodJobModel.kReport" Width="1.5" PointX="6" PointY="10.75" />
+        <EntityTypeShape EntityType="GoodJobModel.kReport_History" Width="1.5" PointX="8.25" PointY="12.25" />
+        <EntityTypeShape EntityType="GoodJobModel.kState" Width="1.5" PointX="3.75" PointY="17.25" />
+        <EntityTypeShape EntityType="GoodJobModel.kStep" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="GoodJobModel.kStepForAll" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="GoodJobModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vApp" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vAppFunction" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vBranch" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vCompany" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vCorporation" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vCountry" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vCurrency" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vDepartment" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vDepartmentForAll" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vGrade" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vGradeForAll" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vLanguage" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vLoginUser" Width="1.5" PointX="13.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRank" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRankForAll" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRelationType" Width="1.5" PointX="15.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRelationTypeForAll" Width="1.5" PointX="15.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRole" Width="1.5" PointX="15.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vRoleForAll" Width="1.5" PointX="16.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GoodJobModel.vUserInfo" Width="1.5" PointX="17.75" PointY="0.75" />
+        <AssociationConnector Association="GoodJobModel.FK_kAverageMark_kRate" />
+        <AssociationConnector Association="GoodJobModel.FK_kCompe_kCompeForSome" />
+        <AssociationConnector Association="GoodJobModel.FK_kCompe_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kCompeForSome_kCompeForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kCompeForSome_kRelationTypeForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kJob_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kJobDetail_kJob" />
+        <AssociationConnector Association="GoodJobModel.FK_kJobDetail_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kNextPlan_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kNextPlanDetail_kNextPlan" />
+        <AssociationConnector Association="GoodJobModel.FK_kNextPlanDetail_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kRate_kRateForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Compe" />
+        <AssociationConnector Association="GoodJobModel.FK_kRelationType_kRelationTypeForAll_Step" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_History_kRelationTypeForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_kRelationTypeForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kStep_kRelationTypeForAll" />
+        <AssociationConnector Association="GoodJobModel.FK_kStep_kRelationTypeForAll1" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_History_kReport" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_kState" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_kStep" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_History_kState" />
+        <AssociationConnector Association="GoodJobModel.FK_kReport_History_kStep" />
+        <AssociationConnector Association="GoodJobModel.FK_kStep_kStepForAll" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

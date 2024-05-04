@@ -1,0 +1,33 @@
+﻿@model BtcKpi.Web.ViewModels.UpfMonthViewModel
+@{
+    ViewBag.Title = "Báo cáo";
+    ViewBag.SubTitle = "Upf năm";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Examples/Invoice/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-header">
+            <i class="fa fa-globe"></i> BẢNG TỔNG HỢP ĐÁNH GIÁ KPI  NĂM @Model.Year CỦA CÁC PHÒNG
+            <small class="pull-right">TABLE OF REVIEW DEPARTMENTS KPI OF @Model.Year YEAR</small>
+        </h2>
+    </div>
+</div>
+
+<div class="box box-default">
+    <div class="box-body table-responsive">
+        @* style="overflow: auto;white-space: nowrap;" *@
+    <table id="upf-month-table" class="table table-bordered table-hover " style="overflow: auto;white-space: nowrap;">
+        
+    </table>
+
+</div><!-- /.box-body -->
+</div><!-- /.box -->
+@section Scripts {
+    @*@Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+        @Scripts.Render("~/Scripts/Tables/Data")*@
+    @Scripts.Render("~/Scripts/Report/UpfYearView")
+}
+

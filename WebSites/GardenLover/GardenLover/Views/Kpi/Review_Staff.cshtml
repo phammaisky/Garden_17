@@ -1,0 +1,14 @@
+﻿@model List<GardenLover.EF.cUserInfo>
+@using GardenLover.EF
+
+@Html.DropDownList("Staff", new SelectList(Model.OrderByDescending(x => x.FullName).Select(x => new { x.UserId, x.FullName }).ToList(), "UserId", "FullName"), "Nhân viên", new { onchange = "StaffOnChange(); return false;" })
+
+<script>
+    function StaffOnChange() {
+        Review_ByFilter();
+    }
+</script>
+
+<script>
+    StaffOnChange();
+</script>

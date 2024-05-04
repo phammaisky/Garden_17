@@ -1,0 +1,72 @@
+﻿@model GardenLover.EF.cDepartmentForAll
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cDepartmentForAll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cBranch.BranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cBranch.BranchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cCompany.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cCompany.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cCorporation.CorporationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cCorporation.CorporationName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

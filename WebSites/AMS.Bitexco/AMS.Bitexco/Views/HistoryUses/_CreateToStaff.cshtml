@@ -1,0 +1,157 @@
+﻿@using AMS.Models
+@model AMS.Models.HistoryUse
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick="formSubSubmit(); $('#CRUDSubDialog').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+                Bàn giao
+            </h4>
+        </div>
+
+        @using (Html.BeginForm("CreateToStaff", "HistoryUses", FormMethod.Post, new { id = "CreateDialog" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body" style="max-height:300px;  max-height:450px; ">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <input type="hidden" name="HandedToStaffId" id="HandedToStaffId" value="@Model.HandedToStaffId" />
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Tài sản </label>
+                        <div class="radio col-sm-9" style="padding-top:0px" >
+                            <label class="radio-inline"><input type="radio" name="rdiAddOrExits" checked="checked" /> Đã có trong dữ liệu </label>
+                            <label class="radio-inline"><input type="radio" onchange="SiwchToAddDevice('addNew')" name="rdiAddOrExits" />  Thêm mới  </label>
+                        </div>                      
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <div class="input-group input-group-sm" style="padding:0px; max-width:280px">
+                                <input type="hidden" name="DeviceToolId" id="DeviceToolId">
+                                <input type="text" name="DeviceTool" id="DeviceTool" data-val="true" class="form-control" readonly>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#deviceToolModal"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                            @Html.ValidationMessage("DeviceTool")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Tình trạng</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownList("StatusId", null, htmlAttributes: new { @class = "form-control input-sm" })
+                            @Html.ValidationMessage("StatusId")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StatusDescrition, htmlAttributes: new { @class = "control-label col-sm-3" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.StatusDescrition, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.StatusDescrition, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HandedDate, htmlAttributes: new { @class = "control-label col-sm-3" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.HandedDate, new { htmlAttributes = new { @class = "form-control input-sm datemarsk" } })
+                            @Html.ValidationMessageFor(model => model.HandedDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" data-loading-text="Xin chờ..." class="btn btn-default submit">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
+                </button>
+                <button type="button" onclick="formSubSubmit(); $('#CRUDSubDialog').modal('hide');" class="btn btn-default" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Hủy</button>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#AutoAssetsCode').change(function () {
+
+            var notEnough = $(this).prop('checked');
+
+            if (notEnough == false) {
+                $('#AssetsCode').removeAttr("readonly");
+                $('#AssetsCode').focus();
+            }
+            else
+                $('#AssetsCode').attr("readonly", "readonly");
+        })
+
+        $('.number-float').inputmask("decimal", {
+            radixPoint: ".",
+            groupSeparator: ",",
+            digits: 2,
+            autoGroup: true
+        });
+        $('.datemarsk').inputmask({ alias: 'dd/mm/yyyy' });
+        $('.datemarsk').datepicker({
+            language: 'vi',
+            autoclose: true,
+            todayHighlight: true
+        }).on('show', function (e) {
+            $('.datepicker').click(function () { return false; });
+        });
+    })
+
+    
+</script>
+
+<div class="modal fade" id="deviceToolModal" style="display:none" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="$('#deviceToolModal').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+                <h4 class="modal-title" id="myModalLabel">Tìm kiếm tài sản</h4>
+            </div>
+            <div class="modal-body" style="max-height:400px; padding:0px;">
+                <div class="panel panel-default" style="margin-bottom:0px">
+                    <div class="panel-heading" style="padding:5px 15px !important">
+                        <div class="panel-title pull-left">
+                            <div class="input-group input-group-sm">
+                                <div class="pull-left"><input type="text" id="txbMaTS" class="form-control input-sm" placeholder="Mã TS" style="width:100px" /></div>
+                                <div class="pull-left">
+                                    <input type="text" id="txbStaff" class="form-control input-sm" placeholder="Người sử dụng" />
+                                    <input type="hidden" name="staffId" id="staffId">
+                                </div>
+                                <div class="pull-left">@Html.DropDownList("StatusSearchId", null, htmlAttributes: new { @class = "form-control input-sm", @onchange = "SearchDeviceTool();" })</div>
+
+                                <div class="pull-left">
+                                    <input type="hidden" id="CompanySearchId">
+                                    <input type="hidden" id="DeptSearchId">
+                                    <div class="btn-group" id="GroupDropdownCompanyDeptSearch">
+                                        <button type="button" id="BtnCompanyDeptMaintSearch" style="color: #8A8D96; min-height:30px; text-align:left" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            Chọn công ty, phòng ban &nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu" role="menu" style="max-height:250px; overflow:auto; padding-left:5px; padding-right:5px; width:400px">
+                                            @{Html.RenderAction("CompanyDeptSelector", "Companies", new { type = "ToSearch" });}
+                                        </div>
+                                        <script type="text/javascript">
+                                            $('.dropdown-menu input, .dropdown-menu table, .dropdown-menu i').click(function (e) {
+                                                e.stopPropagation();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="pull-left"><button class="btn btn-default btn-sm" onclick="return false;" id="btnSearchDeviceTool"><i class="fa fa-search fa-lg"></i> Tìm kiếm</button></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="resultDeviceToolSearch" style="min-height:300px;">
+                        @{Html.RenderAction("SearchToSelect", "DeviceAndTools");}
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="$('#deviceToolModal').modal('hide');">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

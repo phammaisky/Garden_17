@@ -1,0 +1,137 @@
+﻿@using AMS.Models
+@model AMS.Models.DeviceAndTool
+
+
+<style>
+    label {
+        padding-top: 0px !important;
+    }
+</style>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick=" formSubmit(); $('#CRUDDialog').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">Chi tiết<small> thiết bị, công cụ</small></h4>
+        </div>
+        <div class="modal-body" style="max-height:300px; overflow:auto">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <input type="hidden" id="deviceToolId" value="@Model.Id" />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Company.NameVn)
+                    </div>
+                </div>    
+                <div class="form-group">
+                    @if (Model.DeviceCatId != null)
+                    {
+                        @Html.LabelFor(model => model.DeviceCatId, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.DeviceCategory.DeviceCatName)
+                        </div>
+                    }
+                    @if (Model.ToolCatId != null)
+                    {
+                        @Html.LabelFor(model => model.ToolCatId, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.ToolCategory.ToolCatName)
+                        </div>
+                    }
+                    @Html.LabelFor(model => model.AssetsCode, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-3">
+                        @Html.DisplayFor(model => model.AssetsCode)
+                    </div>
+                </div>
+                <div class="form-group">                   
+                    @Html.LabelFor(model => model.DeviceName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-3">
+                        @Html.DisplayFor(model => model.DeviceName)
+                    </div>
+                    @Html.LabelFor(model => model.BuyDate, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-3">
+                        @Html.DisplayFor(model => model.BuyDate)
+                    </div>
+                </div>                
+                <div class="form-group">                  
+                    @Html.LabelFor(model => model.DescriptionDevice, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.DescriptionDevice)
+                    </div>
+                </div>              
+            </div>
+            <hr style="margin-bottom:5px !important" />
+            <div class="row">
+                <div class="container-fluid">
+                    <label>Quá trình sử dụng</label>                   
+                    <a class="create_sub_modal btn btn-primary btn-xs pull-right" href='@Url.Action("Create", "HistoryUses", new { Id = Model.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Bàn giao, thanh lý"><i class="fa fa-share-square-o fa-lg"></i>     Bàn giao  </a>
+                </div>
+            </div>
+            <div id="resultHistory">
+                @{Html.RenderAction("HistoryOfAssert", "HistoryUses", new { id = Model.Id });}
+            </div>
+            
+        </div>
+        <div class="modal-footer">          
+            <button type="button" onclick=" formSubmit(); $('#CRUDDialog').modal('hide');" class="btn btn-default" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Hủy</button>
+        </div>
+    </div>
+</div>
+
+<div id='CRUDSubDialog' class='modal fade in'>
+    <div id='CRUDSubDialogContent'></div>
+</div>
+
+<script type="text/javascript">
+    function returnStaff(id, name) {
+        $('#Staff').val(name);
+        $('#StaffId').val(id);
+
+        $('#StaffTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+    }
+    function returnStaffClose(id, name) {
+        $('#Staff').val(name);
+        $('#StaffId').val(id);
+
+
+        $('#StaffTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+
+        $("#staffModal").modal('hide');
+    }
+
+    $("#StaffSearchName").on("keydown", function (event) {
+        WaitSearchContractor();
+        if (event.which == 8) {
+            WaitSearchContractor();
+        }
+    });
+
+    $("#btnSearchStaff").click(function () {
+        SearchContractor();
+    });
+    var timerSearch = $.timer(function () { SearchContractor(); timerSearch.stop(); });
+    function WaitSearchContractor() {
+        timerSearch.reset();
+        timerSearch.set({ time: 1000, autostart: true });
+    }
+
+    function SearchContractor() {
+
+        var name = $('#StaffSearchName').val();
+
+        var stf = { UserName: name };
+        $.post("@Url.Content("~/Staffs/GetListStaff")", stf).done(function (d) {
+            OnStaffSearchSuccess(d);
+        });
+    }
+
+    function OnStaffSearchSuccess(response) {
+        if (response != null) {
+            $("#resultStaffSearch").html(response);
+        }
+    }
+</script>
+

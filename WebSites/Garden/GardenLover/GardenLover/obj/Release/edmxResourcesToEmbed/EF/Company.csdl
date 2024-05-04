@@ -1,0 +1,1222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CompanyEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CompanyModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CompanyModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="sp_alterdiagram1">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram1">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram1">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition1" ReturnType="Collection(CompanyModel.sp_helpdiagramdefinition1_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams1" ReturnType="Collection(CompanyModel.sp_helpdiagrams1_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram1">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams1" />
+    <EntitySet Name="aApps" EntityType="CompanyModel.aApp" />
+    <EntitySet Name="aAppFunctions" EntityType="CompanyModel.aAppFunction" />
+    <EntitySet Name="aRelationTypes" EntityType="CompanyModel.aRelationType" />
+    <EntitySet Name="aRelationTypeForAlls" EntityType="CompanyModel.aRelationTypeForAll" />
+    <EntitySet Name="aRoles" EntityType="CompanyModel.aRole" />
+    <EntitySet Name="aRoleForAlls" EntityType="CompanyModel.aRoleForAll" />
+    <EntitySet Name="aRoleForSomes" EntityType="CompanyModel.aRoleForSome" />
+    <EntitySet Name="aRoleForSomeAllows" EntityType="CompanyModel.aRoleForSomeAllow" />
+    <EntitySet Name="cBranches" EntityType="CompanyModel.cBranch" />
+    <EntitySet Name="cCompanies" EntityType="CompanyModel.cCompany" />
+    <EntitySet Name="cCorporations" EntityType="CompanyModel.cCorporation" />
+    <EntitySet Name="cDepartments" EntityType="CompanyModel.cDepartment" />
+    <EntitySet Name="cDepartmentForAlls" EntityType="CompanyModel.cDepartmentForAll" />
+    <EntitySet Name="cGrades" EntityType="CompanyModel.cGrade" />
+    <EntitySet Name="cGradeForAlls" EntityType="CompanyModel.cGradeForAll" />
+    <EntitySet Name="cRanks" EntityType="CompanyModel.cRank" />
+    <EntitySet Name="cRankForAlls" EntityType="CompanyModel.cRankForAll" />
+    <EntitySet Name="cUserInfoes" EntityType="CompanyModel.cUserInfo" />
+    <EntitySet Name="sCountries" EntityType="CompanyModel.sCountry" />
+    <EntitySet Name="sCurrencies" EntityType="CompanyModel.sCurrency" />
+    <EntitySet Name="sLanguages" EntityType="CompanyModel.sLanguage" />
+    <EntitySet Name="sysdiagrams" EntityType="CompanyModel.sysdiagram" />
+    <EntitySet Name="vLoginUsers" EntityType="CompanyModel.vLoginUser" />
+    <AssociationSet Name="FK_aAppFunction_aApp" Association="CompanyModel.FK_aAppFunction_aApp">
+      <End Role="aApp" EntitySet="aApps" />
+      <End Role="aAppFunction" EntitySet="aAppFunctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRole_aApp" Association="CompanyModel.FK_aRole_aApp">
+      <End Role="aApp" EntitySet="aApps" />
+      <End Role="aRole" EntitySet="aRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRoleForAll_aApp" Association="CompanyModel.FK_aRoleForAll_aApp">
+      <End Role="aApp" EntitySet="aApps" />
+      <End Role="aRoleForAll" EntitySet="aRoleForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRole_aAppFunction" Association="CompanyModel.FK_aRole_aAppFunction">
+      <End Role="aAppFunction" EntitySet="aAppFunctions" />
+      <End Role="aRole" EntitySet="aRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRoleForAll_aAppFunction" Association="CompanyModel.FK_aRoleForAll_aAppFunction">
+      <End Role="aAppFunction" EntitySet="aAppFunctions" />
+      <End Role="aRoleForAll" EntitySet="aRoleForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRelationType_aRelationTypeForAll" Association="CompanyModel.FK_aRelationType_aRelationTypeForAll">
+      <End Role="aRelationTypeForAll" EntitySet="aRelationTypeForAlls" />
+      <End Role="aRelationType" EntitySet="aRelationTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRelationType_cUserInfo" Association="CompanyModel.FK_aRelationType_cUserInfo">
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+      <End Role="aRelationType" EntitySet="aRelationTypes" />
+    </AssociationSet>
+    <AssociationSet Name="PK_aRole_aRoleRelationTypeForAll" Association="CompanyModel.PK_aRole_aRoleRelationTypeForAll">
+      <End Role="aRelationTypeForAll" EntitySet="aRelationTypeForAlls" />
+      <End Role="aRole" EntitySet="aRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRole_aRoleForSome" Association="CompanyModel.FK_aRole_aRoleForSome">
+      <End Role="aRoleForSome" EntitySet="aRoleForSomes" />
+      <End Role="aRole" EntitySet="aRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRoleForSomeAllow_aRoleForAll" Association="CompanyModel.FK_aRoleForSomeAllow_aRoleForAll">
+      <End Role="aRoleForAll" EntitySet="aRoleForAlls" />
+      <End Role="aRoleForSomeAllow" EntitySet="aRoleForSomeAllows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aRoleForSomeAllow_aRoleForSome" Association="CompanyModel.FK_aRoleForSomeAllow_aRoleForSome">
+      <End Role="aRoleForSome" EntitySet="aRoleForSomes" />
+      <End Role="aRoleForSomeAllow" EntitySet="aRoleForSomeAllows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cBranch_cCompany" Association="CompanyModel.FK_cBranch_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cBranch" EntitySet="cBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartment_cBranch" Association="CompanyModel.FK_cDepartment_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cDepartment" EntitySet="cDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartmentForAll_cBranch" Association="CompanyModel.FK_cDepartmentForAll_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cDepartmentForAll" EntitySet="cDepartmentForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGrade_cBranch" Association="CompanyModel.FK_cGrade_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cGrade" EntitySet="cGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGradeForAll_cBranch" Association="CompanyModel.FK_cGradeForAll_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cGradeForAll" EntitySet="cGradeForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRank_cBranch" Association="CompanyModel.FK_cRank_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cRank" EntitySet="cRanks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRankForAll_cBranch" Association="CompanyModel.FK_cRankForAll_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cRankForAll" EntitySet="cRankForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cBranch" Association="CompanyModel.FK_cUserInfo_cBranch">
+      <End Role="cBranch" EntitySet="cBranches" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cCompany_cCorporation" Association="CompanyModel.FK_cCompany_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cCompany" EntitySet="cCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartment_cCompany" Association="CompanyModel.FK_cDepartment_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cDepartment" EntitySet="cDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartmentForAll_cCompany" Association="CompanyModel.FK_cDepartmentForAll_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cDepartmentForAll" EntitySet="cDepartmentForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGrade_cCompany" Association="CompanyModel.FK_cGrade_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cGrade" EntitySet="cGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGradeForAll_cCompany" Association="CompanyModel.FK_cGradeForAll_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cGradeForAll" EntitySet="cGradeForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRank_cCompany" Association="CompanyModel.FK_cRank_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cRank" EntitySet="cRanks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRankForAll_cCompany" Association="CompanyModel.FK_cRankForAll_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cRankForAll" EntitySet="cRankForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cCompany" Association="CompanyModel.FK_cUserInfo_cCompany">
+      <End Role="cCompany" EntitySet="cCompanies" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartment_cCorporation" Association="CompanyModel.FK_cDepartment_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cDepartment" EntitySet="cDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartmentForAll_cCorporation" Association="CompanyModel.FK_cDepartmentForAll_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cDepartmentForAll" EntitySet="cDepartmentForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGrade_cCorporation" Association="CompanyModel.FK_cGrade_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cGrade" EntitySet="cGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGradeForAll_cCorporation" Association="CompanyModel.FK_cGradeForAll_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cGradeForAll" EntitySet="cGradeForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRank_cCorporation" Association="CompanyModel.FK_cRank_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cRank" EntitySet="cRanks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRankForAll_cCorporation" Association="CompanyModel.FK_cRankForAll_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cRankForAll" EntitySet="cRankForAlls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cCorporation" Association="CompanyModel.FK_cUserInfo_cCorporation">
+      <End Role="cCorporation" EntitySet="cCorporations" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cDepartment_cDepartmentForAll" Association="CompanyModel.FK_cDepartment_cDepartmentForAll">
+      <End Role="cDepartmentForAll" EntitySet="cDepartmentForAlls" />
+      <End Role="cDepartment" EntitySet="cDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cDepartment" Association="CompanyModel.FK_cUserInfo_cDepartment">
+      <End Role="cDepartment" EntitySet="cDepartments" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cGrade_cGradeForAll" Association="CompanyModel.FK_cGrade_cGradeForAll">
+      <End Role="cGradeForAll" EntitySet="cGradeForAlls" />
+      <End Role="cGrade" EntitySet="cGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cGrade" Association="CompanyModel.FK_cUserInfo_cGrade">
+      <End Role="cGrade" EntitySet="cGrades" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cRank_cRankForAll" Association="CompanyModel.FK_cRank_cRankForAll">
+      <End Role="cRankForAll" EntitySet="cRankForAlls" />
+      <End Role="cRank" EntitySet="cRanks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cRank" Association="CompanyModel.FK_cUserInfo_cRank">
+      <End Role="cRank" EntitySet="cRanks" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_cManagerInfo" Association="CompanyModel.FK_cUserInfo_cManagerInfo">
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+      <End Role="cUserInfo1" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cUserInfo_sCountry" Association="CompanyModel.FK_cUserInfo_sCountry">
+      <End Role="sCountry" EntitySet="sCountries" />
+      <End Role="cUserInfo" EntitySet="cUserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sCountry_sCurrency" Association="CompanyModel.FK_sCountry_sCurrency">
+      <End Role="sCurrency" EntitySet="sCurrencies" />
+      <End Role="sCountry" EntitySet="sCountries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sCountry_sLanguage" Association="CompanyModel.FK_sCountry_sLanguage">
+      <End Role="sLanguage" EntitySet="sLanguages" />
+      <End Role="sCountry" EntitySet="sCountries" />
+    </AssociationSet>
+    <EntitySet Name="sConfigs" EntityType="CompanyModel.sConfig" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition1_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams1_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="aApp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="AppName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="aAppFunctions" Relationship="CompanyModel.FK_aAppFunction_aApp" FromRole="aApp" ToRole="aAppFunction" />
+    <NavigationProperty Name="aRoles" Relationship="CompanyModel.FK_aRole_aApp" FromRole="aApp" ToRole="aRole" />
+    <NavigationProperty Name="aRoleForAlls" Relationship="CompanyModel.FK_aRoleForAll_aApp" FromRole="aApp" ToRole="aRoleForAll" />
+  </EntityType>
+  <EntityType Name="aAppFunction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="AppId" Type="Int64" Nullable="false" />
+    <Property Name="FunctionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="aApp" Relationship="CompanyModel.FK_aAppFunction_aApp" FromRole="aAppFunction" ToRole="aApp" />
+    <NavigationProperty Name="aRoles" Relationship="CompanyModel.FK_aRole_aAppFunction" FromRole="aAppFunction" ToRole="aRole" />
+    <NavigationProperty Name="aRoleForAlls" Relationship="CompanyModel.FK_aRoleForAll_aAppFunction" FromRole="aAppFunction" ToRole="aRoleForAll" />
+  </EntityType>
+  <EntityType Name="aRelationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="RoleRelationTypeId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="aRelationTypeForAll" Relationship="CompanyModel.FK_aRelationType_aRelationTypeForAll" FromRole="aRelationType" ToRole="aRelationTypeForAll" />
+    <NavigationProperty Name="cUserInfo" Relationship="CompanyModel.FK_aRelationType_cUserInfo" FromRole="aRelationType" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="aRelationTypeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RelationTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="IsDefaultRoleRelationType" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="aRelationTypes" Relationship="CompanyModel.FK_aRelationType_aRelationTypeForAll" FromRole="aRelationTypeForAll" ToRole="aRelationType" />
+    <NavigationProperty Name="aRoles" Relationship="CompanyModel.PK_aRole_aRoleRelationTypeForAll" FromRole="aRelationTypeForAll" ToRole="aRole" />
+  </EntityType>
+  <EntityType Name="aRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="AppId" Type="Int64" />
+    <Property Name="FunctionId" Type="Int64" />
+    <Property Name="RoleRelationTypeId" Type="Int64" Nullable="false" />
+    <Property Name="RoleRelationValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleForSomeId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="aApp" Relationship="CompanyModel.FK_aRole_aApp" FromRole="aRole" ToRole="aApp" />
+    <NavigationProperty Name="aAppFunction" Relationship="CompanyModel.FK_aRole_aAppFunction" FromRole="aRole" ToRole="aAppFunction" />
+    <NavigationProperty Name="aRelationTypeForAll" Relationship="CompanyModel.PK_aRole_aRoleRelationTypeForAll" FromRole="aRole" ToRole="aRelationTypeForAll" />
+    <NavigationProperty Name="aRoleForSome" Relationship="CompanyModel.FK_aRole_aRoleForSome" FromRole="aRole" ToRole="aRoleForSome" />
+  </EntityType>
+  <EntityType Name="aRoleForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppId" Type="Int64" />
+    <Property Name="FunctionId" Type="Int64" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="aApp" Relationship="CompanyModel.FK_aRoleForAll_aApp" FromRole="aRoleForAll" ToRole="aApp" />
+    <NavigationProperty Name="aAppFunction" Relationship="CompanyModel.FK_aRoleForAll_aAppFunction" FromRole="aRoleForAll" ToRole="aAppFunction" />
+    <NavigationProperty Name="aRoleForSomeAllows" Relationship="CompanyModel.FK_aRoleForSomeAllow_aRoleForAll" FromRole="aRoleForAll" ToRole="aRoleForSomeAllow" />
+  </EntityType>
+  <EntityType Name="aRoleForSome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="AppId" Type="Int64" />
+    <Property Name="FunctionId" Type="Int64" />
+    <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aRoles" Relationship="CompanyModel.FK_aRole_aRoleForSome" FromRole="aRoleForSome" ToRole="aRole" />
+    <NavigationProperty Name="aRoleForSomeAllows" Relationship="CompanyModel.FK_aRoleForSomeAllow_aRoleForSome" FromRole="aRoleForSome" ToRole="aRoleForSomeAllow" />
+  </EntityType>
+  <EntityType Name="aRoleForSomeAllow">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleForSomeId" Type="Int64" />
+    <Property Name="RoleForAllId" Type="Int64" />
+    <Property Name="AllowRelationTypeId" Type="Int64" />
+    <Property Name="AllowRelationValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aRoleForAll" Relationship="CompanyModel.FK_aRoleForSomeAllow_aRoleForAll" FromRole="aRoleForSomeAllow" ToRole="aRoleForAll" />
+    <NavigationProperty Name="aRoleForSome" Relationship="CompanyModel.FK_aRoleForSomeAllow_aRoleForSome" FromRole="aRoleForSomeAllow" ToRole="aRoleForSome" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="cBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cBranch_cCompany" FromRole="cBranch" ToRole="cCompany" />
+    <NavigationProperty Name="cDepartments" Relationship="CompanyModel.FK_cDepartment_cBranch" FromRole="cBranch" ToRole="cDepartment" />
+    <NavigationProperty Name="cDepartmentForAlls" Relationship="CompanyModel.FK_cDepartmentForAll_cBranch" FromRole="cBranch" ToRole="cDepartmentForAll" />
+    <NavigationProperty Name="cGrades" Relationship="CompanyModel.FK_cGrade_cBranch" FromRole="cBranch" ToRole="cGrade" />
+    <NavigationProperty Name="cGradeForAlls" Relationship="CompanyModel.FK_cGradeForAll_cBranch" FromRole="cBranch" ToRole="cGradeForAll" />
+    <NavigationProperty Name="cRanks" Relationship="CompanyModel.FK_cRank_cBranch" FromRole="cBranch" ToRole="cRank" />
+    <NavigationProperty Name="cRankForAlls" Relationship="CompanyModel.FK_cRankForAll_cBranch" FromRole="cBranch" ToRole="cRankForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cBranch" FromRole="cBranch" ToRole="cUserInfo" />
+    <Property Name="AdminId" Type="Guid" />
+  </EntityType>
+  <EntityType Name="cCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="cBranches" Relationship="CompanyModel.FK_cBranch_cCompany" FromRole="cCompany" ToRole="cBranch" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cCompany_cCorporation" FromRole="cCompany" ToRole="cCorporation" />
+    <NavigationProperty Name="cDepartments" Relationship="CompanyModel.FK_cDepartment_cCompany" FromRole="cCompany" ToRole="cDepartment" />
+    <NavigationProperty Name="cDepartmentForAlls" Relationship="CompanyModel.FK_cDepartmentForAll_cCompany" FromRole="cCompany" ToRole="cDepartmentForAll" />
+    <NavigationProperty Name="cGrades" Relationship="CompanyModel.FK_cGrade_cCompany" FromRole="cCompany" ToRole="cGrade" />
+    <NavigationProperty Name="cGradeForAlls" Relationship="CompanyModel.FK_cGradeForAll_cCompany" FromRole="cCompany" ToRole="cGradeForAll" />
+    <NavigationProperty Name="cRanks" Relationship="CompanyModel.FK_cRank_cCompany" FromRole="cCompany" ToRole="cRank" />
+    <NavigationProperty Name="cRankForAlls" Relationship="CompanyModel.FK_cRankForAll_cCompany" FromRole="cCompany" ToRole="cRankForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cCompany" FromRole="cCompany" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="cCorporation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="cCompanies" Relationship="CompanyModel.FK_cCompany_cCorporation" FromRole="cCorporation" ToRole="cCompany" />
+    <NavigationProperty Name="cDepartments" Relationship="CompanyModel.FK_cDepartment_cCorporation" FromRole="cCorporation" ToRole="cDepartment" />
+    <NavigationProperty Name="cDepartmentForAlls" Relationship="CompanyModel.FK_cDepartmentForAll_cCorporation" FromRole="cCorporation" ToRole="cDepartmentForAll" />
+    <NavigationProperty Name="cGrades" Relationship="CompanyModel.FK_cGrade_cCorporation" FromRole="cCorporation" ToRole="cGrade" />
+    <NavigationProperty Name="cGradeForAlls" Relationship="CompanyModel.FK_cGradeForAll_cCorporation" FromRole="cCorporation" ToRole="cGradeForAll" />
+    <NavigationProperty Name="cRanks" Relationship="CompanyModel.FK_cRank_cCorporation" FromRole="cCorporation" ToRole="cRank" />
+    <NavigationProperty Name="cRankForAlls" Relationship="CompanyModel.FK_cRankForAll_cCorporation" FromRole="cCorporation" ToRole="cRankForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cCorporation" FromRole="cCorporation" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="cDepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cDepartment_cBranch" FromRole="cDepartment" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cDepartment_cCompany" FromRole="cDepartment" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cDepartment_cCorporation" FromRole="cDepartment" ToRole="cCorporation" />
+    <NavigationProperty Name="cDepartmentForAll" Relationship="CompanyModel.FK_cDepartment_cDepartmentForAll" FromRole="cDepartment" ToRole="cDepartmentForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cDepartment" FromRole="cDepartment" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="cDepartmentForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cDepartmentForAll_cBranch" FromRole="cDepartmentForAll" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cDepartmentForAll_cCompany" FromRole="cDepartmentForAll" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cDepartmentForAll_cCorporation" FromRole="cDepartmentForAll" ToRole="cCorporation" />
+    <NavigationProperty Name="cDepartments" Relationship="CompanyModel.FK_cDepartment_cDepartmentForAll" FromRole="cDepartmentForAll" ToRole="cDepartment" />
+  </EntityType>
+  <EntityType Name="cGrade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="GradeForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cGrade_cBranch" FromRole="cGrade" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cGrade_cCompany" FromRole="cGrade" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cGrade_cCorporation" FromRole="cGrade" ToRole="cCorporation" />
+    <NavigationProperty Name="cGradeForAll" Relationship="CompanyModel.FK_cGrade_cGradeForAll" FromRole="cGrade" ToRole="cGradeForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cGrade" FromRole="cGrade" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="cGradeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="GradeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cGradeForAll_cBranch" FromRole="cGradeForAll" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cGradeForAll_cCompany" FromRole="cGradeForAll" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cGradeForAll_cCorporation" FromRole="cGradeForAll" ToRole="cCorporation" />
+    <NavigationProperty Name="cGrades" Relationship="CompanyModel.FK_cGrade_cGradeForAll" FromRole="cGradeForAll" ToRole="cGrade" />
+  </EntityType>
+  <EntityType Name="cRank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="RankForAllId" Type="Int64" Nullable="false" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="xKpiJob" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="xKpiCompe" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="CanBeManager" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cRank_cBranch" FromRole="cRank" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cRank_cCompany" FromRole="cRank" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cRank_cCorporation" FromRole="cRank" ToRole="cCorporation" />
+    <NavigationProperty Name="cRankForAll" Relationship="CompanyModel.FK_cRank_cRankForAll" FromRole="cRank" ToRole="cRankForAll" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_cRank" FromRole="cRank" ToRole="cUserInfo" />
+  </EntityType>
+  <EntityType Name="cRankForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorporationId" Type="Int64" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="RankName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="xKpiJob" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="xKpiCompe" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="CanBeManager" Type="Boolean" Nullable="false" />
+    <Property Name="AutoCreate" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cRankForAll_cBranch" FromRole="cRankForAll" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cRankForAll_cCompany" FromRole="cRankForAll" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cRankForAll_cCorporation" FromRole="cRankForAll" ToRole="cCorporation" />
+    <NavigationProperty Name="cRanks" Relationship="CompanyModel.FK_cRank_cRankForAll" FromRole="cRankForAll" ToRole="cRank" />
+  </EntityType>
+  <EntityType Name="cUserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserIdd" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int64" Nullable="false" />
+    <Property Name="CorporationId" Type="Int64" Nullable="false" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="RankId" Type="Int64" Nullable="false" />
+    <Property Name="GradeId" Type="Int64" Nullable="false" />
+    <Property Name="ManagerId" Type="Guid" />
+    <Property Name="StartWorkingDate" Type="DateTime" Precision="0" />
+    <Property Name="StartCurrentJobDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="aRelationTypes" Relationship="CompanyModel.FK_aRelationType_cUserInfo" FromRole="cUserInfo" ToRole="aRelationType" />
+    <NavigationProperty Name="cBranch" Relationship="CompanyModel.FK_cUserInfo_cBranch" FromRole="cUserInfo" ToRole="cBranch" />
+    <NavigationProperty Name="cCompany" Relationship="CompanyModel.FK_cUserInfo_cCompany" FromRole="cUserInfo" ToRole="cCompany" />
+    <NavigationProperty Name="cCorporation" Relationship="CompanyModel.FK_cUserInfo_cCorporation" FromRole="cUserInfo" ToRole="cCorporation" />
+    <NavigationProperty Name="cDepartment" Relationship="CompanyModel.FK_cUserInfo_cDepartment" FromRole="cUserInfo" ToRole="cDepartment" />
+    <NavigationProperty Name="cGrade" Relationship="CompanyModel.FK_cUserInfo_cGrade" FromRole="cUserInfo" ToRole="cGrade" />
+    <NavigationProperty Name="cRank" Relationship="CompanyModel.FK_cUserInfo_cRank" FromRole="cUserInfo" ToRole="cRank" />
+    <NavigationProperty Name="cUserInfo1" Relationship="CompanyModel.FK_cUserInfo_cManagerInfo" FromRole="cUserInfo" ToRole="cUserInfo1" />
+    <NavigationProperty Name="cUserInfo2" Relationship="CompanyModel.FK_cUserInfo_cManagerInfo" FromRole="cUserInfo1" ToRole="cUserInfo" />
+    <NavigationProperty Name="sCountry" Relationship="CompanyModel.FK_cUserInfo_sCountry" FromRole="cUserInfo" ToRole="sCountry" />
+  </EntityType>
+  <EntityType Name="sCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <Property Name="LanguageId" Type="Int64" />
+    <Property Name="CurrencyId" Type="Int64" />
+    <NavigationProperty Name="cUserInfoes" Relationship="CompanyModel.FK_cUserInfo_sCountry" FromRole="sCountry" ToRole="cUserInfo" />
+    <NavigationProperty Name="sCurrency" Relationship="CompanyModel.FK_sCountry_sCurrency" FromRole="sCountry" ToRole="sCurrency" />
+    <NavigationProperty Name="sLanguage" Relationship="CompanyModel.FK_sCountry_sLanguage" FromRole="sCountry" ToRole="sLanguage" />
+  </EntityType>
+  <EntityType Name="sCurrency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="sCountries" Relationship="CompanyModel.FK_sCountry_sCurrency" FromRole="sCurrency" ToRole="sCountry" />
+  </EntityType>
+  <EntityType Name="sLanguage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LanguageName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seq" Type="Int64" />
+    <NavigationProperty Name="sCountries" Relationship="CompanyModel.FK_sCountry_sLanguage" FromRole="sLanguage" ToRole="sCountry" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vLoginUser">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EmailConfirmed" />
+      <PropertyRef Name="PhoneNumberConfirmed" />
+      <PropertyRef Name="TwoFactorEnabled" />
+      <PropertyRef Name="LockoutEnabled" />
+      <PropertyRef Name="AccessFailedCount" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_aAppFunction_aApp">
+    <End Type="CompanyModel.aApp" Role="aApp" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.aAppFunction" Role="aAppFunction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aApp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aAppFunction">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRole_aApp">
+    <End Type="CompanyModel.aApp" Role="aApp" Multiplicity="0..1" />
+    <End Type="CompanyModel.aRole" Role="aRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aApp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRole">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRoleForAll_aApp">
+    <End Type="CompanyModel.aApp" Role="aApp" Multiplicity="0..1" />
+    <End Type="CompanyModel.aRoleForAll" Role="aRoleForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aApp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRoleForAll">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRole_aAppFunction">
+    <End Type="CompanyModel.aAppFunction" Role="aAppFunction" Multiplicity="0..1" />
+    <End Type="CompanyModel.aRole" Role="aRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aAppFunction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRole">
+        <PropertyRef Name="FunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRoleForAll_aAppFunction">
+    <End Type="CompanyModel.aAppFunction" Role="aAppFunction" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.aRoleForAll" Role="aRoleForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aAppFunction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRoleForAll">
+        <PropertyRef Name="FunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRelationType_aRelationTypeForAll">
+    <End Type="CompanyModel.aRelationTypeForAll" Role="aRelationTypeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.aRelationType" Role="aRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRelationType">
+        <PropertyRef Name="RoleRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRelationType_cUserInfo">
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.aRelationType" Role="aRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cUserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aRelationType">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_aRole_aRoleRelationTypeForAll">
+    <End Type="CompanyModel.aRelationTypeForAll" Role="aRelationTypeForAll" Multiplicity="1" />
+    <End Type="CompanyModel.aRole" Role="aRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRole">
+        <PropertyRef Name="RoleRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRole_aRoleForSome">
+    <End Type="CompanyModel.aRoleForSome" Role="aRoleForSome" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.aRole" Role="aRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aRoleForSome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRole">
+        <PropertyRef Name="RoleForSomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRoleForSomeAllow_aRoleForAll">
+    <End Type="CompanyModel.aRoleForAll" Role="aRoleForAll" Multiplicity="0..1" />
+    <End Type="CompanyModel.aRoleForSomeAllow" Role="aRoleForSomeAllow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aRoleForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRoleForSomeAllow">
+        <PropertyRef Name="RoleForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aRoleForSomeAllow_aRoleForSome">
+    <End Type="CompanyModel.aRoleForSome" Role="aRoleForSome" Multiplicity="0..1" />
+    <End Type="CompanyModel.aRoleForSomeAllow" Role="aRoleForSomeAllow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aRoleForSome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aRoleForSomeAllow">
+        <PropertyRef Name="RoleForSomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cBranch_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cBranch">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartment_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="1" />
+    <End Type="CompanyModel.cDepartment" Role="cDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartment">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartmentForAll_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cDepartmentForAll" Role="cDepartmentForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartmentForAll">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGrade_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="1" />
+    <End Type="CompanyModel.cGrade" Role="cGrade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGrade">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGradeForAll_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cGradeForAll" Role="cGradeForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGradeForAll">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRank_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="1" />
+    <End Type="CompanyModel.cRank" Role="cRank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRank">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRankForAll_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cRankForAll" Role="cRankForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRankForAll">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cBranch">
+    <End Type="CompanyModel.cBranch" Role="cBranch" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cCompany_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cCompany">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartment_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="1" />
+    <End Type="CompanyModel.cDepartment" Role="cDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartment">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartmentForAll_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="0..1" />
+    <End Type="CompanyModel.cDepartmentForAll" Role="cDepartmentForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartmentForAll">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGrade_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="1" />
+    <End Type="CompanyModel.cGrade" Role="cGrade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGrade">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGradeForAll_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="0..1" />
+    <End Type="CompanyModel.cGradeForAll" Role="cGradeForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGradeForAll">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRank_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="1" />
+    <End Type="CompanyModel.cRank" Role="cRank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRank">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRankForAll_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="0..1" />
+    <End Type="CompanyModel.cRankForAll" Role="cRankForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRankForAll">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cCompany">
+    <End Type="CompanyModel.cCompany" Role="cCompany" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartment_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="1" />
+    <End Type="CompanyModel.cDepartment" Role="cDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartment">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartmentForAll_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="0..1" />
+    <End Type="CompanyModel.cDepartmentForAll" Role="cDepartmentForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartmentForAll">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGrade_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="1" />
+    <End Type="CompanyModel.cGrade" Role="cGrade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGrade">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGradeForAll_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="0..1" />
+    <End Type="CompanyModel.cGradeForAll" Role="cGradeForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGradeForAll">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRank_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="1" />
+    <End Type="CompanyModel.cRank" Role="cRank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRank">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRankForAll_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="0..1" />
+    <End Type="CompanyModel.cRankForAll" Role="cRankForAll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRankForAll">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cCorporation">
+    <End Type="CompanyModel.cCorporation" Role="cCorporation" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cCorporation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="CorporationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cDepartment_cDepartmentForAll">
+    <End Type="CompanyModel.cDepartmentForAll" Role="cDepartmentForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cDepartment" Role="cDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cDepartmentForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cDepartment">
+        <PropertyRef Name="DepartmentForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cDepartment">
+    <End Type="CompanyModel.cDepartment" Role="cDepartment" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cDepartment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cGrade_cGradeForAll">
+    <End Type="CompanyModel.cGradeForAll" Role="cGradeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cGrade" Role="cGrade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cGradeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cGrade">
+        <PropertyRef Name="GradeForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cGrade">
+    <End Type="CompanyModel.cGrade" Role="cGrade" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cGrade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cRank_cRankForAll">
+    <End Type="CompanyModel.cRankForAll" Role="cRankForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cRank" Role="cRank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cRankForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cRank">
+        <PropertyRef Name="RankForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cRank">
+    <End Type="CompanyModel.cRank" Role="cRank" Multiplicity="1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cRank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="RankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_cManagerInfo">
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="0..1" />
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cUserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="cUserInfo1">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cUserInfo_sCountry">
+    <End Type="CompanyModel.sCountry" Role="sCountry" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.cUserInfo" Role="cUserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sCountry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cUserInfo">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sCountry_sCurrency">
+    <End Type="CompanyModel.sCurrency" Role="sCurrency" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.sCountry" Role="sCountry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sCurrency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sCountry">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sCountry_sLanguage">
+    <End Type="CompanyModel.sLanguage" Role="sLanguage" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CompanyModel.sCountry" Role="sCountry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sLanguage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sCountry">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfigName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

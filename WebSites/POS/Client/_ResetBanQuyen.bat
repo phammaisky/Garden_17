@@ -1,0 +1,1 @@
+DEL /F /S /Q /A "C:\Documents and Settings\All Users\Application Data\topos.tps"

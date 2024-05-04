@@ -1,0 +1,163 @@
+﻿@using BtcKpi.Model
+@using BtcKpi.Service.Common
+@model BtcKpi.Web.ViewModels.ReportListViewModel
+@{
+    List<string> ipfSheduleNames = new List<string>();
+    if (Model.IpfReportInfos.Count > 1)
+    {
+        ipfSheduleNames = Model.IpfReportInfos[1].IpfScores.Where(p => p.ScheduleType == 1).OrderBy(p => p.ID).Select(p => p.ScheduleName).ToList();
+    }
+    int deptRowSpan = ipfSheduleNames.Count + 15;
+    int deptRowNum = 0;
+    int staftRowNum = 0;
+}
+
+<thead>
+    <tr class="bg-light-blue color-palette">
+        <th style="width: 15px; vertical-align: middle;" class="text-center" >STT/No.</th>
+        <th style="width: 30px; vertical-align: middle;" class="text-center" >Mã CBNV</th>
+        <th style="width: 60px; vertical-align: middle;" class="text-center" >Họ và tên/ Full Name</th>
+        <th style="width: 60px; vertical-align: middle;" class="text-center" >PHÒNG</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Vị trí/ Chức danh / Position</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Cấp bậc</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Ngày bắt đầu làm việc/ Joining date</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Thâm niên làm việc (tháng)</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Số ngày nghỉ KL (Ốm, TS..)</th>
+        @for (int i = 0; i < (ipfSheduleNames.Count); i++)
+        {
+            <th style="width: 40px; vertical-align: middle;" class="text-center" >@ipfSheduleNames[i]</th>
+        }
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Điểm KPT BQ/ Average KPI</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center">Xếp loại theo điểm KPT BQ/ Rank base on the average KPI</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >KPI end of Year</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Xếp loại theo kết quả đánh giá cuối năm</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >BOD đánh giá</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >KPI by BOD</th>
+        <th style="width: 50px; vertical-align: middle;" class="text-center" >Ghi chú</th>
+    </tr>
+</thead>
+<tbody>
+    @for (int i = 0; i < Model.IpfReportInfos.Count; i++)
+    {
+        @*Trường hợp là row phòng ban*@
+        if (Model.IpfReportInfos[i].IsDeparmentRow == true)
+        {
+            deptRowNum++;
+            staftRowNum = 0;
+            <tr class="bg-success color-palette">
+                <td>
+                    @BtcHelper.ToRoman(deptRowNum)
+                                @Html.HiddenFor(model => model.IpfReportInfos[i].ID)
+                                @Html.HiddenFor(model => model.IpfReportInfos[i].UserId)
+                                @Html.HiddenFor(model => model.IpfReportInfos[i].Year)
+                                @Html.HiddenFor(model => model.IpfReportInfos[i].IsDeparmentRow)
+                            </td>
+                <td ><b>@Model.IpfReportInfos[i].DepartmentName</b></td>
+                <td>@Model.IpfReportInfos[i].IsDeparmentRow</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@Html.TextBoxFor(x => @Model.IpfReportInfos[i].BodScore, new { @type = "number", @min = "0", @max = "10", @step = "0.1" })</td>
+                <td></td>
+                <td>@Html.TextAreaFor(model => model.IpfReportInfos[i].Remark, new { @class = "pull-left", @style = "width: 100%;" })</td>
+            </tr>
+        }
+        else
+        {
+            staftRowNum++;
+            <tr>
+                <td>
+                    @(staftRowNum)
+                    @Html.HiddenFor(model => model.IpfReportInfos[i].ID)
+                    @Html.HiddenFor(model => model.IpfReportInfos[i].UserId)
+                    @Html.HiddenFor(model => model.IpfReportInfos[i].Year)
+                    @Html.HiddenFor(model => model.IpfReportInfos[i].IsDeparmentRow)
+                </td>
+                <td>
+                    @BtcHelper.ConvertIdToCode(Model.IpfReportInfos[i].UserId)
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].FullName
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].DepartmentName
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].AdministratorshipName
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].AdministratorshipName
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].Created
+                </td>
+                <td>
+                    @BtcHelper.ConvertSeniority(Model.IpfReportInfos[i].Created)
+                </td>
+                <td>
+                    @*Số ngày nghỉ*@
+                </td>
+                @for (int j = 0; j < Model.IpfReportInfos[i].IpfScores.Count; j++)
+                {
+                <td>
+                    @Model.IpfReportInfos[i].IpfScores[j].Score
+                </td>
+                }
+                <td>
+                    @Model.IpfReportInfos[i].AverageScore
+                </td>
+                <td>
+                    @Model.IpfReportInfos[i].AverageRank
+                </td>
+                @{
+                    var ipfEndYear = Model.IpfReportInfos[i].IpfScores.FirstOrDefault(p => p.ScheduleID == -1);
+                    if (ipfEndYear == null)
+                    {
+                        ipfEndYear = new IpfScore();
+                    }
+                }
+                
+                <td>
+                    @ipfEndYear.Score
+                </td>
+                <td>
+                    @BtcHelper.ConvertScoreToRankScheme10(ipfEndYear.Score)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => @Model.IpfReportInfos[i].BodScore, new { @type = "number", @min = "0", @max = "10", @step = "0.1" })
+                </td>
+                <td>
+                    @BtcHelper.ConvertScoreToRankScheme10(Model.IpfReportInfos[i].BodScore)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.IpfReportInfos[i].Remark, new { @class = "pull-left", @style = "width: 100%;" })
+                </td>
+            </tr>
+            
+        }
+        @*<tr class="bg-success color-palette"></tr>*@
+    }
+</tbody>
+<tfoot></tfoot>
+
+

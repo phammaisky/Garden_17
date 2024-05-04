@@ -1,0 +1,154 @@
+﻿@using AMS.Models;
+@using AMS.Helpers;
+@model AMS.Models.Pagging<UserInfo>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+            <th style="text-align:center; vertical-align:middle; width:100px">
+                @Html.DisplayColumnNameFor(Model.model, model => model.UserName)
+            </th>
+            <th style="text-align:center; vertical-align:middle; width:200px">
+                @Html.DisplayColumnNameFor(Model.model, model => model.FullName)
+            </th>
+            <th style="text-align:center; vertical-align:middle;">
+                @Html.DisplayColumnNameFor(Model.model, model => model.Email)
+            </th>
+            <th style="text-align:center; vertical-align:middle;">
+                @Html.DisplayColumnNameFor(Model.model, model => model.DeptId)
+            </th>
+            <th style="text-align:center; width:70px">
+                Đang sử dụng
+            </th>
+            @*<th style="text-align:center; width:50px">
+                Lịch sử
+            </th>*@
+            <th style="width:50px;"></th>
+        </tr>
+
+        @foreach (var item in (List<UserInfo>)Model.model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>                   
+                    <a class="create_modal" href='@Url.Action("Details", "Staffs", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top">@Html.DisplayFor(modelItem => item.FullName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.Department != null)
+                    {
+                        @Html.Raw(item.Department.Company.NameVn + " | " + item.Department.DeptName)
+                    }
+                </td>
+                <td style="text-align:center">
+                    <a class="create_modal" href='@Url.Action("Details", "Staffs", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-fax fa-lg"></i></a>
+                </td>
+                @*<td style="text-align:center">
+                    <a class="create_modal" href='@Url.Action("HistoryUse", "Staffs", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-calendar-o fa-lg"></i></a>
+                </td>*@
+                <td style="text-align:center">
+                    <a class="create_modal" href='@Url.Action("Edit", "Staffs", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit fa-lg"></i></a>
+                    <a class="create_modal" style="color:red" href='@Url.Action("Delete", "Staffs", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pull-left" style="font-weight:bold">
+        Tìm thấy @Model.totalItem bản ghi!
+    </div>
+    <div class="pull-right">
+        @Html.Raw(Model.GenerateHtmlPaggerAjax())
+    </div>
+</div>
+
+<input type="hidden" id="CompanyIdSelected" @Html.Raw(ViewBag.CompanyId != null?"value='"+ViewBag.CompanyId+"'":"") />
+<input type="hidden" id="DeptIdSelected" @Html.Raw(ViewBag.DeptId != null ? "value='" + ViewBag.DeptId + "'" : "") />
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">
+    function EnterSubmit(elm) {
+        $(elm).keydown(function (e) {
+            if (e.keyCode == 13) {
+                formSubmit(1);
+                return false;
+            }
+        });
+    }
+    function formSubmit(pageParam) {
+        var pageN = 1;
+        pageN = $('#PageParam').val();
+        if (pageParam != null) {
+            pageN = pageParam;
+        }
+        var staffFillter = { page: pageN, companyId: $('#CompanyIdSelected').val(), deptId: $('#DeptIdSelected').val(), fullName: $('#fullNameStaff').val() };
+        $('#progresBarLoadingData').show();
+        $.post("@Url.Content("Staffs/Index")", staffFillter).done(function (d) {
+            $('#grid-list').html(d);
+        });
+        $('#progresBarLoadingData').hide();
+    }
+</script>
+
+<script type="text/javascript">
+    function hideRowCDSelector(el, hideRow, click) {
+
+        var iEle = $(el).find('i:first')[0];
+
+        var classCss = $(iEle).attr('class');
+        var display = $('#' + hideRow).css('display');
+        if (click) {
+            if (classCss == "fa fa-caret-down") {
+                $(iEle).attr("class", "fa fa-caret-right");
+            }
+            else {
+                $(iEle).attr("class", "fa fa-caret-down");
+            }
+        }
+
+        classCss = $(iEle).attr('class');
+        $('.' + hideRow).each(function () {
+            if (classCss == "fa fa-caret-right" || display == "none") {
+                if ($(this).css('display') != 'none') {
+                    $(this).css('display', 'none');
+                }
+            }
+            else {
+                if ($(this).css('display') != 'block') {
+                    $(this).css('display', '');
+                }
+            }
+            var iClass = $(this).find('a:first');
+            hideRowCDSelector(iClass[0], $(this).attr('id'), false);
+        })
+
+        return false;
+    }
+
+    function returnClickCompanyId(id, name) {
+
+        $('#DeptTableCDSelector tr').removeClass('rowHilight')
+        $('#RowCDSelector' + id).addClass('rowHilight');
+        $('#CompanyIdSelected').val(id);
+        formSubmit();
+    }
+    function returnClickDeptId(id, name) {
+
+        $('#DeptTableCDSelector tr').removeClass('rowHilight')
+        $('#RowCDSelect' + id).addClass('rowHilight');
+        $('#DeptIdSelected').val(id);
+        $('#addRecord').prop('href', 'Create?DeptId=' + id);
+        $('#CompanyIdSelected').val('');
+        formSubmit();
+    }
+</script>

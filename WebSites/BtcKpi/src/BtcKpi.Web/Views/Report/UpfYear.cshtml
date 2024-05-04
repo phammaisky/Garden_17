@@ -1,0 +1,63 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossListViewModel
+@using BtcKpi.Service.Common
+@{
+    ViewBag.Title = "Báo cáo";
+    ViewBag.SubTitle = "UPF tháng";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+    @Scripts.Render("~/Scripts/Elements/Modals/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item align-middle">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <b class="pull-right">Công ty : </b>
+                            </div>
+                            <div class="col-md-1">
+                                @Html.DropDownListFor(x => Model.CompanyID, Model.Companies, "--- Chọn ---", new { @onchange = "companySearchChange(this.value)" })
+                            </div>
+                            <div class="col-md-2">
+                                <b class="pull-right">Từ phòng ban : </b>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(x => Model.FromDepartmentID, Model.Departments, "--- Chọn ---", new { @style = "width: 222px;" })
+                            </div>
+                            <div class="col-md-2">
+                                <b class="pull-right">Đến phòng ban : </b>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(x => Model.ToDepartmentID, Model.Departments, "--- Chọn ---", new { @style = "width: 222px;" })
+                            </div>
+                            <div class="col-md-3">
+                                <b>Năm : </b>
+                                @Html.DropDownListFor(x => Model.Year, Model.Years, "--- Chọn ---")
+                            </div>
+                            <div class="col-md-2">
+                                <button id="btnSearch" type="button" class="btn btn-info btn-sm pull-right">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                @Html.HiddenFor(model => model.Status)
+                @Html.HiddenFor(model => model.UserDepartmentID)
+                <table id="upf-cross-table" class="table table-bordered table-hover">
+                    @*@Html.Partial("_UpfYearTable")*@
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/Report/")
+    @Scripts.Render("~/Scripts/Report/UpfYear")
+}

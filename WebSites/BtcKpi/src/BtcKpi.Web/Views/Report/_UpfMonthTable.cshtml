@@ -1,0 +1,68 @@
+﻿@model BtcKpi.Web.ViewModels.ReportListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th style="width: 15%;vertical-align:middle;" class="text-center">Công ty</th>
+        <th style="width: 20%; vertical-align: middle;" class="text-center">Phòng/bộ phận</th>
+        <th style="width: 5%; vertical-align: middle;" class="text-center">Năm</th>
+        <th style="width: 5%; vertical-align: middle;" class="text-center">Kỳ</th>
+        <th style="width: 20%; vertical-align: middle;" class="text-center">Người phụ trách</th>
+        <th style="width: 15%; vertical-align: middle;" class="text-center">Chức vụ</th>
+        <th style="width: 5%; vertical-align: middle;" class="text-center">Điểm tự đánh giá</th>
+        <th style="width: 5%; vertical-align: middle;" class="text-center">Điểm phụ thuộc</th>
+        <th style="width: 10%; vertical-align: middle;" class="text-center">
+            
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @for (int i = 0; i < Model.UpfReports.Count; i++)
+    {
+        <tr>
+            <td>
+                @Model.UpfReports[i].CompanyName
+            </td>
+            <td>
+                @Model.UpfReports[i].DepartmentName
+            </td>
+            <td>
+                @Model.UpfReports[i].Year
+            </td>
+            <td>
+                @Model.UpfReports[i].ScheduleName
+            </td>
+            <td>
+                @Model.UpfReports[i].FullName
+            </td>
+            <td>
+                @Model.UpfReports[i].AdministratorshipName
+            </td>
+            <td>
+                @(Model.UpfReports[i].SelfScore == null ? "" : (((decimal)(Model.UpfReports[i].SelfScore ?? 0)).ToString("#.0")))
+            </td>
+            <td>
+                @(Model.UpfReports[i].DependScore == null ? "" : (((decimal)(Model.UpfReports[i].DependScore ?? 0)).ToString("#.0")))
+            </td>
+            <td>
+                <a class="btn btn-sm btn-social-icon btn-facebook" href='~/Report/CView?departmentid=@Model.UpfReports[i].DepartmentID&year=@Model.UpfReports[i].Year&scheduleid=@Model.UpfReports[i].ScheduleID' data-toggle="tooltip" data-placement="top" title="Xem"><i class="fa fa-eye"></i></a>
+            </td>
+        </tr>
+    }
+</tbody>
+<tfoot>
+    @*<tr class="bg-primary">
+        <th>Công ty</th>
+        <th>Phòng/bộ phận</th>
+        <th>Loại</th>
+        <th>Năm</th>
+        <th>Kỳ</th>
+        <th>Mã - Tên nhân viên</th>
+        <th>Chức vụ</th>
+        <th>Điểm công việc</th>
+        <th>Điểm năng lực</th>
+        <th>Tổng điểm</th>
+        <th></th>
+    </tr>*@
+</tfoot>
+
+

@@ -1,0 +1,39 @@
+﻿@model BtcKpi.Web.ViewModels.DepartmentViewModel
+<div class="modal fade" id="add-persrewpro-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-center">Thêm mới đề xuất khen thưởng nhân viên</h3>
+            </div>
+            <div class="modal-body">
+                <div id="modalErrorPers" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <input type="hidden" id="upfPersRawPropOrderID" />
+                        <input type="hidden" id="persRawPropID" />
+                        <input type="hidden" id="persRawPropUpfID" />
+                        <div class="form-group">
+                            <label for="employeeName">Tên nhân viên</label>
+                            <input type="text" id="employeeName" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="persOutsAchiev">Thành tích nổi bật</label>
+                            <textarea type="text" id="persOutsAchiev" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Hủy">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddPersRewPropModal" title="Lưu">Lưu</button>
+                <button type="button" class="btn btn-primary" id="btnUpdatePersRewPropModal" title="Cập nhật">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

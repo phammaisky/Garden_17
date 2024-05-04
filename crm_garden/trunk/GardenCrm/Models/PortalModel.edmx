@@ -1,0 +1,1535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdministratorShips">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DeleteFlg" Type="tinyint" />
+          <Property Name="Deleted" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullNameVn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FullNameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="SeverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LinkApp" Type="nvarchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="NameVn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="2000" />
+          <Property Name="LogoLocation" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeptNameEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeptDesc" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="DeptOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="DeptWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="WorkHoursPerDay" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UrlControlAction" Type="nvarchar" MaxLength="2000" />
+          <Property Name="HasExtend" Type="bit" Nullable="false" />
+          <Property Name="RequirePermit" Type="bit" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUser_Authorize">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+            <PropertyRef Name="AuthorizeId" />
+          </Key>
+          <Property Name="GroupUserId" Type="int" Nullable="false" />
+          <Property Name="AuthorizeId" Type="int" Nullable="false" />
+          <Property Name="Extend" Type="int" />
+        </EntityType>
+        <EntityType Name="GroupUser_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="GroupUserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GroupUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Portal.dbo.MailConfig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MailConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MailAddress" />
+            <PropertyRef Name="PassMail" />
+            <PropertyRef Name="HostMail" />
+            <PropertyRef Name="PortMail" />
+            <PropertyRef Name="SslMail" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MailAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PassMail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="HostMail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PortMail" Type="int" Nullable="false" />
+          <Property Name="SslMail" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailSend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MailTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContentMail" Type="nvarchar(max)" />
+          <Property Name="CcMailTo" Type="nvarchar(max)" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="DateSend" Type="datetime" />
+          <Property Name="NumberSend" Type="int" Nullable="false" />
+          <Property Name="Sended" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MenuNameEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="URL" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notify">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TitleStaffCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameVn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="User_Com_Function">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="FunctionId" Type="int" Nullable="false" />
+          <Property Name="Extention" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Dept_Function">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DeptId" />
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="FunctionId" Type="int" Nullable="false" />
+          <Property Name="Extention" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TitleId" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FullNameEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="BitexcoPhoneExt" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageSignature" Type="varbinary(max)" />
+          <Property Name="SignImageType" Type="nvarchar" MaxLength="10" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsLock" Type="bit" Nullable="false" />
+          <Property Name="ConfirmCheck" Type="bit" />
+          <Property Name="UpdateById" Type="int" />
+          <Property Name="UserPass" Type="nvarchar" MaxLength="255" />
+          <Property Name="AdministratorshipID" Type="int" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="20" />
+          <Property Name="RemindAdminFlg" Type="tinyint" />
+          <Property Name="StartWorkingDate" Type="date" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberOfDaysLeave" Type="decimal" Precision="4" Scale="1" />
+        </EntityType>
+        <Association Name="FK_Company_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Company1" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departments_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Function_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="Function" Type="Self.Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Function">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_Authorize_Authorize">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser_Authorize" Type="Self.GroupUser_Authorize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_Authorize">
+              <PropertyRef Name="AuthorizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_Authorize_GroupUser">
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="1" />
+          <End Role="GroupUser_Authorize" Type="Self.GroupUser_Authorize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_Authorize">
+              <PropertyRef Name="GroupUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_User_GroupUser">
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser_User" Type="Self.GroupUser_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_User">
+              <PropertyRef Name="GroupUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_User_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser_User" Type="Self.GroupUser_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_User">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuFunction_MenuFunction">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notify_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Notify" Type="Self.Notify" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notify">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_Authorize">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_Function">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TopApp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TopApp__" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="TopApp--">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TopMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="AppId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TopMenu__" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="TopMenu--">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="AppId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PortalModelStoreContainer">
+          <EntitySet Name="AdministratorShips" EntityType="Self.AdministratorShips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeptWork" EntityType="Self.DeptWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Function" EntityType="Self.Function" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser_Authorize" EntityType="Self.GroupUser_Authorize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser_User" EntityType="Self.GroupUser_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailSend" EntityType="Self.MailSend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notify" EntityType="Self.Notify" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TitleStaffCategory" EntityType="Self.TitleStaffCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Com_Function" EntityType="Self.User_Com_Function" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Dept_Function" EntityType="Self.User_Dept_Function" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailConfig" EntityType="Self.MailConfig" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MailConfig].[Id] AS [Id], 
+    [MailConfig].[MailAddress] AS [MailAddress], 
+    [MailConfig].[PassMail] AS [PassMail], 
+    [MailConfig].[HostMail] AS [HostMail], 
+    [MailConfig].[PortMail] AS [PortMail], 
+    [MailConfig].[SslMail] AS [SslMail]
+    FROM [dbo].[MailConfig] AS [MailConfig]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Company1" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departments_Company" Association="Self.FK_Departments_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Function_Menu" Association="Self.FK_Function_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Function" EntitySet="Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_Application" Association="Self.FK_GroupUser_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="GroupUser" EntitySet="GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_Authorize_Authorize" Association="Self.FK_GroupUser_Authorize_Authorize">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="GroupUser_Authorize" EntitySet="GroupUser_Authorize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_Authorize_GroupUser" Association="Self.FK_GroupUser_Authorize_GroupUser">
+            <End Role="GroupUser" EntitySet="GroupUser" />
+            <End Role="GroupUser_Authorize" EntitySet="GroupUser_Authorize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_User_GroupUser" Association="Self.FK_GroupUser_User_GroupUser">
+            <End Role="GroupUser" EntitySet="GroupUser" />
+            <End Role="GroupUser_User" EntitySet="GroupUser_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_User_UserInfo" Association="Self.FK_GroupUser_User_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="GroupUser_User" EntitySet="GroupUser_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Application" Association="Self.FK_Menu_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuFunction_MenuFunction" Association="Self.FK_MenuFunction_MenuFunction">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notify_Application" Association="Self.FK_Notify_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Notify" EntitySet="Notify" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_Authorize" Association="Self.FK_User_Authorize_Authorize">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_Departments" Association="Self.FK_User_Authorize_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_UserInfo" Association="Self.FK_User_Authorize_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_Company" Association="Self.FK_User_Com_Function_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_Function" Association="Self.FK_User_Com_Function_Function">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_UserInfo" Association="Self.FK_User_Com_Function_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_Departments" Association="Self.FK_UserInfo_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdministratorShip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DeleteFlg" Type="Byte" />
+          <Property Name="Deleted" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullNameVn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LinkApp" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GroupUsers" Relationship="Self.FK_GroupUser_Application" FromRole="Application" ToRole="GroupUser" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_Menu_Application" FromRole="Application" ToRole="Menu" />
+          <NavigationProperty Name="Notifies" Relationship="Self.FK_Notify_Application" FromRole="Application" ToRole="Notify" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="NameVn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="LogoLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <NavigationProperty Name="Company1" Relationship="Self.FK_Company_Company" FromRole="Company" ToRole="Company1" />
+          <NavigationProperty Name="Company2" Relationship="Self.FK_Company_Company" FromRole="Company1" ToRole="Company" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Departments_Company" FromRole="Company" ToRole="Departments" />
+          <NavigationProperty Name="User_Com_Function" Relationship="Self.FK_User_Com_Function_Company" FromRole="Company" ToRole="User_Com_Function" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeptNameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeptDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="DeptOrder" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Departments_Company" FromRole="Departments" ToRole="Company" />
+          <NavigationProperty Name="User_Dept_Function" Relationship="Self.FK_User_Authorize_Departments" FromRole="Departments" ToRole="User_Dept_Function" />
+          <NavigationProperty Name="UserInfoes" Relationship="Self.FK_UserInfo_Departments" FromRole="Departments" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="DeptWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="WorkHoursPerDay" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Operator" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UrlControlAction" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="HasExtend" Type="Boolean" Nullable="false" />
+          <Property Name="RequirePermit" Type="Boolean" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_Function_Menu" FromRole="Function" ToRole="Menu" />
+          <NavigationProperty Name="GroupUser_Authorize" Relationship="Self.FK_GroupUser_Authorize_Authorize" FromRole="Function" ToRole="GroupUser_Authorize" />
+          <NavigationProperty Name="User_Dept_Function" Relationship="Self.FK_User_Authorize_Authorize" FromRole="Function" ToRole="User_Dept_Function" />
+          <NavigationProperty Name="User_Com_Function" Relationship="Self.FK_User_Com_Function_Function" FromRole="Function" ToRole="User_Com_Function" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_GroupUser_Application" FromRole="GroupUser" ToRole="Application" />
+          <NavigationProperty Name="GroupUser_Authorize" Relationship="Self.FK_GroupUser_Authorize_GroupUser" FromRole="GroupUser" ToRole="GroupUser_Authorize" />
+          <NavigationProperty Name="UserInfoes" Relationship="Self.GroupUser_User" FromRole="GroupUser" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="GroupUser_Authorize">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+            <PropertyRef Name="AuthorizeId" />
+          </Key>
+          <Property Name="GroupUserId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorizeId" Type="Int32" Nullable="false" />
+          <Property Name="Extend" Type="Int32" />
+          <NavigationProperty Name="Function" Relationship="Self.FK_GroupUser_Authorize_Authorize" FromRole="GroupUser_Authorize" ToRole="Function" />
+          <NavigationProperty Name="GroupUser" Relationship="Self.FK_GroupUser_Authorize_GroupUser" FromRole="GroupUser_Authorize" ToRole="GroupUser" />
+        </EntityType>
+        <EntityType Name="MailSend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContentMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CcMailTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateSend" Type="DateTime" Precision="3" />
+          <Property Name="NumberSend" Type="Int32" Nullable="false" />
+          <Property Name="Sended" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="MenuName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MenuNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MenuIcon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Menu_Application" FromRole="Menu" ToRole="Application" />
+          <NavigationProperty Name="Functions" Relationship="Self.FK_Function_Menu" FromRole="Menu" ToRole="Function" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK_MenuFunction_MenuFunction" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="Self.FK_MenuFunction_MenuFunction" FromRole="Menu1" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Notify">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Notify_Application" FromRole="Notify" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TitleStaffCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameVn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User_Com_Function">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="FunctionId" Type="Int32" Nullable="false" />
+          <Property Name="Extention" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_User_Com_Function_Company" FromRole="User_Com_Function" ToRole="Company" />
+          <NavigationProperty Name="Function" Relationship="Self.FK_User_Com_Function_Function" FromRole="User_Com_Function" ToRole="Function" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_User_Com_Function_UserInfo" FromRole="User_Com_Function" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="User_Dept_Function">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DeptId" />
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="FunctionId" Type="Int32" Nullable="false" />
+          <Property Name="Extention" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_User_Authorize_Departments" FromRole="User_Dept_Function" ToRole="Departments" />
+          <NavigationProperty Name="Function" Relationship="Self.FK_User_Authorize_Authorize" FromRole="User_Dept_Function" ToRole="Function" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_User_Authorize_UserInfo" FromRole="User_Dept_Function" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleId" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BitexcoPhoneExt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SignImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IsLock" Type="Boolean" Nullable="false" />
+          <Property Name="ConfirmCheck" Type="Boolean" />
+          <Property Name="UpdateById" Type="Int32" />
+          <Property Name="UserPass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AdministratorshipID" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Extension" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RemindAdminFlg" Type="Byte" />
+          <Property Name="StartWorkingDate" Type="DateTime" Precision="0" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfDaysLeave" Type="Decimal" Precision="4" Scale="1" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_UserInfo_Departments" FromRole="UserInfo" ToRole="Departments" />
+          <NavigationProperty Name="User_Com_Function" Relationship="Self.FK_User_Com_Function_UserInfo" FromRole="UserInfo" ToRole="User_Com_Function" />
+          <NavigationProperty Name="User_Dept_Function" Relationship="Self.FK_User_Authorize_UserInfo" FromRole="UserInfo" ToRole="User_Dept_Function" />
+          <NavigationProperty Name="GroupUsers" Relationship="Self.GroupUser_User" FromRole="UserInfo" ToRole="GroupUser" />
+        </EntityType>
+        <EntityType Name="MailConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MailAddress" />
+            <PropertyRef Name="PassMail" />
+            <PropertyRef Name="HostMail" />
+            <PropertyRef Name="PortMail" />
+            <PropertyRef Name="SslMail" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HostMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PortMail" Type="Int32" Nullable="false" />
+          <Property Name="SslMail" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GroupUser_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notify_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Notify" Type="Self.Notify" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notify">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Company1" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departments_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_Departments">
+          <End Role="Departments" Type="Self.Department" Multiplicity="1" />
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_Departments">
+          <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Function_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="Function" Type="Self.Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Function">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_Authorize_Authorize">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser_Authorize" Type="Self.GroupUser_Authorize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_Authorize">
+              <PropertyRef Name="AuthorizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_Authorize">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_Function">
+          <End Role="Function" Type="Self.Function" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_Authorize_GroupUser">
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="1" />
+          <End Role="GroupUser_Authorize" Type="Self.GroupUser_Authorize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser_Authorize">
+              <PropertyRef Name="GroupUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuFunction_MenuFunction">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Com_Function_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Com_Function" Type="Self.User_Com_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Com_Function">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorize_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Dept_Function" Type="Self.User_Dept_Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Dept_Function">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupUser_User">
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PortalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdministratorShips" EntityType="Self.AdministratorShip" />
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="DeptWorks" EntityType="Self.DeptWork" />
+          <EntitySet Name="Functions" EntityType="Self.Function" />
+          <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
+          <EntitySet Name="GroupUser_Authorize" EntityType="Self.GroupUser_Authorize" />
+          <EntitySet Name="MailSends" EntityType="Self.MailSend" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Notifies" EntityType="Self.Notify" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TitleStaffCategories" EntityType="Self.TitleStaffCategory" />
+          <EntitySet Name="User_Com_Function" EntityType="Self.User_Com_Function" />
+          <EntitySet Name="User_Dept_Function" EntityType="Self.User_Dept_Function" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <EntitySet Name="MailConfigs" EntityType="Self.MailConfig" />
+          <AssociationSet Name="FK_GroupUser_Application" Association="Self.FK_GroupUser_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="GroupUser" EntitySet="GroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Application" Association="Self.FK_Menu_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notify_Application" Association="Self.FK_Notify_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Notify" EntitySet="Notifies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Company1" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departments_Company" Association="Self.FK_Departments_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_Company" Association="Self.FK_User_Com_Function_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_Departments" Association="Self.FK_User_Authorize_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_Departments" Association="Self.FK_UserInfo_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Function_Menu" Association="Self.FK_Function_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Function" EntitySet="Functions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_Authorize_Authorize" Association="Self.FK_GroupUser_Authorize_Authorize">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="GroupUser_Authorize" EntitySet="GroupUser_Authorize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_Authorize" Association="Self.FK_User_Authorize_Authorize">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_Function" Association="Self.FK_User_Com_Function_Function">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_Authorize_GroupUser" Association="Self.FK_GroupUser_Authorize_GroupUser">
+            <End Role="GroupUser" EntitySet="GroupUsers" />
+            <End Role="GroupUser_Authorize" EntitySet="GroupUser_Authorize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuFunction_MenuFunction" Association="Self.FK_MenuFunction_MenuFunction">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Com_Function_UserInfo" Association="Self.FK_User_Com_Function_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="User_Com_Function" EntitySet="User_Com_Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorize_UserInfo" Association="Self.FK_User_Authorize_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="User_Dept_Function" EntitySet="User_Dept_Function" />
+          </AssociationSet>
+          <AssociationSet Name="GroupUser_User" Association="Self.GroupUser_User">
+            <End Role="GroupUser" EntitySet="GroupUsers" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="TopApp" ReturnType="Collection(PortalModel.TopApp_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TopApp__" ReturnType="Collection(PortalModel.TopApp___Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TopMenu" ReturnType="Collection(PortalModel.TopMenu_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AppId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TopMenu__" ReturnType="Collection(PortalModel.TopMenu___Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AppId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="TopApp_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="AppName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="FullNameVn" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="FullNameEn" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="SeverName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LinkApp" Nullable="false" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="TopApp___Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="AppName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="FullNameVn" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="FullNameEn" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="SeverName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LinkApp" Nullable="false" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="TopMenu_Result">
+          <Property Type="Int32" Name="AppId" Nullable="true" />
+          <Property Type="String" Name="GroupMenuName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GroupMenuNameEn" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GroupMenuIcon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MenuName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="MenuNameEn" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MenuIcon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="URL" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="TopMenu___Result">
+          <Property Type="Int32" Name="AppId" Nullable="true" />
+          <Property Type="String" Name="GroupMenuName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GroupMenuNameEn" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GroupMenuIcon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MenuName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="MenuIcon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="URL" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PortalModelStoreContainer" CdmEntityContainer="PortalEntities">
+          <EntitySetMapping Name="AdministratorShips">
+            <EntityTypeMapping TypeName="PortalModel.AdministratorShip">
+              <MappingFragment StoreEntitySet="AdministratorShips">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="PortalModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="FullNameVn" ColumnName="FullNameVn" />
+                <ScalarProperty Name="FullNameEn" ColumnName="FullNameEn" />
+                <ScalarProperty Name="SeverName" ColumnName="SeverName" />
+                <ScalarProperty Name="LinkApp" ColumnName="LinkApp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="PortalModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="NameVn" ColumnName="NameVn" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="LogoLocation" ColumnName="LogoLocation" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="PortalModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptNameEn" ColumnName="DeptNameEn" />
+                <ScalarProperty Name="DeptDesc" ColumnName="DeptDesc" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DeptOrder" ColumnName="DeptOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeptWorks">
+            <EntityTypeMapping TypeName="PortalModel.DeptWork">
+              <MappingFragment StoreEntitySet="DeptWork">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="WorkHoursPerDay" ColumnName="WorkHoursPerDay" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="PortalModel.Function">
+              <MappingFragment StoreEntitySet="Function">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="UrlControlAction" ColumnName="UrlControlAction" />
+                <ScalarProperty Name="HasExtend" ColumnName="HasExtend" />
+                <ScalarProperty Name="RequirePermit" ColumnName="RequirePermit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUsers">
+            <EntityTypeMapping TypeName="PortalModel.GroupUser">
+              <MappingFragment StoreEntitySet="GroupUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUser_Authorize">
+            <EntityTypeMapping TypeName="PortalModel.GroupUser_Authorize">
+              <MappingFragment StoreEntitySet="GroupUser_Authorize">
+                <ScalarProperty Name="GroupUserId" ColumnName="GroupUserId" />
+                <ScalarProperty Name="AuthorizeId" ColumnName="AuthorizeId" />
+                <ScalarProperty Name="Extend" ColumnName="Extend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailSends">
+            <EntityTypeMapping TypeName="PortalModel.MailSend">
+              <MappingFragment StoreEntitySet="MailSend">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+                <ScalarProperty Name="MailTitle" ColumnName="MailTitle" />
+                <ScalarProperty Name="ContentMail" ColumnName="ContentMail" />
+                <ScalarProperty Name="CcMailTo" ColumnName="CcMailTo" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="DateSend" ColumnName="DateSend" />
+                <ScalarProperty Name="NumberSend" ColumnName="NumberSend" />
+                <ScalarProperty Name="Sended" ColumnName="Sended" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="PortalModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuNameEn" ColumnName="MenuNameEn" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifies">
+            <EntityTypeMapping TypeName="PortalModel.Notify">
+              <MappingFragment StoreEntitySet="Notify">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PortalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitleStaffCategories">
+            <EntityTypeMapping TypeName="PortalModel.TitleStaffCategory">
+              <MappingFragment StoreEntitySet="TitleStaffCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NameVn" ColumnName="NameVn" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Com_Function">
+            <EntityTypeMapping TypeName="PortalModel.User_Com_Function">
+              <MappingFragment StoreEntitySet="User_Com_Function">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Dept_Function">
+            <EntityTypeMapping TypeName="PortalModel.User_Dept_Function">
+              <MappingFragment StoreEntitySet="User_Dept_Function">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="PortalModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TitleId" ColumnName="TitleId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FullNameEn" ColumnName="FullNameEn" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="BitexcoPhoneExt" ColumnName="BitexcoPhoneExt" />
+                <ScalarProperty Name="ImageSignature" ColumnName="ImageSignature" />
+                <ScalarProperty Name="SignImageType" ColumnName="SignImageType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="ConfirmCheck" ColumnName="ConfirmCheck" />
+                <ScalarProperty Name="UpdateById" ColumnName="UpdateById" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="AdministratorshipID" ColumnName="AdministratorshipID" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="RemindAdminFlg" ColumnName="RemindAdminFlg" />
+                <ScalarProperty Name="StartWorkingDate" ColumnName="StartWorkingDate" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NumberOfDaysLeave" ColumnName="NumberOfDaysLeave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailConfigs">
+            <EntityTypeMapping TypeName="PortalModel.MailConfig">
+              <MappingFragment StoreEntitySet="MailConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="PassMail" ColumnName="PassMail" />
+                <ScalarProperty Name="HostMail" ColumnName="HostMail" />
+                <ScalarProperty Name="PortMail" ColumnName="PortMail" />
+                <ScalarProperty Name="SslMail" ColumnName="SslMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GroupUser_User" TypeName="PortalModel.GroupUser_User" StoreEntitySet="GroupUser_User">
+            <EndProperty Name="GroupUser">
+              <ScalarProperty Name="Id" ColumnName="GroupUserId" />
+            </EndProperty>
+            <EndProperty Name="UserInfo">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PortalModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PortalModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PortalModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PortalModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PortalModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PortalModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PortalModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="TopApp" FunctionName="PortalModel.Store.TopApp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PortalModel.TopApp_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="FullNameVn" ColumnName="FullNameVn" />
+                <ScalarProperty Name="FullNameEn" ColumnName="FullNameEn" />
+                <ScalarProperty Name="SeverName" ColumnName="SeverName" />
+                <ScalarProperty Name="LinkApp" ColumnName="LinkApp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TopApp__" FunctionName="PortalModel.Store.TopApp__">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PortalModel.TopApp___Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="FullNameVn" ColumnName="FullNameVn" />
+                <ScalarProperty Name="FullNameEn" ColumnName="FullNameEn" />
+                <ScalarProperty Name="SeverName" ColumnName="SeverName" />
+                <ScalarProperty Name="LinkApp" ColumnName="LinkApp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TopMenu" FunctionName="PortalModel.Store.TopMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PortalModel.TopMenu_Result">
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="GroupMenuName" ColumnName="GroupMenuName" />
+                <ScalarProperty Name="GroupMenuNameEn" ColumnName="GroupMenuNameEn" />
+                <ScalarProperty Name="GroupMenuIcon" ColumnName="GroupMenuIcon" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuNameEn" ColumnName="MenuNameEn" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TopMenu__" FunctionName="PortalModel.Store.TopMenu__">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PortalModel.TopMenu___Result">
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="GroupMenuName" ColumnName="GroupMenuName" />
+                <ScalarProperty Name="GroupMenuNameEn" ColumnName="GroupMenuNameEn" />
+                <ScalarProperty Name="GroupMenuIcon" ColumnName="GroupMenuIcon" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

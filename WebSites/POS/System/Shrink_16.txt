@@ -1,0 +1,20 @@
+Changed database context to 'TOPOS_DB'.
+Configuration option 'show advanced options' changed from 1 to 1. Run the RECONFIGURE statement to install.
+Configuration option 'xp_cmdshell' changed from 0 to 1. Run the RECONFIGURE statement to install.
+output                                                                                                                                                                                                                                                         
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NULL                                                                                                                                                                                                                                                           
+
+(1 rows affected)
+output                                                                                                                                                                                                                                                         
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NULL                                                                                                                                                                                                                                                           
+
+(1 rows affected)
+Configuration option 'xp_cmdshell' changed from 1 to 0. Run the RECONFIGURE statement to install.
+Processed 149904 pages for database 'GARDEN_CRM', file 'GARDEN_CRM' on file 1.
+Processed 2 pages for database 'GARDEN_CRM', file 'GARDEN_CRM_log' on file 1.
+BACKUP DATABASE successfully processed 149906 pages in 78.517 seconds (14.915 MB/sec).
+Processed 499904 pages for database 'TOPOS_DB', file 'TOPOS_Data' on file 1.
+Processed 3 pages for database 'TOPOS_DB', file 'TOPOS_Log' on file 1.
+BACKUP DATABASE successfully processed 499907 pages in 249.671 seconds (15.642 MB/sec).

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AMS.Models.Department>
+
+<div class="table-responsive">
+
+    <table class="table table-striped table-bordered table-hover table-condensed" style="margin-bottom:0px !important">
+        <tr>           
+            <th>
+                @Html.DisplayNameFor(model => model.DeptCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptDesc)
+            </th>  
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptDesc)
+                </td>
+                <td>
+                    <a class="create_sub_modal" href='@Url.Action("Edit", "Departments", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit fa-lg"></i></a>
+                    <a class="create_sub_modal" style="color:red" href='@Url.Action("Delete", "Departments", new { Id = item.Id }, null)'
+                       data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+<div id='CRUDSubDialog' class='modal fade in'>
+    <div id='CRUDSubDialogContent'></div>
+</div>
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">
+    function formSubSubmit() {
+        //var page = { Id: $('#SelectedCompany').val() };
+        var companyId = $('#SelectedCompany').val();
+        var href = "../Departments/GetListDepartments/" + companyId
+        $('#grid-list-sub').load(href);
+        @*$.post("@Url.Content("~/Departements/GetListDepartments")", page).done(function (d) {
+            $('#grid-list-sub').html(d);
+        });*@
+        $('#progresBarLoadingData').hide();
+    }
+</script>
+
+

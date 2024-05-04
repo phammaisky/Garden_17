@@ -1,0 +1,68 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossViewModel
+<thead>
+    <tr class="bg-primary">
+        <th style="width: 2%;">STT</th>
+        <th style="width: 24%;">KPIs/Mục tiêu</th>
+        <th style="width: 10%;">Tới phòng / bộ phận</th>
+        <th style="width: 23%;">Nội dung yêu cầu</th>
+        <th style="width: 23%;">Ghi nhận kết quả đạt được</th>
+        <th style="width: 4%;">Tỷ trọng</th>
+        <th style="width: 4%;">Điểm</th>
+        <th style="width: 10%;">
+            <button type="button" class="btn btn-success btn-circle pull-right btn-add"><i class="fa fa-plus-circle"></i></button>
+        </th>
+    </tr>
+</thead>
+<tbody>
+
+    @for (int i = 0; i < Model.UpfCrossDetails.Count; i++)
+    {
+        <tr>
+            <td>@(i + 1) @Html.HiddenFor(x => Model.UpfCrossDetails[i].ID) @Html.HiddenFor(x => Model.UpfCrossDetails[i].UpfCrossID)</td>
+            <td>
+                @Model.UpfCrossDetails[i].Objective @Html.HiddenFor(x => Model.UpfCrossDetails[i].Objective)
+            </td>
+            <td>
+                @Model.UpfCrossDetails[i].FromName @Html.HiddenFor(x => Model.UpfCrossDetails[i].FromDepartment)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].FromName)
+            </td>
+            <td>
+                @Model.UpfCrossDetails[i].ContentsRequested @Html.HiddenFor(x => Model.UpfCrossDetails[i].ContentsRequested) 
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ExpectedTimeOfCompletion) 
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ExpectedResult)
+            </td>
+            <td>
+                @Model.UpfCrossDetails[i].Result @Html.HiddenFor(x => Model.UpfCrossDetails[i].TimeOfCompletion) 
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].Result)
+            </td>
+            <td>
+                @Model.UpfCrossDetails[i].FromWeight @Html.HiddenFor(x => Model.UpfCrossDetails[i].FromWeight)
+            </td>
+            <td>
+                @Model.UpfCrossDetails[i].FromScore @Html.HiddenFor(x => Model.UpfCrossDetails[i].FromScore)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].Seq)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ToName)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ToDepartment)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].PlanToDo)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ExplainationForResults)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].Solutions)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].Timeline)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ToWeight)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].ToScore)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].AssessmentByCouncil)
+                @Html.HiddenFor(x => Model.UpfCrossDetails[i].TotalScore)
+            </td>
+            <td>
+                <button type="button" class="btn btn-sm btn-social-icon btn-facebook btn-detail-view" data-id="@Model.UpfCrossDetails[i].Seq"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-sm btn-social-icon btn-twitter btn-detail-edit" data-id="@Model.UpfCrossDetails[i].Seq"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-sm btn-social-icon btn-google btn-detail-delete" data-id="@Model.UpfCrossDetails[i].Seq"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+    }
+</tbody>
+<tfoot>
+    <tr>
+        <th colspan="5">Tổng tỷ trọng</th>
+        <th colspan="3">@Html.DisplayFor(model => model.FromWeightTotal) @Html.HiddenFor(model => model.FromWeightTotal)</th>
+    </tr>
+</tfoot>

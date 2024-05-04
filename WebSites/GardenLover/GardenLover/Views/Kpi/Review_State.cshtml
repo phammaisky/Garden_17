@@ -1,0 +1,14 @@
+﻿@using GardenLover.EF
+
+@{
+    GoodJobEntities dbGoodJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+@Html.DropDownList("State", new SelectList(dbGoodJob.kStates.OrderBy(x => x.Seq).ToList(), "Id", "StateName"), "Tình trạng", new { onchange = "StateOnChange(); return false;" })
+
+<script>
+    function StateOnChange() {
+        Review_ByFilter();
+    }
+</script>

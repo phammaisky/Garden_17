@@ -1,0 +1,216 @@
+﻿@using _IQwinwin
+@using IQWebApp_Blank.EF
+@using IQWebApp_Blank.Models
+@using Microsoft.AspNet.Identity
+
+@{
+    GoodJobEntities dbJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="~/Favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/Favicon.ico" type="image/ico" />
+
+    <title>@ViewBag.Title | @sys.Application_Name</title>
+
+    @Scripts.Render("~/Bundles/Jquery")
+    @*@Scripts.Render("~/Bundles/JQuery.Validate")*@
+    @Scripts.Render("~/Bundles/Modernizr")
+
+    @Styles.Render("~/Bundles/Bootstrap/CSS")
+    @Scripts.Render("~/Bundles/Bootstrap/JS")
+
+    @Styles.Render("~/Bundles/Bootstrap.DatePicker/CSS")
+    @Scripts.Render("~/Bundles/Bootstrap.DatePicker/JS")
+
+    @Styles.Render("~/Bundles/Bootstrap.DatetimePicker/CSS")
+    @Scripts.Render("~/Bundles/Bootstrap.DatetimePicker/JS")
+
+    @Styles.Render("~/Bundles/JsTree/CSS")
+    @Scripts.Render("~/Bundles/JsTree/JS")
+
+    @Styles.Render("~/Bundles/CSS")
+    @Scripts.Render("~/Bundles/JS")
+
+    <script type="text/javascript" src="http://w3.UpdatesManagers.com/_Plugin/JQuery/jquery.watermark.js"></script>
+
+    <style>
+        .BgBlue {
+            background-image: linear-gradient(180deg, #4169E1, #1E90FF, #4169E1);
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar {
+            border: none;
+        }
+
+        .navbar-inverse {
+            /*background-color: #4169E1;
+            border-color: #4169E1;*/
+            /*background-image: linear-gradient(-180deg, #4486f9, #4169E1, #4486f9);*/
+            /*background-image: linear-gradient(-180deg, #4169E1, #4486f9, #4169E1);*/
+            background-image: linear-gradient(180deg, #4169E1, #1E90FF, #4169E1);
+            /*background-image: linear-gradient(-180deg, #4169E1, #6495ED, #4169E1);*/
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: white;
+            }
+
+                .navbar-inverse .navbar-brand:hover,
+                .navbar-inverse .navbar-brand:focus {
+                    color: white;
+                    background-color: transparent;
+                }
+
+            .navbar-inverse .navbar-text {
+                color: white;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: white;
+            }
+
+                .navbar-inverse .navbar-nav > li > a:hover,
+                .navbar-inverse .navbar-nav > li > a:focus {
+                    color: white;
+                    background-color: transparent;
+                }
+
+            .navbar-inverse .navbar-nav > .active > a,
+            .navbar-inverse .navbar-nav > .active > a:hover,
+            .navbar-inverse .navbar-nav > .active > a:focus {
+                color: white;
+                background-color: transparent;
+            }
+
+            .navbar-inverse .navbar-nav > .disabled > a,
+            .navbar-inverse .navbar-nav > .disabled > a:hover,
+            .navbar-inverse .navbar-nav > .disabled > a:focus {
+                color: #444444;
+                background-color: transparent;
+            }
+
+            .navbar-inverse .navbar-toggle {
+                border-color: white;
+            }
+
+                .navbar-inverse .navbar-toggle:hover,
+                .navbar-inverse .navbar-toggle:focus {
+                    background-color: #333333;
+                }
+
+                .navbar-inverse .navbar-toggle .icon-bar {
+                    background-color: #ffffff;
+                }
+
+            .navbar-inverse .navbar-collapse,
+            .navbar-inverse .navbar-form {
+                border-color: white;
+            }
+
+            .navbar-inverse .navbar-nav > .open > a,
+            .navbar-inverse .navbar-nav > .open > a:hover,
+            .navbar-inverse .navbar-nav > .open > a:focus {
+                color: white;
+                background-image: linear-gradient(180deg, #4169E1, #1E90FF, #4169E1);
+            }
+
+            .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+                border-top-color: #ffffff;
+                border-bottom-color: #ffffff;
+            }
+
+            .navbar-inverse .navbar-nav > .dropdown > a .caret {
+                border-top-color: #999999;
+                border-bottom-color: #999999;
+            }
+
+            .navbar-inverse .navbar-nav > .open > a .caret,
+            .navbar-inverse .navbar-nav > .open > a:hover .caret,
+            .navbar-inverse .navbar-nav > .open > a:focus .caret {
+                border-top-color: #ffffff;
+                border-bottom-color: #ffffff;
+            }
+
+        .dropdown-item {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body id="Page_Body">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(@sys.Application_Name, "Index", "Home", new { area = "" }, new { @class = "navbar-brand S14" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Individual", "Individual", "Kpi", new { id = "" }, new { })</li>
+                    <li>@Html.ActionLink("Review", "Review", "Kpi", new { id = "" }, new { })</li>
+                    <li>@Html.ActionLink("Report", "Report", "Kpi", new { id = "" }, new { })</li>
+
+                    @{
+                        var userId = Request.IsAuthenticated ? User.Identity.GetUserId().ToLower() : "";
+
+                        var isAdminTheGarden = dbCompany.cBranches.FirstOrDefault(x => x.Id == 1 && x.AdminId.ToString() == userId) != null;
+                        var isAdminBFT = dbCompany.cBranches.FirstOrDefault(x => x.Id == 2 && x.AdminId.ToString() == userId) != null;
+                    }
+
+                    @if (isAdminTheGarden || isAdminBFT)
+                    {
+                        var branch = dbCompany.cBranches.FirstOrDefault(x => x.AdminId.ToString() == userId);
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Role", "RoleForSome", "Kpi", new { id = branch.Id }, new { @class = "dropdown-item" })
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Rank", "Rank", "Kpi", new { id = branch.Id }, new { @class = "dropdown-item" })
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Department", "Department", "Kpi", new { id = branch.Id }, new { @class = "dropdown-item" })
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("UserInfo", "UserInfo", "Kpi", new { id = branch.Id }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <table style="width: 100%;">
+        <tr>
+            <td align="center">
+                @RenderBody()
+            </td>
+        </tr>
+    </table>
+
+    @*<div class="container body-content" style="width: 100%; margin: 0; padding:0;">
+            @RenderBody()
+            @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - @sys.Application_Name</p>
+            </footer>
+        </div>*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

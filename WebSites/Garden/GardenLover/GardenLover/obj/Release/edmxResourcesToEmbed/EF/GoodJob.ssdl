@@ -1,0 +1,1294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoodJobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="kAverageMark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Year" Type="bigint" Nullable="false" />
+    <Property Name="AverageValue" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="RateId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kCompe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="ReportId" Type="bigint" />
+    <Property Name="CompeForSomeId" Type="bigint" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Percent" Type="bigint" />
+    <Property Name="Result" Type="nvarchar(max)" />
+    <Property Name="SelfMark" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="ManagerMark" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="ResultMark" Type="decimal" Precision="4" Scale="2" />
+  </EntityType>
+  <EntityType Name="kCompeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="CompeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Percent" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kCompeForSome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="CompeRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="CompeRelationValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompeForAllId" Type="bigint" Nullable="false" />
+    <Property Name="Percent" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kJob">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="ReportId" Type="bigint" />
+    <Property Name="JobName" Type="nvarchar(max)" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Percent" Type="bigint" />
+    <Property Name="SelfMark" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="ManagerMark" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="ResultMark" Type="decimal" Precision="4" Scale="2" />
+  </EntityType>
+  <EntityType Name="kJobDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="ReportId" Type="bigint" />
+    <Property Name="JobId" Type="bigint" />
+    <Property Name="JobDetailName" Type="nvarchar(max)" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Result" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="kNextPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="ReportId" Type="bigint" />
+    <Property Name="NextPlanName" Type="nvarchar(max)" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Percent" Type="bigint" />
+  </EntityType>
+  <EntityType Name="kNextPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="ReportId" Type="bigint" />
+    <Property Name="NextPlanId" Type="bigint" />
+    <Property Name="NextPlanDetailName" Type="nvarchar(max)" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <EntityType Name="kRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="RateForAllId" Type="bigint" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Min" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Max" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kRateForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="RateName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="Min" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Max" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kRelationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="StepRelationTypeId" Type="bigint" />
+    <Property Name="CompeRelationTypeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="kRelationTypeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelationTypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDefaultStepRelationType" Type="bit" Nullable="false" />
+    <Property Name="IsDefaultCompeRelationType" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Year" Type="bigint" Nullable="false" />
+    <Property Name="Month" Type="bigint" Nullable="false" />
+    <Property Name="StepId" Type="bigint" Nullable="false" />
+    <Property Name="StateId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TotalMarkJob" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="TotalMarkCompe" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkJob" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkCompe" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="FinalMarkKpi" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ManagerComment" Type="nvarchar(max)" />
+    <Property Name="HRcomment" Type="nvarchar(max)" />
+    <Property Name="BODcomment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="kReport_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ReportId" Type="bigint" Nullable="false" />
+    <Property Name="StepId" Type="bigint" Nullable="false" />
+    <Property Name="StateId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kStep">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="StepRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="StepRelationValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StepForAllId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="SendToRelationValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kStepForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="StepName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vApp">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AppName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="AppName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vAppFunction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vAppFunction">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AppId" />
+      <PropertyRef Name="FunctionName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="AppId" Type="bigint" Nullable="false" />
+    <Property Name="FunctionName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vBranch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vCompany' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vCorporation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCorporation">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="CorporationName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vCountry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CountryName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="LanguageId" Type="bigint" />
+    <Property Name="CurrencyId" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCurrency">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CurrencyName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vDepartment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vDepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="DepartmentForAllId" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="DepartmentForAllId" Type="bigint" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vDepartmentForAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vDepartmentForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DepartmentName" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="DepartmentName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="AutoCreate" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vGrade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vGrade">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="GradeForAllId" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="GradeForAllId" Type="bigint" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vGradeForAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vGradeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="GradeName" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="GradeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="AutoCreate" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vLanguage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLanguage">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="LanguageName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vLoginUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLoginUser">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EmailConfirmed" />
+      <PropertyRef Name="PhoneNumberConfirmed" />
+      <PropertyRef Name="TwoFactorEnabled" />
+      <PropertyRef Name="LockoutEnabled" />
+      <PropertyRef Name="AccessFailedCount" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRank' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRank">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="RankForAllId" />
+      <PropertyRef Name="xKpiJob" />
+      <PropertyRef Name="xKpiCompe" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="RankForAllId" Type="bigint" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="xKpiJob" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="xKpiCompe" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRankForAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRankForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RankName" />
+      <PropertyRef Name="xKpiJob" />
+      <PropertyRef Name="xKpiCompe" />
+      <PropertyRef Name="AutoCreate" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="RankName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="xKpiJob" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="xKpiCompe" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="AutoCreate" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRelationType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRelationType">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleRelationTypeId" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleRelationTypeId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRelationTypeForAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRelationTypeForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RelationTypeName" />
+      <PropertyRef Name="IsDefaultRoleRelationType" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelationTypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+    <Property Name="IsDefaultRoleRelationType" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRole">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="RoleRelationTypeId" />
+      <PropertyRef Name="RoleRelationValue" />
+      <PropertyRef Name="RoleForAllId" />
+      <PropertyRef Name="AllowRelationTypeId" />
+      <PropertyRef Name="AllowRelationValue" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="AppId" Type="bigint" />
+    <Property Name="FunctionId" Type="bigint" />
+    <Property Name="RoleRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="RoleRelationValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoleForAllId" Type="bigint" Nullable="false" />
+    <Property Name="AllowRelationTypeId" Type="bigint" Nullable="false" />
+    <Property Name="AllowRelationValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vRoleForAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vRoleForAll">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="RoleName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppId" Type="bigint" />
+    <Property Name="FunctionId" Type="bigint" />
+    <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aGoodJob.dbo.vUserInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vUserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UserIdd" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="CountryId" />
+      <PropertyRef Name="CorporationId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="BranchId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="RankId" />
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserIdd" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="ID" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="CountryId" Type="bigint" Nullable="false" />
+    <Property Name="CorporationId" Type="bigint" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="DepartmentId" Type="bigint" Nullable="false" />
+    <Property Name="RankId" Type="bigint" Nullable="false" />
+    <Property Name="GradeId" Type="bigint" Nullable="false" />
+    <Property Name="ManagerId" Type="uniqueidentifier" />
+    <Property Name="StartWorkingDate" Type="date" />
+    <Property Name="StartCurrentJobDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_kAverageMark_kRate">
+    <End Role="kRate" Type="Self.kRate" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kAverageMark" Type="Self.kAverageMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kAverageMark">
+        <PropertyRef Name="RateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompe_kCompeForSome">
+    <End Role="kCompeForSome" Type="Self.kCompeForSome" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kCompe" Type="Self.kCompe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kCompeForSome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompe">
+        <PropertyRef Name="CompeForSomeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompe_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kCompe" Type="Self.kCompe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompe">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompeForSome_kCompeForAll">
+    <End Role="kCompeForAll" Type="Self.kCompeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kCompeForSome" Type="Self.kCompeForSome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kCompeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompeForSome">
+        <PropertyRef Name="CompeForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kCompeForSome_kRelationTypeForAll">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kCompeForSome" Type="Self.kCompeForSome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kCompeForSome">
+        <PropertyRef Name="CompeRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJob_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kJob" Type="Self.kJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJob">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJobDetail_kJob">
+    <End Role="kJob" Type="Self.kJob" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kJobDetail" Type="Self.kJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kJob">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJobDetail">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kJobDetail_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="0..1" />
+    <End Role="kJobDetail" Type="Self.kJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kJobDetail">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlan_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kNextPlan" Type="Self.kNextPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlan">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlanDetail_kNextPlan">
+    <End Role="kNextPlan" Type="Self.kNextPlan" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kNextPlanDetail" Type="Self.kNextPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kNextPlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlanDetail">
+        <PropertyRef Name="NextPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kNextPlanDetail_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="0..1" />
+    <End Role="kNextPlanDetail" Type="Self.kNextPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kNextPlanDetail">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRate_kRateForAll">
+    <End Role="kRateForAll" Type="Self.kRateForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kRate" Type="Self.kRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRateForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRate">
+        <PropertyRef Name="RateForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRelationType_kRelationTypeForAll_Compe">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="0..1" />
+    <End Role="kRelationType" Type="Self.kRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRelationType">
+        <PropertyRef Name="CompeRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kRelationType_kRelationTypeForAll_Step">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="0..1" />
+    <End Role="kRelationType" Type="Self.kRelationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kRelationType">
+        <PropertyRef Name="StepRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kRelationTypeForAll">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="1" />
+    <End Role="kReport_History" Type="Self.kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kReport">
+    <End Role="kReport" Type="Self.kReport" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kReport_History" Type="Self.kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kState">
+    <End Role="kState" Type="Self.kState" Multiplicity="1" />
+    <End Role="kReport_History" Type="Self.kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_History_kStep">
+    <End Role="kStep" Type="Self.kStep" Multiplicity="1" />
+    <End Role="kReport_History" Type="Self.kReport_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStep">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport_History">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kRelationTypeForAll">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="1" />
+    <End Role="kReport" Type="Self.kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kState">
+    <End Role="kState" Type="Self.kState" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kReport" Type="Self.kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kReport_kStep">
+    <End Role="kStep" Type="Self.kStep" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kReport" Type="Self.kReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStep">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kReport">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kRelationTypeForAll">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="1" />
+    <End Role="kStep" Type="Self.kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="StepRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kRelationTypeForAll1">
+    <End Role="kRelationTypeForAll" Type="Self.kRelationTypeForAll" Multiplicity="1" />
+    <End Role="kStep" Type="Self.kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kRelationTypeForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="SendToRelationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kStep_kStepForAll">
+    <End Role="kStepForAll" Type="Self.kStepForAll" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="kStep" Type="Self.kStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kStepForAll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kStep">
+        <PropertyRef Name="StepForAllId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CheckIsBOD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Valid" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="CheckIsReporter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="KpiReportId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Valid" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="CheckRoleKpi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ManagerId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="KpiReportId" Type="bigint" Mode="In" />
+    <Parameter Name="RoleKpi" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Valid" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="FCheckIsBOD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UserId" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="FCheckIsReporter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UserId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="KpiReportId" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="FCheckRoleKpi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="ManagerId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="KpiReportId" Type="bigint" Mode="In" />
+    <Parameter Name="RoleKpi" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="GoodJobModelStoreContainer">
+    <EntitySet Name="kAverageMark" EntityType="Self.kAverageMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kCompe" EntityType="Self.kCompe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kCompeForAll" EntityType="Self.kCompeForAll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kCompeForSome" EntityType="Self.kCompeForSome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kJob" EntityType="Self.kJob" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kJobDetail" EntityType="Self.kJobDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kNextPlan" EntityType="Self.kNextPlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kNextPlanDetail" EntityType="Self.kNextPlanDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kRate" EntityType="Self.kRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kRateForAll" EntityType="Self.kRateForAll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kRelationType" EntityType="Self.kRelationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kRelationTypeForAll" EntityType="Self.kRelationTypeForAll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kReport" EntityType="Self.kReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kReport_History" EntityType="Self.kReport_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kState" EntityType="Self.kState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kStep" EntityType="Self.kStep" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kStepForAll" EntityType="Self.kStepForAll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vApp" EntityType="Self.vApp" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vApp].[Id] AS [Id], 
+    [vApp].[ParentId] AS [ParentId], 
+    [vApp].[AppName] AS [AppName], 
+    [vApp].[Seq] AS [Seq]
+    FROM [dbo].[vApp] AS [vApp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vAppFunction" EntityType="Self.vAppFunction" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vAppFunction].[Id] AS [Id], 
+    [vAppFunction].[ParentId] AS [ParentId], 
+    [vAppFunction].[AppId] AS [AppId], 
+    [vAppFunction].[FunctionName] AS [FunctionName], 
+    [vAppFunction].[Seq] AS [Seq]
+    FROM [dbo].[vAppFunction] AS [vAppFunction]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vBranch" EntityType="Self.vBranch" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vBranch].[Id] AS [Id], 
+    [vBranch].[ParentId] AS [ParentId], 
+    [vBranch].[CompanyId] AS [CompanyId], 
+    [vBranch].[BranchName] AS [BranchName], 
+    [vBranch].[Seq] AS [Seq]
+    FROM [dbo].[vBranch] AS [vBranch]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCompany" EntityType="Self.vCompany" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCompany].[Id] AS [Id], 
+    [vCompany].[ParentId] AS [ParentId], 
+    [vCompany].[CorporationId] AS [CorporationId], 
+    [vCompany].[CompanyName] AS [CompanyName], 
+    [vCompany].[Seq] AS [Seq]
+    FROM [dbo].[vCompany] AS [vCompany]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCorporation" EntityType="Self.vCorporation" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCorporation].[Id] AS [Id], 
+    [vCorporation].[ParentId] AS [ParentId], 
+    [vCorporation].[CorporationName] AS [CorporationName], 
+    [vCorporation].[Seq] AS [Seq]
+    FROM [dbo].[vCorporation] AS [vCorporation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCountry" EntityType="Self.vCountry" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCountry].[Id] AS [Id], 
+    [vCountry].[CountryName] AS [CountryName], 
+    [vCountry].[Seq] AS [Seq], 
+    [vCountry].[LanguageId] AS [LanguageId], 
+    [vCountry].[CurrencyId] AS [CurrencyId]
+    FROM [dbo].[vCountry] AS [vCountry]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCurrency" EntityType="Self.vCurrency" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCurrency].[Id] AS [Id], 
+    [vCurrency].[CurrencyName] AS [CurrencyName], 
+    [vCurrency].[Seq] AS [Seq]
+    FROM [dbo].[vCurrency] AS [vCurrency]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vDepartment" EntityType="Self.vDepartment" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vDepartment].[Id] AS [Id], 
+    [vDepartment].[ParentId] AS [ParentId], 
+    [vDepartment].[CorporationId] AS [CorporationId], 
+    [vDepartment].[CompanyId] AS [CompanyId], 
+    [vDepartment].[BranchId] AS [BranchId], 
+    [vDepartment].[DepartmentForAllId] AS [DepartmentForAllId], 
+    [vDepartment].[Seq] AS [Seq]
+    FROM [dbo].[vDepartment] AS [vDepartment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vDepartmentForAll" EntityType="Self.vDepartmentForAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vDepartmentForAll].[Id] AS [Id], 
+    [vDepartmentForAll].[CorporationId] AS [CorporationId], 
+    [vDepartmentForAll].[CompanyId] AS [CompanyId], 
+    [vDepartmentForAll].[BranchId] AS [BranchId], 
+    [vDepartmentForAll].[DepartmentName] AS [DepartmentName], 
+    [vDepartmentForAll].[Seq] AS [Seq], 
+    [vDepartmentForAll].[AutoCreate] AS [AutoCreate]
+    FROM [dbo].[vDepartmentForAll] AS [vDepartmentForAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vGrade" EntityType="Self.vGrade" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vGrade].[Id] AS [Id], 
+    [vGrade].[CorporationId] AS [CorporationId], 
+    [vGrade].[CompanyId] AS [CompanyId], 
+    [vGrade].[BranchId] AS [BranchId], 
+    [vGrade].[GradeForAllId] AS [GradeForAllId], 
+    [vGrade].[Seq] AS [Seq]
+    FROM [dbo].[vGrade] AS [vGrade]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vGradeForAll" EntityType="Self.vGradeForAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vGradeForAll].[Id] AS [Id], 
+    [vGradeForAll].[CorporationId] AS [CorporationId], 
+    [vGradeForAll].[CompanyId] AS [CompanyId], 
+    [vGradeForAll].[BranchId] AS [BranchId], 
+    [vGradeForAll].[GradeName] AS [GradeName], 
+    [vGradeForAll].[Seq] AS [Seq], 
+    [vGradeForAll].[AutoCreate] AS [AutoCreate]
+    FROM [dbo].[vGradeForAll] AS [vGradeForAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vLanguage" EntityType="Self.vLanguage" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLanguage].[Id] AS [Id], 
+    [vLanguage].[LanguageName] AS [LanguageName], 
+    [vLanguage].[Seq] AS [Seq]
+    FROM [dbo].[vLanguage] AS [vLanguage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vLoginUser" EntityType="Self.vLoginUser" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLoginUser].[Id] AS [Id], 
+    [vLoginUser].[Email] AS [Email], 
+    [vLoginUser].[EmailConfirmed] AS [EmailConfirmed], 
+    [vLoginUser].[PasswordHash] AS [PasswordHash], 
+    [vLoginUser].[SecurityStamp] AS [SecurityStamp], 
+    [vLoginUser].[PhoneNumber] AS [PhoneNumber], 
+    [vLoginUser].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [vLoginUser].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [vLoginUser].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [vLoginUser].[LockoutEnabled] AS [LockoutEnabled], 
+    [vLoginUser].[AccessFailedCount] AS [AccessFailedCount], 
+    [vLoginUser].[UserName] AS [UserName]
+    FROM [dbo].[vLoginUser] AS [vLoginUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRank" EntityType="Self.vRank" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRank].[Id] AS [Id], 
+    [vRank].[CorporationId] AS [CorporationId], 
+    [vRank].[CompanyId] AS [CompanyId], 
+    [vRank].[BranchId] AS [BranchId], 
+    [vRank].[RankForAllId] AS [RankForAllId], 
+    [vRank].[Seq] AS [Seq], 
+    [vRank].[xKpiJob] AS [xKpiJob], 
+    [vRank].[xKpiCompe] AS [xKpiCompe]
+    FROM [dbo].[vRank] AS [vRank]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRankForAll" EntityType="Self.vRankForAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRankForAll].[Id] AS [Id], 
+    [vRankForAll].[CorporationId] AS [CorporationId], 
+    [vRankForAll].[CompanyId] AS [CompanyId], 
+    [vRankForAll].[BranchId] AS [BranchId], 
+    [vRankForAll].[RankName] AS [RankName], 
+    [vRankForAll].[Seq] AS [Seq], 
+    [vRankForAll].[xKpiJob] AS [xKpiJob], 
+    [vRankForAll].[xKpiCompe] AS [xKpiCompe], 
+    [vRankForAll].[AutoCreate] AS [AutoCreate]
+    FROM [dbo].[vRankForAll] AS [vRankForAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRelationType" EntityType="Self.vRelationType" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRelationType].[Id] AS [Id], 
+    [vRelationType].[CorporationId] AS [CorporationId], 
+    [vRelationType].[CompanyId] AS [CompanyId], 
+    [vRelationType].[BranchId] AS [BranchId], 
+    [vRelationType].[UserId] AS [UserId], 
+    [vRelationType].[RoleRelationTypeId] AS [RoleRelationTypeId]
+    FROM [dbo].[vRelationType] AS [vRelationType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRelationTypeForAll" EntityType="Self.vRelationTypeForAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRelationTypeForAll].[Id] AS [Id], 
+    [vRelationTypeForAll].[RelationTypeName] AS [RelationTypeName], 
+    [vRelationTypeForAll].[Seq] AS [Seq], 
+    [vRelationTypeForAll].[IsDefaultRoleRelationType] AS [IsDefaultRoleRelationType]
+    FROM [dbo].[vRelationTypeForAll] AS [vRelationTypeForAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRole" EntityType="Self.vRole" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRole].[Id] AS [Id], 
+    [vRole].[CorporationId] AS [CorporationId], 
+    [vRole].[CompanyId] AS [CompanyId], 
+    [vRole].[BranchId] AS [BranchId], 
+    [vRole].[AppId] AS [AppId], 
+    [vRole].[FunctionId] AS [FunctionId], 
+    [vRole].[RoleRelationTypeId] AS [RoleRelationTypeId], 
+    [vRole].[RoleRelationValue] AS [RoleRelationValue], 
+    [vRole].[RoleForAllId] AS [RoleForAllId], 
+    [vRole].[AllowRelationTypeId] AS [AllowRelationTypeId], 
+    [vRole].[AllowRelationValue] AS [AllowRelationValue]
+    FROM [dbo].[vRole] AS [vRole]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vRoleForAll" EntityType="Self.vRoleForAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vRoleForAll].[Id] AS [Id], 
+    [vRoleForAll].[AppId] AS [AppId], 
+    [vRoleForAll].[FunctionId] AS [FunctionId], 
+    [vRoleForAll].[RoleName] AS [RoleName], 
+    [vRoleForAll].[Seq] AS [Seq]
+    FROM [dbo].[vRoleForAll] AS [vRoleForAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vUserInfo" EntityType="Self.vUserInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vUserInfo].[UserId] AS [UserId], 
+    [vUserInfo].[UserIdd] AS [UserIdd], 
+    [vUserInfo].[FirstName] AS [FirstName], 
+    [vUserInfo].[LastName] AS [LastName], 
+    [vUserInfo].[FullName] AS [FullName], 
+    [vUserInfo].[Birthday] AS [Birthday], 
+    [vUserInfo].[Address] AS [Address], 
+    [vUserInfo].[ID] AS [ID], 
+    [vUserInfo].[Phone] AS [Phone], 
+    [vUserInfo].[Email] AS [Email], 
+    [vUserInfo].[CountryId] AS [CountryId], 
+    [vUserInfo].[CorporationId] AS [CorporationId], 
+    [vUserInfo].[CompanyId] AS [CompanyId], 
+    [vUserInfo].[BranchId] AS [BranchId], 
+    [vUserInfo].[DepartmentId] AS [DepartmentId], 
+    [vUserInfo].[RankId] AS [RankId], 
+    [vUserInfo].[GradeId] AS [GradeId], 
+    [vUserInfo].[ManagerId] AS [ManagerId], 
+    [vUserInfo].[StartWorkingDate] AS [StartWorkingDate], 
+    [vUserInfo].[StartCurrentJobDate] AS [StartCurrentJobDate]
+    FROM [dbo].[vUserInfo] AS [vUserInfo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_kAverageMark_kRate" Association="Self.FK_kAverageMark_kRate">
+      <End Role="kRate" EntitySet="kRate" />
+      <End Role="kAverageMark" EntitySet="kAverageMark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompe_kCompeForSome" Association="Self.FK_kCompe_kCompeForSome">
+      <End Role="kCompeForSome" EntitySet="kCompeForSome" />
+      <End Role="kCompe" EntitySet="kCompe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompe_kReport" Association="Self.FK_kCompe_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kCompe" EntitySet="kCompe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompeForSome_kCompeForAll" Association="Self.FK_kCompeForSome_kCompeForAll">
+      <End Role="kCompeForAll" EntitySet="kCompeForAll" />
+      <End Role="kCompeForSome" EntitySet="kCompeForSome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kCompeForSome_kRelationTypeForAll" Association="Self.FK_kCompeForSome_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kCompeForSome" EntitySet="kCompeForSome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJob_kReport" Association="Self.FK_kJob_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kJob" EntitySet="kJob" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJobDetail_kJob" Association="Self.FK_kJobDetail_kJob">
+      <End Role="kJob" EntitySet="kJob" />
+      <End Role="kJobDetail" EntitySet="kJobDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kJobDetail_kReport" Association="Self.FK_kJobDetail_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kJobDetail" EntitySet="kJobDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlan_kReport" Association="Self.FK_kNextPlan_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kNextPlan" EntitySet="kNextPlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlanDetail_kNextPlan" Association="Self.FK_kNextPlanDetail_kNextPlan">
+      <End Role="kNextPlan" EntitySet="kNextPlan" />
+      <End Role="kNextPlanDetail" EntitySet="kNextPlanDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kNextPlanDetail_kReport" Association="Self.FK_kNextPlanDetail_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kNextPlanDetail" EntitySet="kNextPlanDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRate_kRateForAll" Association="Self.FK_kRate_kRateForAll">
+      <End Role="kRateForAll" EntitySet="kRateForAll" />
+      <End Role="kRate" EntitySet="kRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRelationType_kRelationTypeForAll_Compe" Association="Self.FK_kRelationType_kRelationTypeForAll_Compe">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kRelationType" EntitySet="kRelationType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kRelationType_kRelationTypeForAll_Step" Association="Self.FK_kRelationType_kRelationTypeForAll_Step">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kRelationType" EntitySet="kRelationType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kRelationTypeForAll" Association="Self.FK_kReport_History_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kReport" Association="Self.FK_kReport_History_kReport">
+      <End Role="kReport" EntitySet="kReport" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kState" Association="Self.FK_kReport_History_kState">
+      <End Role="kState" EntitySet="kState" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_History_kStep" Association="Self.FK_kReport_History_kStep">
+      <End Role="kStep" EntitySet="kStep" />
+      <End Role="kReport_History" EntitySet="kReport_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kRelationTypeForAll" Association="Self.FK_kReport_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kReport" EntitySet="kReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kState" Association="Self.FK_kReport_kState">
+      <End Role="kState" EntitySet="kState" />
+      <End Role="kReport" EntitySet="kReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kReport_kStep" Association="Self.FK_kReport_kStep">
+      <End Role="kStep" EntitySet="kStep" />
+      <End Role="kReport" EntitySet="kReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kRelationTypeForAll" Association="Self.FK_kStep_kRelationTypeForAll">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kStep" EntitySet="kStep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kRelationTypeForAll1" Association="Self.FK_kStep_kRelationTypeForAll1">
+      <End Role="kRelationTypeForAll" EntitySet="kRelationTypeForAll" />
+      <End Role="kStep" EntitySet="kStep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kStep_kStepForAll" Association="Self.FK_kStep_kStepForAll">
+      <End Role="kStepForAll" EntitySet="kStepForAll" />
+      <End Role="kStep" EntitySet="kStep" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

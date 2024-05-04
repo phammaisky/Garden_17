@@ -1,0 +1,116 @@
+﻿@model List<GardenLover.EF.kReport>
+@using GardenLover.EF
+
+@{
+    ViewBag.Title = "Review";
+
+    GoodJobEntities dbGoodJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+}
+
+<style type="text/css">
+    #tbl td {
+        padding: 5px;
+    }
+
+        #tbl td input[type=text] {
+            width: 100%;
+            /*border: 1px solid gray;*/
+            border: none;
+        }
+
+        #tbl td select {
+            width: 100%;
+            border: none;
+        }
+
+        #tbl td option[value=''] {
+            color: red;
+        }
+</style>
+
+<script>
+    function Review_ByFilter() {
+
+        var Year = $("select[name=Year]").val();
+        var Month = $("select[name=Month]").val();
+        var Branch = $("select[name=Branch]").val();
+        var Department = $("select[name=Department]").val();
+        var Staff = $("select[name=Staff]").val();
+        var State = $("select[name=State]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        if (Month == "")
+            Month = 0;
+
+        if (Branch == "")
+            Branch = 0;
+
+        if (Department == "")
+            Department = 0;
+
+        if (Staff == "")
+            Staff = 0;
+
+        if (State == "")
+            State = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Review_ByFilter",
+
+            data: {
+                Year: Year,
+                Month: Month,
+                Branch: Branch,
+                Department: Department,
+                Staff: Staff,
+                State: State
+            },
+
+            success: function (view) {
+                $('#Review_Body').html(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<center>
+    <h3 class="Red">@ViewBag.Title.</h3>
+
+    @Html.Partial("Review_Year")
+    <div id="Month"></div>
+    <div id="Branch"></div>
+    <div id="Department"></div>
+    <div id="Staff"></div>
+    @Html.Partial("Review_State")
+
+    <br /><br />
+    <table id="tbl" border="1" style="width: auto;">
+        <thead>
+            <tr class="BgBlue" style="color: white; font-weight: bold;">
+                <td align="center" style="min-width: 50px;">STT</td>
+                <td align="center" style="min-width: 100px;">Tháng</td>
+                <td align="center" style="min-width: 100px;">Công ty</td>
+                <td align="center" style="min-width: 100px;">Bộ phận</td>
+                <td align="center" style="min-width: 100px;">Chức vụ</td>
+                <td align="center" style="min-width: 100px;">Họ tên</td>
+                <td align="center" style="min-width: 100px;">Đang được gửi tới</td>
+                <td align="center" style="min-width: 100px;">Tình trạng</td>
+                <td align="center" style="min-width: 100px;">Kpi</td>
+                <td align="center" style="min-width: 100px;">Năng lực</td>
+                <td align="center" style="min-width: 100px;">Tổng điểm</td>
+                <td align="center" style="min-width: 100px;">Thời gian</td>
+            </tr>
+        </thead>
+        <tbody id="Review_Body">
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</center>

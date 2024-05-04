@@ -1,0 +1,44 @@
+<NewDataSet>
+  <BillLanguage>
+    <Lien>Liên</Lien>
+    <SoHD>Số HĐ</SoHD>
+    <Quay>Quầy</Quay>
+    <Ngay>Ngày</Ngay>
+    <Gio>Giờ</Gio>
+    <NhanVienThuNgan>NV</NhanVienThuNgan>
+    <Ca>Ca</Ca>
+    <NhanVienBanHang>Nhân viên bán hàng</NhanVienBanHang>
+    <GianHang>Gian hàng</GianHang>
+    <MaKhachHang>Khách hàng</MaKhachHang>
+    <TenKhachHang>Tên khách hàng</TenKhachHang>
+    <MaThe>Mã thẻ KHTT</MaThe>
+    <KhachVangLai>Khách hàng tự do</KhachVangLai>
+    <CK>CK</CK>
+    <Tong>Tổng</Tong>
+    <CKHD>Chiết khấu hóa đơn</CKHD>
+    <TongSauCKHD>Tổng tiền</TongSauCKHD>
+    <TienPhuThu>Tiền phụ thu</TienPhuThu>
+    <TienKhachTra>Tiền khách trả</TienKhachTra>
+    <TienTraKhach>Tiền trả lại cho khách</TienTraKhach>
+    <ChiTietThanhToan>Chi tiết thanh toán</ChiTietThanhToan>
+    <ProductName>Product name</ProductName>
+    <Quantity>Quantity</Quantity>
+    <Price>Price</Price>
+  </BillLanguage>
+  <BillFormat>
+    <Tag_Logo>{Logo}</Tag_Logo>
+    <Tag_Open_Total>{Total}</Tag_Open_Total>
+    <Tag_Close_Total>{CloseTotal}</Tag_Close_Total>
+    <Tag_ResetBarcodeHeight>{ResetBarcodeHeight}</Tag_ResetBarcodeHeight>
+    <Tag_CompressBarcodeWidth>{CompressBarcodeWidth}</Tag_CompressBarcodeWidth>
+    <Tag_Barcode>{Barcode}</Tag_Barcode>
+    <Tag_Barcode_End>{BarcodeEnd}</Tag_Barcode_End>
+    <Value_Logo>29,47,0,1,</Value_Logo>
+    <Value_Open_Total>29,33,1,</Value_Open_Total>
+    <Value_Close_Total>29,33,0,</Value_Close_Total>
+    <Value_ResetBarcodeHeight>29,104,150,</Value_ResetBarcodeHeight>
+    <Value_CompressBarcodeWidth>29,119,2,</Value_CompressBarcodeWidth>
+    <Value_Barcode>29,107,4,</Value_Barcode>
+    <Value_Barcode_End>0,</Value_Barcode_End>
+  </BillFormat>
+</NewDataSet>

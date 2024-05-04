@@ -1,0 +1,34 @@
+﻿@model BtcKpi.Web.ViewModels.PerformanceListViewModel
+<div class="modal fade" id="performance-approved-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-center">Phê duyệt hiệu suất công việc</h3>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <input type="hidden" id="perApprovedId" />
+                    <div class="box box-boder-top-1">
+                        <div class="box-body no-padding">
+                            <label class="col-md-12" for="comment">Ý kiến</label>
+                            <textarea class="col-md-12 form-control" id="comment" rows="3"></textarea>
+                            <br/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal" title="Đóng">Đóng</button>
+                <button type="button" class="btn btn-success" id="btnApproved" title="Phê duyệt">Phê duyệt</button>
+                <button type="button" class="btn btn-danger" id="btnReject" title="Từ chối">Từ chối</button>
+            </div>
+        </div>
+    </div>
+</div>

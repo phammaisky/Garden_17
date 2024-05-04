@@ -1,0 +1,1309 @@
+﻿@model BtcKpi.Web.ViewModels.PerformanceViewModel
+@using BtcKpi.Model
+@using BtcKpi.Service.Common
+@{
+    ViewBag.Title = "Hiệu suất công việc";
+    if(Model.PerformanceLsfb.Id == 0)
+    {
+        ViewBag.SubTitle = "Thêm mới hiệu suất công việc";
+    } else if(Model.PerformanceLsfb.Id != 0) {
+        ViewBag.SubTitle = "Cập nhật hiệu suất công việc";
+    }
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+
+<div id="error-block" class="callout callout-danger" style="margin-bottom: 0 !important;">
+    <h4><i class="fa fa-info"></i> Lỗi:</h4>
+    <label id="ErrorMessage">@Html.DisplayFor(model => model.ErrorMessage)</label>
+</div>
+@using (Html.BeginForm())
+{
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => Model.PerformanceLsfb.Id, new { @id = "performanceHiddenId" })
+        @Html.HiddenFor(model => Model.FirstLoad)
+        @Html.HiddenFor(model => Model.isApprove)
+        @Html.HiddenFor(model => Model.PerformanceLsfb.ShowFormByProjType)
+        <div class="box box-primary" id="info-block">
+            <div class="box-body box-profile">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item align-middle">
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-4 control-label">Người duyệt : </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.ApprovedBy, Model.Approves, "--- Chọn ---", new { @class = "col-md-8" })
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-4 control-label">Dự án: </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.ProjectId, Model.Projects, "--- Chọn ---", new {@onchange = "projectSearchChange(this.value)", @class = "col-md-8"})
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-4 control-label">Loại hiệu suất: </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.TypePerformanceId, Model.TypePerformances, "--- Chọn ---", new {@class = "col-md-8"})
+                        </div>
+                        <br/>
+                    </li>
+                    <li class="list-group-item align-middle">
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-4 control-label">Loại : </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.Type, Model.ScheduleTypes, "--- Chọn ---", new { @class = "col-md-8", @onchange = "scheduleChange(this.value)" })
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-4 control-label">Năm : </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.Year, Model.Years, "--- Chọn ---", new { @class = "col-md-8" })
+                        </div>
+                        <div class="col-md-4 form-group" id="per_ScheduleID">
+                            <b class="col-md-4 control-label">Kỳ : </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.Month, Model.Months, "--- Chọn ---", new { @class = "col-md-8" })
+                        </div>
+                        <div class="col-md-4 form-group" id="per_QuarterID">
+                            <b class="col-md-4 control-label">Quý : </b>
+                            @Html.DropDownListFor(x => x.PerformanceLsfb.QuarterId, Model.QuarterTypes, "--- Chọn ---", new { @class = "col-md-8" })
+                        </div>
+                        <br />
+                    </li>
+                    @if (@Model.isApprove == false)
+                    {
+                        <div class="col-md-12 text-right" style="margin-top: 10px;">
+                            <button id="btnStart" type="button" class="btn btn-info btn-sm" title="Bắt đầu">Bắt đầu</button>
+                            <button id="btnReset" type="button" class="btn btn-danger btn-sm" title="Hủy">Hủy</button>
+                        </div>
+
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row" id="performance-block">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <div class="tab-content">
+                        <div id="performance-manor-id">
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Leasing Extend - Office</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.OfficeArea, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.OfficeMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.OfficeTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.OfficeLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Leasing Extend - Retail</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailArea, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">New Leasing</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewArea, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total Rev</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewTotalRev, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Total leasing</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6"> $/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total Rev TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalRevTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total Rev BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalRevLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Gross Profit TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalGrossTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Gross Profit BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalGrossLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-12 form-group">
+                                    <div class="col-md-12">
+                                        <label class="col-md-3">Note</label>
+                                        @Html.TextBoxFor(x => Model.PerformanceLsfb.Note, new { @class = "col-md-6" })
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="performance-garden-fb-id">
+                            <div class="box-body no-padding">
+                                <div class="col-12 form-group">
+                                    <div class="col-md-6">
+                                        <label class="col-md-4">Type FB</label>
+                                        @Html.DropDownListFor(x => Model.PerformanceLsfb.TypeFB, Model.TypeFBs, "", new {@class = "col-md-8", @onchange = "onChangeTypeFB(this.value)"})
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Sales</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Line to line</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesLineToLine, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">All</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesAll, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Cash flow TY/BD</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesCashFlowTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Cash flow BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesCashFlowLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue line to line</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineTOSNoMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineTOSWithMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineNoMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineWithMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue all</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllTOSNoMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllTOSWithMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllNoMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllWithMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6" id="performance-fb-id">
+                                            <label class="col-md-6"> $/m2/ month - OP</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllOPMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue Total (Non FB + FB + LS)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalNoMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalWithMG, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Company profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TY/BD</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitLY, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                        <div id="performance-garden-ls-id">
+                            <div class="box-body no-padding">
+                                <div class="col-12 form-group">
+                                    <div class="col-md-6">
+                                        <label class="col-md-4">Type FB</label>
+                                        @Html.DropDownListFor(x => Model.PerformanceLsfb.TypeFBLS, Model.TypeFBs, "", new { @class = "col-md-8", @onchange = "onChangeTypeLS(this.value)" })
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Sales</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Line to line</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesLineToLineLS, new { @class = "col-md-6", @type="number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">All</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesAllLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Cash flow TY/BD</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesCashFlowTYLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Cash flow BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesCashFlowLYLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue (all) Leasing</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSArea, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSRev, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6" id="performance-ls-op-id">
+                                            <label class="col-md-6">$/m2/ month - OP</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSOPMonthMoney, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue Total (Non FB + FB + LS)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalNoMGLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalWithMGLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalLYLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Company profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TY/BD</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTYLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitLYLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        @*<div id="performance-bft-fb-id">
+                            <div class="box-body no-padding">
+                                <div class="col-12 form-group">
+                                    <div class="col-md-6">
+                                        <label class="col-md-4">Type FB</label>
+                                        @Html.DropDownListFor(x => Model.PerformanceLsfb.TypeFBBFT, Model.TypeFBs, "", new { @class = "col-md-8", @onchange = "onChangeTypeFB(this.value)" })
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Sales</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Line to line</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesLineToLineBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">All</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesAllBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Cash flow</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SalesCashFlowBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue line to line</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineTOSNoMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineTOSWithMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineNoMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineWithMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue all</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllTOSNoMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllTOSWithMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllNoMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue (TOS, RF, MF) with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllWithMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue Total (Non FB + FB + LS)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalMonthMoneyBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalNoMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalWithMGBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTYBFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="performance-bft-ls68-id">
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Icon68 Leasing Revenue (all)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">New Leasing Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewAreaLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">New Leasing $/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewMonthMoneyLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">New Leasing Rev</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewTotalRevLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Leasing Extend Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSAreaLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Leasing Extend $/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSMonthMoneyLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Icon68 Leasing Total (Non FB + FB + LS)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">no MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalMonthMoneyLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">with MG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalNoMGLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">BD/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalWithMGLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTYLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Casual lease</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Helipad</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevHelipadLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Event</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevEventLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Chicilon</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevChicilonLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue ATM</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevATMLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Signage</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevSignageLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Total - LS</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalLS68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Revenue Total - (LS+PMG)</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalPMG68BFT, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitLS68BFTCL, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTYLS68BFTCL, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="performance-bft-ls-id">
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">New Leasing</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewAreaBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewMonthMoneyBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.NewTotalRevBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Leasing Extend</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailAreaBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailMonthMoneyBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Rev TY/BG</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RetailTYBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Normal</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Area</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLineToLineBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">$/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue All</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6"> $/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalMonthMoneyBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Occupancy rate</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllOccRate, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total Rev BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSRevBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitLSBFTCL, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitTYLSBFTCL, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="performance-sky-id">
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Number of visitors</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Skydeck Adults</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SkyAdults, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Skydeck Children&Senior</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SkyChildrenSenior, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Skydeck Travel agents</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.SkyTravelAgent, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Number of visitors TWOH</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TWOH visitors</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TWOHVisitors, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TWOH travel Agent</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TWOHTravelAgent, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue Ticket Selling</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Adults</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTSAdults, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Children & Senior</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevChildrenSenior, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Travel agents</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTravelAgents, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TWOH visitors</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTWOHVisitors, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">TWOH travel Agent</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTWOHTravelAgent, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total ticket rev</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalTicketRev, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Souvenirs</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevSouvenirs, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Events</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevEvents, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Other revenue</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevSouvenirs, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Events</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevOtherRev, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue All</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6"> $/m2/ month</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalMonthMoneyBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Occupancy rate</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevAllOccRate, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total Rev BG/LY</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevLSRevBFTLS, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Total revenue</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total revenue</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.TotalRev, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitSky, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitSky, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="performance-parking-id">
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Parking lots</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Motobike Parking Fixed</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.MotoFixed, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Motobike Parking Outside</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.MotoOutside, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Car parking Fixed</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.CarFixed, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Car parking Outside</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.CarOutside, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Revenue</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Motobike Parking Fixed</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevMotoFixed, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Motobike Parking Outside</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevMotoOutside, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Car Parking Fixed</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevCarFixed, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Car Parking Outside</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevCarOutside, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Total</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.RevTotalParking, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-boder-top-1">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Profit</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="col-12 form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Business Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.BusinessProfitParking, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6">Company Profit</label>
+                                            @Html.TextBoxFor(x => Model.PerformanceLsfb.ComProfitParking, new { @class = "col-md-6", @type = "number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>*@
+                        <div id="manageComment" class="box box-boder-top-1">
+                            <div class="box-header with-border">
+                                <h4><b>Ý kiến phê duyệt</b></h4>
+                            </div>
+                            <div class="box-body">
+                                <label class="col-md-4">Ý kiến: </label>
+                                @Html.TextAreaFor(model => model.PerformanceLsfb.Comment, new { @class = "col-md-8 pull-left", @rows="3" })
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button id="comebackID" type="button" class="btn btn-danger pull-left" onclick="location.href = '@Url.Action("Index", "Performance")'">Quay lại</button>
+                            <button id="completeID" type="submit" class="btn btn-success pull-right" title="Hoàn tất" onclick="return validateForm();" name="submitButton" value="Success">Hoàn tất</button>
+                            <button id="notApproveID" type="submit" class="btn btn-danger pull-right" name="submitButton" value="Cancel">Từ chối</button>
+                            <button id="approveID" type="submit" class="btn btn-success pull-right" style="margin-right: 10px;">Phê Duyệt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+        @section Scripts {
+            @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+            @Scripts.Render("~/Scripts/Tables/Data")
+            @Scripts.Render("~/Scripts/Performance/create")
+        }

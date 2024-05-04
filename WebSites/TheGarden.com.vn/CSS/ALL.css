@@ -1,0 +1,50 @@
+﻿/** {
+    font-family: Verdana, Geneva;
+    color: black;
+    font-size: 10pt;
+}*/
+
+.I {
+    font-style: italic !important;
+}
+
+.B {
+    font-weight: bold !important;
+}
+
+.Black {
+    color: black !important;
+}
+
+.Blue {
+    color: #4169E1 !important;
+}
+
+.Red {
+    color: red !important;
+}
+
+.White {
+    color: white !important;
+}
+
+.S12 {
+    font-size: 12px !important;
+}
+
+.S14 {
+    font-size: 14pt !important;
+}
+
+.S16 {
+    font-size: 16pt !important;
+}
+
+.S18 {
+    font-size: 18pt !important;
+}
+
+.S20 {
+    font-size: 20pt !important;
+}
+

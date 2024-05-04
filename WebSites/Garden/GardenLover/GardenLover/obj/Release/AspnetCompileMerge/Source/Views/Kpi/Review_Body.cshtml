@@ -1,0 +1,56 @@
+﻿@model List<IQWebApp_Blank.EF.kReport>
+@using IQWebApp_Blank.EF
+@using Microsoft.AspNet.Identity
+
+@{
+    GoodJobEntities dbJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+
+    var userId = User.Identity.GetUserId().ToLower();
+}
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    var seq = i + 1;
+    var report = Model[i];
+    var reporter = dbCompany.cUserInfoes.FirstOrDefault(x => x.UserId == report.UserId);
+
+    var sendTo = dbCompany.cUserInfoes.FirstOrDefault(x => x.UserId.ToString() == report.SendToRelationValue).FullName;
+    var css = report.StateId == 1 && userId == report.SendToRelationValue ? "Red" : "";
+
+    var url = "/Kpi/Individual/" + report.Id;
+
+    var FinalMarkJob = report.FinalMarkJob.ToString();
+    var FinalMarkCompe = report.FinalMarkCompe.ToString();
+    var FinalMarkKpi = report.FinalMarkKpi.ToString();
+
+    if (FinalMarkJob == "0.00")
+    {
+        FinalMarkJob = "";
+    }
+
+    if (FinalMarkCompe == "0.00")
+    {
+        FinalMarkCompe = "";
+    }
+
+    if (FinalMarkKpi == "0.00")
+    {
+        FinalMarkKpi = "";
+    }
+
+    <tr>
+        <td align="center">@seq</td>
+        <td align="center">@report.Month/@report.Year</td>
+        <td align="center">@reporter.cBranch.BranchName</td>
+        <td align="center">@reporter.cDepartment.cDepartmentForAll.DepartmentName</td>
+        <td align="center">@reporter.cRank.cRankForAll.RankName</td>
+        <td align="center"><a href="@url">@reporter.FullName</a></td>
+        <td align="center"><a href="@url"><span class="@css">@sendTo</span></a></td>
+        <td align="center"><a href="@url">@report.kState.StateName</a></td>
+        <td align="center">@FinalMarkJob</td>
+        <td align="center">@FinalMarkCompe</td>
+        <td align="center">@FinalMarkKpi</td>
+        <td align="center">@report.Time</td>
+    </tr>
+}

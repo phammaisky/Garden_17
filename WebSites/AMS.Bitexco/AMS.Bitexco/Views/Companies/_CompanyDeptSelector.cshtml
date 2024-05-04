@@ -1,0 +1,44 @@
+﻿@using AMS.Models;
+@model IEnumerable<AMS.Models.Company>
+
+<table id="DeptTableCDSelector" class="table table-condensed table-tree">
+    @foreach (var item in Model)
+    {
+        <tr id="@Html.Raw("RowCDSelector" + item.Id.ToString())" onclick="returnClickCompanyId(@Html.Raw("'" + item.Id + "','" + item.NameVn.Trim() + "'"))">
+            @if (item.Departments.Count > 0)
+            {
+                <td style="vertical-align:top; width:20px">
+                    <a href="#" onclick="hideRowCDSelector(this, @Html.Raw("'RowCDSelector" + item.Id.ToString() + "'"),true); return false;" @Html.Raw("style='text-decoration: none; padding:8px  0px 8px 10px'")>
+                        <i class="fa fa-caret-right"></i>
+                    </a>
+                </td>
+                <td>
+                    @item.NameVn
+                </td>
+            }
+            else
+            {
+                <td style="vertical-align:top; width:20px">
+                    
+                </td>
+                <td>
+                    @item.NameVn
+                </td>
+            }
+           
+        </tr>
+        if (item.Departments.Count > 0)
+        {
+            foreach (var dept in item.Departments)
+            {
+                var param = Html.Encode(dept.Company.NameVn.Trim() + " | " + dept.DeptCode.Trim());
+                <tr id="@Html.Raw("RowCDSelect" + dept.Id.ToString())" onclick="returnClickDeptId(@Html.Raw("'" + dept.Id + "','" + param + "'"))" @Html.Raw("class='RowCDSelector" + item.Id.ToString() + "'") style="display:none">
+                    <td colspan="2">
+                        <p @Html.Raw("style='padding-left:30px; margin:0'")>@Html.Raw(dept.DeptName.Trim())</p>
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "PermitError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+        </div>
+        <div class="modal-body form-horizontal">
+            <h4 class="alert-danger">Bạn không được quyền để thực hiện !</h4>
+        </div>
+
+        <div class="modal-footer">
+            <a class="btn btn-default" href="@Url.Action("Index", "DeviceAndTools")">
+                <i class="fa fa-close"></i> Đóng
+            </a>
+        </div>
+    </div>
+</div>
+

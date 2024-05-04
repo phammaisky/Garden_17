@@ -1,0 +1,455 @@
+﻿@model BtcKpi.Web.ViewModels.IpfViewModel
+@using BtcKpi.Service.Common
+@{
+    ViewBag.Title = "KPIs cá nhân";
+    ViewBag.SubTitle = "Duyệt tạo mới IPF";
+    CustomPrincipal currentUser = ViewBag.CurrentUser;
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+    @Scripts.Render("~/Scripts/Elements/Modals/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+@Styles.Render("~/Styles/Elements/Modals")
+
+@Html.Partial("_ViewIpfDetailModal")
+<div id="error-block" class="callout callout-danger" style="margin-bottom: 0 !important;">
+    <h4><i class="fa fa-info"></i> Lỗi:</h4>
+    <label id="ErrorMessage">@Html.DisplayFor(model => model.ErrorMessage)</label>
+</div>
+
+<div class="box box-primary" id="info-block">
+    <div class="box-body box-profile">
+        <h3 class="profile-username text-center">@Html.DisplayFor(model => model.UserInfo.FullName)</h3>
+        <p class="text-muted text-center">@Html.DisplayFor(model => model.UserInfo.AdministratorshipName)</p>
+        <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+                <div class="col-md-4">
+                    <b>Phòng / bộ phận : </b> <a>@Html.DisplayFor(model => model.UserInfo.DepartmentName)</a>
+                </div>
+                <div class="col-md-4">
+                    <b>Ngày bắt đầu làm việc : </b> <a>@Html.DisplayFor(model => model.UserInfo.Created)</a>
+                </div>
+                <div class="col-md-4">
+                    <b>Người quản lý : </b> <a>@Html.DisplayFor(model => model.ManagerInfo.FullName) - @Html.DisplayFor(model => model.ManagerInfo.AdministratorshipName)</a>
+                </div>
+                <br />
+            </li>
+            <li class="list-group-item align-middle">
+                <div class="col-md-2">
+                    <b>Loại : </b>
+                    @Model.ScheduleTypes.Where(t => t.Value == Model.Ipf.ScheduleType.ToString()).FirstOrDefault().Text
+                    @Html.HiddenFor(model => model.Ipf.ScheduleType)
+                </div>
+                <div class="col-md-2">
+                    <b>Năm : </b>
+                    @Model.Years.Where(t => t.Value == Model.Ipf.Year.ToString()).FirstOrDefault().Text
+                </div>
+                @if (Model.Ipf.ScheduleType == 1)
+                {
+                    <div class="col-md-2" id="dIpf_ScheduleID">
+                        <b>Kỳ : </b>
+                        @Model.IpfSchedules.Where(t => t.Value == Model.Ipf.ScheduleID.ToString()).FirstOrDefault().Text
+                    </div>
+                }
+                <div class="col-md-6">
+                    <b>Ngày tạo : </b>
+                    @(((DateTime)Model.Ipf.Created).ToString("HH:mm:ss tt dd/MM/yyyy"))
+                </div>
+                <br />
+            </li>
+        </ul>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.UserInfo.AdministratorshipID)
+    @Html.HiddenFor(model => model.Ipf.ID)
+    @Html.HiddenFor(model => model.FirstLoad)
+    @Html.HiddenFor(model => model.CurrentTab)
+    <div class="row" id="kpi-block">
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs nav-justified" id="ipfTabsView">
+                    <li id="liOnYear" class='@(Model.CurrentTab == "liOnYear" ? "active" : "" )'><a href="#in-year" data-toggle="tab">Cam kết trong kỳ/năm</a></li>
+                    <li id="liPersonalPlan" class='@(Model.CurrentTab == "liPersonalPlan" ? "active" : "" )'><a href="#personal-plan" data-toggle="tab">Kế hoạch phát triển cá nhân</a></li>
+                    <li id="liNextYear" class='@(Model.CurrentTab == "liNextYear" ? "active" : "" )'><a href="#next-year" data-toggle="tab">Mục tiêu kỳ/năm tiếp theo</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="@(Model.CurrentTab == "liOnYear" ? "active" : "" ) tab-pane" id="in-year">
+                        <div class="box box-boder-top-1">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Mục tiêu hoàn thành công việc (@(currentUser.AdministratorShipId >= 7 ? "80" : "70")%)</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table id="ipf-complete-work" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th style="width: 2%;">STT</th>
+                                            <th style="width: 36%;">KPIs</th>
+                                            <th style="width: 36%;">Chỉ tiêu kế hoạch/yêu cầu cụ thể</th>
+                                            <th style="width: 5%;">Tỷ trọng</th>
+                                            <th style="width: 5%;">Điểm(NV)</th>
+                                            <th style="width: 5%;">Điểm(QL)</th>
+                                            <th style="width: 6%;">Điểm(BOD)</th>
+                                            <th style="width: 5%;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int i = 0; i < Model.CompleteWorks.Count; i++)
+                                        {
+                                        <tr>
+                                            @if (Model.CompleteWorks[i].IsWorkTitle == true)
+                                            {
+                                                <td>@Model.CompleteWorks[i].IsWorkTitle</td>
+                                                <td class="bg-gray disabled color-palette">&nbsp;<b>@BtcHelper.ToRoman(Model.CompleteWorks[i].Stt) .&nbsp;@Model.CompleteWorks[i].Objective</b></td>
+                                                <td>@Html.HiddenFor(x => Model.CompleteWorks[i].ID) @Html.HiddenFor(x => Model.CompleteWorks[i].Seq) @Html.HiddenFor(x => Model.CompleteWorks[i].IsWorkTitle)</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    @Model.CompleteWorks[i].Seq @Html.HiddenFor(x => Model.CompleteWorks[i].ID)  @Html.HiddenFor(x => Model.CompleteWorks[i].Seq) @Html.HiddenFor(x => Model.CompleteWorks[i].IsWorkTitle)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(Html.Encode(Model.CompleteWorks[i].Objective)) @Html.HiddenFor(x => Model.CompleteWorks[i].Objective)
+                                                </td>
+                                                <td>
+                                                    @Model.CompleteWorks[i].Target @Html.HiddenFor(x => Model.CompleteWorks[i].Target)
+                                                </td>
+                                                <td>
+                                                    @Model.CompleteWorks[i].Weight @Html.HiddenFor(x => Model.CompleteWorks[i].Weight)
+                                                </td>
+                                                <td>
+                                                    @Model.CompleteWorks[i].SelfScore @Html.HiddenFor(x => Model.CompleteWorks[i].SelfScore)
+                                                </td>
+                                                <td>
+                                                    @Model.CompleteWorks[i].ManagerScore @Html.HiddenFor(x => Model.CompleteWorks[i].ManagerScore)
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(x => Model.CompleteWorks[i].BodScore, new { @type = "number", @min = "0", @max = "5", @step = "0.1" })
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-sm btn-social-icon btn-facebook complete-work-view" data-id="@Model.CompleteWorks[i].ID"><i class="fa fa-eye"></i></button>
+                                                </td>
+                                            }
+
+                                        </tr>
+                                        }
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">Tổng tỷ trọng</th>
+                                            <th>@Html.DisplayFor(model => model.CompleteWorkWeightToal) @Html.HiddenFor(model => model.CompleteWorkWeightToal)</th>
+                                            <td colspan="4"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="box box-boder-top-1">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Mục tiêu năng lực (@(currentUser.AdministratorShipId >= 7 ? "20" : "30")%)</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table id="ipf-competency" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th style="width: 2%;">STT</th>
+                                            <th style="width: 38%;">KPIs</th>
+                                            <th style="width: 38%;">Chỉ tiêu kế hoạch/yêu cầu cụ thể</th>
+                                            <th style="width: 4%;">Tỷ trọng</th>
+                                            <th style="width: 6%;">Điểm(NV)</th>
+                                            <th style="width: 6%;">Điểm(QL)</th>
+                                            <th style="width: 6%;">Điểm(BOD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.Competencies.Count; i++)
+                                        {
+                                        <tr>
+                                            <td>
+                                                @Model.Competencies[i].Seq @Html.HiddenFor(x => Model.Competencies[i].ID)  @Html.HiddenFor(x => Model.Competencies[i].Seq)
+                                            </td>
+                                            <td>
+                                                @Model.Competencies[i].Objective @Html.HiddenFor(m => Model.Competencies[i].Objective)
+                                            </td>
+                                            <td>
+                                                @Model.Competencies[i].Target @Html.HiddenFor(x => Model.Competencies[i].Target)
+                                            </td>
+                                            <td>
+                                                @Model.Competencies[i].Weight @Html.HiddenFor(x => Model.Competencies[i].Weight)
+                                            </td>
+                                            <td>
+                                                @Model.Competencies[i].SelfScore @Html.HiddenFor(x => Model.Competencies[i].SelfScore)
+                                            </td>
+                                            <td>
+                                                @Model.Competencies[i].ManagerScore @Html.HiddenFor(x => Model.Competencies[i].ManagerScore)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(x => Model.Competencies[i].BodScore, new { @type = "number", @min = "0", @max = "5", @step = "0.1" })
+                                            </td>
+                                        </tr>
+                                        }
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">Tổng tỷ trọng</th>
+                                            <th>100</th>
+                                            <th colspan="3"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="@(Model.CurrentTab == "liPersonalPlan" ? "active" : "" ) tab-pane" id="personal-plan">
+                        <table id="ipf-personal-plan-competency" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th colspan="5">A. KẾ HOẠCH PHÁT TRIỂN NĂNG LỰC (Kiến thức, kỹ năng, kinh nghiệm, thái độ… cần phát triển để phục vụ công việc) </th>
+                                </tr>
+                                <tr class="bg-primary">
+                                    <th style="width: 2%;">STT</th>
+                                    <th style="width: 45%;">Các hoạt động đào tạo & phát triển trong năm</th>
+                                    <th style="width: 8%;">Ngày hoàn tất</th>
+                                    <th style="width: 45%;">Ghi chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (int i = 0; i < Model.PersonalPlanCompetencies.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Model.PersonalPlanCompetencies[i].Seq @Html.HiddenFor(x => Model.PersonalPlanCompetencies[i].ID) @Html.HiddenFor(x => Model.PersonalPlanCompetencies[i].Seq)
+                                        </td>
+                                        <td>
+                                            @Model.PersonalPlanCompetencies[i].Activity @Html.HiddenFor(x => Model.PersonalPlanCompetencies[i].Activity, new { @style = "width: 100%; height: 100%;" })
+                                        </td>
+                                        <td>
+                                            @Model.PersonalPlanCompetencies[i].CompleteDateString @Html.HiddenFor(x => Model.PersonalPlanCompetencies[i].CompleteDate)
+                                        </td>
+                                        <td>
+                                            @Model.PersonalPlanCompetencies[i].Remark @Html.HiddenFor(x => Model.PersonalPlanCompetencies[i].Remark, new { @style = "width: 100%; height: 100%;" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <table id="ipf-personal-plan-careeer" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th colspan="4">B. KẾ HOẠCH PHÁT TRIỂN NGHỀ NGHIỆP</th>
+                                </tr>
+                                <tr class="bg-primary">
+                                    <th style="width: 2%;">STT</th>
+                                    <th style="width: 18%;">Thời hạn</th>
+                                    <th style="width: 40%;">Theo nguyện vọng của nhân viên</th>
+                                    <th style="width: 40%;">Theo đề nghị của quản lý</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (int i = 0; i < Model.PersonalPlanCareers.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Model.PersonalPlanCareers[i].Seq @Html.HiddenFor(x => Model.PersonalPlanCareers[i].ID) @Html.HiddenFor(x => Model.PersonalPlanCareers[i].Seq)
+                                        </td>
+                                        <td>
+                                            @Html.HiddenFor(x => Model.PersonalPlanCareers[i].Term)
+                                            @BtcHelper.TermToString(Model.PersonalPlanCareers[i].Term)
+                                        </td>
+                                        <td>
+                                            @Model.PersonalPlanCareers[i].WishesOfStaff @Html.HiddenFor(x => Model.PersonalPlanCareers[i].WishesOfStaff)
+                                        </td>
+                                        <td>
+                                            @Html.TextAreaFor(x => Model.PersonalPlanCareers[i].RequestOfManager, new { @style = "width: 100%;", @disabled = "@disabled" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="@(Model.CurrentTab == "liNextYear" ? "active" : "" ) tab-pane" id="next-year">
+                        <div class="box box-boder-top-1">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Mục tiêu hoàn thành công việc (@(currentUser.AdministratorShipId >= 7 ? "80" : "70")%)</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table id="ipf-complete-work-ny" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th style="width: 2%;">STT</th>
+                                            <th style="width: 44%;">KPIs</th>
+                                            <th style="width: 44%;">Chỉ tiêu kế hoạch/yêu cầu cụ thể</th>
+                                            <th style="width: 5%;">Tỷ trọng</th>
+                                            <th style="width: 5%;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int i = 0; i < Model.CompleteWorksNextYear.Count; i++)
+                                        {
+                                            <tr>
+                                                @if (Model.CompleteWorksNextYear[i].IsWorkTitle == true)
+                                                {
+                                                    <td>@Model.CompleteWorksNextYear[i].IsWorkTitle</td>
+                                                    <td class="bg-gray disabled color-palette">&nbsp;<b>@BtcHelper.ToRoman(Model.CompleteWorksNextYear[i].Stt) .&nbsp;@Model.CompleteWorksNextYear[i].Objective</b></td>
+                                                    <td>@Html.HiddenFor(x => Model.CompleteWorksNextYear[i].ID) @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].Seq) @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].IsWorkTitle)</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>
+                                                        @Model.CompleteWorksNextYear[i].Seq @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].ID)  @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].Seq) @Html.HiddenFor(x => Model.CompleteWorks[i].IsWorkTitle)
+                                                    </td>
+                                                    <td>
+                                                        @Html.Raw(Html.Encode(Model.CompleteWorksNextYear[i].Objective)) @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].Objective)
+                                                    </td>
+                                                    <td>
+                                                        @Model.CompleteWorksNextYear[i].Target @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].Target)
+                                                    </td>
+                                                    <td>
+                                                        @Model.CompleteWorksNextYear[i].Weight @Html.HiddenFor(x => Model.CompleteWorksNextYear[i].Weight)
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-social-icon btn-facebook complete-work-view" data-id="@Model.CompleteWorksNextYear[i].ID"><i class="fa fa-eye"></i></button>
+                                                    </td>
+                                                }
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">Tổng tỷ trọng</th>
+                                            <th colspan="2">@Html.DisplayFor(model => model.CompleteWorkNextWeightToal) @Html.HiddenFor(model => model.CompleteWorkNextWeightToal)</th>
+                                            
+                                            
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="box box-boder-top-1">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Mục tiêu năng lực (@(currentUser.AdministratorShipId >= 7 ? "20" : "30")%)</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table id="ipf-competency-ny" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th style="width: 2%;">STT</th>
+                                            <th style="width: 47%;">KPIs</th>
+                                            <th style="width: 47%;">Chỉ tiêu kế hoạch/yêu cầu cụ thể</th>
+                                            <th style="width: 4%;">Tỷ trọng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.CompetenciesNextYear.Count; i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Model.CompetenciesNextYear[i].Seq @Html.HiddenFor(x => Model.CompetenciesNextYear[i].ID)  @Html.HiddenFor(x => Model.CompetenciesNextYear[i].Seq)
+                                                </td>
+                                                <td>
+                                                    @Model.CompetenciesNextYear[i].Objective @Html.HiddenFor(m => Model.CompetenciesNextYear[i].Objective)
+                                                </td>
+                                                <td>
+                                                    @Model.CompetenciesNextYear[i].Target @Html.HiddenFor(x => Model.CompetenciesNextYear[i].Target)
+                                                </td>
+                                                <td>
+                                                    @Model.CompetenciesNextYear[i].Weight @Html.HiddenFor(x => Model.CompetenciesNextYear[i].Weight)
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">Tổng tỷ trọng</th>
+                                            <th>100</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="box-footer">
+                        <div class="form-group row">
+                            <label for="Comment">NHẬN XÉT CỦA NHÂN VIÊN : </label>
+                            @Html.TextAreaFor(model => model.Ipf.SelfComment, new { @class = "pull-left", @style = "width: 100%;", @disabled = "disabled" })
+                        </div>
+                        <div class="form-group row">
+                            <label for="Comment">NHẬN XÉT CỦA QUẢN LÝ : </label>
+                            @Html.TextAreaFor(model => model.Ipf.ManagerComment, new { @class = "pull-left", @style = "width: 100%;", @disabled = "disabled" })
+                        </div>
+                        <div class="form-group row">
+                            <label for="Comment">NHẬN XÉT CỦA BOD : </label>
+                            @Html.TextAreaFor(model => model.Ipf.BodComment, new { @class = "pull-left", @style = "width: 100%;" })
+                        </div>
+                        @if (Model.Ipf.Status == 0)
+                        {
+                            <div class="form-group row">
+                                <label for="Comment">Comment : </label>
+                                @Html.TextAreaFor(model => model.Comment, new { @class = "pull-left", @style = "width: 100%;" })
+                            </div>
+                        }
+                        <div class="form-group row">
+                            @if (Model.Ipf.Status == 2)
+                            {
+                                <button type="submit" class="btn btn-success pull-right" name="submitButton" value="OK">Đánh giá</button>
+                                @*<button type="submit" class="btn btn-danger pull-right" name="submitButton" value="Cancel" style="margin-right: 20px;">Không duyệt</button>*@
+                            }
+                            <button type="button" class="btn pull-right" onclick="location.href = '@Url.Action("Pending", "Ipf")'" style="margin-right: 20px;">Trở lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/Ipf/pending")
+    @Scripts.Render("~/Scripts/Ipf/bodapprove")
+}

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Kpi/UploadKpi.aspx" hash="6eb597698" filehash="210b0d22c489" flags="110000" assembly="App_Web_hkdar1ho" type="ASP.kpi_uploadkpi_aspx">
+    <filedeps>
+        <filedep name="/Kpi/UploadKpi.aspx" />
+    </filedeps>
+</preserve>

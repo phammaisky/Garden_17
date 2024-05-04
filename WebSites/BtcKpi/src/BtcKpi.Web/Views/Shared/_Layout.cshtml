@@ -1,0 +1,132 @@
+﻿@using BtcKpi.Web.Extensions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BtcKpi.Web</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @Styles.Render("~/BitexcoThemes/plugins/font-awesome/css")
+    @Styles.Render("~/BitexcoThemes/plugins/ionicons/css")
+    @Styles.Render("~/BitexcoThemes/bootstrap/css")
+    @Styles.Render("~/BitexcoThemes/dist/css")
+    @Styles.Render("~/BitexcoThemes/dist/css/skins")
+    @Styles.Render("~/Styles/Main")
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <span class="logo-mini"><b>Bitexco</b>Group</span>
+                <span class="logo-lg"><b>Bitexco</b>Group</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Click để chuyển</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        
+                        @Html.Partial("_LoginPartial")
+                        @*<li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>*@
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        var identity = ((CustomPrincipal)HttpContext.Current.User);
+                        <li class="header">KPIs system - @identity.FullName</li>
+                    }
+                    else
+                    {
+                        <li class="header">KPIs system</li>
+                    }
+                    <li id="left-sidebar-menu-ipf" class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>KPIs cá nhân</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*<li id="left-sidebar-menu-ipf-pending-create"><a href="@Url.Action("PendingCreate", "Ipf")"><i class="fa fa-circle-o"></i> Tạo mới IPF</a></li>*@
+                            <li id="left-sidebar-menu-ipf-peding"><a href="@Url.Action("Pending", "Ipf")"><i class="fa fa-circle-o"></i> KPIs cá nhân</a></li>
+                            @*<li id="left-sidebar-menu-ipf-done"><a href="@Url.Action("Done", "Ipf")"><i class="fa fa-circle-o"></i> Tổng kết / Đánh giá</a></li>*@
+                            @*<li id="left-sidebar-menu-ipf-all"><a href="@Url.Action("All", "Ipf")"><i class="fa fa-circle-o"></i> Tất cả IPF</a></li>*@
+                        </ul>
+                    </li>
+                    <li id="left-sidebar-menu-upf" class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>KPIs phòng/bộ phận</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="left-sidebar-menu-upf-self"><a href="@Url.Action("UpfList", "Department")"><i class="fa fa-circle-o"></i> KPIs phòng/bộ phận</a></li>
+                            <li id="left-sidebar-menu-upf-cross"><a href="@Url.Action("Cross", "Upf")"><i class="fa fa-circle-o"></i> KPIs đánh giá chéo</a></li>
+                        </ul>
+                    </li>
+                    <li id="left-sidebar-menu-report" class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Báo cáo</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*<li id="left-sidebar-menu-report-ipf-year"><a href="@Url.Action("IpfYear", "Report")"><i class="fa fa-circle-o"></i> IPF năm</a></li>*@
+                            <li id="left-sidebar-menu-report-ipf-year"><a href="@Url.Action("IpfYear", "Report")"><i class="fa fa-circle-o"></i> Báo cáo IPF </a></li>
+                            <li id="left-sidebar-menu-report-upf"><a href="@Url.Action("UpfMonth", "Report")"><i class="fa fa-circle-o"></i> Báo cáo UPF </a></li>
+                            <li id="left-sidebar-menu-report-upf-sum"><a href="@Url.Action("UpfIndex", "ReportUpf")"><i class="fa fa-circle-o"></i>Báo cáo UPF tổng hợp</a></li>
+                            <li id="left-sidebar-menu-report-upf-cross"><a href="@Url.Action("UpfCrossMonthIndex", "ReportUpfCross")"><i class="fa fa-circle-o"></i>Báo cáo UPF Cross tháng</a></li>
+                            <li id="left-sidebar-menu-report-upf-cross-year"><a href="@Url.Action("UpfCrossYearIndex", "ReportUpfCross")"><i class="fa fa-circle-o"></i>Báo cáo UPF Cross năm</a></li>
+                        </ul>
+                    </li>
+                    @*<li id="left-sidebar-menu-peformance" class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Hiệu suất</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="left-sidebar-menu-peformance"><a href="@Url.Action("Index", "Performance")"><i class="fa fa-circle-o"></i> Hiệu suất công việc </a></li>
+                        </ul>
+                    </li>*@
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    @ViewBag.Title
+                    <small>@ViewBag.SubTitle</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i>@ViewBag.SubTitle</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </section>
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.1
+            </div>
+            <strong>Copyrights | Bitexco JSC | Layout &copy; 2020-2021 <a href="http://bitexco.com.vn/">Bitexco Group</a>.</strong> All rights
+            reserved.
+        </footer>
+        
+    </div>
+    @Scripts.Render("~/BitexcoThemes/plugins/jquery/js")
+    @RenderSection("menu", required: false)
+    @Scripts.Render("~/BitexcoThemes/bootstrap/js")
+    @Scripts.Render("~/BitexcoThemes/plugins/slimscroll/js")
+    @Scripts.Render("~/BitexcoThemes/plugins/fastclick/js")
+    @Scripts.Render("~/Scripts/Shared/_Layout")
+    @Scripts.Render("~/BitexcoThemes/dist/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AMS.Models.HistoryUse>
+
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th style="width:120px; text-align:center; vertical-align:middle">
+            @Html.DisplayNameFor(model => model.HandedDate)
+        </th>
+        <th style="width:150px; text-align:center; vertical-align:middle">
+            Người, Phòng ban sử dụng
+        </th>       
+        <th style="text-align:center; vertical-align:middle">
+            @Html.DisplayNameFor(model => model.LocationId)
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle">
+            @Html.DisplayNameFor(model => model.StatusId)
+        </th>
+        <th style="text-align:center; vertical-align:middle">
+            @Html.DisplayNameFor(model => model.StatusDescrition)
+        </th>
+        <th style="width:50px;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HandedDate)
+            </td>           
+            <td>
+                @if (item.Staff != null)
+                {
+                    @Html.Raw(item.Staff.FullName)
+                }
+                else
+                {
+                    if (item.Department != null)
+                    {
+                        @Html.Raw(item.Department.DeptName)
+                    }
+                }                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusCategory.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusDescrition)
+            </td>
+            <td>
+                <a class="create_sub_modal" href='@Url.Action("Edit", "HistoryUses", new { Id = item.Id }, null)'
+                   data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit fa-lg"></i></a>
+                <a class="create_sub_modal" style="color:red" href='@Url.Action("Delete", "HistoryUses", new { Id = item.Id }, null)'
+                   data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash-o fa-lg"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">   
+    function formSubSubmit() {      
+        var page = { Id: $('#deviceToolId').val() };
+        $.post("@Url.Content("~/HistoryUses/HistoryOfAssert")", page).done(function (d) {
+            $('#resultHistory').html(d);
+        });
+        $('#progresBarLoadingData').hide();
+    }
+</script>
+

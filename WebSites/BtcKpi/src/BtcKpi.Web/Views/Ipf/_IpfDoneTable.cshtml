@@ -1,0 +1,75 @@
+﻿@model BtcKpi.Web.ViewModels.IpfListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th>Công ty</th>
+        <th>Phòng/bộ phận</th>
+        <th>Loại</th>
+        <th>Năm</th>
+        <th>Kỳ</th>
+        <th>Mã - Tên nhân viên</th>
+        <th>Chức vụ</th>
+        <th>Điểm công việc</th>
+        <th>Điểm năng lực</th>
+        <th>Tổng điểm</th>
+        <th>
+            <button type="button" class="btn btn-success btn-circle pull-right" onclick="@("window.location.href='" + @Url.Action("PendingCreate", "Ipf") + "'");"><i class="fa fa-plus-circle"></i></button>
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @for (int i = 0; i < Model.IpfInfos.Count; i++)
+    {
+        <tr>
+            <td>
+                @Model.IpfInfos[i].CompanyName
+            </td>
+            <td>
+                @Model.IpfInfos[i].DepartmentName
+            </td>
+            <td>
+                @BtcHelper.ConvertIpfScheduleType(Model.IpfInfos[i].ScheduleType)
+            </td>
+            <td>
+                @Model.IpfInfos[i].Year
+            </td>
+            <td>
+                @Model.IpfInfos[i].ScheduleName
+            </td>
+            <td>
+                @Model.IpfInfos[i].FullName
+            </td>
+            <td>
+                @Model.IpfInfos[i].AdministratorshipName
+            </td>
+            <td>
+                @Model.IpfInfos[i].WorkScore
+            </td>
+            <td>
+                @Model.IpfInfos[i].CompetencyScore
+            </td>
+            <td>
+                @Model.IpfInfos[i].TotalScore
+            </td>
+            <td>
+
+                <a class="btn btn-sm btn-social-icon btn-facebook" href='~/Ipf/DoneView?id=@Model.IpfInfos[i].ID'><i class="fa fa-eye"></i></a>
+                @if (Model.IpfInfos[i].CreatedBy == Model.UserID)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-twitter" href='~/Ipf/DoneEdit?id=@Model.IpfInfos[i].ID'><i class="fa fa-pencil-square-o"></i></a>
+                }
+                <a class="btn btn-sm btn-social-icon btn-flickr" href='~/Ipf/DoneComment?id=@Model.IpfInfos[i].ID'><i class="fa fa-comment-o"></i></a>
+                
+                @if (Model.IpfInfos[i].ApproveBy == Model.UserID)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-info" href='~/Ipf/DoneApprove?id=@Model.IpfInfos[i].ID'><i class="fa fa-check-circle-o"></i></a>
+                }
+                <a class="btn btn-sm btn-social-icon btn-dropbox" href='~/Ipf/IpfKPIsDownload?id=@Model.IpfInfos[i].ID'><i class="fa fa-download"></i></a>
+            </td>
+        </tr>
+    }
+</tbody>
+<tfoot>
+</tfoot>
+
+

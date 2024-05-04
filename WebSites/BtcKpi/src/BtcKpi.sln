@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcKpi.Model", "BtcKpi.Model\BtcKpi.Model.csproj", "{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcKpi.Data", "BtcKpi.Data\BtcKpi.Data.csproj", "{1F32795D-FA52-4A3F-9139-600F03DA2579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcKpi.Service", "BtcKpi.Service\BtcKpi.Service.csproj", "{9F9F9A9A-3CF4-48F5-B923-BD88D2FE48AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcKpi.Web", "BtcKpi.Web\BtcKpi.Web.csproj", "{3424D6E6-373E-464E-BBF8-854B3D5261E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A7C07EFB-6344-4AA4-8024-97BE6D5D2E04}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F32795D-FA52-4A3F-9139-600F03DA2579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F32795D-FA52-4A3F-9139-600F03DA2579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F32795D-FA52-4A3F-9139-600F03DA2579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F32795D-FA52-4A3F-9139-600F03DA2579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9F9A9A-3CF4-48F5-B923-BD88D2FE48AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9F9A9A-3CF4-48F5-B923-BD88D2FE48AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9F9A9A-3CF4-48F5-B923-BD88D2FE48AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9F9A9A-3CF4-48F5-B923-BD88D2FE48AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3424D6E6-373E-464E-BBF8-854B3D5261E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3424D6E6-373E-464E-BBF8-854B3D5261E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3424D6E6-373E-464E-BBF8-854B3D5261E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3424D6E6-373E-464E-BBF8-854B3D5261E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

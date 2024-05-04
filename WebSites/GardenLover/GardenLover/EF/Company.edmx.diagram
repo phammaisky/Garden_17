@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc0d158131794d3eb284afc127f88c22" Name="Diagram1" ZoomLevel="49" ShowGrid="false">
+        <EntityTypeShape EntityType="CompanyModel.aApp" Width="1.5" PointX="14.75" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.aAppFunction" Width="1.5" PointX="17" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.aRelationType" Width="1.5" PointX="15" PointY="13.875" />
+        <EntityTypeShape EntityType="CompanyModel.aRelationTypeForAll" Width="1.5" PointX="12.75" PointY="8" />
+        <EntityTypeShape EntityType="CompanyModel.aRole" Width="1.5" PointX="19.25" PointY="8.75" />
+        <EntityTypeShape EntityType="CompanyModel.aRoleForAll" Width="1.5" PointX="19.25" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.aRoleForSome" Width="1.5" PointX="19.25" PointY="0.75" />
+        <EntityTypeShape EntityType="CompanyModel.aRoleForSomeAllow" Width="1.5" PointX="21.5" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.cBranch" Width="1.5" PointX="5.25" PointY="15.75" />
+        <EntityTypeShape EntityType="CompanyModel.cCompany" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="CompanyModel.cCorporation" Width="1.5" PointX="0.75" PointY="15.875" />
+        <EntityTypeShape EntityType="CompanyModel.cDepartment" Width="1.5" PointX="7.5" PointY="10.875" />
+        <EntityTypeShape EntityType="CompanyModel.cDepartmentForAll" Width="1.5" PointX="7.5" PointY="21" />
+        <EntityTypeShape EntityType="CompanyModel.cGrade" Width="1.5" PointX="10.5" PointY="11" />
+        <EntityTypeShape EntityType="CompanyModel.cGradeForAll" Width="1.5" PointX="10.5" PointY="21" />
+        <EntityTypeShape EntityType="CompanyModel.cRank" Width="1.5" PointX="9.75" PointY="15.625" />
+        <EntityTypeShape EntityType="CompanyModel.cRankForAll" Width="1.5" PointX="7.5" PointY="15.625" />
+        <EntityTypeShape EntityType="CompanyModel.cUserInfo" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="CompanyModel.sCountry" Width="1.5" PointX="10.5" PointY="5.875" />
+        <EntityTypeShape EntityType="CompanyModel.sCurrency" Width="1.5" PointX="8.25" PointY="7.5" />
+        <EntityTypeShape EntityType="CompanyModel.sLanguage" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="CompanyModel.vLoginUser" Width="1.5" PointX="2.75" PointY="2.375" />
+        <AssociationConnector Association="CompanyModel.FK_aAppFunction_aApp" />
+        <AssociationConnector Association="CompanyModel.FK_aRole_aApp" />
+        <AssociationConnector Association="CompanyModel.FK_aRoleForAll_aApp" />
+        <AssociationConnector Association="CompanyModel.FK_aRole_aAppFunction" />
+        <AssociationConnector Association="CompanyModel.FK_aRoleForAll_aAppFunction" />
+        <AssociationConnector Association="CompanyModel.FK_aRelationType_aRelationTypeForAll" />
+        <AssociationConnector Association="CompanyModel.FK_aRelationType_cUserInfo" />
+        <AssociationConnector Association="CompanyModel.PK_aRole_aRoleRelationTypeForAll" />
+        <AssociationConnector Association="CompanyModel.FK_aRole_aRoleForSome" />
+        <AssociationConnector Association="CompanyModel.FK_aRoleForSomeAllow_aRoleForAll" />
+        <AssociationConnector Association="CompanyModel.FK_aRoleForSomeAllow_aRoleForSome" />
+        <AssociationConnector Association="CompanyModel.FK_cBranch_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartment_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartmentForAll_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cGrade_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cGradeForAll_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cRank_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cRankForAll_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cBranch" />
+        <AssociationConnector Association="CompanyModel.FK_cCompany_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartment_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartmentForAll_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cGrade_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cGradeForAll_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cRank_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cRankForAll_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cCompany" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartment_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartmentForAll_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cGrade_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cGradeForAll_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cRank_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cRankForAll_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cCorporation" />
+        <AssociationConnector Association="CompanyModel.FK_cDepartment_cDepartmentForAll" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cDepartment" />
+        <AssociationConnector Association="CompanyModel.FK_cGrade_cGradeForAll" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cGrade" />
+        <AssociationConnector Association="CompanyModel.FK_cRank_cRankForAll" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cRank" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_cManagerInfo" />
+        <AssociationConnector Association="CompanyModel.FK_cUserInfo_sCountry" />
+        <AssociationConnector Association="CompanyModel.FK_sCountry_sCurrency" />
+        <AssociationConnector Association="CompanyModel.FK_sCountry_sLanguage" />
+        <EntityTypeShape EntityType="CompanyModel.sConfig" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

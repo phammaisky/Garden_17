@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AMS.Models.ToolCategory>
+
+@{
+    ViewBag.Title = "Danh mục công cụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col-md-9">Danh mục công cụ</h2>
+        <div class="col-md-3" id="progresBarLoadingData" style="padding-top:5px; display:none">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                @Html.Raw("Đang xử lý dữ liệu! ")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toolBar  form-inline" id="toolBar">
+    <a class="btn btn-primary btn-sm create_modal" href="@Url.Action("Create", "ToolCategories")">
+        <span class="glyphicon glyphicon-plus"></span> Thêm mới
+    </a>
+    &nbsp;
+</div>
+<div id="grid-list" class="table-responsive">
+    @{ Html.RenderPartial("_ToolCategories", (AMS.Models.Pagging<AMS.Models.ToolCategory>)ViewBag.PaggingToolCat); }
+</div>
+
+<div style="display:none" id="contentProccessing">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body" style="min-height:200px;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    @Html.Raw("Đang xử lý dữ liệu! ")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id='CRUDDialog' class='modal fade in'>
+    <div id='CRUDDialogContent'></div>
+</div>

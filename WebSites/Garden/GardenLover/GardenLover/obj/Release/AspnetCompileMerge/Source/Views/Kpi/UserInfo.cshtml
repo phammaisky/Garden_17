@@ -1,0 +1,197 @@
+﻿@model List<IQWebApp_Blank.Models.UserInfoVM>
+@using IQWebApp_Blank.EF
+@using IQWebApp_Blank.Models
+
+@{
+    ViewBag.Title = "UserInfo";
+    GoodJobEntities db = new GoodJobEntities();
+}
+
+<style type="text/css">
+    #tbl td {
+        padding: 5px;
+    }
+
+        #tbl td input[type=text] {
+            width: 100%;
+            /*border: 1px solid gray;*/
+            border: none;
+        }
+
+        #tbl td select {
+            width: 100%;
+            border: none;
+        }
+
+        #tbl td option[value=''] {
+            color: red;
+        }
+</style>
+
+<script>
+    function ResetPassword(BTN, UserId, FullName) {
+
+        if (confirm("Bạn muốn reset password mặc định của: " + FullName + " ?")) {
+
+            $(BTN).hide();
+
+            $.ajax({
+                type: 'GET',
+                url: "/Account/AdminResetPassword",
+
+                data: {
+                    UserId: UserId
+                },
+
+                success: function (result) {
+                    if (result == "1") {
+                        alert("Đã reset thành công password mặc định của: " + FullName);
+                    }
+                    else {
+                        alert("Lỗi ! Hãy kiểm tra lại...");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }
+</script>
+
+<center>
+    <h3 class="Red">@ViewBag.Title.</h3>
+
+    @using (Html.BeginForm("UserInfo_Submit", "Kpi", FormMethod.Post))
+    {
+        <input type="hidden" name="Id" value="@ViewBag.Id" />
+
+        <input type="submit" value="OK" class="btn btn-success" />
+        <br /><br />
+        <table id="tbl" border="1" style="width: auto;">
+            <thead>
+                <tr class="BgBlue">
+                    <td align="center" style="min-width: 50px;">Reset</td>
+                    <td align="center" style="min-width: 150px;">Họ</td>
+                    <td align="center" style="min-width: 150px;">Tên</td>
+                    <td align="center" style="min-width: 300px;">Email</td>
+                    <td align="center" style="min-width: 150px;">Phòng ban</td>
+                    <td align="center" style="min-width: 150px;">Chức vụ</td>
+                    <td align="center" style="min-width: 150px;">Cấp bậc</td>
+                    <td align="center" style="min-width: 300px;">Người quản lý</td>
+                    <td align="center" style="min-width: 100px;">Ngày bắt đầu vào công ty</td>
+                    <td align="center" style="min-width: 100px;">Ngày bắt đầu cv hiện tại</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i1 = 0; i1 < Model.Count; i1++)
+                {
+                    <tr>
+                        <td align="center">
+                            @if (!Model[i1].IsNew)
+                            {
+                                <a href="#" onclick="ResetPassword(this, '@Model[i1].UserId', '@Model[i1].UserInfo.FullName'); return false;">Reset</a>
+                            }
+                        </td>
+                        <td align="center">
+                            @Html.HiddenFor(x => x[i1].UserId)
+                            @Html.TextBoxFor(x => x[i1].UserInfo.LastName)
+                            @*@Html.ValidationMessageFor(x => x[i1].User_Information.LastName, "", new { @class = "text-danger" })*@
+                        </td>
+                        <td align="center">
+                            @Html.TextBoxFor(x => x[i1].UserInfo.FirstName)
+                        </td>
+                        <td align="center">
+                            @if (Model[i1].IsNew)
+                            {
+                                @Html.TextBoxFor(x => x[i1].LoginUser.UserName)
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(x => x[i1].LoginUser.UserName, new { disabled = true })
+                            }
+                        </td>
+                        <td align="center">
+                            @if (Model[i1].IsNew)
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.DepartmentId, new SelectList((List<DepartmentVM>)ViewData["allDepartment"], "Id", "DepartmentName"), "...Bộ phận...")
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.DepartmentId, new SelectList((List<DepartmentVM>)ViewData["allDepartment"], "Id", "DepartmentName", Model[i1].UserInfo.DepartmentId))
+                            }
+                        </td>
+                        <td align="center">
+                            @if (Model[i1].IsNew)
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.RankId, new SelectList((List<RankVM>)ViewData["allRank"], "Id", "RankName"), "...Chức vụ...")
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.RankId, new SelectList((List<RankVM>)ViewData["allRank"], "Id", "RankName", Model[i1].UserInfo.RankId))
+                            }
+                        </td>
+                        <td align="center">
+                            @if (Model[i1].IsNew)
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.GradeId, new SelectList((List<GradeVM>)ViewData["allGrade"], "Id", "GradeName"), "...Cấp bậc...")
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.GradeId, new SelectList((List<GradeVM>)ViewData["allGrade"], "Id", "GradeName", Model[i1].UserInfo.GradeId))
+                            }
+                        </td>
+                        <td align="center">
+                            @if (Model[i1].IsNew)
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.ManagerId, new SelectList((List<ManagerVM>)ViewData["allManager"], "UserId", "FullNameAndRank"), "...Người quản lý...")
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(x => x[i1].UserInfo.ManagerId, new SelectList((List<ManagerVM>)ViewData["allManager"], "UserId", "FullNameAndRank", Model[i1].UserInfo.ManagerId))
+                            }
+                        </td>
+                        <td align="center">
+                            <div style="position: relative">
+                                @Html.TextBoxFor(x => x[i1].UserInfo.StartWorkingDate, "{0:dd/MM/yyyy}", new { @class = "DatePicker" })
+                            </div>
+                        </td>
+                        <td align="center">
+                            <div style="position: relative">
+                                @Html.TextBoxFor(x => x[i1].UserInfo.StartCurrentJobDate, "{0:dd/MM/yyyy}", new { @class = "DatePicker" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    }
+
+</center>
+
+<script type="text/javascript">
+    $('.DatePicker').datepicker({
+        format: "dd/mm/yyyy",
+        weekStart: 1,
+        todayHighlight: true,
+        language: "en-GB",
+        clearBtn: true,
+        autoclose: true,
+        enableOnReadonly: false
+    });
+
+    $('.DateTimePicker').datetimepicker({
+        format: "DD/MM/YYYY HH:mm:ss",
+        dayViewHeaderFormat: "MM/YYYY",
+        locale: 'en-GB',
+        useCurrent: false,
+        showClear: true,
+        showClose: true,
+        keepOpen: false,
+        keepInvalid: false
+    });
+</script>

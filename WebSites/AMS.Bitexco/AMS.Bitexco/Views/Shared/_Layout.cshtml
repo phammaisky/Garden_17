@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+@using AMS.Models;
+@{
+    
+    string fullName = "";
+    List<GroupUser> groupUser = new List<GroupUser>();
+    if (User.Identity.Name != null)
+    {
+        try
+        {            
+            using (AMSEntities db = new AMSEntities())
+            {
+                var user = db.UserInfoes.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+                fullName = user.FullName;
+                groupUser = user.GroupUsers.ToList();
+            }
+        }
+        catch
+        {
+            
+        }
+
+    }
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AMS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/modalform")
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || Globalize.parseDate(value, "dd/MM/yyyy") !== null;
+            };
+        })
+
+    </script>
+
+</head>
+<body>
+    <div class="container-fluid" style="background-color:#4d0404;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="popover-markup pull-left">
+                    <img src="~/Image/logo.jpg" width="50" height="60" />
+                </div>
+                <div class="popover-markup pull-left" style="margin-right:50px">
+                    @if (groupUser.Count > 1)
+                    {
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="dropdown" aria-expanded="false" style=" min-height: 60px; font-size: 25px; background-color: rgb(77, 4, 4); border-color: rgb(77, 4, 4);">
+                                AMS
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="min-height: 60px; background-color: rgb(165, 66, 66); border-color: rgb(77, 4, 4); border-radius: 0px;">
+                                <span class="caret"></span>
+                            </button>
+                          
+                            <ul class="dropdown-menu" role="menu" style="padding: 0px;min-width: 60px;">
+                                @using (AMSEntities db = new AMSEntities())
+                                {
+                                    foreach (var grp in groupUser.Where(g => g.AppName.Trim() != "AMS"))
+                                    {
+                                        var app = db.Application.Find(grp.AppName);
+                                        if (app != null)
+                                        {
+
+                                            <li>
+                                                <div class="btn-group pull-right btn btn-danger btn-sm" style=" min-height: 60px; font-size: 25px; background-color: rgb(77, 4, 4); border-color: rgb(77, 4, 4); margin-bottom:2px; width:100%">
+                                                    <div style="padding-top:5px">
+                                                        <a href="@app.SeverName@app.LinkApp" style="color:white; text-decoration:none;">@app.AppName.Trim()</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="dropdown" aria-expanded="false" style=" min-height: 60px; font-size: 25px; background-color: rgb(77, 4, 4); border-color: rgb(77, 4, 4);">
+                                AMS
+                            </button>                            
+                        </div>
+                    }
+                    
+                </div>
+                @{Html.RenderAction("TopMenu", "Menu");}
+                <div class="popover-markup" style="float: right;max-width: 500px; margin-top: 15px;margin-right: 10px;">
+                    <a href="#" class="clickLink" data-original-title="" title="">
+                        Xin chào! <b>@User.Identity.Name!</b>
+                        &nbsp;<i class="fa fa-bars fa-lg"></i>
+                    </a>
+                    <div class="content hide">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a href="/Users/Help" style="border:0px;">
+                                    <span class="glyphicon glyphicon-question-sign"></span>&nbsp; &nbsp;
+                                    Hướng dẫn sử dụng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/User/Logout?returnUrl=%2F" style="border:0px;">
+                                    <span class="glyphicon glyphicon-log-out"></span>&nbsp; &nbsp;
+                                    Đăng nhập với tài khoản khác
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid body-content">
+        <div class="wellMasterLayout">
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - BITEXCO Group of Companies</p>
+        </footer>
+    </div>
+</body>
+@RenderSection("scripts", required: false)
+@section Scripts {
+    @Scripts.Render("~/bundles/modalform")
+}
+</html>

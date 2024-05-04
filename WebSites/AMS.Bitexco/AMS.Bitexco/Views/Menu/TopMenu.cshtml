@@ -1,0 +1,60 @@
+﻿@using AMS.Models;
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.popover-markup > .clickLink').popover({
+            html: true,
+            trigger: "focus",
+            content: function () {
+                return $(this).parent().find('.content').html();
+            },
+            container: 'body',
+            placement: 'bottom'
+        });
+    })
+
+</script>
+
+@*<div class="popover-markup ">
+        <a href='@Url.Action("Index", "AMSHome")' class="clickLink"><h5><i class="fa fa-home fa-2x"></i></h5> Trang chủ </a>
+    </div>*@
+@if (ViewBag.Menu != null)
+{
+    foreach (Group<string, TopMenu> item in ViewBag.Menu)
+    {
+        if (item.Key != null)
+        {
+            var groupSubMenu = from ps in item.Values
+                               group ps by ps.MenuName into gps
+                               select new Group<string, TopMenu> { Key = gps.Key, Values = gps };
+
+            <div class="dropdown pull-left" style="margin-left:20px; text-align:center; padding-top:5px" >
+                <a href="#" class="clickLink dropdown-toggle" data-toggle="dropdown" style="color:white; text-decoration:none; "><h5 style="margin-bottom:2px; margin-top:2px">@(Html.Raw(item.Values.First().GroupMenuIcon)) </h5> @(Html.Raw(item.Values.First().GroupMenuName))  </a>
+                @*<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    Dropdown
+                    <span class="caret"></span>
+                </button>*@
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    @foreach (var subItem in groupSubMenu)
+                    {
+                        <li role="presentation">
+                            <a role="menuitem" href="~/@subItem.Values.First().Url">@(Html.Raw(subItem.Key))</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="popover-markup">
+                <a href="~/@item.Values.First().Url" class="trigger"><h5>@(Html.Raw(item.Values.First().MenuIcon)) </h5> @(Html.Raw(item.Values.First().MenuName)) </a>
+            </div>
+        }
+    }
+}
+
+
+

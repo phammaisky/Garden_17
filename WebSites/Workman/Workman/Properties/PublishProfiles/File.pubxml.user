@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>X:\Websites\Garden\Workman\Workman\../_Run</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Ams/AmsReport.aspx">
+      <publishTime>08/07/2019 09:51:13</publishTime>
+    </File>
+    <File Include="Ams/QLTS.aspx">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="Ams/Tool.aspx">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>09/27/2011 19:48:50</publishTime>
+    </File>
+    <File Include="bin/amsreport.aspx.9a5ba9ba.compiled">
+      <publishTime>08/07/2019 09:51:10</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>09/11/2019 14:50:47</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>09/11/2019 14:50:47</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.pdb">
+      <publishTime>09/11/2019 14:50:46</publishTime>
+    </File>
+    <File Include="bin/App_Web_1eum035f.dll">
+      <publishTime>08/07/2019 09:06:41</publishTime>
+    </File>
+    <File Include="bin/App_Web_1eum035f.pdb">
+      <publishTime>08/07/2019 09:06:41</publishTime>
+    </File>
+    <File Include="bin/App_Web_1hh220co.dll">
+      <publishTime>07/22/2019 16:03:36</publishTime>
+    </File>
+    <File Include="bin/App_Web_1hh220co.pdb">
+      <publishTime>07/22/2019 16:03:36</publishTime>
+    </File>
+    <File Include="bin/App_Web_2jwsgszx.dll">
+      <publishTime>09/11/2019 14:49:04</publishTime>
+    </File>
+    <File Include="bin/App_Web_2jwsgszx.pdb">
+      <publishTime>09/11/2019 14:49:04</publishTime>
+    </File>
+    <File Include="bin/App_Web_310wgcn4.dll">
+      <publishTime>08/07/2019 09:06:43</publishTime>
+    </File>
+    <File Include="bin/App_Web_310wgcn4.pdb">
+      <publishTime>08/07/2019 09:06:43</publishTime>
+    </File>
+    <File Include="bin/App_Web_3m0ue3kj.dll">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/App_Web_3m0ue3kj.pdb">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/App_Web_5nm1qh4o.dll">
+      <publishTime>08/07/2019 09:51:10</publishTime>
+    </File>
+    <File Include="bin/App_Web_5nm1qh4o.pdb">
+      <publishTime>08/07/2019 09:51:10</publishTime>
+    </File>
+    <File Include="bin/App_Web_5padklao.dll">
+      <publishTime>08/07/2019 09:06:42</publishTime>
+    </File>
+    <File Include="bin/App_Web_5padklao.pdb">
+      <publishTime>08/07/2019 09:06:42</publishTime>
+    </File>
+    <File Include="bin/App_Web_abhxadr0.dll">
+      <publishTime>08/07/2019 09:06:41</publishTime>
+    </File>
+    <File Include="bin/App_Web_abhxadr0.pdb">
+      <publishTime>08/07/2019 09:06:41</publishTime>
+    </File>
+    <File Include="bin/App_Web_agzdxi0z.dll">
+      <publishTime>09/11/2019 09:31:25</publishTime>
+    </File>
+    <File Include="bin/App_Web_agzdxi0z.pdb">
+      <publishTime>09/11/2019 09:31:25</publishTime>
+    </File>
+    <File Include="bin/App_Web_aup0bovt.dll">
+      <publishTime>07/24/2019 15:15:18</publishTime>
+    </File>
+    <File Include="bin/App_Web_aup0bovt.pdb">
+      <publishTime>07/24/2019 15:15:18</publishTime>
+    </File>
+    <File Include="bin/App_Web_bjnnmgr4.dll">
+      <publishTime>07/24/2019 15:15:19</publishTime>
+    </File>
+    <File Include="bin/App_Web_bjnnmgr4.pdb">
+      <publishTime>07/24/2019 15:15:19</publishTime>
+    </File>
+    <File Include="bin/App_Web_bmwydb1e.dll">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/App_Web_bmwydb1e.pdb">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/App_Web_bordqvr5.dll">
+      <publishTime>07/24/2019 09:26:08</publishTime>
+    </File>
+    <File Include="bin/App_Web_bordqvr5.pdb">
+      <publishTime>07/24/2019 09:26:07</publishTime>
+    </File>
+    <File Include="bin/App_Web_d0pes53y.dll">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_d0pes53y.pdb">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_d5awhnkb.dll">
+      <publishTime>08/07/2019 09:51:11</publishTime>
+    </File>
+    <File Include="bin/App_Web_d5awhnkb.pdb">
+      <publishTime>08/07/2019 09:51:11</publishTime>
+    </File>
+    <File Include="bin/App_Web_dcity2xi.dll">
+      <publishTime>07/22/2019 16:03:36</publishTime>
+    </File>
+    <File Include="bin/App_Web_dcity2xi.pdb">
+      <publishTime>07/22/2019 16:03:36</publishTime>
+    </File>
+    <File Include="bin/App_Web_ebyua1ho.dll">
+      <publishTime>08/07/2019 09:51:10</publishTime>
+    </File>
+    <File Include="bin/App_Web_ebyua1ho.pdb">
+      <publishTime>08/07/2019 09:51:09</publishTime>
+    </File>
+    <File Include="bin/App_Web_erjirbli.dll">
+      <publishTime>07/22/2019 16:03:37</publishTime>
+    </File>
+    <File Include="bin/App_Web_erjirbli.pdb">
+      <publishTime>07/22/2019 16:03:37</publishTime>
+    </File>
+    <File Include="bin/App_Web_fmjni2n0.dll">
+      <publishTime>07/22/2019 16:03:35</publishTime>
+    </File>
+    <File Include="bin/App_Web_fmjni2n0.pdb">
+      <publishTime>07/22/2019 16:03:35</publishTime>
+    </File>
+    <File Include="bin/App_Web_fmjulsls.dll">
+      <publishTime>07/30/2019 09:25:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_fmjulsls.pdb">
+      <publishTime>07/30/2019 09:25:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_fnznb3bs.dll">
+      <publishTime>07/24/2019 10:18:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_fnznb3bs.pdb">
+      <publishTime>07/24/2019 10:18:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_gpb1pcib.dll">
+      <publishTime>08/07/2019 09:06:42</publishTime>
+    </File>
+    <File Include="bin/App_Web_gpb1pcib.pdb">
+      <publishTime>08/07/2019 09:06:42</publishTime>
+    </File>
+    <File Include="bin/App_Web_gqhobcb4.dll">
+      <publishTime>07/30/2019 09:24:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_gqhobcb4.pdb">
+      <publishTime>07/30/2019 09:24:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_hkdar1ho.dll">
+      <publishTime>09/11/2019 09:31:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_hkdar1ho.pdb">
+      <publishTime>09/11/2019 09:31:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_j4bkxwvx.dll">
+      <publishTime>07/24/2019 15:15:19</publishTime>
+    </File>
+    <File Include="bin/App_Web_j4bkxwvx.pdb">
+      <publishTime>07/24/2019 15:15:19</publishTime>
+    </File>
+    <File Include="bin/App_Web_kdi2fnex.dll">
+      <publishTime>07/30/2019 09:24:58</publishTime>
+    </File>
+    <File Include="bin/App_Web_kdi2fnex.pdb">
+      <publishTime>07/30/2019 09:24:58</publishTime>
+    </File>
+    <File Include="bin/App_Web_kdller5y.dll">
+      <publishTime>07/24/2019 15:15:17</publishTime>
+    </File>
+    <File Include="bin/App_Web_kdller5y.pdb">
+      <publishTime>07/24/2019 15:15:17</publishTime>
+    </File>
+    <File Include="bin/App_Web_l1docpe4.dll">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/App_Web_l1docpe4.pdb">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/App_Web_llmypdpp.dll">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_llmypdpp.pdb">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_nyc2djqz.dll">
+      <publishTime>07/24/2019 09:26:06</publishTime>
+    </File>
+    <File Include="bin/App_Web_nyc2djqz.pdb">
+      <publishTime>07/24/2019 09:26:06</publishTime>
+    </File>
+    <File Include="bin/App_Web_o20pdxlq.dll">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/App_Web_o20pdxlq.pdb">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/App_Web_pb2ujikd.dll">
+      <publishTime>09/11/2019 14:49:05</publishTime>
+    </File>
+    <File Include="bin/App_Web_pb2ujikd.pdb">
+      <publishTime>09/11/2019 14:49:05</publishTime>
+    </File>
+    <File Include="bin/App_Web_qtc3bc05.dll">
+      <publishTime>07/22/2019 16:03:37</publishTime>
+    </File>
+    <File Include="bin/App_Web_qtc3bc05.pdb">
+      <publishTime>07/22/2019 16:03:37</publishTime>
+    </File>
+    <File Include="bin/App_Web_qtu34tpb.dll">
+      <publishTime>09/11/2019 14:49:06</publishTime>
+    </File>
+    <File Include="bin/App_Web_qtu34tpb.pdb">
+      <publishTime>09/11/2019 14:49:06</publishTime>
+    </File>
+    <File Include="bin/App_Web_sbku2er5.dll">
+      <publishTime>08/07/2019 09:51:12</publishTime>
+    </File>
+    <File Include="bin/App_Web_sbku2er5.pdb">
+      <publishTime>08/07/2019 09:51:12</publishTime>
+    </File>
+    <File Include="bin/App_Web_t1dpyteb.dll">
+      <publishTime>07/24/2019 09:26:07</publishTime>
+    </File>
+    <File Include="bin/App_Web_t1dpyteb.pdb">
+      <publishTime>07/24/2019 09:26:07</publishTime>
+    </File>
+    <File Include="bin/App_Web_tth31jbk.dll">
+      <publishTime>07/24/2019 10:17:58</publishTime>
+    </File>
+    <File Include="bin/App_Web_tth31jbk.pdb">
+      <publishTime>07/24/2019 10:17:58</publishTime>
+    </File>
+    <File Include="bin/App_Web_tvygj13c.dll">
+      <publishTime>09/11/2019 14:49:05</publishTime>
+    </File>
+    <File Include="bin/App_Web_tvygj13c.pdb">
+      <publishTime>09/11/2019 14:49:05</publishTime>
+    </File>
+    <File Include="bin/App_Web_txjwgywt.dll">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/App_Web_txjwgywt.pdb">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/App_Web_u4etox5y.dll">
+      <publishTime>07/24/2019 09:26:09</publishTime>
+    </File>
+    <File Include="bin/App_Web_u4etox5y.pdb">
+      <publishTime>07/24/2019 09:26:08</publishTime>
+    </File>
+    <File Include="bin/App_Web_vlld2kf4.dll">
+      <publishTime>09/11/2019 09:31:27</publishTime>
+    </File>
+    <File Include="bin/App_Web_vlld2kf4.pdb">
+      <publishTime>09/11/2019 09:31:27</publishTime>
+    </File>
+    <File Include="bin/App_Web_vzxmhiik.dll">
+      <publishTime>09/11/2019 09:31:27</publishTime>
+    </File>
+    <File Include="bin/App_Web_vzxmhiik.pdb">
+      <publishTime>09/11/2019 09:31:27</publishTime>
+    </File>
+    <File Include="bin/App_Web_w3oj0san.dll">
+      <publishTime>09/11/2019 09:31:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_w3oj0san.pdb">
+      <publishTime>09/11/2019 09:31:26</publishTime>
+    </File>
+    <File Include="bin/App_Web_wunrsyeg.dll">
+      <publishTime>07/24/2019 09:26:08</publishTime>
+    </File>
+    <File Include="bin/App_Web_wunrsyeg.pdb">
+      <publishTime>07/24/2019 09:26:08</publishTime>
+    </File>
+    <File Include="bin/App_Web_wxoxjjqy.dll">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_wxoxjjqy.pdb">
+      <publishTime>07/24/2019 10:17:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_xoysoelk.dll">
+      <publishTime>07/24/2019 15:15:18</publishTime>
+    </File>
+    <File Include="bin/App_Web_xoysoelk.pdb">
+      <publishTime>07/24/2019 15:15:18</publishTime>
+    </File>
+    <File Include="bin/App_Web_xuwnqxgz.dll">
+      <publishTime>08/07/2019 09:51:11</publishTime>
+    </File>
+    <File Include="bin/App_Web_xuwnqxgz.pdb">
+      <publishTime>08/07/2019 09:51:11</publishTime>
+    </File>
+    <File Include="bin/App_Web_y0p4juhk.dll">
+      <publishTime>07/30/2019 09:25:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_y0p4juhk.pdb">
+      <publishTime>07/30/2019 09:24:59</publishTime>
+    </File>
+    <File Include="bin/App_Web_yg1wlqer.dll">
+      <publishTime>07/30/2019 09:25:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_yg1wlqer.pdb">
+      <publishTime>07/30/2019 09:25:00</publishTime>
+    </File>
+    <File Include="bin/App_Web_z3jdsc2j.dll">
+      <publishTime>09/11/2019 14:49:06</publishTime>
+    </File>
+    <File Include="bin/App_Web_z3jdsc2j.pdb">
+      <publishTime>09/11/2019 14:49:06</publishTime>
+    </File>
+    <File Include="bin/Assembly_Workman.dll">
+      <publishTime>07/11/2019 17:34:34</publishTime>
+    </File>
+    <File Include="bin/Assembly_Workman.pdb">
+      <publishTime>07/11/2019 17:34:34</publishTime>
+    </File>
+    <File Include="bin/change_password.aspx.3f13c644.compiled">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/creat_job.aspx.10fd796e.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/download.aspx.10fd796e.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/23/2017 13:15:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/23/2017 13:15:20</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>12/01/2014 13:15:20</publishTime>
+    </File>
+    <File Include="bin/home.aspx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>08/06/2012 21:30:08</publishTime>
+    </File>
+    <File Include="bin/iam.ashx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/index.ashx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/IQLibrary.dll">
+      <publishTime>07/24/2019 23:42:19</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>01/22/2018 18:40:38</publishTime>
+    </File>
+    <File Include="bin/job_received.aspx.10fd796e.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/job_sended.aspx.10fd796e.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/Library.dll">
+      <publishTime>07/24/2019 23:42:22</publishTime>
+    </File>
+    <File Include="bin/login.aspx.3f13c644.compiled">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/qlts.aspx.9a5ba9ba.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/register.ashx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/System.Net.Xml.dll">
+      <publishTime>07/24/2019 23:41:58</publishTime>
+    </File>
+    <File Include="bin/tool.aspx.9a5ba9ba.compiled">
+      <publishTime>09/11/2019 14:50:48</publishTime>
+    </File>
+    <File Include="bin/update.ashx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/upload.ashx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/uploadkpi.aspx.de8fee02.compiled">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/viewkpi.aspx.de8fee02.compiled">
+      <publishTime>09/11/2019 14:50:49</publishTime>
+    </File>
+    <File Include="bin/welcome.aspx.cdcab7d2.compiled">
+      <publishTime>09/11/2019 14:50:50</publishTime>
+    </File>
+    <File Include="bin/Workman.dll">
+      <publishTime>09/11/2019 14:49:58</publishTime>
+    </File>
+    <File Include="bin/Workman.pdb">
+      <publishTime>09/11/2019 14:49:58</publishTime>
+    </File>
+    <File Include="bin/zxing.dll">
+      <publishTime>04/14/2018 18:39:12</publishTime>
+    </File>
+    <File Include="Config/Config.ini">
+      <publishTime>07/02/2019 08:36:20</publishTime>
+    </File>
+    <File Include="Favicon.ico">
+      <publishTime>05/03/2019 15:57:42</publishTime>
+    </File>
+    <File Include="File/Excel/Ams/KeKhai/_Mau-ke-khai-Tai-san.xlsx">
+      <publishTime>06/28/2019 15:13:07</publishTime>
+    </File>
+    <File Include="File/Excel/Ams/KiemKe/Kiem-ke-Tai-san.xlsx">
+      <publishTime>06/24/2019 17:41:03</publishTime>
+    </File>
+    <File Include="File/Excel/Crm/Shop_Code_23052016.xlsx">
+      <publishTime>07/11/2019 16:23:05</publishTime>
+    </File>
+    <File Include="File/Excel/Crm/User-Phan-Quyen.xlsx">
+      <publishTime>06/26/2019 14:22:43</publishTime>
+    </File>
+    <File Include="File/Excel/Membership/Membership.xlsx">
+      <publishTime>07/25/2019 15:21:31</publishTime>
+    </File>
+    <File Include="Home.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Home.html">
+      <publishTime>08/07/2019 09:55:29</publishTime>
+    </File>
+    <File Include="Iam.ashx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Index.ashx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Index/CSS/All.css">
+      <publishTime>05/03/2019 15:57:41</publishTime>
+    </File>
+    <File Include="Index/CSS/IQ.css">
+      <publishTime>07/04/2019 11:23:47</publishTime>
+    </File>
+    <File Include="Index/CSS/Plugin.css">
+      <publishTime>06/21/2019 08:44:27</publishTime>
+    </File>
+    <File Include="Index/IMG/Approved.png">
+      <publishTime>06/13/2019 16:25:24</publishTime>
+    </File>
+    <File Include="Index/IMG/DisLike.png">
+      <publishTime>06/13/2019 15:17:13</publishTime>
+    </File>
+    <File Include="Index/IMG/Done.png">
+      <publishTime>06/13/2019 16:25:12</publishTime>
+    </File>
+    <File Include="Index/IMG/Like.png">
+      <publishTime>06/13/2019 15:17:08</publishTime>
+    </File>
+    <File Include="Index/IMG/Loading.gif">
+      <publishTime>08/07/2019 09:45:37</publishTime>
+    </File>
+    <File Include="Index/IMG/Rejected.png">
+      <publishTime>06/13/2019 16:24:59</publishTime>
+    </File>
+    <File Include="Index/IMG/Submit.png">
+      <publishTime>06/13/2019 15:33:45</publishTime>
+    </File>
+    <File Include="Index/IMG/Wait.png">
+      <publishTime>06/13/2019 17:14:07</publishTime>
+    </File>
+    <File Include="Index/JS/Ams_Report.js">
+      <publishTime>09/11/2019 09:22:03</publishTime>
+    </File>
+    <File Include="Index/JS/Crm/Crm_Add_Point.js">
+      <publishTime>06/26/2019 14:24:59</publishTime>
+    </File>
+    <File Include="Index/JS/Crm/Crm_Home.js">
+      <publishTime>06/26/2019 14:24:59</publishTime>
+    </File>
+    <File Include="Index/JS/Crm/Crm_Insert_Card.js">
+      <publishTime>06/26/2019 14:24:59</publishTime>
+    </File>
+    <File Include="Index/JS/Crm/Crm_Report.js">
+      <publishTime>06/26/2019 14:24:59</publishTime>
+    </File>
+    <File Include="Index/JS/Crm/Crm_Switch_Point.js">
+      <publishTime>06/26/2019 14:24:59</publishTime>
+    </File>
+    <File Include="Index/JS/Download.js">
+      <publishTime>05/03/2019 15:57:42</publishTime>
+    </File>
+    <File Include="Index/JS/Home.js">
+      <publishTime>08/07/2019 09:24:21</publishTime>
+    </File>
+    <File Include="Index/JS/Job/Job_Received.js">
+      <publishTime>05/03/2019 15:57:42</publishTime>
+    </File>
+    <File Include="Index/JS/Job/Job_Sended.js">
+      <publishTime>05/03/2019 15:57:42</publishTime>
+    </File>
+    <File Include="Index/JS/Job/Job_Submit.js">
+      <publishTime>05/23/2019 16:05:13</publishTime>
+    </File>
+    <File Include="Index/JS/Kpi_Upload.js">
+      <publishTime>07/30/2019 09:22:21</publishTime>
+    </File>
+    <File Include="Index/JS/Kpi_View.js">
+      <publishTime>07/11/2019 14:54:55</publishTime>
+    </File>
+    <File Include="Job/Creat_Job.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Job/Download.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Job/Job_Received.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Job/Job_Sended.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Kpi/UploadKpi.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Kpi/ViewKpi.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Membership/Change_Password.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Membership/Login.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/07/2019 19:13:57</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>09/11/2019 14:50:41</publishTime>
+    </File>
+    <File Include="Register.ashx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Update.ashx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0103.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0107.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0112.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0114.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0115.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0116.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0117.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0119.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0122.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0141.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0165.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0166.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/16/AA0172.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181.txt">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0125.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0126.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0128.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0129.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0130.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0131.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0132.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0133.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0134.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0135.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0136.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0137.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0138.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0142.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0147.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/181/AA0163.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0103.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0107.ini">
+      <publishTime>06/26/2019 14:25:48</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0112.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0114.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0115.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0116.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0117.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0119.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0122.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0125.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0126.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0128.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0129.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0130.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0131.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0132.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0133.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0134.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0135.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0136.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0137.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0138.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0141.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0142.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0147.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0163.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0165.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0166.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Config/AA0172.ini">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/POS.exe">
+      <publishTime>06/26/2019 14:26:51</publishTime>
+    </File>
+    <File Include="Update/POS/POS_Open.exe">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/POS_Start.exe">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Registry.reg">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/svchost.exe">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Update.exe">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Update/POS/Windows_Audio.exe">
+      <publishTime>06/26/2019 14:25:49</publishTime>
+    </File>
+    <File Include="Upload.ashx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/11/2019 14:50:38</publishTime>
+    </File>
+    <File Include="Welcome.aspx">
+      <publishTime>09/11/2019 14:50:51</publishTime>
+    </File>
+    <File Include="_Class/DB/Kpi.edmx.diagram">
+      <publishTime>06/28/2019 09:33:30</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

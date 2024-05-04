@@ -1,0 +1,49 @@
+﻿@model List<IQWebApp_Blank.EF.cDepartment>
+@using IQWebApp_Blank.EF
+
+@Html.DropDownList("Department", new SelectList(Model.OrderByDescending(x => x.Seq).Select(x => new { x.Id, DepartmentName = x.cDepartmentForAll.DepartmentName }).Distinct().ToList(), "Id", "DepartmentName"), "Phòng ban", new { onchange = "DepartmentOnChange(); return false;" })
+
+<script>
+    function DepartmentOnChange() {
+
+        var Year = $("select[name=Year]").val();
+        var Month = $("select[name=Month]").val();
+        var Branch = $("select[name=Branch]").val();
+        var Department = $("select[name=Department]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        if (Month == "")
+            Month = 0;
+
+        if (Branch == "")
+            Branch = 0;
+
+        if (Department == "")
+            Department = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Review_ByDepartment",
+
+            data: {
+                Year: Year,
+                Month: Month,
+                Branch: Branch,
+                Department: Department
+            },
+
+            success: function (view) {
+                $('#Staff').replaceWith(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<script>
+    DepartmentOnChange();
+</script>

@@ -1,0 +1,95 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th style="width: 10%;vertical-align:middle;" class="text-center">Công ty</th>
+        <th style="width: 10%; vertical-align: middle;" class="text-center">Từ phòng/bộ phận</th>
+        <th style="width: 10%; vertical-align: middle;" class="text-center">Đến phòng/bộ phận</th>
+        <th style="width: 4%; vertical-align: middle;" class="text-center">Năm</th>
+        <th style="width: 4%; vertical-align: middle;" class="text-center">Tháng</th>
+        <th style="width: 33%; vertical-align: middle;" class="text-center">Kpi</th>
+        <th style="width: 4%; vertical-align: middle;" class="text-center">Điểm đánh giá</th>
+        <th style="width: 4%; vertical-align: middle;" class="text-center">Điểm tự đánh giá</th>
+        <th style="width: 6%; vertical-align: middle;" class="text-center">Trạng thái</th>
+        <th style="width: 15%; vertical-align: middle;" class="text-center">
+            <button type="button" class="btn btn-success btn-circle pull-right" onclick="@("window.location.href='" + @Url.Action("CrossCreate", "Upf") + "'");"><i class="fa fa-plus-circle"></i></button>
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @for (int i = 0; i < Model.UpfCrossInfos.Count; i++)
+    {
+    <tr>
+        <td>
+            @Model.UpfCrossInfos[i].CompanyName
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].FromName
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].ToName
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].Year
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].Month
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].Objective
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].FromScore
+        </td>
+        <td>
+            @Model.UpfCrossInfos[i].ToScore
+        </td>
+        @*@if (Model.UpfCrossInfos[i].Status == 1)
+        {
+            <td>
+                <a class="btn btn-sm btn-success" title="@BtcHelper.ConvertUpfCrossStatus(Model.UpfCrossInfos[i].Status)"><i class="fa fa-circle"></i></a>
+            </td>
+        }
+        else
+        {
+            <td>
+                <a class="btn btn-sm btn-danger" title="@BtcHelper.ConvertUpfCrossStatus(Model.UpfCrossInfos[i].Status)"><i class="fa fa-circle-o"></i></a>
+            </td>
+        }*@
+        <td>
+            <label class='@(Model.UpfCrossInfos[i].Status == 1 ? "text-success" : "text-danger")'>@BtcHelper.ConvertUpfCrossStatus(Model.UpfCrossInfos[i].Status)</label>
+
+        </td>
+
+        <td>
+            <a class="btn btn-sm btn-social-icon btn-facebook" href='~/Upf/CrossView?id=@Model.UpfCrossInfos[i].ID' data-toggle="tooltip" data-placement="top" title="Xem"><i class="fa fa-eye"></i></a>
+            @if (Model.UserID == Model.UpfCrossInfos[i].CreatedBy || Model.UserID == Model.UpfCrossInfos[i].ToUser)
+            {
+                <a class="btn btn-sm btn-social-icon btn-twitter" href='~/Upf/CrossEdit?id=@Model.UpfCrossInfos[i].ID' data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fa fa-edit"></i></a>
+            }
+            @*<a class="btn btn-sm btn-social-icon btn-info" href='~/Upf/CrossApprove?id=@Model.UpfCrossInfos[i].ID' data-toggle="tooltip" data-placement="top" title="Duyệt"><i class="fa fa-check-circle-o"></i></a>*@
+            @if (Model.UserID == Model.UpfCrossInfos[i].CreatedBy)
+            {
+                <a class="btn btn-sm btn-social-icon btn-google" href='~/Upf/CrossDelete?id=@Model.UpfCrossInfos[i].ID' data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash"></i></a>
+            }
+        </td>
+    </tr>
+    }
+</tbody>
+<tfoot>
+    @*<tr class="bg-primary">
+        <th>Công ty</th>
+        <th>Phòng/bộ phận</th>
+        <th>Loại</th>
+        <th>Năm</th>
+        <th>Kỳ</th>
+        <th>Mã - Tên nhân viên</th>
+        <th>Chức vụ</th>
+        <th>Điểm công việc</th>
+        <th>Điểm năng lực</th>
+        <th>Tổng điểm</th>
+        <th></th>
+    </tr>*@
+</tfoot>
+
+

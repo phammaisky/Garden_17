@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Garden - Events halloween</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    <style type="text/css">
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: black;
+            z-index: 99;
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+            -moz-opacity: 0.8;
+            min-height: 100%;
+            width: 100%;
+        }
+
+        .loading {
+            font-family: Arial;
+            font-size: 10pt;
+            border: 5px solid #67CFF5;
+            width: 100%;
+            height: 90%;
+            display: none;
+            position: fixed;
+            background-color: White;
+            z-index: 999;
+        }
+    </style>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Trang chủ", "Index", "RegisterEvents", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li style="margin-top: 8px;">@Html.ActionLink("Danh sách đăng ký", "Index", "RegisterEvents")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="loading" align="center">
+    Hệ thống đang quay thưởng...Vui lòng đợi trong giây lát...<br />
+    <img src="~/Image/loading.gif" alt="" />
+</div>
+<div class="container body-content" style="margin-top: 60px;">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Events halloween</p>
+    </footer>
+</div>
+
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/jquery.qtip.min.js"></script>
+<script src="~/Scripts/fullcalendar.min.js"></script>
+@RenderSection("scripts", required: false)
+</body>
+</html>

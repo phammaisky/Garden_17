@@ -1,0 +1,230 @@
+﻿.slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.screen {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.wt-rotator .main-img {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+.wt-rotator .preloader {
+    background: url("./Picture/Slider/loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0.7);
+    border-radius: 2px 2px 2px 2px;
+    display: none;
+    height: 36px;
+    left: 50%;
+    margin-left: -18px;
+    margin-top: -18px;
+    position: absolute;
+    top: 50%;
+    width: 36px;
+    z-index: 4;
+}
+
+.wt-rotator #timer {
+    background-color: #FFFFFF;
+    font-size: 0;
+    height: 4px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    visibility: hidden;
+    z-index: 4;
+}
+
+.wt-rotator .desc {
+    color: #000000;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: left;
+    top: auto !important;
+    visibility: hidden;
+    z-index: 6;
+    width: 100% !important;
+    bottom: 0;
+}
+
+.wt-rotator .inner-bg {
+    background-color: #000000;
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    bottom: 0;
+}
+
+.wt-rotator .inner-text {
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+    font-size: 16px;
+}
+
+    .wt-rotator .inner-text a {
+        color: #fff;
+    }
+
+.wt-rotator .c-panel {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    z-index: 7;
+    display: none;
+}
+
+.wt-rotator .outer-cp {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: -moz-linear-gradient(center top, #999999 0%, #333333 50%, #000000 51%, #111111 100%) repeat scroll 0 0 transparent;
+    border-color: #000000 -moz-use-text-color;
+    border-image: none;
+    border-style: solid none;
+    border-width: 1px medium;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.wt-rotator .thumbnails, .wt-rotator .buttons {
+    display: inline;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+    .wt-rotator .thumbnails ul {
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .wt-rotator .thumbnails li, .wt-rotator .play-btn, .wt-rotator .prev-btn, .wt-rotator .next-btn {
+        background-color: #000000;
+        border: 1px solid #000000;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline;
+        float: left;
+        font-weight: bold;
+        height: 24px;
+        line-height: 24px;
+        list-style: none outside none;
+        margin-right: 4px;
+        overflow: hidden;
+        text-align: center;
+        width: 24px;
+    }
+
+        .wt-rotator .thumbnails li.thumb-over {
+            background-color: #CCCCCC;
+            color: #FFFFFF;
+        }
+
+        .wt-rotator .thumbnails li.curr-thumb {
+            background-color: #FFFFFF;
+            color: #000000;
+            cursor: default;
+        }
+
+        .wt-rotator .thumbnails li.image {
+            background-color: #000000;
+        }
+
+            .wt-rotator .thumbnails li.image.curr-thumb, .wt-rotator .thumbnails li.image.thumb-over {
+                border-color: #0066FF;
+            }
+
+            .wt-rotator .thumbnails li.image a, .wt-rotator .thumbnails li.image img {
+                border: 0 none;
+                display: block;
+            }
+
+            .wt-rotator .thumbnails li.image.curr-thumb img {
+                cursor: default;
+                opacity: 0.8;
+            }
+
+        .wt-rotator .thumbnails li * {
+            display: none;
+        }
+
+        .wt-rotator .thumbnails li div {
+            background-color: #000000;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+.wt-rotator .play-btn {
+    background: url("./Picture/Slider/play.png") no-repeat scroll center center #000000;
+}
+
+.wt-rotator .pause {
+    background: url("./Picture/Slider/pause.png") no-repeat scroll center center #000000;
+}
+
+.wt-rotator .prev-btn {
+    background: url("./Picture/Slider/prev.png") no-repeat scroll center center #000000;
+}
+
+.wt-rotator .next-btn {
+    background: url("./Picture/Slider/next.png") no-repeat scroll center center #000000;
+}
+
+.wt-rotator .button-over {
+    background-color: #CCCCCC;
+}
+
+#rotator-tooltip {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+}
+
+    #rotator-tooltip .tt-txt {
+        background-color: #000000;
+        color: #FFFFFF;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 12px;
+        margin: 8px 0;
+        max-width: 300px;
+        padding: 4px;
+    }
+
+    #rotator-tooltip .tt-img {
+        background-color: #000000;
+        display: none;
+        margin: 8px 0;
+        padding: 2px;
+    }
+
+.wt-rotator .block, .wt-rotator .vpiece, .wt-rotator .hpiece {
+    position: absolute;
+    z-index: 2;
+}
+
+.mod-rotation-des {
+    height: 40px;
+    left: 0;
+    top: 180px;
+    width: 388px;
+}

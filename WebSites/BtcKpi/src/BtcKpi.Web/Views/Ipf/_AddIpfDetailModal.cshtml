@@ -1,0 +1,55 @@
+﻿@model BtcKpi.Web.ViewModels.IpfViewModel
+<div class="modal fade" id="add-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thêm mới mục tiêu</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="completeWorkType">Tính chất công việc/Complete Work Title</label>
+                            @Html.DropDownList("completeWorkType", Model.CompleteWorkTitles, "--- Chọn ---", new {@class = "form-control"})
+                        </div>
+                        <div class="form-group">
+                            <label for="objective">Mục tiêu / Objective</label>
+                            <textarea type="text" id="objective" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="target">Chỉ tiêu kế hoạch/yêu cầu cụ thể / Targets / specific requirements must be achieved</label>
+                            <textarea type="text" id="target" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Tỷ trọng / Weight(%)</label>
+                            <input type="number" id="weight" min="0" max="100" step="1" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="result">Kết quả thực hiện / Performance results</label>
+                            <textarea type="text" id="result" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="self-score">NV tự đánh giá / Self assessment</label>
+                            <input type="number" id="self-score" min="0" max="5" step="0.1" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="manager-score">Quản lý đánh giá / Manager's assessment</label>
+                            <input type="number" id="manager-score" min="0" max="5" step="0.1" class="form-control" disabled="disabled" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddDetailModal">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>

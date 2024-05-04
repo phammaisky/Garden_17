@@ -1,0 +1,74 @@
+﻿@model List<IQWebApp_Blank.EF.cRank>
+@using IQWebApp_Blank.EF
+
+@{
+    ViewBag.Title = "Rank";
+    GoodJobEntities db = new GoodJobEntities();
+}
+
+<style type="text/css">
+    #tbl td {
+        padding: 5px;
+    }
+
+        #tbl td input[type=text] {
+            width: 100%;
+            /*border: 1px solid gray;*/
+            border: none;
+        }
+
+        #tbl td select {
+            width: 100%;
+            border: none;
+        }
+
+        #tbl td option[value=''] {
+            color: red;
+        }
+</style>
+
+<center>
+    <h3 class="Red">@ViewBag.Title.</h3>
+
+    @using (Html.BeginForm("Rank_Submit", "Kpi", FormMethod.Post))
+    {
+        <input type="hidden" name="Id" value="@ViewBag.Id" />
+        <input type="submit" value="OK" class="btn btn-success" />
+        <br /><br />
+        <table id="tbl" border="1" style="width: auto;">
+            <thead>
+                <tr class="BgBlue">
+                    <td align="center" style="min-width: 150px;">Chức vụ</td>
+                    <td align="center" style="min-width: 150px;">STT</td>
+                    <td align="center" style="min-width: 150px;">% Kpi</td>
+                    <td align="center" style="min-width: 150px;">% Compe</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i1 = 0; i1 < Model.Count; i1++)
+                {
+                    <tr>
+                        <td align="center">
+                            @Html.HiddenFor(x => x[i1].Id)
+                            @Html.TextBoxFor(x => x[i1].cRankForAll.RankName)
+                        </td>
+                        <td align="center">
+                            @Html.TextBoxFor(x => x[i1].Seq)
+                        </td>
+                        <td align="center">
+                            @Html.TextBoxFor(x => x[i1].xKpiJob)
+                        </td>
+                        <td align="center">
+                            @Html.TextBoxFor(x => x[i1].xKpiCompe)
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    }
+
+</center>

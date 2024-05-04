@@ -1,0 +1,34 @@
+﻿@model List<GardenLover.EF.kReport>
+@using GardenLover.EF
+
+@Html.DropDownList("Year", new SelectList(Model.OrderByDescending(x => x.Year).Select(x => x.Year).Distinct().ToList()), new { onchange = "YearOnChange(); return false;" })
+
+<script>
+    function YearOnChange() {
+
+        var Year = $("select[name=Year]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Report_ByYear",
+
+            data: {
+                Year: Year
+            },
+
+            success: function (view) {
+                $('#Branch').replaceWith(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<script>
+    YearOnChange();
+</script>

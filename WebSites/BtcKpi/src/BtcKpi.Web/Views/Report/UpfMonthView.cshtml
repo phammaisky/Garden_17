@@ -1,0 +1,101 @@
+﻿@model BtcKpi.Web.ViewModels.UpfMonthViewModel
+@{
+    ViewBag.Title = "Báo cáo";
+    ViewBag.SubTitle = "Upf tháng";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Examples/Invoice/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-header">
+            <i class="fa fa-globe"></i> BẢNG TỔNG HỢP ĐÁNH GIÁ KPI  THEO THÁNG - NĂM @Model.Year CỦA CÁC PHÒNG
+            <small class="pull-right">TABLE OF REVIEW DEPARTMENTS KPI OF @Model.Year YEAR</small>
+        </h2>
+    </div>
+</div>
+
+<div class="box box-default">
+    <div class="box-body table-responsive" >@* style="overflow: auto;white-space: nowrap;" *@
+        <table id="upf-month-table" class="table table-bordered table-hover " style="overflow: auto;white-space: nowrap;" >
+        <thead>
+            <tr class="bg-light-blue color-palette">
+                <th style="width: 15px; vertical-align: middle;" class="text-center" rowspan="2">STT</th>
+                <th style="width: 200px; vertical-align: middle;" class="text-center" rowspan="2">Phòng/bộ phận</th>
+                @for (int i = 0; i < Model.Schedules.Count(); i++)
+                {
+                    <th style="width: 120px; vertical-align: middle;" class="text-center" colspan="2">@Model.Schedules[i].Name</th>
+                }
+                <th style="width: 120px; vertical-align: middle;" class="text-center" colspan="2">TỔNG @Model.Year</th>
+                <th style="width: 120px; vertical-align: middle;" class="text-center" colspan="2">YTD</th>
+                <th style="width: 180px; vertical-align: middle;" class="text-center" colspan="3">BOD đánh giá</th>
+            </tr>
+            <tr class="bg-green color-palette">
+                @for (int i = 0; i < Model.Schedules.Count(); i++)
+                {
+                    <th style="width: 60px; vertical-align: middle;" class="text-center">Điểm BQ</th>
+                    <th style="width: 60px; vertical-align: middle;" class="text-center">Xếp hạng</th>
+                }
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Điểm BQ</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Xếp hạng</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Điểm BQ</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Xếp hạng</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Điểm BQ</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Xếp hạng</th>
+                <th style="width: 60px; vertical-align: middle;" class="text-center">Danh hiệu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.UpfMonthItems.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @(i + 1)
+                    </td>
+                    <td>
+                        @Model.UpfMonthItems[i].DepartmentName
+                    </td>
+                    @for (int j = 0; j < Model.UpfMonthItems[i].Details.Count; j++)
+                    {
+                        if (Model.UpfMonthItems[i].Details[j].ScheduleID >= 0)
+                        {
+                            <td>
+                                @if (Model.UpfMonthItems[i].Details[j].Score != null && Model.UpfMonthItems[i].Details[j].Score != 0)
+                                {
+                                    @(((decimal)(Model.UpfMonthItems[i].Details[j].Score ?? 0)).ToString("#0.0"))
+                                }
+                                
+                            </td>
+                            <td>
+                                @Model.UpfMonthItems[i].Details[j].Rank
+                            </td>
+                        }
+                        else if (Model.UpfMonthItems[i].Details[j].ScheduleID == -1)
+                        {
+                            <td></td>
+                            <td></td>
+                        }
+                        else if (Model.UpfMonthItems[i].Details[j].ScheduleID == -2)
+                        {
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            
+        </tfoot>
+    </table>
+        
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+@section Scripts {
+    @*@Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")*@
+    @Scripts.Render("~/Scripts/Report/UpfMonthView")
+}
+

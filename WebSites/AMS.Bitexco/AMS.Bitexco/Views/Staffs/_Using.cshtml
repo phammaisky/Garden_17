@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AMS.Models.DeviceAndTool>
+
+<table class="table table-striped table-bordered table-hover table-condensed" style="margin-bottom:0px">
+    <tr>
+        <th style="width:30px;text-align:center; vertical-align:middle">
+            <input type="checkbox" onchange="CheckedAll(this);" />
+        </th>
+        <th style="text-align:center; vertical-align:middle; width:85px">
+            Mã tài sản
+        </th>
+        <th style="text-align:center; vertical-align:middle">
+            Tên tài sản
+        </th>
+        <th style="text-align:center; vertical-align:middle; width: 100px;">
+            Loại thiết bị/ Công cụ
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle">
+            Ngày mua
+        </th>
+        <th style="width:100px; text-align:center; vertical-align:middle;">
+            Ngày bàn giao
+        </th>
+        <th style="width:110px; text-align:center; vertical-align:middle">
+            Tình trạng
+        </th>
+        @*<th style="width:50px; text-align:center"></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @Html.Raw(item.HistoryUses.OrderByDescending(h => h.HandedDate).First().StatusId == 5 ? "style='background-color:#f2dede ; color:#a94442'" : "")>
+            <td style="text-align:center; vertical-align:middle">
+                <input type="checkbox" value="@item.Id" name="SelectedDeviceAndTool" onchange="checkBoxChange(this, @item.Id)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetsCode)
+            </td>
+            <td>
+                <a class="create_sub_modal" href='@Url.Action("Details", "DeviceAndTools", new { Id = item.Id }, null)'
+                   data-toggle="tooltip" data-placement="top" title="Thông tin chi tiết">@Html.DisplayFor(modelItem => item.DeviceName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceCategory.DeviceCatName)
+                @Html.DisplayFor(modelItem => item.ToolCategory.ToolCatName)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.BuyDate)
+            </td>
+
+            @if (item.HistoryUses.Count > 0)
+            {
+                var _historyUses = item.HistoryUses.OrderByDescending(h => h.HandedDate).First();
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.HistoryUses.OrderByDescending(h => h.HandedDate).First().HandedDate)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.HistoryUses.OrderByDescending(h => h.HandedDate).First().StatusCategory.Name)
+                </td>
+            }
+            else
+            {
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            }
+
+            @*<td style="text-align:center">
+                <a class="create_modal" href='@Url.Action("Edit", "DeviceAndTools", new { Id = item.Id }, null)'
+                data-toggle="tooltip" data-placement="top" title="Bàn giao"><i class="fa fa-share-square-o fa-lg"></i></a>
+                <a class="create_modal" style="color:red" href='@Url.Action("Delete", "DeviceAndTools", new { Id = item.Id }, null)'
+                data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">
+    function formSubSubmit() {
+        var page = { Id: $('#staffUsingId').val() };
+        $.post("@Url.Content("~/Staffs/Using")", page).done(function (d) {
+            $('#resultUsing').html(d);
+        });
+        $('#progresBarLoadingData').hide();
+    }
+</script>
+

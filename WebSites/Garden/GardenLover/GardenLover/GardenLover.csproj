@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\_Solutions\_NuGetPackages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\_Solutions\_NuGetPackages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\..\_Solutions\_NuGetPackages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\_Solutions\_NuGetPackages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D967A18D-8EFA-46A9-996B-323B895C78A8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IQWebApp_Blank</RootNamespace>
+    <AssemblyName>IQWebApp_Blank</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>6</LangVersion>
+    <FileAlignment>8192</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>6</LangVersion>
+    <FileAlignment>8192</FileAlignment>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IQLibrary">
+      <HintPath>..\..\..\Bin\IQLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Library">
+      <HintPath>..\..\..\Bin\Library.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Xml">
+      <HintPath>..\..\..\Bin\System.Net.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\_Solutions\_NuGetPackages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\_Solutions\_NuGetPackages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\_Solutions\_NuGetPackages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\..\_Solutions\_NuGetPackages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Class\Class.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KpiController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="EF\aApp.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aAppFunction.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRelationType.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRelationTypeForAll.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRole.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRoleForAll.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRoleForSome.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\aRoleForSomeAllow.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cBranch.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cCompany.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cCorporation.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cDepartment.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cDepartmentForAll.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cGrade.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cGradeForAll.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Company.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Company.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Company1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cRank.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cRankForAll.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\cUserInfo.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GoodJob.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodJob.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GoodJob.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GoodJob.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodJob.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kAverageMark.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kCompe.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kCompeForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kCompeForSome.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kJob.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kJobDetail.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kNextPlan.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kNextPlanDetail.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kRate.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kRateForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kRelationType.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kRelationTypeForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kReport.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kReport_History.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kState.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kStep.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\kStepForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sConfig.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sCountry.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sCurrency.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sLanguage.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagramdefinition1_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagrams1_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagram.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vApp.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vAppFunction.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vBranch.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vCompany.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vCorporation.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vCountry.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vCurrency.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vDepartment.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vDepartmentForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vGrade.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vGradeForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vLanguage.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vLoginUser.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRank.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRankForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRelationType.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRelationTypeForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRole.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vRoleForAll.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vUserInfo.cs">
+      <DependentUpon>GoodJob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\func.cs" />
+    <Compile Include="Models\UserTreeViewCheckedViewModel.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\IdentityViewModel.cs" />
+    <Compile Include="Models\ManageViewModel.cs" />
+    <Compile Include="Models\IndividualViewModel.cs" />
+    <Compile Include="Class\kRelationType.cs" />
+    <Compile Include="Models\RoleForSomeViewModel.cs" />
+    <Compile Include="Models\RoleForSomeConfigViewModel.cs" />
+    <Compile Include="Models\UserRoleConfigViewModel.cs" />
+    <Compile Include="Models\UserInfoViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\All.css" />
+    <Content Include="Content\Dialog.js" />
+    <Content Include="Content\Edited.txt" />
+    <Content Include="Content\JS.js" />
+    <Content Include="Content\Welcome.jpg" />
+    <Content Include="Content\Welcome800.jpg" />
+    <Content Include="Content\_Plugin\Bootstrap.DatePicker\css\bootstrap-datepicker.css" />
+    <Content Include="Content\_Plugin\Bootstrap.DatePicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\_Plugin\Bootstrap.DatetimePicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\_Plugin\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\_Plugin\JsTree\jstree.js" />
+    <Content Include="Content\_Plugin\JsTree\themes\default-dark\32px.png" />
+    <Content Include="Content\_Plugin\JsTree\themes\default-dark\40px.png" />
+    <Content Include="Content\_Plugin\JsTree\themes\default-dark\style.css" />
+    <Content Include="Content\_Plugin\JsTree\themes\default-dark\throbber.gif" />
+    <Content Include="Content\_Plugin\JsTree\themes\default\32px.png" />
+    <Content Include="Content\_Plugin\JsTree\themes\default\40px.png" />
+    <Content Include="Content\_Plugin\JsTree\themes\default\style.css" />
+    <Content Include="Content\_Plugin\JsTree\themes\default\throbber.gif" />
+    <Content Include="Content\_Plugin\OldBrowser\respond.js" />
+    <Content Include="EF\Company.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Company.edmx</DependentUpon>
+      <LastGenOutput>Company.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\Company.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Company.edmx</DependentUpon>
+      <LastGenOutput>Company1.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\GoodJob.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GoodJob.edmx</DependentUpon>
+      <LastGenOutput>GoodJob.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\GoodJob.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GoodJob.edmx</DependentUpon>
+      <LastGenOutput>GoodJob.cs</LastGenOutput>
+    </Content>
+    <Content Include="Favicon.ico" />
+    <Content Include="Content\Font\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\_Plugin\Bootstrap\css\Site.css" />
+    <Content Include="Content\_Plugin\Bootstrap\js\bootstrap.js" />
+    <Content Include="Config\Config.ini" />
+    <Content Include="Content\_Plugin\Bootstrap.DatetimePicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\_Plugin\Bootstrap.DatetimePicker\js\moment.js" />
+    <Content Include="Index\IMG\Approved.png" />
+    <Content Include="Index\IMG\DisLike.png" />
+    <Content Include="Index\IMG\Done.png" />
+    <Content Include="Index\IMG\Like.png" />
+    <Content Include="Index\IMG\Loading.gif" />
+    <Content Include="Index\IMG\Rejected.png" />
+    <Content Include="Index\IMG\Submit.png" />
+    <Content Include="Index\IMG\Wait.png" />
+    <Content Include="Views\Kpi\Index.cshtml" />
+    <EntityDeploy Include="EF\GoodJob.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GoodJob.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EF\GoodJob.edmx.diagram">
+      <DependentUpon>GoodJob.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="EF\Company.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Company.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EF\Company.edmx.diagram">
+      <DependentUpon>Company.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
+    <None Include="Content\_Plugin\JQuery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\_Plugin\JQuery\jquery-1.10.2.js" />
+    <None Include="Content\_Plugin\JQuery.Validate\jquery.validate-vsdoc.js" />
+    <Content Include="Content\_Plugin\JQuery.Validate\jquery.validate.js" />
+    <Content Include="Content\_Plugin\JQuery.Validate\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\_Plugin\OldBrowser\modernizr-2.6.2.js" />
+    <Content Include="Content\_Plugin\_references.js" />
+    <Content Include="Views\Kpi\UserInfo.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Kpi\Individual.cshtml" />
+    <Content Include="Views\Kpi\Review.cshtml" />
+    <Content Include="Views\Kpi\Individual_AddJob.cshtml" />
+    <Content Include="Views\Kpi\Individual_AddNextPlan.cshtml" />
+    <Content Include="Views\Kpi\Individual_AddNextPlanDetail.cshtml" />
+    <Content Include="Views\Kpi\RoleForSome.cshtml" />
+    <Content Include="Views\Kpi\RoleForSome_Config.cshtml" />
+    <Content Include="Views\Kpi\RoleForSome_User.cshtml" />
+    <Content Include="Views\Kpi\Individual_AddJobDetail.cshtml" />
+    <Content Include="Views\Kpi\Review_Year.cshtml" />
+    <Content Include="Views\Kpi\Review_Month.cshtml" />
+    <Content Include="Views\Kpi\Review_Department.cshtml" />
+    <Content Include="Views\Kpi\Review_Staff.cshtml" />
+    <Content Include="Views\Kpi\Review_State.cshtml" />
+    <Content Include="Views\Kpi\Review_Body.cshtml" />
+    <Content Include="Views\Kpi\Report.cshtml" />
+    <Content Include="Views\Kpi\Report_Body.cshtml" />
+    <Content Include="Views\Kpi\Report_Year.cshtml" />
+    <Content Include="Views\Kpi\Department.cshtml" />
+    <Content Include="Views\Kpi\Rank.cshtml" />
+    <Content Include="Views\Kpi\Review_Branch.cshtml" />
+    <Content Include="Views\Kpi\Report_Branch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\CSS\" />
+    <Folder Include="Content\IMG\" />
+    <Folder Include="Content\JS\" />
+    <Folder Include="Content\Template\CSS\" />
+    <Folder Include="Content\Template\IMG\" />
+    <Folder Include="Content\Template\JS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Font\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Font\glyphicons-halflings-regular.eot" />
+    <Content Include="Packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58877</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52549/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\_Solutions\_NuGetPackages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\_Solutions\_NuGetPackages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\..\_Solutions\_NuGetPackages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\_Solutions\_NuGetPackages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

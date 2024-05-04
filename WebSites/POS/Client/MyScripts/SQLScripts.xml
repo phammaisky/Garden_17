@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tables>
+  <table name="CauHinhQuanLy" type="dm">
+
+    <script>
+      CREATE TABLE [CauHinhQuanLy] (
+      [ID]                            INT NOT NULL PRIMARY KEY,
+      [SuDungKiTuPhatSinhMaCuaHang]   BIT NOT NULL,
+      [TuDongPhatSinhMaHH]            INT NOT NULL,
+      [LichSuThayDoiHH]               INT NOT NULL,
+      [ThoiGianNhapButToan]           INT NOT NULL,
+      [XuatVuotTon]                   BIT NOT NULL,
+      [NgayBatDau]                    INT NOT NULL,
+      [NgayPhanChia]                  INT NOT NULL,
+      [NgayGiuaKy]                    INT NOT NULL,
+      [SoNgayDenHanPhaiTra]           INT,
+      [SoLeDonGia]                    INT NOT NULL,
+      [SoLeThanhTien]                 INT NOT NULL,
+      [SoLeSoLuong]                   INT NOT NULL,
+      [SoLeTyLe]                      INT NOT NULL,
+      [NumberFormat]                  NVARCHAR(20) NOT NULL,
+      [FormatDonGia]                  NVARCHAR(20) NOT NULL,
+      [FormatThanhTien]               NVARCHAR(20) NOT NULL,
+      [FormatTyLe]                    NVARCHAR(20) NOT NULL,
+      [FormatSoLuong]                 NVARCHAR(20) NOT NULL,
+      [XuatKhiChuaNhap]               BIT NOT NULL,
+      [MaHangHoaNoiBo]                NVARCHAR(20) NOT NULL,
+      [ChieuDaiSTTMaNoiBoHH]          INT NOT NULL,
+      [ChieuDaiMaKhuVuc]              INT NOT NULL,
+      [ChieuDaiSTTKho]                INT NOT NULL,
+      [ChieuDaiSTTQuay]               INT NOT NULL,
+      [ChieuDaiMaNganh]               INT NOT NULL,
+      [ChieuDaiSTTNhom]               INT NOT NULL,
+      [ChieuDaiSTTPhanNhom]           INT NOT NULL,
+      [ChieuDaiMaNCC]                 INT NOT NULL,
+      [ChieuDaiSTTKhachHang]          INT NOT NULL,
+      [ChieuDaiMaTang]                INT NOT NULL,
+      [ChieuDaiSTTGianHang]           INT NOT NULL,
+      [ChieuDaiSTTPhieuNhap]          INT NOT NULL,
+      [ChieuDaiSTTPhieuXuat]          INT NOT NULL,
+      [ChieuDaiSTTKhuyenMai]          INT NOT NULL,
+      [ChieuDaiSTTCTKhuyenMai]        INT NOT NULL,
+      [ChieuDaiSTTHoaDon]             INT NOT NULL,
+      [ChieuDaiMaKhachHang]           INT NOT NULL,
+      [ChieuDaiSTTNgheNghiep]         INT NOT NULL,
+      [ChieuDaiSTTHinhThucThanhToan]  INT NOT NULL,
+      [ChieuDaiMaPhongBan]            INT NOT NULL,
+      [ChieuDaiMaNV]                  INT NOT NULL,
+      [ChieuDaiKyTuPhatSinhMa]        INT NOT NULL,
+      [ConfigFile]                    NVARCHAR(255),
+      [LabelMatrixPath]               NVARCHAR(255),
+      [TemFileName]                   NVARCHAR(255),
+      [DateFormatShort]               NVARCHAR(20) NOT NULL,
+      [DateFormatLong]                NVARCHAR(20) NOT NULL,
+      [DateTimeFormat]                NVARCHAR(20) NOT NULL,
+      [DateHourFormat]                NVARCHAR(20) NOT NULL,
+      [NguyenTe]                      NVARCHAR(20) NOT NULL,
+      [CauHinhMaHH]                   INT NOT NULL,
+      [KyTuPhatSinhMaVoucher]         NVARCHAR(10) NOT NULL,
+      [LoaiMaKhiTimKiem]              INT NOT NULL,
+      [DateFormatSQL]                 NVARCHAR(20) NOT NULL,
+      [ColorFocus]                    NVARCHAR(50),
+      [ColorLostFocus]                NVARCHAR(50),
+      [ColorKey]                      NVARCHAR(50),
+      [DienGiai]                      NVARCHAR(255),
+      [GiaTri2]                       NVARCHAR(255),
+      [GiaDanhMuc]                    INT,
+      [DongBoDanhMuc]                 INT,
+      [DongBoSoLieu]                  INT,
+      [ChietKhauCanhBao]              NUMERIC (19, 2),
+      [ChietKhauGioiHan]              NUMERIC (19, 2),
+      [DoanhSoDiem]                   INT,
+      [DiemVoucher]                   INT,
+      [XuLyPhuThu]                    INT,
+      [Language]                      NVARCHAR(255),
+      [Header]                        NVARCHAR(1000),
+      [Footer]                        NVARCHAR(1000),
+      [NapTienFoodCourtMin]           NUMERIC (19, 2),
+      [NapTienFoodCourtMax]           NUMERIC (19, 2),
+      [NapTienFoodCourtDefault]       NUMERIC (19, 2),
+      [SoNgayGiaHanFoodCourt]         INT,
+	  [Icon]					      IMAGE
+      );
+
+    </script>
+  </table>
+
+
+  <table name="CauHinhTyLe" type="dm">
+    <script>
+      CREATE TABLE [CauHinhTyLe]
+      (
+      [ID]     [int] NOT NULL PRIMARY KEY,
+      [TLCK1]  [numeric](18, 2) NOT NULL DEFAULT(0),
+      [TLCK2]  [numeric](18, 2) NOT NULL DEFAULT(0)
+      )
+    </script>
+  </table>
+  
+
+  <table name="QuanLyCashBox" type="dm">
+    <script>
+      CREATE TABLE [QuanLyCashBox] (
+      [ID]           NVARCHAR(50) NOT NULL PRIMARY KEY,
+      [QuayBan]      NVARCHAR(20) NOT NULL,
+      [CaBan]        INT NOT NULL,
+      [NVBan]        NVARCHAR(20) NOT NULL,
+      [NgayGioMo]    DATETIME NOT NULL,
+      [NgayGioDong]  DATETIME,
+      [TrangThai]    BIT NOT NULL,
+      [DaVanChuyen]  BIT NOT NULL
+      );
+
+    </script>
+  </table>
+
+
+  
+  <table name="CTQuanLyCashBox" type="dm">
+    <script>
+      CREATE TABLE [CTQuanLyCashBox] (
+      [ID]                NVARCHAR(50) NOT NULL,
+      [STT]               SMALLINT NOT NULL,
+      [LoaiGiaoDich]      NVARCHAR(50) NOT NULL,
+      [ThoiGianThucHien]  DATETIME,
+      [TriGia]            NUMERIC (19, 2) NOT NULL,
+      [DaVanChuyen]       BIT NOT NULL,
+      PRIMARY KEY ([ID], [STT])
+      );
+    </script>
+  </table>
+
+
+  
+  <table name="CaBan" type="dm">
+    <script>
+
+      CREATE TABLE [CaBan] (
+      [STT]       INT NOT NULL PRIMARY KEY,
+      [TenCaBan]  NVARCHAR(255)
+      );
+    </script>
+    <script>
+      INSERT INTO [CaBan] ([STT], [TenCaBan]) VALUES (1, 'Ca 1')
+    </script>
+    <script>
+      INSERT INTO [CaBan] ([STT], [TenCaBan]) VALUES (2, 'Ca 2')
+    </script>
+  </table>
+
+
+  
+  <table name="NhanVien" type="dm">
+    <script>
+      CREATE TABLE [NhanVien] (
+      [MaNV]          NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [TenNV]         NVARCHAR(255) NOT NULL,
+      [TenDangNhap]   NVARCHAR(20) NOT NULL,
+      [MatKhau]       IMAGE NOT NULL,
+      [MaNVTao]       NVARCHAR(20) NOT NULL,
+      [NgayTao]       DATETIME NOT NULL,
+      [MaNVCapNhat]   NVARCHAR(20),
+      [NgayCapNhat]   DATETIME,
+      [NgaySinh]      DATETIME,
+      [NgayVaoLam]    DATETIME NOT NULL,
+      [DiaChi]        NVARCHAR(255),
+      [DienThoai]     NVARCHAR(255),
+      [Email]         NVARCHAR(255),
+      [GhiChu]        NVARCHAR(255),
+      [TrangThai]     INT NOT NULL,
+      [NgayNghiViec]  DATETIME,
+      [STT]           INT,
+      [TenChucVu]     NVARCHAR(255),
+      [MaPhongBan]    NVARCHAR(20),
+      [LoaiNhanVien]  INT,
+      [MaGianHang]    NVARCHAR(20),
+      [HinhAnh]       IMAGE,
+      [SoThe]         NVARCHAR(50),
+      [MaCH]          NVARCHAR(20)
+      );
+
+    </script>
+  </table>
+
+
+  
+  <table name = "DM_TienTe" type ="dm">
+    <script>
+
+      CREATE TABLE [DM_TienTe] (
+      [MaChu]        NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaSo]         NVARCHAR(20),
+      [SoLe]         INT,
+      [TenNguyenTe]  NVARCHAR(255) NOT NULL,
+      [NoiSuDung]    NVARCHAR(255)
+      );
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('AUD', '36', 2, 'Dollar Úc', 'Úc, Lãnh thổ châu Nam Cực thuộc Úc, Đảo Christmas, Quần đảo Cocos (Keeling), Quần đảo Heard và McDonald, Kiribati, Nauru, Đảo Norfolk, Tuvalu');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('CAD', '124', 2, 'Dollar Canada', 'Canada');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('CHF', '756', 2, 'Franc Thụy Sĩ', 'Thụy Sĩ, Liechtenstei');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('GBP', '826', 2, 'Bảng Anh', 'Liên hiệp Vương quốc Anh và Bắc Ireland');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('JPY', '392', 0, 'Yen Nhật', 'Nhật Bả');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('USD', '840', 2, 'Dollar Mỹ', 'Samoa thuộc Mỹ, Lãnh thổ Ấn Độ Dương thuộc Anh, Ecuador, El Salvador, Guam, Haiti, Quần đảo Marshall, Micronesia, Quần đảo Bắc Mariana, Palau, Panama, Puerto Rico, Đông Timor, Quần đảo Turks và Caicos, Hoa Kỳ, Quần đảo Virgi');
+    </script>
+    <script>
+      INSERT INTO  [DM_TienTe] ([MaChu], [MaSo], [SoLe], [TenNguyenTe], [NoiSuDung]) VALUES ('VND', '704', 2, 'Đồng', 'Việt Nam')
+    </script>
+  </table>
+
+  
+
+  <table name="CauHinhBanHang" type="dm">
+    <script>
+
+      CREATE TABLE [CauHinhBanHang] (
+      [ID]        BIGINT NOT NULL PRIMARY KEY,
+      [Ten]       NVARCHAR(255) NOT NULL,
+      [DienGiai]  NVARCHAR(255),
+      [GiaTri1]   NVARCHAR(255) NOT NULL,
+      [GiaTri2]   NVARCHAR(255),
+      [Nhom]      NVARCHAR(255) NOT NULL
+      );
+    </script>
+  </table>
+
+
+  
+  <table name="ThueGianHang" type="dm">
+    <script>
+
+      CREATE TABLE [ThueGianHang] (
+      [MaThue]          NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaKho]           NVARCHAR(20) NOT NULL,
+      [MaKhuVucBan]     NVARCHAR(20) NOT NULL,
+      [MaNCC]           NVARCHAR(20) NOT NULL,
+      [MaLoaiGianHang]  NVARCHAR(20) NOT NULL,
+      [SoHopDong]       NVARCHAR(255),
+      [TenGianHang]     NVARCHAR(255) NOT NULL,
+      [STT]             INT NOT NULL,
+      [NgayTao]         DATETIME NOT NULL,
+      [MaNVTao]         NVARCHAR(20) NOT NULL,
+      [NgayBanGiao]     DATETIME,
+      [NgayBDTraTien]   DATETIME,
+      [PTTienLai]       NUMERIC (19, 2),
+      [TrangThai]       INT,
+      [MaNVKetThuc]     NVARCHAR(20),
+      [NgayKetThuc]     DATETIME,
+      [LyDoKetThuc]     NVARCHAR(255),
+      [ChamDut]         BIT,
+      [HinhThucBan]     INT
+      );
+
+    </script>
+  </table>
+  
+  
+  
+  <table name="CuaHang" type="dm">
+    <script>
+
+      CREATE TABLE [CuaHang] (
+      [MaCH]            NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaKhuVuc]        NVARCHAR(20) NOT NULL,
+      [MaGoiNho]        NVARCHAR(50),
+      [TenCH]           NVARCHAR(255) NOT NULL,
+      [TenGiaoDich]     NVARCHAR(255),
+      [KyTuPhatSinhMa]  NVARCHAR(10) NOT NULL,
+      [DiaChi]          NVARCHAR(255),
+      [MST]             NVARCHAR(255),
+      [SoDienThoai]     NVARCHAR(255),
+      [MaNVTao]         NVARCHAR(20) NOT NULL,
+      [NgayTao]         DATETIME NOT NULL,
+      [MaNVCapNhat]     NVARCHAR(20),
+      [NgayCapNhat]     DATETIME,
+      [TrangThai]       INT,
+      [Email]           NVARCHAR(255),
+      [Fax]             NVARCHAR(255),
+      [LaCHTT]          BIT
+      );
+
+
+
+    </script>
+  </table>
+
+  
+
+  <table name="HangHoa" type="dm">
+    <script>
+
+      CREATE TABLE [HangHoa] (
+      [MaHH]                 NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaNoiBo]              NVARCHAR(20) NOT NULL,
+      [MaNCC]                NVARCHAR(20) NOT NULL,
+      [MaNganh]              NVARCHAR(20),
+      [MaThue]               NVARCHAR(20),
+      [TenHH]                NVARCHAR(255) NOT NULL,
+      [MaNVTao]              NVARCHAR(20) NOT NULL,
+      [NgayTao]              DATETIME NOT NULL,
+      [MaNVCapNhat]          NVARCHAR(20),
+      [NgayCapNhat]          DATETIME,
+      [GhiChu]               NVARCHAR(255),
+      [TrangThai]            INT,
+      [LoaiHangHoa]          INT,
+      [DonViTinh]            NVARCHAR(255),
+      [CapDo]                INT,
+      [HienThiTrongDanhMuc]  INT,
+      [MaThuongHieu]         NVARCHAR(20),
+      [MaTang]               NVARCHAR(20),
+      [MaKhuVucBan]          NVARCHAR(20),
+      [STT]                  INT,
+      [STTNoiBo]             INT
+      );
+	  
+    </script>
+  </table>
+
+  
+
+  <table name="HangHoa_KhuVuc" type="dm">
+    <script>
+
+      CREATE TABLE [HangHoa_KhuVuc] (
+      [MaHH]      NVARCHAR(20) NOT NULL,
+      [MaKhuVuc]  NVARCHAR(20) NOT NULL,
+      [GiaBanSi]  NUMERIC (19, 2) NOT NULL,
+      [GiaBanLe]  NUMERIC (19, 2) NOT NULL,
+      PRIMARY KEY ([MaHH], [MaKhuVuc])
+      );
+
+    </script>
+  </table>
+
+
+  
+  <table name="HinhThucThanhToan" type="dm">
+    <script>
+
+      CREATE TABLE [HinhThucThanhToan] (
+      [MaHinhThuc]       NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [STT]              INT,
+      [MaNhomThanhToan]  NVARCHAR(20) NOT NULL,
+      [TenHinhThuc]      NVARCHAR(255) NOT NULL,
+      [MoTa]             NVARCHAR(255),
+      [MaThe]            NVARCHAR(10),
+      [MaNguyenTe]       NVARCHAR(20),
+      [TLFee]            NUMERIC (19, 2),
+      [TrangThai]        INT NOT NULL,
+      [MaNVTao]          NVARCHAR(20),
+      [NgayTao]          DATETIME NOT NULL,
+      [MaNVCapNhat]      NVARCHAR(20),
+      [NgayCapNhat]      DATETIME,
+      [DoUuTien]         INT,
+      [MaChu]            NVARCHAR(20)
+      );
+
+    </script>
+  </table>
+
+
+  
+  <table name="ThuongHieu" type="dm">
+    <script>
+
+      CREATE TABLE [ThuongHieu] (
+      [MaThuongHieu]   NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaGoiNho]       NVARCHAR(20) NOT NULL,
+      [TenThuongHieu]  NVARCHAR(255),
+      [MaKhuVucBan]    NVARCHAR(20),
+      [MaNVTao]        NVARCHAR(20),
+      [NgayTao]        DATETIME,
+      [MaNVCapNhat]    NVARCHAR(20),
+      [NgayCapNhat]    DATETIME,
+      [GhiChu]         NVARCHAR(255),
+      [STT]            INT
+      );
+
+    </script>
+  </table>
+
+  
+
+  <table name="NganhHang" type="dm">
+    <script>
+
+      CREATE TABLE [NganhHang] (
+      [MaNganh]      NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [MaGoiNho]     NVARCHAR(20) NOT NULL,
+      [MaKhuVucBan]  NVARCHAR(20),
+      [TenNganh]     NVARCHAR(255) NOT NULL,
+      [MoTa]         NVARCHAR(255),
+      [MaNVNhap]     NVARCHAR(20) NOT NULL,
+      [NgayTao]      DATETIME NOT NULL,
+      [MaNVCapNhat]  NVARCHAR(20) NOT NULL,
+      [NgayCapNhat]  DATETIME NOT NULL,
+      [GhiChu]       NVARCHAR(255),
+      [STT]          INT
+      );
+
+    </script>
+  </table>
+
+
+  
+  <table name="NhomThanhToan" type="dm">
+    <script>
+
+      CREATE TABLE [NhomThanhToan] (
+      [MaNhomThanhToan]  NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [TenNhom]          NVARCHAR(255) NOT NULL
+      );
+
+    </script>
+    <script>
+      INSERT INTO  [NhomThanhToan] ([MaNhomThanhToan], [TenNhom]) VALUES ('001', 'Tiền mặt');
+    </script>
+    <script>
+      INSERT INTO  [NhomThanhToan] ([MaNhomThanhToan], [TenNhom]) VALUES ('002', 'Tiền mặtt ngoài tệ');
+    </script>
+    <script>
+      INSERT INTO  [NhomThanhToan] ([MaNhomThanhToan], [TenNhom]) VALUES ('003', 'Thẻ');
+    </script>
+    <script>
+      INSERT INTO  [NhomThanhToan] ([MaNhomThanhToan], [TenNhom]) VALUES ('004', 'Thẻ, ngoại tệ');
+    </script>
+    <script>
+      INSERT INTO  [NhomThanhToan] ([MaNhomThanhToan], [TenNhom]) VALUES ('005', 'Thẻ quà tặng')
+    </script>
+  </table>
+
+
+  
+  <table name="QuayBan" type="dm">
+    <script>
+
+      CREATE TABLE [QuayBan] (
+      [MaQuay]        NVARCHAR(20) NOT NULL PRIMARY KEY,
+      [STT]           INT NOT NULL,
+      [MaKho]         NVARCHAR(20) NOT NULL,
+      [TenQuay]       NVARCHAR(255) NOT NULL,
+      [LoaiQuay]      INT NOT NULL,
+      [TenGiaoDich]   NVARCHAR(255),
+      [DiaChi]        NVARCHAR(255),
+      [DienThoai]     NVARCHAR(255),
+      [Fax]           NVARCHAR(255),
+      [Email]         NVARCHAR(255),
+      [TrangThai]     INT NOT NULL,
+      [MaNVTao]       NVARCHAR(20) NOT NULL,
+      [NgayTao]       DATETIME NOT NULL,
+      [MaNVCapNhat]   NVARCHAR(20) NOT NULL,
+      [NgayCapNhat]   DATETIME NOT NULL,
+      [IP]            NVARCHAR(15),
+      [GhiChu]        NVARCHAR(255),
+      [MatKhauAdmin]  NVARCHAR(255),
+      [MaGoiNho]      NVARCHAR(20)
+      );
+
+	  </script>
+  </table>
+
+
+  
+  <table name="TyGiaQuyDoiNGoaiTe" type="dm">
+    <script>
+
+      CREATE TABLE [TyGiaQuyDoiNGoaiTe] (
+      [Ngay]         DATETIME NOT NULL,
+      [MaChu]        NVARCHAR(20) NOT NULL,
+      [TyGia]        NUMERIC (19, 2) NOT NULL,
+      [MaNVCapNhat]  NVARCHAR(20),
+      PRIMARY KEY ([Ngay], [MaChu])
+      );
+
+    </script>
+    <script>
+      INSERT INTO  [TyGiaQuyDoiNGoaiTe] ([Ngay], [MaChu], [TyGia], [MaNVCapNhat]) VALUES ('2009/07/09', 'VND', CAST(1.00 AS Numeric(19, 2)), '0000')
+    </script>
+  </table>
+
+
+
+  <table name="HoaDon" type="dl">
+    <script>
+      CREATE TABLE [{0}] (
+      [MaHD]                NVARCHAR(50) NOT NULL PRIMARY KEY,
+      [STT]                 BIGINT NOT NULL,
+      [MaQuay]              NVARCHAR(20) NOT NULL,
+      [MaNV]                NVARCHAR(20) NOT NULL,
+      [TenNVBanHang]        NVARCHAR(255) NOT NULL,
+      [MaThue]              NVARCHAR(20) NOT NULL,
+      [MaPhieuTraHang]      NVARCHAR(255),
+      [TenKhachHang]        NVARCHAR(255),
+      [DienThoaiKhachHang]  NVARCHAR(255),
+      [NgayBatDau]          DATETIME,
+      [GioBatDau]           INT,
+      [NgayKetThuc]         DATETIME,
+      [GioKetThuc]          INT,
+      [CaBan]               INT NOT NULL,
+      [DaIn]                BIT NOT NULL,
+      [MaHDGoc]             NVARCHAR(50),
+      [MaHDShop]            NVARCHAR(50),
+      [MaTheKHTT]           NVARCHAR(20),
+      [TriGiaBan]           NUMERIC (19, 2) NOT NULL,
+      [TienCK]              NUMERIC (19, 2) NOT NULL,
+      [ThanhTienBan]        NUMERIC (19, 2),
+      [TienPhuThu]          NUMERIC (19, 2),
+      [LoaiHoaDon]          INT NOT NULL,
+      [TienTraKhach]        NUMERIC (19, 2),
+      [DaCapNhatTon]        BIT,
+      [DaKetChuyenCongNo]   BIT,
+      [DaVanChuyen]         BIT,
+      [ID]                  NVARCHAR(50),
+      [TLCK1]               NUMERIC (19, 2) NOT NULL,
+      [TLCK2]               NUMERIC (19, 2) NOT NULL
+      );
+    </script>
+  </table>
+
+
+
+  <table name="CTHoaDon" type="dl">
+    <script>
+      CREATE TABLE [{0}] (
+      [MaHD]               NVARCHAR(50) NOT NULL,
+      [MaHH]               NVARCHAR(20) NOT NULL,
+      [STT]                INT NOT NULL,
+      [NgayGioQuet]        DATETIME,
+      [MaNccDM]            NVARCHAR(20) NOT NULL,
+      [SoLuong]            NUMERIC (19, 2) NOT NULL,
+      [DGBan]              NUMERIC (19, 2) NOT NULL,
+      [TriGiaBan]          NUMERIC (19, 2) NOT NULL,
+      [TLCKGiamGia]        NUMERIC (19, 2) NOT NULL,
+      [TienGiamGia]        NUMERIC (19, 2) NOT NULL,
+      [TriGiaSauGiamGia]   NUMERIC (19, 2),
+      [TLCK_GioVang]       NUMERIC (19, 2),
+      [TienCK_GioVang]     NUMERIC (19, 2),
+      [TriGiaSauGioVang]   NUMERIC (19, 2),
+      [TLCKHD]             NUMERIC (19, 2) NOT NULL,
+      [TienCKHD]           NUMERIC (19, 2) NOT NULL,
+      [TriGiaSauCKHD]      NUMERIC (19, 2),
+      [TLCK_TheGiamGia]    NUMERIC (19, 2),
+      [TienCK_TheGiamGia]  NUMERIC (19, 2),
+      [ThanhTienBan]       NUMERIC (19, 2) NOT NULL,
+      [TienPhuThu]         NUMERIC (19, 2),
+      [LoaiHangHoaBan]     INT,
+      [DaVanChuyen]        BIT,
+      [TenHH]              NVARCHAR(255),
+      PRIMARY KEY ([MaHD], [MaHH], [STT])
+      );
+
+    </script>
+  </table>
+
+
+
+  <table name="ThanhToanHoaDon" type="dl">
+    <script>
+
+      CREATE TABLE [{0}](
+      [MaHD]             NVARCHAR(50) NOT NULL,
+      [MaHinhThuc]       NVARCHAR(20) NOT NULL,
+      [MaNhomThanhToan]  NVARCHAR(20) NOT NULL,
+      [MaThe]            NVARCHAR(30) NOT NULL,
+      [ThanhTien]        NUMERIC (19, 2) NOT NULL,
+      [TyGiaNgoaiTe]     NUMERIC (19, 2),
+      [ThanhTienQuiDoi]  NUMERIC (19, 2) NOT NULL,
+      [TLFee]            NUMERIC (19, 2),
+      [DaVanChuyen]      BIT,
+      [ChuThe]           NVARCHAR(255),
+      PRIMARY KEY ([MaHD], [MaHinhThuc])
+      );
+
+
+    </script>
+  </table>
+
+</tables>

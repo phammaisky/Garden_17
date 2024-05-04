@@ -1,0 +1,39 @@
+﻿@model List<GardenLover.EF.kReport>
+@using GardenLover.EF
+
+@Html.DropDownList("Month", new SelectList(Model.OrderByDescending(x => x.Month).Select(x => x.Month).Distinct().ToList()), "Tháng", new { onchange = "MonthOnChange(); return false;" })
+
+<script>
+    function MonthOnChange() {
+
+        var Year = $("select[name=Year]").val();
+        var Month = $("select[name=Month]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        if (Month == "")
+            Month = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Review_ByMonth",
+
+            data: {
+                Year: Year,
+                Month: Month
+            },
+
+            success: function (view) {
+                $('#Branch').replaceWith(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<script>
+    MonthOnChange();
+</script>

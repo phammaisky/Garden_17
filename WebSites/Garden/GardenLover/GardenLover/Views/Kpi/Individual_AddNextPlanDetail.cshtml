@@ -1,0 +1,23 @@
+﻿@using IQWebApp_Blank.EF
+@model IQWebApp_Blank.Models.IndividualVM
+
+@for (int i = Model.NextPlanNumber; i < Model.allNextPlanAndDetail.Count; i++)
+{
+    <table style="width: 100%;">
+
+        @for (int j = Model.TotalAddedNextPlanDetail; j < Model.allNextPlanAndDetail[i].allDetail.Count; j++)
+        {
+            var NextPlanDetailId = "NextPlanDetail_" + i + "_" + j;
+
+            <tr id="@NextPlanDetailId">
+                <td valign="middle" align="center" style="width: 30px;">
+                    <input type="button" value="-" class="RemoveNextPlanDetail" onclick="RemoveNextPlanDetail(@i, @j); return false;" style="width: 30px;">
+                </td>
+                <td valign="middle" align="center">
+                    @Html.HiddenFor(x => x.allNextPlanAndDetail[i].allDetail[j].Id)
+                    @Html.TextAreaFor(x => x.allNextPlanAndDetail[i].allDetail[j].NextPlanDetailName, 2, 0, new { @class = "NextPlanDetailName", maxlength = "10240", style = "width: 100%;" })
+                </td>
+            </tr>
+        }
+    </table>
+}

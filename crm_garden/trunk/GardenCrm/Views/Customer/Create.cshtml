@@ -1,0 +1,148 @@
+﻿@model GardenCrm.Models.T_MEM_MST
+@{
+    ViewBag.Title = "Registration Member";
+}
+@section style {
+    @Styles.Render("~/Calendar/css")
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <!-- general form elements disabled -->
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Tạo mới</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    @using (Html.BeginForm())
+                    {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Card No</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.MEM_CARD, new { @class = "form-control", @placeholder = "Card No" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Grade</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.GRADE_CD, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.MEM_NM, new { @class = "form-control", @placeholder = "Full Name" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Birthday</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.MEM_BIRTHDAY, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Gender</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.SEX_CD, new { @class = "form-control", @placeholder = "Gender" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Certificate No.</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.CERTI_NO, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Area</label>
+                                    <div class="col-sm-5">
+                                        @Html.TextBoxFor(model => model.MAJOR_AREA, new { @class = "form-control", @placeholder = "Primary Area" })
+                                    </div>
+                                    <div class="col-sm-5">
+                                        @Html.TextBoxFor(model => model.MINOR_AREA, new { @class = "form-control", @placeholder = "Minor Area" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Address</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.MEM_ADDR, new { @class = "form-control", @placeholder = "Address" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Phone No.</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.TEL_NO, new { @class = "form-control", @placeholder = "024 7654321" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Mobile</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(model => model.MOBILE_NO, new { @class = "form-control", @placeholder = "0987654321" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-default">Trở lại</button>
+                        <button type="submit" class="btn btn-info float-right">Tạo mới</button>
+
+                    </div>
+                        <!-- /.card-footer -->
+                    }
+                </div>
+                <!-- /.card -->
+                
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+@section scripts {
+    @Scripts.Render("~/Calendar/js")
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'bootstrap'],
+                themeSystem: 'bootstrap'
+            });
+            calendar.render();
+        });
+    </script>
+}

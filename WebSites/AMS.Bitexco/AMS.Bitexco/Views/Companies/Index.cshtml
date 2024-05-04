@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AMS.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Công ty phòng ban</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-5 col-xs-5" style="padding-left:0px;">
+            <div class="toolBar form-inline">
+                <a href="@Url.Action("Create", "Companies")" class="btn btn-primary btn-sm create_modal "><i class="fa fa-plus"></i> Thêm công ty</a>
+            </div>
+            <div id="grid-list" class="table-responsive">
+                @{ Html.RenderPartial("_CompanyList", Model); }
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-xs-7" style="padding-left:0px;padding-right:0px;">
+            <div class="toolBar  form-inline" id="toolBar" style="min-height:40px">
+                <label style="  margin-top: 5px;">Các phòng, ban thuộc công ty</label>
+                <a id="addDept" class="btn btn-primary btn-sm pull-right create_sub_modal" href="@Url.Action("Create", "Departments", new { CompanyId = @Model.First().Id })">
+                    <span class="glyphicon glyphicon-plus"></span> Thêm mới phòng ban
+                </a>
+            </div>
+            <div id="grid-list-sub" class="table-responsive" style="max-height:450px; border-bottom:1px solid #ddd; overflow:auto;">
+                @{Html.RenderAction("GetListDepartments", "Departments", new { Id = @Model.First().Id });}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id='CRUDDialog' class='modal fade in'>
+    <div id='CRUDDialogContent'></div>
+</div>

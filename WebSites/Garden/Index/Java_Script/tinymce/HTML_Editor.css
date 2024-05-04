@@ -1,0 +1,41 @@
+﻿html, body
+{
+    margin: 0;
+    padding: 0;
+    width: 485px;
+    height: 100%;
+    border: none;
+    word-wrap: break-word !important;
+    max-width: 485px;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Times New Roman;
+    font-size: 12pt;
+    color: Black;
+    word-wrap: break-word !important;
+    max-width: 485px;
+}
+a
+{
+    text-decoration: none;
+}
+a:link
+{
+    color: blue;
+}
+a:visited
+{
+    color: blue;
+}
+a:active
+{
+    color: blue;
+}
+a:hover
+{
+    color: blue;
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AMS.Models.UserInfo>
+
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col-md-9">Danh sách nhân viên</h2>
+        <div class="col-md-3" id="progresBarLoadingData" style="padding-top:5px; display:none">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                @Html.Raw("Đang xử lý dữ liệu! ")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-5 col-xs-5" id="resizeAble" style="padding-left:0px; min-height:500px; max-height:500px; overflow:auto; border: 1px solid #ddd">
+            <div id="CompanyDept" >
+                @{Html.RenderAction("CompanyDeptSelector", "Companies", new { type = "ToSelect" });}
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-7 col-xs-7" style="padding-left:0px;padding-right:0px !important; min-height:500px; max-height:500px; overflow:auto">
+            <div class="toolBar  form-inline" id="toolBar">
+                <a id="addRecord" class="btn btn-primary btn-sm pull-right create_modal" href="@Url.Action("Create", "Staffs")">
+                    <span class="glyphicon glyphicon-plus"></span> Thêm mới
+                </a>              
+                <div class="input-group input-group-sm">
+                    <input type="text" name="hoTen" id="fullNameStaff" class="form-control" placeholder="Họ tên nhân viên" onkeydown="EnterSubmit(this)">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" onclick="formSubmit();"><i class="fa fa-search fa-lg"></i> Tìm kiếm</button>
+                    </span>
+                </div>
+            </div>
+            <div id="grid-list" class="table-responsive">
+                @{ Html.RenderPartial("_ListStaff", (AMS.Models.Pagging<AMS.Models.UserInfo>)ViewBag.PaggingStaff); }
+            </div>
+        </div>
+    </div>
+</div>
+<div id='CRUDDialog' class='modal fade in'>
+    <div id='CRUDDialogContent'></div>
+</div>

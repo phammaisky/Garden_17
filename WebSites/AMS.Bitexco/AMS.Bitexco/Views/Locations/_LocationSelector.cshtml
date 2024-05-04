@@ -1,0 +1,98 @@
+﻿@using AMS.Models;
+@model IEnumerable<AMS.Models.Location>
+
+<table width="500" id="LocationTableSelector" class="table table-condensed table-tree">
+    @BuildMenu(@Model, null, 0, "")
+</table>
+@helper BuildMenu(IEnumerable<Location> data, int? parentId = null, int? leverl = 0, string classParent = "")
+{
+    string spaceBar = "";
+    for (int i = 0; i <= leverl; i++)
+    {
+        spaceBar += "&nbsp;&nbsp;&nbsp;";
+    }
+    var items = data.Where(d => d.ParentId == parentId);
+    if (items.Any())
+    {
+        foreach (var item in items)
+        {
+            <tr id="@Html.Raw("RowSelector" + item.Id.ToString())" @Html.Raw("class='RowSelector" + parentId.ToString() + "'") onclick="returnClickLocationId(@Html.Raw("'" + item.Id + "','" + item.ShortName + " | " + item.LocationName + "'"))" ondblclick="returnDbClickLocationId(@Html.Raw("'" + item.Id + "','" + item.ShortName + " | " + item.LocationName + "'"))">
+
+                <td style="vertical-align:top; width:60%">
+                    @if (item.LocationChild.Count() > 0)
+                    {
+                        <a href="#" onclick="hideRowSelector(this, @Html.Raw("'RowSelector" + item.Id.ToString() + "'"),true)"
+                           @Html.Raw("style='padding:8px  20px 8px " + ((leverl + 1) * 10).ToString() + "px'")>
+                            <i class="fa fa-caret-down"></i>&nbsp;@item.ShortName
+                        </a>
+                    }
+                    else
+                    {
+                        <p @Html.Raw("style='padding-left:" + ((leverl + 1) * 10).ToString() + "px; margin:0'")>@Html.Raw(item.ShortName)</p>
+                    }
+                </td>
+                <td style="vertical-align:top; width:40%">@item.LocationName</td>
+            </tr>
+            @BuildMenu(data, item.Id, leverl + 1, classParent + " RowSelector" + parentId.ToString())
+        }
+
+    }
+}
+<script type="text/javascript">
+    function hideRowSelector(el, hideRow, click) {
+
+        var iEle = $(el).find('i:first')[0];
+
+        var classCss = $(iEle).attr('class');
+        var display = $('#' + hideRow).css('display');
+        if (click) {
+            if (classCss == "fa fa-caret-down") {
+                $(iEle).attr("class", "fa fa-caret-right");
+            }
+            else {
+                $(iEle).attr("class", "fa fa-caret-down");
+            }
+        }
+
+        classCss = $(iEle).attr('class');
+        $('.' + hideRow).each(function () {
+            if (classCss == "fa fa-caret-right" || display == "none") {
+                if ($(this).css('display') != 'none') {
+                    $(this).css('display', 'none');
+                }
+            }
+            else {
+                if ($(this).css('display') != 'block') {
+                    $(this).css('display', '');
+                }
+            }
+            var iClass = $(this).find('a:first');
+            hideRowSelector(iClass[0], $(this).attr('id'), false);
+        })
+
+    }
+
+    function returnDbClickLocationId(id, name) {
+
+        $('#LocationTableSelector tr').removeClass('rowHilight')
+        $('#RowSelector' + id).addClass('rowHilight');
+
+        var textSelector = name + '<i class="fa fa-caret-down pull-right" style="padding-top: 3px;">';
+        $('#btnDropdownLocation').html(textSelector);
+
+        $('#GroupDropdownLocation').removeClass();
+        $('#GroupDropdownLocation').addClass('btn-group');
+
+        $('#LocationId').val(id);
+    }
+    function returnClickLocationId(id, name) {
+
+        $('#LocationTableSelector tr').removeClass('rowHilight')
+        $('#RowSelector' + id).addClass('rowHilight');
+
+        var textSelector = name + '<i class="fa fa-caret-down pull-right" style="padding-top: 3px;">';
+        $('#btnDropdownLocation').html(textSelector);
+
+        $('#LocationId').val(id);
+    }
+</script>

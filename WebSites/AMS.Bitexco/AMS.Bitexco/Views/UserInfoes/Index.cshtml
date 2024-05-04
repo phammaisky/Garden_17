@@ -1,0 +1,51 @@
+﻿@using AMS.Models
+@model IEnumerable<AMS.Models.UserInfo>
+
+@{
+    ViewBag.Title = "Quản lý người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col-md-9">Quản lý người dùng</h2>
+        <div class="col-md-3" id="progresBarLoadingData" style="padding-top:5px; display:none">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                @Html.Raw("Đang xử lý dữ liệu! ")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-5 col-xs-5" style="padding-left:0px; min-height:500px; max-height:500px; overflow:auto; border: 1px solid #ddd">
+            <div id="CompanyDept" class="table-responsive">
+                @{Html.RenderAction("CompanyDeptSelector", "Companies");}
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-xs-7" style="padding-left:0px;padding-right:0px !important;">
+            <div class="toolBar form-inline">
+                @*<a id="addRecord" class="btn btn-primary btn-sm pull-right create_modal" href="@Url.Action("Create", "UserInfoes")">
+                    <span class="glyphicon glyphicon-plus"></span> Thêm mới người dùng
+                </a>*@
+                <div class="input-group input-group-sm" style="max-width:600px">
+                    <input type="text" style="min-width:280px" name="hoTen" id="fullName" class="form-control" placeholder="Nhập họ tên hoặc tên tài khoản" onkeydown="EnterSubmit(this)" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" onclick="formSubmit();"><i class="fa fa-search fa-lg"></i> Tìm kiếm</button>
+                    </span>
+                </div>
+            </div>
+            <div id="grid-list" class="table-responsive" style="min-height:500px; max-height:500px; overflow:auto">
+                @{ Html.RenderPartial("_UserList", (List<Group<string, UserInfo>>)ViewBag.GroupUser); }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id='CRUDDialog' class='modal fade in'>
+    <div id='CRUDDialogContent'></div>
+</div>
+
+
+

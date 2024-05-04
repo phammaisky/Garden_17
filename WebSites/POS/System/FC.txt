@@ -1,0 +1,19 @@
+Changed database context to 'TOPOS_DB'.
+Caution: Changing any part of an object name could break scripts and stored procedures.
+
+(98999 rows affected)
+Changed database context to 'TOPOS_DB_181'.
+
+(98999 rows affected)
+Changed database context to 'TOPOS_DB_181'.
+
+(306656 rows affected)
+Changed database context to 'TOPOS_DB_181'.
+
+(314163 rows affected)
+Changed database context to 'TOPOS_DB_181'.
+
+(847861 rows affected)
+Changed database context to 'TOPOS_DB_181'.
+
+(98999 rows affected)

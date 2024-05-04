@@ -1,0 +1,54 @@
+﻿@model Event.Models.RegisterEvent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Chi tiết người đăng kí dự thưởng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Mã vòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoundNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Sửa", "Edit", new { id = Model.Id })*@
+
+    <a class="btn btn-default btn-info" href="~/RegisterEvents/Edit?id=@Model.Id">Sửa</a>
+
+    <a class="btn btn-default btn-warning" href="~/RegisterEvents/Index">Quay lại</a>
+</p>

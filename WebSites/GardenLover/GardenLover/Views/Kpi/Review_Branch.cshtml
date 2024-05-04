@@ -1,0 +1,44 @@
+﻿@model List<GardenLover.EF.cBranch>
+@using GardenLover.EF
+
+@Html.DropDownList("Branch", new SelectList(Model.OrderByDescending(x => x.Seq).Select(x => new { x.Id, BranchName = x.BranchName }).Distinct().ToList(), "Id", "BranchName"), "Công ty", new { onchange = "BranchOnChange(); return false;" })
+
+<script>
+    function BranchOnChange() {
+
+        var Year = $("select[name=Year]").val();
+        var Month = $("select[name=Month]").val();
+        var Branch = $("select[name=Branch]").val();
+
+        if (Year == "")
+            Year = 0;
+
+        if (Month == "")
+            Month = 0;
+
+        if (Branch == "")
+            Branch = 0;
+
+        $.ajax({
+            type: 'GET',
+            url: "/Kpi/Review_ByBranch",
+
+            data: {
+                Year: Year,
+                Month: Month,
+                Branch: Branch
+            },
+
+            success: function (view) {
+                $('#Department').replaceWith(view);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+
+<script>
+    BranchOnChange();
+</script>

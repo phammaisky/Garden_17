@@ -1,0 +1,60 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossListViewModel
+@using BtcKpi.Service.Common
+@{
+    ViewBag.Title = "Báo cáo tổng hợp UPF Cross";
+    ViewBag.SubTitle = "UPF Cross";
+}
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+    @Scripts.Render("~/Scripts/Elements/Modals/menu")
+}
+@Styles.Render("~/BitexcoThemes/plugins/datatables/css")
+
+@Html.Partial("_EditMonth")
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item align-middle no-border box-boder-top-1">
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-5 control-label">Công ty: </b>
+                            @Html.DropDownListFor(x => Model.CompanyID, Model.Companies, "--- Chọn ---", new { @onchange = "companySearchChange(this.value)", @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-5 control-label">Phòng ban: </b>
+                            @Html.DropDownListFor(x => Model.DepartmentID, Model.Departments, "--- Chọn ---", new { @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <b class="col-md-5 control-label">Năm: </b>
+                            @Html.DropDownListFor(x => Model.Year, Model.Years, null, new { @class = "col-md-7" })
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item align-middle no-border box-boder-top-1">
+                        <div class="col-md-4">
+                            <label class="col-md-5 control-label">Tháng:</label>
+                            @Html.DropDownListFor(x => Model.Month, Model.Months, null, new { @class = "col-md-7" })
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <button id="btnExportExcel" type="button" class="btn btn-info btn-sm pull-right" title="Xuất Excel">Xuất Excel</button>
+                            <button id="btnSearch" type="button" class="btn btn-info btn-sm pull-right margin-r-5" title="Tìm kiếm">Tìm kiếm</button>
+                        </div>
+                        <br />
+                    </li>
+                </ul>
+            </div>
+            <div class="box-body">
+                <table id="report-upf-cross-table" class="table table-bordered table-hover">
+                    @Html.Partial("_UpfCrossMonthListTable")
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/BitexcoThemes/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/Report/UpfCross")
+}

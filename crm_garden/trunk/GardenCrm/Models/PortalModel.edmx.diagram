@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="899c7bbc91aa426a8070133bc15a6de8" Name="Diagram1">
+        <EntityTypeShape EntityType="PortalModel.AdministratorShip" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Application" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Company" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Department" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.DeptWork" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Function" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.GroupUser" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.GroupUser_Authorize" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.MailSend" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Menu" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.Notify" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.sysdiagram" Width="1.5" PointX="11.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.TitleStaffCategory" Width="1.5" PointX="11.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.User_Com_Function" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.User_Dept_Function" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.UserInfo" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PortalModel.MailConfig" Width="1.5" PointX="11.75" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="PortalModel.FK_GroupUser_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_Menu_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_Notify_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_Company_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_Departments_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Com_Function_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Authorize_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_UserInfo_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_Function_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_GroupUser_Authorize_Authorize" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Authorize_Authorize" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Com_Function_Function" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_GroupUser_Authorize_GroupUser" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_MenuFunction_MenuFunction" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Com_Function_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.FK_User_Authorize_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PortalModel.GroupUser_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

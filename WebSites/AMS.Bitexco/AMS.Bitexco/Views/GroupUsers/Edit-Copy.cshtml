@@ -1,0 +1,185 @@
+﻿@model AMS.Models.GroupUser
+
+@{
+    ViewBag.Title = "Sửa nhóm người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Sửa<small> nhóm người dùng</small></h2>
+@using (Html.BeginForm())
+{
+    <script type="text/javascript">
+
+        function CheckedAll(elm,id)
+        {
+            if($(elm).prop('checked') == true)
+            {
+                $('#' + id + '> li > label > input:checkbox').prop('checked',true);
+            }
+            else
+            {
+                $('#' + id + '> li > label > input:checkbox').prop('checked',false);
+            }
+
+        }
+
+
+        function hideShowSub(el, sub) {
+
+            //$('.list-group').animate({
+            //    height: 'hide'
+            //});
+            ////$('.list-group').hide();
+
+            if ($('#' + sub).css('display') == 'none') {
+                var text = $(el).text();
+                $(el).html("");
+                $(el).html(text + "<i class='fa fa-minus-square'></i>");
+                $('#' + sub).animate({
+                    height: 'show'
+                });
+            }
+            else {
+                var text = $(el).text();
+                $(el).html("");
+                $(el).html(text + "<i class='fa fa-plus-square'></i>");
+                $('#' + sub).animate({
+                    height: 'hide'
+                });
+            }
+
+
+            event.preventDefault();
+        }
+        function expandHideMenu(el, sub) {
+            if ($('#' + sub + '> .hideMenu').css('display') == 'none') {
+                $('#' + sub + '> .hideMenu').animate({
+                    height: 'show'
+                });
+
+                $(el).html("");
+                $(el).html("<i class='fa fa-angle-double-up fa-lg'></i>");
+            }
+            else {
+                $('#' + sub + '> .hideMenu').animate({
+                    height: 'hide'
+                });
+
+                $(el).html("");
+                $(el).html("<i class='fa fa-angle-double-down fa-lg'></i>");
+            }
+
+        }
+    </script>
+    @Html.AntiForgeryToken()
+    <div class="toolBar form-inline">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span> Lưu thay đổi</button>
+        <a class="btn btn-default" href="@Url.Action("Index", "GroupUsers")">
+            <span class="glyphicon glyphicon-arrow-left"></span> Quay lại
+        </a>
+    </div>
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th></th>
+            <th>Các quyền trong hệ thống</th>
+        </tr>
+        <tr>
+            <td style="width:50%; vertical-align:top; padding-top:15px">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                            @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Active)
+                                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td style="width:50%; vertical-align:top">
+                <div style="height:400px; overflow:auto" id="treeView1">
+                    <ul style="list-style-type:none">
+                        @foreach (PDS.Models.MenuFunction item in ViewBag.MenuFunction)
+                        {
+                            <li>
+                                <a href="#@item.Id" onclick="hideShowSub(this,@item.Id)"><i class="fa fa-minus-square"></i></a>
+                                <label>
+                                    <input type="checkbox" class="chk" onclick="CheckedAll(this,@item.Id)" />
+                                    @item.MenuName
+                                </label>
+                                @if (item.ChildFunctions.Count > 0)
+                                {
+                                    <ul style="list-style-type:none" id="@item.Id">
+                                        @foreach (PDS.Models.MenuFunction childitem in item.ChildFunctions)
+                                        {
+                                            <li>
+                                                <a href="#@item.Id" onclick="hideShowSub(this,@childitem.Id)"><i class="fa fa-plus-square"></i></a>&nbsp;<label>
+                                                    <input type="checkbox" class="chk" onchange="CheckedAll(this,@childitem.Id)" onclick="CheckedAll(this,@childitem.Id)" />
+                                                    @childitem.MenuName
+                                                </label>
+                                                @if (childitem.Authorizes.Count > 0)
+                                                {
+                                                    <ul style="list-style-type:none; display:none" id="@childitem.Id">
+                                                        @foreach (PDS.Models.Authorize authorize in childitem.Authorizes)
+                                                        {
+                                                            <li>
+                                                                <label>
+                                                                    <input type="checkbox" class="chk" value="@authorize.Id" name="SelectedAuthorize" @(Html.Raw(Model.Authorizes.Contains(authorize) ? "checked='checked'" : "")) />
+                                                                    @authorize.Operator
+                                                                </label>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+
+
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul style="list-style-type:none; display:none" id="@item.Id">
+                                        @foreach (PDS.Models.Authorize authorize in item.Authorizes)
+                                        {
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox" class="chk" value="@authorize.Id" name="SelectedAuthorize" @(Html.Raw(Model.Authorizes.Contains(authorize) ? "checked='checked'" : "")) />
+                                                    @authorize.Operator
+                                                </label>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+
+
+                    </ul>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+}
+

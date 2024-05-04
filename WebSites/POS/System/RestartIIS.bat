@@ -1,0 +1,1 @@
+%windir%\system32\inetsrv\appcmd recycle apppool "CRM"

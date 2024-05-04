@@ -1,0 +1,4 @@
+--HangHoa
+INSERT INTO [Server-001-1].TOPOS_DB.dbo.HangHoa
+SELECT * FROM TOPOS_DB.dbo.HangHoa
+WHERE MaHH NOT IN (SELECT MaHH FROM [Server-001-1].TOPOS_DB.dbo.HangHoa)

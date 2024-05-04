@@ -1,0 +1,201 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman';
+    font-size: 12pt;
+    color: black;
+}
+
+img {
+    border: none;
+    -ms-interpolation-mode: bicubic;
+    image-rendering: optimizeQuality;
+}
+
+.img_block {
+    border: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+    a:link {
+        color: #4169E1;
+    }
+
+    a:visited {
+        color: #4169E1;
+    }
+
+    a:active {
+        color: #4169E1;
+    }
+
+    a:hover {
+        color: #4169E1;
+    }
+
+button {
+    cursor: pointer !important;
+}
+
+#Loading_div {
+    border: 3px dashed white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.Blue_Text_css {
+    font-family: Times New Roman;
+    color: #4169E1;
+}
+
+.Bold_Blue_Text_css {
+    font-family: Times New Roman;
+    color: #4169E1;
+    font-weight: bold;
+}
+
+.Red_Text_css {
+    font-family: Times New Roman;
+    color: red;
+}
+
+.Bold_Red_Text_css {
+    font-family: Times New Roman;
+    color: red;
+    font-weight: bold;
+}
+
+.White_Text_css {
+    font-family: Times New Roman;
+    color: White;
+}
+
+.Bold_White_Text_css {
+    font-family: Times New Roman;
+    color: White;
+    font-weight: bold;
+}
+
+.Blue_Text_css {
+    font-family: Times New Roman;
+    color: #4169E1;
+}
+
+.Bold_Blue_Text_css {
+    font-family: Times New Roman;
+    color: #4169E1;
+    font-weight: bold;
+}
+
+.Full_Width_AND_Height_css {
+    width: 100%;
+    height: 100%;
+}
+
+.Full_Width_css {
+    width: 100%;
+}
+
+.Right_Align_css {
+    text-align: right;
+}
+
+.Left_Align_css {
+    text-align: left;
+}
+
+.Center_Align_css {
+    text-align: center;
+}
+
+.Top_vAlign_css {
+    vertical-align: top;
+}
+
+.Midle_vAlign_css {
+    vertical-align: middle;
+}
+
+.Bottom_vAlign_css {
+    vertical-align: bottom;
+}
+
+.Center_AND_Midle_Align_css {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.Left_AND_Top_Align_css {
+    text-align: left;
+    vertical-align: top;
+}
+
+.Table_Full_Width_AND_Height_NO_Border_css {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.Table_Full_Width_AND_Height_NO_Border_NO_Spacing_css {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-spacing: 0;
+}
+
+    .Table_Full_Width_AND_Height_NO_Border_NO_Spacing_css td, Table_Full_Width_AND_Height_NO_Border_NO_Spacing_css th {
+        padding: 0;
+    }
+
+.Table_Border_Dashed_1_Red_css {
+    border: 1px dashed red;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+    .Table_Border_Dashed_1_Red_css td, Table_Border_Dashed_1_Red_css th {
+        border: 1px dashed red;
+        border-collapse: collapse;
+        padding: 0;
+    }
+
+.Table_Border_Dashed_1_Blue_css {
+    border: 1px dashed #4169E1;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+    .Table_Border_Dashed_1_Blue_css td, Table_Border_Dashed_1_Blue_css th {
+        border: 1px dashed #4169E1;
+        border-collapse: collapse;
+        padding: 0;
+    }
+
+.Border_Dashed_1_Red_css {
+    border: 1px dashed red;
+}
+
+.Border_Dashed_1_Blue_css {
+    border: 1px dashed #4169E1;
+}
+
+.Border_Dashed_2_Red_css {
+    border: 2px dashed red;
+}

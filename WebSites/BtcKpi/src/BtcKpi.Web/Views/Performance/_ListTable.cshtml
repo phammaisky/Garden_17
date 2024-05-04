@@ -1,0 +1,137 @@
+﻿@model BtcKpi.Web.ViewModels.PerformanceListViewModel
+@using BtcKpi.Service.Common
+@if (Model.PerformanceInfos != null && Model.PerformanceInfos.Count > 0)
+    {
+        for (int i = 0; i < Model.PerformanceInfos.Count; i++)
+        {
+            <tr>
+                <td hidden="true">
+                    @Model.PerformanceInfos[i].Id
+                </td>
+                <td>
+                    @Model.PerformanceInfos[i].ProjectName
+                </td>
+                <td>
+                    @Model.PerformanceInfos[i].TypePerformanceName
+                </td>
+                <td>
+                    @Model.PerformanceInfos[i].Year
+                </td>
+                <td>
+                    @Model.PerformanceInfos[i].MonthStr
+                </td>
+                @if (@Model.ShowFormByProjType == 1)
+                {
+                    <td>@Model.PerformanceInfos[i].SalesLineToLine</td>
+                    <td>@Model.PerformanceInfos[i].SalesAll</td>
+                    <td>@Model.PerformanceInfos[i].SalesCashFlowTY</td>
+                    <td>@Model.PerformanceInfos[i].SalesCashFlowLY</td>
+                    <td>@Model.PerformanceInfos[i].RevLSArea</td>
+                    <td>@Model.PerformanceInfos[i].RevLSMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].RevLSRev</td>
+                    <td>@Model.PerformanceInfos[i].RevLSOPMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].RevTotalNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevTotalWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevTotalLY</td>
+                    <td>@Model.PerformanceInfos[i].ComProfitTY</td>
+                    <td>@Model.PerformanceInfos[i].ComProfitLY</td>
+                }
+                @if (@Model.ShowFormByProjType == 2)
+                {
+                    <td>@Model.PerformanceInfos[i].SalesLineToLine</td>
+                    <td>@Model.PerformanceInfos[i].SalesAll</td>
+                    <td>@Model.PerformanceInfos[i].SalesCashFlowTY</td>
+                    <td>@Model.PerformanceInfos[i].SalesCashFlowLY</td>
+                    <td>@Model.PerformanceInfos[i].RevLineTOSNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevLineTOSWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevLineNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevLineWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevAllTOSNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevAllTOSWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevAllNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevAllWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevAllLY</td>
+                    if (@Model.PerformanceInfos[i].TypeFB == 1)
+                    {
+                        <td>@Model.PerformanceInfos[i].RevAllOPMonthMoney</td>
+                    }
+                    <td>@Model.PerformanceInfos[i].RevTotalNoMG</td>
+                    <td>@Model.PerformanceInfos[i].RevTotalWithMG</td>
+                    <td>@Model.PerformanceInfos[i].RevTotalLY</td>
+                    <td>@Model.PerformanceInfos[i].ComProfitTY</td>
+                    <td>@Model.PerformanceInfos[i].ComProfitLY</td>
+                }
+                @if (@Model.ShowFormByProjType == 3)
+                {
+                    <td>@Model.PerformanceInfos[i].OfficeArea</td>
+                    <td>@Model.PerformanceInfos[i].OfficeMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].OfficeTY</td>
+                    <td>@Model.PerformanceInfos[i].OfficeLY</td>
+                    <td>@Model.PerformanceInfos[i].RetailArea</td>
+                    <td>@Model.PerformanceInfos[i].RetailMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].RetailTY</td>
+                    <td>@Model.PerformanceInfos[i].RetailLY</td>
+                    <td>@Model.PerformanceInfos[i].NewArea</td>
+                    <td>@Model.PerformanceInfos[i].NewMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].NewTotalRev</td>
+                    <td>@Model.PerformanceInfos[i].TotalMonthMoney</td>
+                    <td>@Model.PerformanceInfos[i].TotalRevTY</td>
+                    <td>@Model.PerformanceInfos[i].TotalRevLY</td>
+                    <td>@Model.PerformanceInfos[i].TotalGrossTY</td>
+                    <td>@Model.PerformanceInfos[i].TotalGrossLY</td>
+                    <td>@Model.PerformanceInfos[i].Note</td>
+                }
+                <td>@Model.PerformanceInfos[i].StatusName</td>
+                <td>@Model.PerformanceInfos[i].Comment</td>
+                <td>
+                    @if (@Model.PerformanceInfos[i].StatusId != null && @Model.PerformanceInfos[i].StatusId == 0)
+                    {
+                        <a class="btn btn-sm btn-social-icon btn-twitter performance-edit" href='~/Performance/PerformanceEdit?id=@Model.PerformanceInfos[i].Id' title="Sửa"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-sm btn-social-icon btn-info performance-approved" href='~/Performance/PerformanceApprove?id=@Model.PerformanceInfos[i].Id' title="Phê duyệt"><i class="fa fa-check-circle-o"></i></a>
+                    }
+                </td>
+            </tr>
+    }
+}
+else if (Model.PerformanceInfos != null && Model.PerformanceInfos.Count == 0) {
+    <tr>
+        <td hidden="true"></td>
+        <td colspan="4">
+            <span class="text-danger">Không có dữ liệu</span>
+        </td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+
+        @if (@Model.ShowFormByProjType == 1)
+        {
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        }
+        @if (@Model.ShowFormByProjType == 2)
+        {
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        }
+        @if (@Model.ShowFormByProjType == 3)
+        {
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        }
+        <td></td><td></td><td></td>
+    </tr>
+    }

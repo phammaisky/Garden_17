@@ -1,0 +1,5 @@
+Buoc1: Remote vào server 16
+Buoc2: chay file D:\System\HoaDon.sql bang SQL-mgr_tool
+       Replace text "102019" thanh "112019"
+       Save file sql nay (ghi dè)
+Note: thuc hien monthly (vao dau thang)

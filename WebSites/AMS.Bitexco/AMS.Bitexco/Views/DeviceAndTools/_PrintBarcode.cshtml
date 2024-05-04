@@ -1,0 +1,130 @@
+﻿@model IEnumerable<AMS.Models.DeviceAndTool>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick="$('#CRUDDialog').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+                In mã vạch
+            </h4>
+        </div>
+        @Html.AntiForgeryToken()
+        <div id="printContent" class="modal-body" style="max-height:300px;  max-height:450px; overflow:auto ">
+            <table>
+                @{
+                    int i = 0;
+                    int row = 1;
+                    foreach (var item in Model)
+                    {
+                        var _historyUses = item.HistoryUses.OrderByDescending(h => h.HandedDate).First();
+                        i++;
+                        if (i % 2 != 0)
+                        {
+                            @Html.Raw("<tr>");
+                            if (row % 7 == 0)
+                            {
+                                @Html.Raw("<td style='width:7.25cm; vertical-align:top; text-align:left; padding:0.15cm; padding-bottom:295px'>");
+                            }
+                            else
+                            {
+                                @Html.Raw("<td style='width:7.25cm; vertical-align:top; text-align:left; padding:0.15cm'>");
+                            }
+                            @*<td style="width:7.25cm; text-align:left; padding:0.15cm;">*@
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Mã tài sản : @item.AssetsCode</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Tên tài sản : @item.DeviceName</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Người/Phòng ban sử dụng : 
+                                @if (_historyUses.Staff != null)
+                                {
+                                    @Html.Raw(_historyUses.Staff.FullName)
+                                }
+                                else
+                                {
+                                    if (_historyUses.Department != null)
+                                    {
+                                        @Html.Raw(_historyUses.Department.DeptName)
+                                    }
+                                }</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Ngày bàn giao : @String.Format("{0:dd/MM/yyyy}",_historyUses.HandedDate)</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Địa điểm : 
+                                @if (_historyUses.Location != null)
+                                {
+                                    @Html.Raw(_historyUses.Location.ShortName)
+                                }
+                                </p>
+                                <img alt="barcode" src="@Url.Action("GetbarCode", "DeviceAndTools", new { id = item.Id })">
+                                @Html.Raw("</td>");
+                        }
+                        else
+                        {
+                            row++;                 
+                            <td style="width:7cm; vertical-align:top; text-align:left; padding:0.15cm;">
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Mã tài sản : @item.AssetsCode</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Tên tài sản : @item.DeviceName</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">
+                                    Người/Phòng ban sử dụng :
+                                    @if (_historyUses.Staff != null)
+                                    {
+                                        @Html.Raw(_historyUses.Staff.FullName)
+                                    }
+                                    else
+                                    {
+                                        if (_historyUses.Department != null)
+                                        {
+                                            @Html.Raw(_historyUses.Department.DeptName)
+                                        }
+                                    }
+                                </p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">Ngày bàn giao : @String.Format("{0:dd/MM/yyyy}", _historyUses.HandedDate)</p>
+                                <p style="margin:0px; margin-left:5px; padding:0px; font-size:8px">
+                                    Địa điểm :
+                                    @if (_historyUses.Location != null)
+                                    {
+                                        @Html.Raw(_historyUses.Location.ShortName)
+                                    }
+                                </p>
+                                <img alt="barcode" src="@Url.Action("GetbarCode", "DeviceAndTools", new { id = item.Id })">
+                            </td>
+                            @Html.Raw("</tr>");
+                        }                        
+                    }
+                }
+            </table>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="PrintContent()">
+                <i class="fa fa-print"></i> In
+            </button>
+            <button type="button" onclick="$('#CRUDDialog').modal('hide');" class="btn btn-default" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function PrintContent() {
+
+        var dataToPrint = $('#printContent').html();
+
+        var mywindow = window.open('', '', 'height=500,width=600');
+        mywindow.document.writeln('<html><head><title>In mã vạch</title>');
+        mywindow.document.writeln('<link href="/Content/PrintCSS/bootstrapPrint.css" rel="stylesheet">');
+        mywindow.document.writeln('<link href="/Content/font-awesome/css/font-awesome.css" rel="stylesheet">');
+        mywindow.document.writeln('<script src="/Scripts/jquery-1.10.2.min.js">');
+        mywindow.document.writeln("</sc" + "ript>");
+        mywindow.document.writeln('<style type="text/css" media="print">');
+        mywindow.document.writeln('@@page {size: auto;margin: 5mm;}');
+        mywindow.document.writeln('</style>');
+        //mywindow.document.writeln('<link href="/Content/sitePrint.css" rel="stylesheet">');
+        mywindow.document.writeln('</head><body >');
+
+        mywindow.document.writeln(dataToPrint);
+
+        mywindow.document.writeln('</body></html>');
+        mywindow.document.close();
+
+        var timerPrinter = $.timer(function () { mywindow.focus(); mywindow.print(); timerPrinter.stop(); });
+        timerPrinter.set({ time: 3000, autostart: true });
+        return false;
+    }
+</script>

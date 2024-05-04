@@ -1,0 +1,66 @@
+﻿@model GardenLover.EF.cDepartmentForAll
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cDepartmentForAll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cBranch.BranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cBranch.BranchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cCompany.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cCompany.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cCorporation.CorporationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cCorporation.CorporationName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

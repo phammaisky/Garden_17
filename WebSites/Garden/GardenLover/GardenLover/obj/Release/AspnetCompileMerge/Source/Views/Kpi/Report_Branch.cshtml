@@ -1,0 +1,15 @@
+﻿@model List<IQWebApp_Blank.EF.cBranch>
+@using IQWebApp_Blank.EF
+
+@Html.DropDownList("Branch", new SelectList(Model.OrderByDescending(x => x.Seq).Select(x => new { x.Id, BranchName = x.BranchName }).Distinct().ToList(), "Id", "BranchName"), "Công ty", new { onchange = "BranchOnChange(); return false;" })
+
+<script>
+    function BranchOnChange() {
+
+        Report_ByFilter();
+    }
+</script>
+
+<script>
+    BranchOnChange();
+</script>

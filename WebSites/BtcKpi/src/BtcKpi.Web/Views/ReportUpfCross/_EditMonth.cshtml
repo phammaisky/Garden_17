@@ -1,0 +1,46 @@
+﻿@model BtcKpi.Web.ViewModels.UpfCrossListViewModel
+<div class="modal fade" id="add-cross-bod-approved-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-center">BOD đánh giá</h3>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="alert alert-block alert-danger modalError" style="display:none">
+                    <h4>Lỗi !</h4>
+                    Vui lòng nhập đủ dữ liệu !
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <input type="hidden" id="upfCrossId" />
+                        <input type="hidden" id="upfCrossDetailId" />
+                        <div class="form-group">
+                            <label for="bodDependWeight">Tỷ trọng phụ thuộc (%)</label>
+                            <input type="number" id="bodDependWeight" min="0" max="100" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="bodDependPoint">Điểm đánh giá</label>
+                            <input type="number" id="bodDependPoint" placeholder="1.0" step="0.1" min="0" max="5" class="form-control" />
+                        </div>
+                        <div class="form-group" id="divPerforWeightId">
+                            <label for="bodPerforWeight">Tỷ trọng hiệu suất (%)</label>
+                            <input type="number" id="bodPerforWeight" min="0" max="100" class="form-control" />
+                        </div>
+                        <div class="form-group" id="divPerforPointId">
+                            <label for="bodPerforPoint">Điểm hiệu suất</label>
+                            <input type="number" id="bodPerforPoint" placeholder="1.0" step="0.1" min="0" max="5" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Hủy">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddUpfCrossSum" title="Lưu">Lưu</button>
+                <button type="button" class="btn btn-primary" id="btnUpdateUpfCrossSum" title="Cập nhật">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

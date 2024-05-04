@@ -1,0 +1,228 @@
+﻿<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" onclick="$('#CRUDSubDialog').modal('hide');"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+                Bàn giao
+            </h4>
+        </div>
+        @Html.AntiForgeryToken()
+        <div id="printContent" class="modal-body" style="max-height:300px;  max-height:450px; overflow:auto ">
+            <p style="text-align: center; font-family: 'times new roman', times; font-size: 14pt;"><strong>BIÊN BẢN GIAO NHẬN VÀ CAM KẾT SỬ DỤNG</strong></p>
+            <p style="text-align: center; font-family: 'times new roman', times; font-size: 14pt;"><strong>TÀI SẢN/TRANG THIẾT BỊ/CÔNG CỤ DỤNG CỤ</strong></p>
+            <p style="text-align: center;"><span style="font-family: 'times new roman', times; font-size: 14pt;"><em>HANDOVER OF ASSETS/EQUIPMENTS &nbsp;AND USAGE COMMITMENT</em></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;">H&ocirc;m nay/<em>Today, </em>ng&agrave;y/<em>dated </em>____ /____ /20__ , tại Văn ph&ograve;ng C&ocirc;ng ty/ Chi nh&aacute;nh C&ocirc;ng ty tại /<em> at the Company&rsquo;s Head Office/Branch&rsquo;s Office at _________________________________________________.</em></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&Ocirc;ng/B&agrave;</strong><em>/Mr/Ms</em><strong>: ______________________________ Chức vụ</strong>/<em>Position</em>:<strong> _________________________</strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;">Thuộc Ph&ograve;ng ban/<em>Department/Group: </em><strong>_____________________________________________________:</strong><strong>&nbsp;</strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>B&agrave;n giao cho/ </strong><em>Handover to:</em><strong>&nbsp;</strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&Ocirc;ng/B&agrave;/</strong><em>Mr/Ms</em>:<strong> ______________________________ Chức vụ</strong>/<em>Position</em>:<strong> _________________________</strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;">Thuộc Ph&ograve;ng ban/<em>Department/Group: </em><strong>_____________________________________________________: </strong></span></p>
+            <ol>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>T&agrave;i sản, trang thiết bị, c&ocirc;ng cụ, dụng cụ phục vụ c&ocirc;ng việc, cụ thể như sau</strong>/<em>Assets, equipments and work facilities including:</em><strong>&nbsp;</strong></span></li>
+            </ol>
+            <table style="width:100%;">
+                <tr>
+                    <td width="31">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>TT</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>No<strong>.</strong></em></span></p>
+                    </td>
+                    <td width="179">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>T&ecirc;n t&agrave;i sản, trang thiết bị hoặc C&ocirc;ng cụ dụng cụ/</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Asset/Equipment Name</em></span></p>
+                    </td>
+                    <td width="226">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>Đặc điểm của t&agrave;i sản, trang thiết bị</strong>&nbsp;</span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(Ghi r&otilde; chủng loại, nh&atilde;n hiệu, xuất xứ, model, cấu h&igrave;nh, phụ kiện k&egrave;m theo, t&igrave;nh trạng khi b&agrave;n giao,&hellip;)/</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>Discription</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong><em>(Brand name, origin, model, configuration and accessories, situation of assets/equipments when handover is made)r</em></strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong><em>&nbsp;</em></strong></span></p>
+                    </td>
+                    <td width="51">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>ĐVT/ </strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Unit</em></span></p>
+                    </td>
+                    <td width="48">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>SL/</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Q&rsquo;ty</em></span></p>
+                    </td>
+                    <td width="119">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>Ghi ch&uacute;/</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Note</em></span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="31">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="179">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="226">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="51">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="48">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="119">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="31">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="179">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="226">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="51">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="48">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                    <td width="119">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>&nbsp;</strong></span></p>
+                    </td>
+                </tr>
+            </table>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Lưu &yacute;: đề nghị ghi th&ocirc;ng tin c&agrave;ng đầy đủ c&agrave;ng tốt./ Note: Detailed discription required</em><em>&nbsp;</em></span></li>
+            </ul>
+            <ol>
+                <li>
+                    <span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>Nơi sử dụng t&agrave;i sản</strong>/ <em>Place where assets/equipments to be used:</em><strong>__________________________</strong></span>
+                    <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(Ghi r&otilde; trong Văn ph&ograve;ng C&ocirc;ng ty hay một địa điểm kh&aacute;c ngo&agrave;i Văn ph&ograve;ng C&ocirc;ng ty)</em></span></p>
+                </li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>B&ecirc;n nhận t&agrave;i sản cam kết</strong>/ <em>The receiver commits:</em><strong>&nbsp;</strong></span></li>
+            </ol>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Sử dụng t&agrave;i sản đ&uacute;ng mục đ&iacute;ch, đ&uacute;ng y&ecirc;u cầu c&ocirc;ng việc của C&ocirc;ng ty v&agrave; đ&uacute;ng địa điểm đ&atilde; đăng k&yacute; n&ecirc;u tr&ecirc;n/</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Use the assets/equipments on right purpose and at right place as stated above.</em><em>&nbsp;</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Bảo quản, giữ g&igrave;n, sử dụng v&agrave; vận h&agrave;nh t&agrave;i sản/ thiết bị đ&uacute;ng quy tr&igrave;nh.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Maintain, preserve, use and operate assets/equipments in accordance with its &nbsp;process</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Chịu tr&aacute;ch nhiệm bồi ho&agrave;n t&agrave;i sản mới hoặc bồi thường bằng tiền mặt cho C&ocirc;ng ty theo gi&aacute; trị c&ograve;n lại thực tế của t&agrave;i sản theo thời gi&aacute; thị trường trong những trường hợp sau:</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>To be responsible for reimbursement with new asset/equipment or in cash for the Company based on the actual remaining value of asset/equipment calculated on market price in cases as follows:</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">T&agrave;i sản/ thiết bị bị mất cắp ngo&agrave;i Văn ph&ograve;ng C&ocirc;ng ty.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Assets/equipments are lost outside Company&rsquo;s Office</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">T&agrave;i sản/ thiết bị bị hư hỏng do lỗi của người sử dụng: l&agrave;m rơi, vỡ, &hellip; ngo&agrave;i lỗi kỹ thuật v&agrave;/hoặc b&ecirc;n bảo h&agrave;nh kh&ocirc;ng chấp thuận.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Assets/equipments are damaged due to user&rsquo;s fault: dropping, breaking&hellip; &nbsp;and/or non-acceptance of warranty by the supplier.</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Kh&ocirc;ng b&agrave;n giao lại t&agrave;i sản/ thiết bị được giao cho C&ocirc;ng ty khi nhu cầu c&ocirc;ng việc kh&ocirc;ng đ&ograve;i hỏi sử dụng t&agrave;i sản/ thiết bị đ&oacute;.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Not hand-over assets/equipments to the Company when the work does not require usage of such assets/equipments.</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Khi nghỉ việc hoặc khi c&ocirc;ng việc kh&ocirc;ng đ&ograve;i hỏi sử dụng t&agrave;i sản nữa: phải b&agrave;n giao lại đầy đủ t&agrave;i sản cho Ph&ograve;ng HC để ho&agrave;n tất c&aacute;c thủ tục li&ecirc;n quan.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>When stopping work or work does not require usage of such assets/equipments, handover assets/equipments in full to Admin Dept to close all relevant procedures.</em></span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Khi mang t&agrave;i sản, trang thiết bị của C&ocirc;ng ty về nh&agrave; để sử dụng phải th&ocirc;ng b&aacute;o cho Ph&ograve;ng IT v&agrave;/hoặc người quản l&yacute; Ph&ograve;ng ban biết.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>Inform IT or/and Department/Group Head when handovered assets/equipments are brought home afterwork.</em><strong>&nbsp;</strong></span></p>
+            <ol start="4">
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>Tr&aacute;ch nhiệm của B&ecirc;n giao t&agrave;i sản/ </strong><em>Responsibility of Handover Party:</em><em>&nbsp;</em></span></li>
+            </ol>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Khi giao t&agrave;i sản phải lập Bi&ecirc;n bản giao nhận v&agrave; cam kết sử dụng t&agrave;i sản c&oacute; đầy đủ chữ k&yacute; của c&aacute;c b&ecirc;n giao/ nhận theo mẫu n&agrave;y.</span></li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>The Handover of Assets/Equipments and Usage Commitment Sheet should be signed by both Receiver and Handover Side.</em></span></li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Khi người được giao t&agrave;i sản nghỉ việc: Ph&ograve;ng H&agrave;nh ch&iacute;nh c&oacute; tr&aacute;ch nhiệm thu hồi lại to&agrave;n bộ t&agrave;i sản đ&atilde; giao cho người đ&oacute;, c&oacute; lập bi&ecirc;n bản giao nhận. Trường hợp kh&ocirc;ng thể thu hồi lại t&agrave;i sản th&igrave; Ph&ograve;ng H&agrave;nh ch&iacute;nh phải lập bi&ecirc;n bản c&oacute; chữ k&yacute; của những người/ ph&ograve;ng c&oacute; li&ecirc;n quan v&agrave; chịu tr&aacute;ch nhiệm t&igrave;m phương &aacute;n xử l&yacute;/ bồi thường gửi Ban gi&aacute;m đốc.</span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>In case the receiver resigns, it&rsquo;s Admin who is to take back all assets/equipments handed over to him/her during his/her working at the Company. This hand-over should be in writing. In case of irrevocability, the Admin Dept. has to take the minutes signed by relevant individuals/departments and to be responsible to find way for its &nbsp;solutions and &nbsp;submit it to BOD.</em><strong><em>&nbsp;</em></strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong><em>*** Bi&ecirc;n bản giao nhận v&agrave; cam kết sử dụng t&agrave;i sản được lập th&agrave;nh 03 bản ch&iacute;nh, trong đ&oacute;:</em></strong></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em></strong><em>&nbsp;This Sheet &nbsp;is made and multiplied into 03 original sets,&nbsp; in which:</em>&nbsp;</span></p>
+            <ul>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Ph&ograve;ng H&agrave;nh ch&iacute;nh / <em>Admin Dept. </em>: giữ 01 bản / <em>keeps 01 set</em></span></li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Người nhận / <em>Receiver</em> &nbsp;&nbsp;&nbsp;&nbsp; : giữ 01 bản / <em>keeps 01 set</em></span></li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Ph&ograve;ng kế to&aacute;n / <em>Accounting Dept</em> : giữ 01bản / keeps 01 set</span></li>
+                <li><span style="font-family: 'times new roman', times; font-size: 12pt;">Ph&ograve;ng Nh&acirc;n sự / HR Dept.: giữ 01 bản sao, lưu tại hồ sơ của người nhận t&agrave;i sản/<em>Keeps 01 copy and file in receiver&rsquo;s file</em></span></li>
+            </ul>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+            <p style="text-align: right;"><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;, ng&agrave;y/dated &hellip;..&nbsp; th&aacute;ng/month&hellip;..&nbsp; năm/year 200&hellip;</em></span></p>
+            <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</em><em>&nbsp;</em></span></p>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width:50%; text-align:center; vertical-align:top">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>PH&Ograve;NG H&Agrave;NH CH&Iacute;NH/ </strong><em>ADMIN DEPT.</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(K&yacute;, ghi r&otilde; họ t&ecirc;n/Signature &amp; Full name)</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                    </td>
+                    <td style="width:50%; text-align:center; vertical-align:top">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>NGƯỜI NHẬN/ </strong><em>RECEIVER</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(K&yacute;, ghi r&otilde; họ t&ecirc;n/Signature &amp; Full name)</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%; text-align:center; vertical-align:top">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>PH&Ograve;NG IT/ </strong><em>IT DEPT.</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(K&yacute;, ghi r&otilde; họ t&ecirc;n/Signature &amp; Full name)</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                    </td>
+                    <td style="width:50%; text-align:center; vertical-align:top">
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><strong>QUẢN L&Yacute; TRỰC TIẾP CỦA NGƯỜI NHẬN/</strong><em>RECEIVER&rsquo;S LINE MANAGER</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;"><em>(K&yacute;, ghi r&otilde; họ t&ecirc;n/Signature &amp; Full name)</em></span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                        <p><span style="font-family: 'times new roman', times; font-size: 12pt;">&nbsp;</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="PrintContent()">
+                <i class="fa fa-print"></i> In
+            </button>
+            <button type="button" onclick="$('#CRUDSubDialog').modal('hide');" class="btn btn-default" aria-hidden="true"><span class="glyphicon glyphicon-arrow-left"></span> Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function PrintContent() {
+
+        var dataToPrint = $('#printContent').html();
+
+        var mywindow = window.open('', '', 'height=500,width=600');
+        mywindow.document.writeln('<html><head><title>Phiếu ĐNTT</title>');
+        mywindow.document.writeln('<link href="/Content/PrintCSS/bootstrapPrint.css" rel="stylesheet">');
+        mywindow.document.writeln('<link href="/Content/font-awesome/css/font-awesome.css" rel="stylesheet">');
+        mywindow.document.writeln('<script src="/Scripts/jquery-1.10.2.min.js">');
+        mywindow.document.writeln("</sc" + "ript>");
+        mywindow.document.writeln('<style type="text/css" media="print">');
+        mywindow.document.writeln('@@page {size: auto;margin: 5mm;}');
+        mywindow.document.writeln('</style>');
+        //mywindow.document.writeln('<link href="/Content/sitePrint.css" rel="stylesheet">');
+        mywindow.document.writeln('</head><body >');
+
+        mywindow.document.writeln(dataToPrint);
+
+        mywindow.document.writeln('</body></html>');
+        mywindow.document.close();
+
+        var timerPrinter = $.timer(function () { mywindow.focus(); mywindow.print(); timerPrinter.stop(); });
+        timerPrinter.set({ time: 3000, autostart: true });
+        return false;
+    }
+</script>

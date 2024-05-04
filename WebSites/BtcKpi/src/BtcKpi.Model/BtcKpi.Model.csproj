@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13377D0D-8621-4FA9-B0DD-1DDBDB3CB1F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BtcKpi.Model</RootNamespace>
+    <AssemblyName>BtcKpi.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\BtcKpiEnum.cs" />
+    <Compile Include="Ext\ConvertEnum.cs" />
+    <Compile Include="Ext\DepartmentCharge.cs" />
+    <Compile Include="Ext\PerformanceInfo.cs" />
+    <Compile Include="Ext\DepartmentInfo.cs" />
+    <Compile Include="Ext\Department.cs" />
+    <Compile Include="Ext\EmailModel.cs" />
+    <Compile Include="Ext\IpfReportInfo.cs" />
+    <Compile Include="Ext\IpfScore.cs" />
+    <Compile Include="Ext\UpfComment.cs" />
+    <Compile Include="Ext\IpfComment.cs" />
+    <Compile Include="Ext\IpfDetail.cs" />
+    <Compile Include="Ext\IpfInfo.cs" />
+    <Compile Include="Ext\UpfJobDetail.cs" />
+    <Compile Include="Ext\PersonalPlan.cs" />
+    <Compile Include="Ext\RoleDepartment.cs" />
+    <Compile Include="Ext\RolesFunction.cs" />
+    <Compile Include="Ext\UpfCrossDetail.cs" />
+    <Compile Include="Ext\UpfCrossInfo.cs" />
+    <Compile Include="Ext\UpfMonth.cs" />
+    <Compile Include="Ext\UpfMonthItem.cs" />
+    <Compile Include="Ext\UpfReport.cs" />
+    <Compile Include="Ext\User.cs" />
+    <Compile Include="Models\AdministratorShip.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompleteWorkTitle.cs" />
+    <Compile Include="Models\TypePerformance.cs" />
+    <Compile Include="Models\Projects.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Function.cs" />
+    <Compile Include="Models\Gadget.cs" />
+    <Compile Include="Models\Ipf.cs" />
+    <Compile Include="Models\IpfReport.cs" />
+    <Compile Include="Models\PerformanceLSFB.cs" />
+    <Compile Include="Models\UpfHis.cs" />
+    <Compile Include="Models\UpfComment.cs" />
+    <Compile Include="Models\IpfComment.cs" />
+    <Compile Include="Models\IpfCompetencyData.cs" />
+    <Compile Include="Models\IpfDetail.cs" />
+    <Compile Include="Models\UpfCross.cs" />
+    <Compile Include="Models\UpfJobDetailHis.cs" />
+    <Compile Include="Models\UpfNameDetailHis.cs" />
+    <Compile Include="Models\UpfPersRewProposalHis.cs" />
+    <Compile Include="Models\UpfRate.cs" />
+    <Compile Include="Models\UpfPersRewProposal.cs" />
+    <Compile Include="Models\UpfJobDetail.cs" />
+    <Compile Include="Models\UpfNameDetail.cs" />
+    <Compile Include="Models\UpfCrossSummary.cs" />
+    <Compile Include="Models\UpfSummary.cs" />
+    <Compile Include="Models\UpfSchedule.cs" />
+    <Compile Include="Models\IpfSchedule.cs" />
+    <Compile Include="Models\PersonalPlan.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleDepartment.cs" />
+    <Compile Include="Models\RolesFunction.cs" />
+    <Compile Include="Models\SysConfig.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\Upf.cs" />
+    <Compile Include="Models\UpfCrossDetail.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\UsersRole.cs" />
+    <Compile Include="Models\zIpf.cs" />
+    <Compile Include="Models\zIpfDetail.cs" />
+    <Compile Include="Models\zPersonalPlan.cs" />
+    <Compile Include="Models\zUpfCross.cs" />
+    <Compile Include="Models\zUpfCrossDetail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

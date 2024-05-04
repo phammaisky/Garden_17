@@ -1,0 +1,172 @@
+﻿
+.Slogan_White {
+    color: White;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.Slogan_Yellow {
+    color: yellow;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+
+.TBX_Border_Black {
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: white;
+}
+
+.TBX_Border_Red {
+    border: solid;
+    border-width: 1px;
+    border-color: red;
+    background-color: white;
+}
+
+.TBX_Border_White {
+    border: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: white;
+}
+
+
+.Menu_div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Menu_div_Active {
+    background-color: white;
+    border: 1px dashed white;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.Job_btn_No_Click:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /*width: 50%;*/
+    cursor: not-allowed;
+}
+
+.Job_btn_No_Click {
+    cursor: not-allowed;
+}
+
+.Job_btn {
+    padding: 5px;
+    border: 1px dashed white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.Notify {
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.Notify_Blue {
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: not-allowed;
+}
+
+.Notify_Text {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.Job_td_head {
+    padding: 5px;
+}
+
+.Job_td_body {
+    padding: 5px;
+}
+
+
+
+#tblInfo td {
+    padding: 5px;
+}
+
+#tblKpi td {
+    padding: 5px;
+}
+
+#tblCompe td {
+    padding: 5px;
+}
+
+#tblNextPlan td {
+    padding: 5px;
+}
+
+#tblResult td {
+    padding: 5px;
+}
+
+#tblComment td {
+    padding: 5px;
+}
+
+.btnSubmitKpi {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    /*border: 1px dashed red;*/
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btnRejectKpi {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    /*border: 1px dashed blue;*/
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.Disabled:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: not-allowed;
+}
+
+#imgState {
+    margin-left: 20px;
+    margin-right: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#imgState:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: not-allowed;
+}
+
+#tblViewKpi td {
+    padding: 5px;
+}
+
+#tblReportKpi td {
+    padding: 5px;
+}

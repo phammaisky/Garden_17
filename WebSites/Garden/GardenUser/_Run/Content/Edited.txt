@@ -1,0 +1,3 @@
+﻿file: \Content\_Plugin\Bootstrap\CSS\bootstrap.css
+line: 4503 - 4540
+edited: navbar background: blue + text: white

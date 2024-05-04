@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GardenLover.EF.cDepartmentForAll>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cBranch.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cCompany.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cCorporation.CorporationName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoCreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cBranch.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cCompany.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cCorporation.CorporationName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

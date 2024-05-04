@@ -1,0 +1,77 @@
+﻿@model List<IQWebApp_Blank.Models.RoleForSome_ConfigVM>
+@using IQWebApp_Blank.EF
+@using IQWebApp_Blank.Models
+
+@{
+    GoodJobEntities db = new GoodJobEntities();
+}
+
+<style type="text/css">
+    td {
+        padding: 5px;
+    }
+</style>
+
+@using (Html.BeginForm("RoleForSome_Config_Submit/" + ViewData["RoleForSomeId"], "Kpi", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@ViewBag.Id" />
+    <div id="InsideDialog" title="Phân quyền chi tiết cho: @ViewData["RoleForSomeName"]" style="display: inline-block; margin-left: 10px;">
+        <center>
+            <input id="InsideButton" type="submit" value="OK" class="btn btn-success" style="position: relative; top: 0px;" />
+        </center>
+        <br />
+        <table border="1">
+            <thead>
+                <tr class="BgBlue">
+                    <td align="center" style="min-width: 150px;">Quyền hạn</td>
+                    <td align="center" style="min-width: 500px;">Đối với Báo cáo của các Nhân viên có Chức vụ...</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i1 = 0; i1 < Model.Count; i1++)
+                {
+                    <tr>
+                        <td align="center">
+                            @Html.HiddenFor(x => x[i1].RoleForAll.Id)
+                            <span class="B Red">@Html.DisplayFor(x => x[i1].RoleForAll.RoleName)</span>
+                        </td>
+
+                        <td align="center" valign="top">
+                            <table border="1">
+                                <tr>
+                                    @for (int i2 = 0; i2 < Model[i1].allRankAndChecked.Count; i2++)
+                                    {
+                                        <td align="center" style="width: 250px;">
+                                            <span class="B">@Model[i1].allRankAndChecked[i2][0].Branch.cCompany.CompanyName</span>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    @for (int i2 = 0; i2 < Model[i1].allRankAndChecked.Count; i2++)
+                                    {
+                                        <td align="left" valign="top">
+                                            @for (int i3 = 0; i3 < Model[i1].allRankAndChecked[i2].Count; i3++)
+                                            {
+                                                @Html.HiddenFor(x => x[i1].allRankAndChecked[i2][i3].Rank.Id)
+
+                                                @Html.CheckBoxFor(x => x[i1].allRankAndChecked[i2][i3].Checked)
+                                                @Html.DisplayFor(x => x[i1].allRankAndChecked[i2][i3].Rank.cRankForAll.RankName)
+                                                <br />
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+}

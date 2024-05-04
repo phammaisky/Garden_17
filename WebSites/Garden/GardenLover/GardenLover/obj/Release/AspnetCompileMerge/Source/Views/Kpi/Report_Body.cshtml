@@ -1,0 +1,46 @@
+﻿@model List<Guid>
+@using IQWebApp_Blank.EF
+@using Microsoft.AspNet.Identity
+
+@{
+    GoodJobEntities dbJob = new GoodJobEntities();
+    CompanyEntities dbCompany = new CompanyEntities();
+
+    var userId = User.Identity.GetUserId().ToLower();
+    var Year = (long)ViewBag.Year;
+}
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    var seq = i + 1;
+
+    var reporterId = Model[i];
+    var reporter = dbCompany.cUserInfoes.FirstOrDefault(x => x.UserId == reporterId);
+
+    var average = dbJob.kAverageMarks.FirstOrDefault(x => x.UserId == reporterId);
+    var rate = dbJob.kRates.FirstOrDefault(x => x.Id == average.RateId);
+
+    <tr>
+        <td align="center">@seq</td>
+        <td align="center">@reporter.cBranch.BranchName</td>
+        <td align="center">@reporter.cDepartment.cDepartmentForAll.DepartmentName</td>
+        <td align="center">@reporter.cRank.cRankForAll.RankName</td>
+        <td align="center">@reporter.FullName</td>
+
+        @for (int j = 1; j <= 12; j++)
+        {
+            var report = dbJob.kReports.FirstOrDefault(x => x.UserId == reporterId && x.Year == Year && x.Month == j);
+            var FinalMarkKpi = report != null ? report.FinalMarkKpi.ToString() : "";
+
+            if (FinalMarkKpi == "0.00")
+            {
+                FinalMarkKpi = "";
+            }
+
+            <td align="center">@FinalMarkKpi</td>
+        }
+
+        <td align="center">@average.AverageValue</td>
+        <td align="center">@rate.kRateForAll.RateName</td>
+    </tr>
+}

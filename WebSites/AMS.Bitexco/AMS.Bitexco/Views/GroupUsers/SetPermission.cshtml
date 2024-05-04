@@ -1,0 +1,161 @@
+﻿@model AMS.Models.GroupUser
+
+@{
+    ViewBag.Title = "Phân quyền cho nhóm người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Phân quyền cho nhóm người dùng</h2>
+@using (Html.BeginForm())
+{
+    <div class="toolBar form-inline">
+        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-floppy-disk"></span> Cập nhật</button>
+        <a class="btn btn-default btn-sm" href="@Url.Action("Index", "GroupUsers")">
+            <span class="glyphicon glyphicon-arrow-left"></span> Quay lại
+        </a>
+    </div>
+    <dl class="dl-horizontal" style="padding:15px;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (AMS.Models.MenuFunction item in ViewBag.MenuFunction)
+            {
+                if (item.ChildFunctions.Count > 0)
+                {
+                    foreach (AMS.Models.MenuFunction childitem in item.ChildFunctions.OrderBy(m=>m.Sort))
+                    {
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel panel-info" style="min-height:100px; margin-bottom:5px !important">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading" style="font-weight:bold; padding:7px 10px 3px 5px !important">@item.MenuName \ @childitem.MenuName</div>
+                                <!-- Table -->
+                                <table class="table table-condensed table-bordered">
+                                    <tr style="min-height:50px; background-color:#ebebeb">
+                                        @foreach (AMS.Models.Authorize authorize in childitem.Authorizes)
+                                        {
+                                            <td>
+                                                @authorize.Operator
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @foreach (AMS.Models.Authorize authorize in childitem.Authorizes)
+                                        {
+                                            var GA = Model.GroupUser_Authorize.Where(ga => ga.AuthorizeId == authorize.Id).FirstOrDefault();
+
+                                            if (GA != null)
+                                            {
+                                                if(GA.Extend == null)
+                                                {
+                                                    GA.Extend = 1;
+                                                }   
+                                                @GenDropdownList(authorize.Id, authorize.HasExtend, GA.Extend)
+                                            }
+                                            else
+                                            {
+                                                @GenDropdownList(authorize.Id, authorize.HasExtend, null)
+                                            }
+                                        }
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel panel-info" style="min-height:100px; margin-bottom:5px !important">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading" style="font-weight:bold; padding:7px 10px 3px 5px !important">@item.MenuName</div>
+                            <!-- Table -->
+                            <table class="table table-condensed">
+                                <tr style="min-height:50px; background-color:#ebebeb">
+                                    @foreach (AMS.Models.Authorize authorize in item.Authorizes)
+                                    {
+                                        <td>
+                                            @authorize.Operator
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    @foreach (AMS.Models.Authorize authorize in item.Authorizes)
+                                    {
+                                        var GA = Model.GroupUser_Authorize.Where(ga => ga.AuthorizeId == authorize.Id).FirstOrDefault();
+
+                                        if (GA != null)
+                                        {
+                                            if (GA.Extend == null)
+                                            {
+                                                GA.Extend = 1;
+                                            }
+                                            @GenDropdownList(authorize.Id, authorize.HasExtend, GA.Extend)
+                                        }
+                                        else
+                                        {
+                                            @GenDropdownList(authorize.Id, authorize.HasExtend, null)
+                                        }
+                                    }
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+
+@helper GenDropdownList(int authorId, bool extend, int? extendVal)
+{
+    if (extendVal == null)
+    {
+        extendVal = 0;
+    }
+    <td>
+        @if (extend)
+        {
+            <select name="@authorId" class="form-control input-sm">
+                <option value="0" @Html.Raw(extendVal == 0 ? "Selected" : "")>Không</option>
+                <option value="1" @Html.Raw(extendVal == 1 ? "Selected" : "")>Cá nhân</option>
+                <option value="2" @Html.Raw(extendVal == 2 ? "Selected" : "")>Phòng ban</option>
+                <option value="3" @Html.Raw(extendVal == 3 ? "Selected" : "")>Tất cả</option>
+            </select>
+        }
+        else
+        {
+            <select name="@authorId" class="form-control input-sm">
+                <option value="0" @Html.Raw(extendVal == 0 ? "Selected" : "")>Không</option>
+                <option value="1" @Html.Raw(extendVal == 1 ? "Selected" : "")>Có</option>
+            </select>
+        }
+    </td>
+}

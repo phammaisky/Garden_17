@@ -1,0 +1,89 @@
+﻿@model IEnumerable<AMS.Models.UserInfo>
+
+<table id="StaffTableResult" class="table table-bordered table-condensed">
+    <tr>
+        <th style="text-align:center; vertical-align:middle; width:100px">
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th style="text-align:center; vertical-align:middle; width:200px">
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th style="text-align:center; vertical-align:middle; width:100px">
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th style="text-align:center; vertical-align:middle;">
+            @Html.DisplayNameFor(model => model.DeptId)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@Html.Raw("tbrc"+item.Id)" ondblclick="returnStaffClose(@item.Id, '@item.FullName')" onclick="returnStaff(@item.Id,'@item.FullName')">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Company.NameVn) | @Html.DisplayFor(modelItem => item.Department.DeptCode)
+            </td>
+        </tr>
+    }
+</table>
+
+@*Chọn và trả về nhà thầu*@
+<script type="text/javascript">
+    function returnStaff(id,name) {
+        $('#Staff').val(name);
+        $('#StaffId').val(id);
+
+        $('#StaffTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+    }
+    function returnStaffClose(id,name) {
+        $('#Staff').val(name);
+        $('#StaffId').val(id);
+    
+
+        $('#StaffTableResult tr').removeClass('rowHilight')
+        $('#tbrc' + id).addClass('rowHilight');
+
+        $("#staffModal").modal('hide');
+    }
+
+    $("#StaffSearchName").on("keydown", function (event) {
+        WaitSearchContractor();
+        if (event.which == 8) {
+            WaitSearchContractor();
+        }
+    });
+
+    $("#btnSearchStaff").click(function () {
+        SearchContractor();
+    });
+    var timerSearch = $.timer(function () { SearchContractor(); timerSearch.stop(); });
+    function WaitSearchContractor() {
+        timerSearch.reset();
+        timerSearch.set({ time: 1000, autostart: true });
+    }
+
+    function SearchContractor() {
+        
+        var name = $('#StaffSearchName').val();
+
+        var stf = { UserName: name };
+        $.post("@Url.Content("~/Staffs/GetListStaff")", stf).done(function (d) {
+            OnStaffSearchSuccess(d);
+        });
+    }
+
+    function OnStaffSearchSuccess(response) {
+        if (response != null) {
+            $("#resultStaffSearch").html(response);
+        }
+    }
+</script>

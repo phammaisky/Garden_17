@@ -1,0 +1,93 @@
+﻿@model BtcKpi.Web.ViewModels.DepartmentListViewModel
+@using BtcKpi.Service.Common
+<thead>
+    <tr class="bg-primary">
+        <th class="text-center" style="width: 12%;">Công ty</th>
+        <th class="text-center" style="width: 13%;">Phòng/bộ phận</th>
+        <th class="text-center" style="width: 7%;">Loại</th>
+        <th class="text-center" style="width: 4%;">Năm</th>
+        <th class="text-center" style="width: 7%;">Kỳ</th>
+        <th class="text-center" style="width: 12%;">Người phụ trách</th>
+        <th class="text-center" style="width: 11%;">Chức vụ</th>
+        <th class="text-center" style="width: 9%;">Trạng thái</th>
+        <th class="text-center" style="width: 6%;">Điểm QL đánh giá</th>
+        <th class="text-center" style="width: 6%;">Điểm BOD đánh giá</th>
+        <th class="text-center" style="width: 13%;">
+            <button type="button" class="btn btn-success btn-circle" onclick="@("window.location.href='" + @Url.Action("DepartKPIsCreate", "Department") + "'");" title="Thêm mới"><i class="fa fa-plus-circle"></i></button>
+        </th>
+    </tr>
+</thead>
+<tbody>
+@if (Model.DepartmentInfos != null && Model.DepartmentInfos.Count > 0) {
+    for (int i = 0; i < Model.DepartmentInfos.Count; i++) {
+        <tr>
+            <td>
+                @Model.DepartmentInfos[i].CompanyName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].DepartmentName
+            </td>
+            <td>
+                @BtcHelper.ConvertIpfScheduleType(Model.DepartmentInfos[i].ScheduleType)
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].Year
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].ScheduleName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].PersonInCharge
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].AdministratorshipName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].StatusName
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].AssessedScore
+            </td>
+            <td>
+                @Model.DepartmentInfos[i].TotalBODPoint
+            </td>
+            <td>
+                <a class="btn btn-sm btn-social-icon btn-facebook" href='~/Department/DepartKPIsView?id=@Model.DepartmentInfos[i].ID' title="Xem chi tiết"><i class="fa fa-eye"></i></a>
+                @if(@Model.DepartmentInfos[i].StatusID == 0 || @Model.DepartmentInfos[i].StatusID == 1 || @Model.DepartmentInfos[i].StatusID == 4) {
+                    if (@Model.DepartmentInfos[i].CreatedBy == Model.UserID)
+                    {
+                        <a class="btn btn-sm btn-social-icon btn-twitter depart-edit" href='~/Department/DepartKPIsEdit?id=@Model.DepartmentInfos[i].ID' title="Sửa"><i class="fa fa-edit"></i></a>
+                    }
+                }
+                @if (@Model.DepartmentInfos[i].StatusID == 1 && @Model.DepartmentInfos[i].ApproveBy == Model.UserID)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-info" href='~/Department/DepartKPIsApprove?id=@Model.DepartmentInfos[i].ID&isApproved=1' title="Phê duyệt"><i class="fa fa-check-circle-o"></i></a>
+                }
+                @if (@Model.DepartmentInfos[i].StatusID == 2 && @Model.DepartmentInfos[i].BodApproved == Model.UserID)
+                {
+                    <a class="btn btn-sm btn-social-icon btn-info" href='~/Department/DepartKPIsBODApprove?id=@Model.DepartmentInfos[i].ID&isBODApproved=1' title="BOD phê duyệt"><i class="fa fa-check-circle-o"></i></a>
+                }
+                @if (@Model.DepartmentInfos[i].StatusID > 0 && @Model.DepartmentInfos[i].StatusID < 3)
+                {
+                <a class="btn btn-sm btn-social-icon btn-primary" href='~/Department/DepartKPIsComment?id=@Model.DepartmentInfos[i].ID&isCommentVal=1' title="Ý kiến"><i class="fa fa-commenting-o"></i></a>
+                }
+                @if ((@Model.DepartmentInfos[i].StatusID == 0 || @Model.DepartmentInfos[i].StatusID == 1) && @Model.DepartmentInfos[i].CreatedBy == Model.UserID)
+                {
+                    <button type="button" class="btn btn-sm btn-social-icon btn-google depart-delete" data-id="@Model.DepartmentInfos[i].ID" title="Xóa"><i class="fa fa-trash"></i></button>
+                }
+                <a class="btn btn-sm btn-social-icon btn-dropbox" href='~/Department/DepartKPIsDownload?id=@Model.DepartmentInfos[i].ID' title="Xuất Excel"><i class="fa fa-download"></i></a>
+            </td>
+        </tr>
+    }
+} else if (Model.DepartmentInfos != null && Model.DepartmentInfos.Count == 0) {
+    <tr>
+        <td colspan="3">
+            <span class="text-danger">Không có dữ liệu</span>
+        </td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td style="display: none"></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+}
+</tbody>

@@ -1,0 +1,115 @@
+﻿@using AMS.Models;
+@model IEnumerable<AMS.Models.Location>
+
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th style="width:300px">
+            @Html.DisplayNameFor(model => model.ShortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    @BuildMenu(@Model, null, 0, "")
+</table>
+
+
+
+@helper BuildMenu(IEnumerable<Location> data, int? parentId = null, int? leverl = 0, string classParent = "")
+{
+   
+    var items = data.Where(d => d.ParentId == parentId);
+    if (items.Any())
+    {
+        foreach (var item in items)
+        {
+            <tr id="@Html.Raw("Row" + item.Id.ToString())" @Html.Raw("class='Row" + parentId.ToString() + "'")>
+
+                <td>
+                    @if (item.LocationChild.Count() > 0)
+                    {
+                        <a href="#" onclick="hideNumRow(this, @Html.Raw("'Row" + item.Id.ToString() + "'"),true)"
+                           @Html.Raw("style='padding:8px  20px 8px " + ((leverl + 1) * 10).ToString() + "px'")>
+                            <i class="fa fa-caret-down">&nbsp;@item.ShortName</i>
+                        </a>
+                    }
+                    else
+                    {
+                        <p @Html.Raw("style='padding-left:" + ((leverl + 1) * 10).ToString() + "px; margin:0'")>@Html.Raw(item.ShortName)</p>
+                    }
+                </td>
+                <td>@item.LocationName</td>
+                <td>@item.Description</td>
+                <td>
+                    <a class="create_modal" href='@Url.Action("Edit", "Locations", new { Id = item.Id }, null)'><i class="fa fa-edit fa-lg"></i></a>
+                    <a class="create_modal" style="color:red" href='@Url.Action("Delete", "Locations", new { Id = item.Id }, null)'><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>
+            </tr>
+            @BuildMenu(data, item.Id, leverl + 1, classParent + " Row" + parentId.ToString())
+        }
+
+    }
+}
+<script type="text/javascript">
+    function hideNumRow(el, hideRow, click) {
+
+        var iEle = $(el).find('i:first')[0];
+
+        var classCss = $(iEle).attr('class');
+        var display = $('#' + hideRow).css('display');
+        if (click) {
+            if (classCss == "fa fa-caret-down") {
+                $(iEle).attr("class", "fa fa-caret-right");
+            }
+            else {
+                $(iEle).attr("class", "fa fa-caret-down");
+            }
+        }
+
+        classCss = $(iEle).attr('class');
+        $('.' + hideRow).each(function () {
+            if (classCss == "fa fa-caret-right" || display == "none") {
+                if ($(this).css('display') != 'none') {
+                    $(this).css('display', 'none');
+                }
+            }
+            else {
+                if ($(this).css('display') != 'block') {
+                    $(this).css('display', '');
+                }
+            }
+            var iClass = $(this).find('a:first');
+            hideNumRow(iClass[0], $(this).attr('id'), false);
+        })
+
+    }
+</script>
+
+
+@Scripts.Render("~/bundles/modalform")
+
+<script type="text/javascript">
+    function EnterSubmit(elm) {
+        $(elm).keydown(function (e) {
+            if (e.keyCode == 13) {
+                formSubmit(1);
+                return false;
+            }
+        });
+    }
+    function formSubmit(pageParam) {
+        var pageN = 1;
+        if (pageParam != null) {
+            pageN = pageParam;
+        }
+        $('#progresBarLoadingData').show();
+        $.post("@Url.Content("~/Locations/Index")").done(function (d) {
+            $('#grid-list').html(d);
+        });
+        $('#progresBarLoadingData').hide();
+    }
+</script>
